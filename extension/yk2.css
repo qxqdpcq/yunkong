@@ -1,0 +1,88 @@
+@keyframes ykmp{0%{background: linear-gradient(to left bottom,cyan 0%,rgb(132,112,255) 100%,cyan 200%,rgb(132,112,255) 300%);}
+5%{background: linear-gradient(to left bottom,cyan -10%,rgb(132,112,255) 90%,cyan 190%,rgb(132,112,255) 290%);}
+10%{background: linear-gradient(to left bottom,cyan -20%,rgb(132,112,255) 80%,cyan 180%,rgb(132,112,255) 280%);}
+15%{background: linear-gradient(to left bottom,cyan -30%,rgb(132,112,255) 70%,cyan 170%,rgb(132,112,255) 270%);}
+20%{background: linear-gradient(to left bottom,cyan -40%,rgb(132,112,255) 60%,cyan 160%,rgb(132,112,255) 260%);}
+25%{background: linear-gradient(to left bottom,cyan -50%,rgb(132,112,255) 50%,cyan 150%,rgb(132,112,255) 250%);}
+30%{background: linear-gradient(to left bottom,cyan -60%,rgb(132,112,255) 40%,cyan 140%,rgb(132,112,255) 240%);}
+35%{background: linear-gradient(to left bottom,cyan -70%,rgb(132,112,255) 30%,cyan 130%,rgb(132,112,255) 230%);}
+40%{background: linear-gradient(to left bottom,cyan -80%,rgb(132,112,255) 20%,cyan 120%,rgb(132,112,255) 220%);}
+45%{background: linear-gradient(to left bottom,cyan -90%,rgb(132,112,255) 10%,cyan 110%,rgb(132,112,255) 210%);}
+50%{background: linear-gradient(to left bottom,cyan -100%,rgb(132,112,255) 0%,cyan 100%,rgb(132,112,255) 200%);}
+55%{background: linear-gradient(to left bottom,cyan -110%,rgb(132,112,255) -10%,cyan 90%,rgb(132,112,255) 190%);}
+60%{background: linear-gradient(to left bottom,cyan -120%,rgb(132,112,255) -20%,cyan 80%,rgb(132,112,255) 180%);}
+65%{background: linear-gradient(to left bottom,cyan -130%,rgb(132,112,255) -30%,cyan 70%,rgb(132,112,255) 170%);}
+70%{background: linear-gradient(to left bottom,cyan -140%,rgb(132,112,255) -40%,cyan 60%,rgb(132,112,255) 160%);}
+75%{background: linear-gradient(to left bottom,cyan -150%,rgb(132,112,255) -50%,cyan 50%,rgb(132,112,255) 150%);}
+80%{background: linear-gradient(to left bottom,cyan -160%,rgb(132,112,255) -60%,cyan 40%,rgb(132,112,255) 140%);}
+85%{background: linear-gradient(to left bottom,cyan -170%,rgb(132,112,255) -70%,cyan 30%,rgb(132,112,255) 130%);}
+90%{background: linear-gradient(to left bottom,cyan -180%,rgb(132,112,255) -80%,cyan 20%,rgb(132,112,255) 120%);}
+95%{background: linear-gradient(to left bottom,cyan -190%,rgb(132,112,255) -90%,cyan 10%,rgb(132,112,255) 110%);}
+100%{background: linear-gradient(to left bottom,cyan -200%,rgb(132,112,255) -100%,cyan 0%,rgb(132,112,255) 100%);}
+}
+@keyframes ykstrength{0%{background: linear-gradient(to left bottom,white 0%,rgb(192,255,62) 100%,white 200%,rgb(192,255,62) 300%);}
+5%{background: linear-gradient(to left bottom,white -10%,rgb(192,255,62) 90%,white 190%,rgb(192,255,62) 290%);}
+10%{background: linear-gradient(to left bottom,white -20%,rgb(192,255,62) 80%,white 180%,rgb(192,255,62) 280%);}
+15%{background: linear-gradient(to left bottom,white -30%,rgb(192,255,62) 70%,white 170%,rgb(192,255,62) 270%);}
+20%{background: linear-gradient(to left bottom,white -40%,rgb(192,255,62) 60%,white 160%,rgb(192,255,62) 260%);}
+25%{background: linear-gradient(to left bottom,white -50%,rgb(192,255,62) 50%,white 150%,rgb(192,255,62) 250%);}
+30%{background: linear-gradient(to left bottom,white -60%,rgb(192,255,62) 40%,white 140%,rgb(192,255,62) 240%);}
+35%{background: linear-gradient(to left bottom,white -70%,rgb(192,255,62) 30%,white 130%,rgb(192,255,62) 230%);}
+40%{background: linear-gradient(to left bottom,white -80%,rgb(192,255,62) 20%,white 120%,rgb(192,255,62) 220%);}
+45%{background: linear-gradient(to left bottom,white -90%,rgb(192,255,62) 10%,white 110%,rgb(192,255,62) 210%);}
+50%{background: linear-gradient(to left bottom,white -100%,rgb(192,255,62) 0%,white 100%,rgb(192,255,62) 200%);}
+55%{background: linear-gradient(to left bottom,white -110%,rgb(192,255,62) -10%,white 90%,rgb(192,255,62) 190%);}
+60%{background: linear-gradient(to left bottom,white -120%,rgb(192,255,62) -20%,white 80%,rgb(192,255,62) 180%);}
+65%{background: linear-gradient(to left bottom,white -130%,rgb(192,255,62) -30%,white 70%,rgb(192,255,62) 170%);}
+70%{background: linear-gradient(to left bottom,white -140%,rgb(192,255,62) -40%,white 60%,rgb(192,255,62) 160%);}
+75%{background: linear-gradient(to left bottom,white -150%,rgb(192,255,62) -50%,white 50%,rgb(192,255,62) 150%);}
+80%{background: linear-gradient(to left bottom,white -160%,rgb(192,255,62) -60%,white 40%,rgb(192,255,62) 140%);}
+85%{background: linear-gradient(to left bottom,white -170%,rgb(192,255,62) -70%,white 30%,rgb(192,255,62) 130%);}
+90%{background: linear-gradient(to left bottom,white -180%,rgb(192,255,62) -80%,white 20%,rgb(192,255,62) 120%);}
+95%{background: linear-gradient(to left bottom,white -190%,rgb(192,255,62) -90%,white 10%,rgb(192,255,62) 110%);}
+100%{background: linear-gradient(to left bottom,white -200%,rgb(192,255,62) -100%,white 0%,rgb(192,255,62) 100%);}
+}
+@keyframes ykdefend{0%{background: linear-gradient(to left bottom,grey 0%,rgb(176,224,230) 100%,grey 200%,rgb(176,224,230) 300%);}
+5%{background: linear-gradient(to left bottom,grey -10%,rgb(176,224,230) 90%,grey 190%,rgb(176,224,230) 290%);}
+10%{background: linear-gradient(to left bottom,grey -20%,rgb(176,224,230) 80%,grey 180%,rgb(176,224,230) 280%);}
+15%{background: linear-gradient(to left bottom,grey -30%,rgb(176,224,230) 70%,grey 170%,rgb(176,224,230) 270%);}
+20%{background: linear-gradient(to left bottom,grey -40%,rgb(176,224,230) 60%,grey 160%,rgb(176,224,230) 260%);}
+25%{background: linear-gradient(to left bottom,grey -50%,rgb(176,224,230) 50%,grey 150%,rgb(176,224,230) 250%);}
+30%{background: linear-gradient(to left bottom,grey -60%,rgb(176,224,230) 40%,grey 140%,rgb(176,224,230) 240%);}
+35%{background: linear-gradient(to left bottom,grey -70%,rgb(176,224,230) 30%,grey 130%,rgb(176,224,230) 230%);}
+40%{background: linear-gradient(to left bottom,grey -80%,rgb(176,224,230) 20%,grey 120%,rgb(176,224,230) 220%);}
+45%{background: linear-gradient(to left bottom,grey -90%,rgb(176,224,230) 10%,grey 110%,rgb(176,224,230) 210%);}
+50%{background: linear-gradient(to left bottom,grey -100%,rgb(176,224,230) 0%,grey 100%,rgb(176,224,230) 200%);}
+55%{background: linear-gradient(to left bottom,grey -110%,rgb(176,224,230) -10%,grey 90%,rgb(176,224,230) 190%);}
+60%{background: linear-gradient(to left bottom,grey -120%,rgb(176,224,230) -20%,grey 80%,rgb(176,224,230) 180%);}
+65%{background: linear-gradient(to left bottom,grey -130%,rgb(176,224,230) -30%,grey 70%,rgb(176,224,230) 170%);}
+70%{background: linear-gradient(to left bottom,grey -140%,rgb(176,224,230) -40%,grey 60%,rgb(176,224,230) 160%);}
+75%{background: linear-gradient(to left bottom,grey -150%,rgb(176,224,230) -50%,grey 50%,rgb(176,224,230) 150%);}
+80%{background: linear-gradient(to left bottom,grey -160%,rgb(176,224,230) -60%,grey 40%,rgb(176,224,230) 140%);}
+85%{background: linear-gradient(to left bottom,grey -170%,rgb(176,224,230) -70%,grey 30%,rgb(176,224,230) 130%);}
+90%{background: linear-gradient(to left bottom,grey -180%,rgb(176,224,230) -80%,grey 20%,rgb(176,224,230) 120%);}
+95%{background: linear-gradient(to left bottom,grey -190%,rgb(176,224,230) -90%,grey 10%,rgb(176,224,230) 110%);}
+100%{background: linear-gradient(to left bottom,grey -200%,rgb(176,224,230) -100%,grey 0%,rgb(176,224,230) 100%);}
+}
+@keyframes yksoul{0%{background: linear-gradient(to left bottom,purple 0%,rgb(132,112,255) 100%,purple 200%,rgb(132,112,255) 300%);}
+5%{background: linear-gradient(to left bottom,purple -10%,rgb(132,112,255) 90%,purple 190%,rgb(132,112,255) 290%);}
+10%{background: linear-gradient(to left bottom,purple -20%,rgb(132,112,255) 80%,purple 180%,rgb(132,112,255) 280%);}
+15%{background: linear-gradient(to left bottom,purple -30%,rgb(132,112,255) 70%,purple 170%,rgb(132,112,255) 270%);}
+20%{background: linear-gradient(to left bottom,purple -40%,rgb(132,112,255) 60%,purple 160%,rgb(132,112,255) 260%);}
+25%{background: linear-gradient(to left bottom,purple -50%,rgb(132,112,255) 50%,purple 150%,rgb(132,112,255) 250%);}
+30%{background: linear-gradient(to left bottom,purple -60%,rgb(132,112,255) 40%,purple 140%,rgb(132,112,255) 240%);}
+35%{background: linear-gradient(to left bottom,purple -70%,rgb(132,112,255) 30%,purple 130%,rgb(132,112,255) 230%);}
+40%{background: linear-gradient(to left bottom,purple -80%,rgb(132,112,255) 20%,purple 120%,rgb(132,112,255) 220%);}
+45%{background: linear-gradient(to left bottom,purple -90%,rgb(132,112,255) 10%,purple 110%,rgb(132,112,255) 210%);}
+50%{background: linear-gradient(to left bottom,purple -100%,rgb(132,112,255) 0%,purple 100%,rgb(132,112,255) 200%);}
+55%{background: linear-gradient(to left bottom,purple -110%,rgb(132,112,255) -10%,purple 90%,rgb(132,112,255) 190%);}
+60%{background: linear-gradient(to left bottom,purple -120%,rgb(132,112,255) -20%,purple 80%,rgb(132,112,255) 180%);}
+65%{background: linear-gradient(to left bottom,purple -130%,rgb(132,112,255) -30%,purple 70%,rgb(132,112,255) 170%);}
+70%{background: linear-gradient(to left bottom,purple -140%,rgb(132,112,255) -40%,purple 60%,rgb(132,112,255) 160%);}
+75%{background: linear-gradient(to left bottom,purple -150%,rgb(132,112,255) -50%,purple 50%,rgb(132,112,255) 150%);}
+80%{background: linear-gradient(to left bottom,purple -160%,rgb(132,112,255) -60%,purple 40%,rgb(132,112,255) 140%);}
+85%{background: linear-gradient(to left bottom,purple -170%,rgb(132,112,255) -70%,purple 30%,rgb(132,112,255) 130%);}
+90%{background: linear-gradient(to left bottom,purple -180%,rgb(132,112,255) -80%,purple 20%,rgb(132,112,255) 120%);}
+95%{background: linear-gradient(to left bottom,purple -190%,rgb(132,112,255) -90%,purple 10%,rgb(132,112,255) 110%);}
+100%{background: linear-gradient(to left bottom,purple -200%,rgb(132,112,255) -100%,purple 0%,rgb(132,112,255) 100%);}
+}
