@@ -13427,7 +13427,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		lib.skill.ykshilie={};
 		delete lib.skill.ykshilie;
 	}
-	lib.init.req("https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/basic.js",function(){
+	/*lib.init.req("https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/basic.js",function(){
 		eval(this.responseText);
 		if(!lib.config.ykDTSCache) lib.config.ykDTSCache={};
 		if(!lib.config.ykDTSCache.content) lib.config.ykDTSCache.content={};
@@ -13439,5 +13439,5 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('部分重要文件加载失败！请检查您的网络连接！');
 		},2000);
 		console.log(e)
-	},true);
+	},true);*/
 });
