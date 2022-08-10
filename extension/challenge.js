@@ -11,14 +11,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	};
 	game.addMode('ykChallenge',{
 		start:function(){
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.open("GET","https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/challengeContent.js",true);
-			httpRequest.send(null);
-			httpRequest.onreadystatechange=function(){
-				if (httpRequest.readyState==4&&httpRequest.status==200){
-					eval(httpRequest.responseText);
-				}
-			};
+			if(typeof game.ykmodeStart=='function') game.ykmodeStart();
 		},
 	},{
 		translate:'云空·挑战',
