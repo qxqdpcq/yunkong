@@ -313,7 +313,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		});
 		if(!cssBool){
 			var httpRequest = new XMLHttpRequest();
-			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/"+filename+".js",true);
+			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css",true);
 			httpRequest.send(null);
 			httpRequest.onreadystatechange=function(){
 				if (httpRequest.readyState==4&&httpRequest.status==200){
