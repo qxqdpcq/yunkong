@@ -1076,10 +1076,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			parentNode.appendChild(divA);
 			var divx=ui.create.div('');
 			if(lib.character[character]){
-				window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/'+character+'.jpg',divx,true,"cover");
+				window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+character+'.jpg',divx,true,"cover");
 			}
 			else{
-				window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/unknow.jpg',divx,true,"cover");
+				window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/unknow.jpg',divx,true,"cover");
 			}
 			divx.style.height='240px';
 			divx.style.width='180px';
@@ -1468,7 +1468,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		//结束函数，还原无名杀的背景
 		var div_break = document.createElement("div");
 		div_break.style.cssText='display:block;position:absolute;top:0px;left:0px;width:100px;height:100px;background-repeat:no-repeat;';
-		window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/comback.jpg',div_break,true,'100% 100%');
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/comback.jpg',div_break,true,'100% 100%');
 		div_break.addEventListener('click', function() {
 			End(chat, avatar_div, interval);
 		});
@@ -1520,7 +1520,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if (avatar != undefined) {
 				avatar_div.style.height = '300px';
 				avatar_div.style['background-color'] = 'rgba(0,0,0,0.4)';
-				window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/'+avatar+'.jpg',avatar_div,true,'cover');
+				window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+avatar+'.jpg',avatar_div,true,'cover');
 				avatar_div.style.borderRadius = '5px';
 				avatar_div.innerHTML = get.translation(avatar);
 			} else {
@@ -2485,7 +2485,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		window.background.style.width='calc(100%)';
 		window.background.style.left='0px';
 		window.background.style.top='0px';
-		window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/ykmap.jpg',window.background,true,"100% 100%");
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/ykmap.jpg',window.background,true,"100% 100%");
 		window.background.style['z-index']=99999;
 		ui.window.appendChild(window.background);
 		dialogm.background=window.background;
@@ -2502,7 +2502,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		window.mapIntroduceContent.targetName='';
 		var text;
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open("GET",'https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/mapIntroduce.js',true);
+		httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/mapIntroduce.js',true);
 		httpRequest.send(null);
 		httpRequest.onreadystatechange=function(){
 			if (httpRequest.readyState==4&&httpRequest.status==200){
@@ -2560,17 +2560,17 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		window.ykShopListOC();
 		var smallShop=ui.create.div();
 		smallShop.style.cssText='left:25px;top:0px;width:100px;height:100px;';
-		window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/ykShop1.jpg',smallShop,true,'100% 100%');
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/ykShop1.jpg',smallShop,true,'100% 100%');
 		smallShop.onclick=function(){window.ykOpenMap();window.ykOpenShop('small');}
 		window.ykShopList.appendChild(smallShop);
 		var largeShop=ui.create.div();
 		largeShop.style.cssText='left:150px;top:0px;width:100px;height:100px;';
-		window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/ykShop2.jpg',largeShop,true,'100% 100%');
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/ykShop2.jpg',largeShop,true,'100% 100%');
 		largeShop.onclick=function(){window.ykOpenMap();window.ykOpenShop('middle');}
 		window.ykShopList.appendChild(largeShop);
 		var auction=ui.create.div();
 		auction.style.cssText='left:275px;top:0px;width:100px;height:100px;';
-		window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/ykAuction.jpg',auction,true,'100% 100%');
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/ykAuction.jpg',auction,true,'100% 100%');
 		auction.onclick=function(){window.ykOpenMap();window.ykOpenAuction();};
 		window.ykShopList.appendChild(auction);
 		
@@ -2793,7 +2793,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		window.yk_updateDialog.innerHTML='<b>云空-更新日志（内容需要联网显示，点击框外部分关闭更新日志）</b>';
 		var text;
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open("GET",'https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/update.js',true);
+		httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/update.js',true);
 		httpRequest.send(null);
 		httpRequest.onreadystatechange=function(){
 			if (httpRequest.readyState==4&&httpRequest.status==200){
@@ -2817,7 +2817,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		}
 		else if(confirm('是否下载【云空】素材？（下载完毕后将自动重启游戏）')){
 			var httpRequest = new XMLHttpRequest();
-			httpRequest.open("GET","https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/download.js",true);
+			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/download.js",true);
 			httpRequest.send(null);
 			httpRequest.onreadystatechange=function(){
 				if(httpRequest.readyState==4&&httpRequest.status==200){
@@ -8838,7 +8838,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				forced:true,
 				content:function(){
 					game.broadcastAll(function(){
-						game.ykSetImage2("https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/yk_shimeng_mengjing.jpg",ui.background);
+						game.ykSetImage2("https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk_shimeng_mengjing.jpg",ui.background);
 					});
 				},
 			},
