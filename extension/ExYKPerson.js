@@ -308,8 +308,15 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	//人物基础属性显示
 	window.yk_downloadCSSJson=function(){
 		lib.init.css(lib.assetURL+'extension/云空','yk2',function(){},function(){
-			game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
-			setTimeout(window.yk_downloadCSSJson,2500);
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/"+filename+".js",true);
+			httpRequest.send(null);
+			httpRequest.onreadystatechange=function(){
+				if (httpRequest.readyState==4&&httpRequest.status==200){
+					game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
+					setTimeout(window.yk_downloadCSSJson,3000);
+				}
+			};
 		});
 	}
 	window.yk_downloadCSSJson();
