@@ -306,24 +306,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		"qxq_yk_zhixu":"",
 	}
 	//人物基础属性显示
-	window.yk_downloadCSSJson=function(){
-		window.cssBool=false;
-		lib.init.css(lib.assetURL+'extension/云空','yk2',function(){
-			window.cssBool=true;
-		});
-		if(!window.cssBool){
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css",true);
-			httpRequest.send(null);
-			httpRequest.onreadystatechange=function(){
-				if (httpRequest.readyState==4&&httpRequest.status==200){
-					game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
-					setTimeout(window.yk_downloadCSSJson,3000);
-				}
-			};
-		}
-	}
-	window.yk_downloadCSSJson();
 	window.ykNatureIntroduction=function(type){
 		if(!type||['Mp','Strength','Defend','Soul'].indexOf(type)==-1) return ;
 		if(type=='Mp') alert('术法值：常规技能消耗术法值，术法值可随回合数自然回复，或使用某些特定技能/卡牌快速回复。');
