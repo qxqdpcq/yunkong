@@ -109,8 +109,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			var date=new Date();
 			var day=date.getDate();
 			lib.config.yk_updateDate=day;
-			game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/skin.js','extension/云空/skin.js',function(){},function(){});
-			game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
+			game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/skin.js','extension/云空/skin.js',function(){},function(){});
+			game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
 			game.saveConfig('yk_updateDate',lib.config.yk_updateDate);
 		}
 	};
@@ -127,7 +127,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 // ---------------------------------------适配千幻用------------------------------------------//
 	window.yk_downloadSkinJson=function(){
 		lib.init.js(lib.assetURL+'extension/云空','skin',function(){},function(){
-			game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/skin.js','extension/云空/skin.js',function(){},function(){});
+			game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/skin.js','extension/云空/skin.js',function(){},function(){});
 			setTimeout(window.yk_downloadSkinJson,2500);
 		});
 	}
@@ -220,7 +220,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			window.animationBackgroundCharacter.style.top='10%';
 			window.animationBackgroundCharacter.style.transition='all 2s';
 			window.animationBackgroundCharacter.style.backgroundColor='black';
-			window.ykCacheSetImage('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/'+name+'.jpg',window.animationBackgroundCharacter,true,"cover");
+			window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+name+'.jpg',window.animationBackgroundCharacter,true,"cover");
 			window.animationBackgroundCharacter.style.opacity=0;
 			window.animationBackground.appendChild(window.animationBackgroundCharacter);
 			setTimeout(function(){
