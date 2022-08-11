@@ -2825,6 +2825,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					game.ykdownloadsucai_Button=false;
 					game.ykdownloadelse_Button=false;
 					eval(httpRequest.responseText);
+					game.ykdownload();
 				}
 			};
 		}
