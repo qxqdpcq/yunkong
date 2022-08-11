@@ -307,7 +307,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	//人物基础属性显示
 	window.yk_downloadCSSJson=function(){
-		lib.init.css(lib.assetURL+'extension/云空','yk2',function(){},function(){
+		var cssBool;
+		lib.init.css(lib.assetURL+'extension/云空','yk2',function(){
+			cssBool=true;
+		});
+		if(!cssBool){
 			var httpRequest = new XMLHttpRequest();
 			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/"+filename+".js",true);
 			httpRequest.send(null);
@@ -317,7 +321,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					setTimeout(window.yk_downloadCSSJson,3000);
 				}
 			};
-		});
+		}
 	}
 	window.yk_downloadCSSJson();
 	window.ykNatureIntroduction=function(type){
