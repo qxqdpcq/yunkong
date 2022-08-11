@@ -185,6 +185,7 @@ game.YK_qxq_yk_tian=[
 		}
 		download();
 	};
+	game.ykdownload();
 	game.ykdownload_add=function(){
 		"step 0"
 		game.ykdownload_Button=false;
