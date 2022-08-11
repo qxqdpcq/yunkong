@@ -312,12 +312,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			cssBool=true;
 		});
 		if(!cssBool){
+			alert();
 			var httpRequest = new XMLHttpRequest();
 			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css",true);
 			httpRequest.send(null);
 			httpRequest.onreadystatechange=function(){
 				if (httpRequest.readyState==4&&httpRequest.status==200){
-					game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
+			alert();
+					game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
 					setTimeout(window.yk_downloadCSSJson,3000);
 				}
 			};
