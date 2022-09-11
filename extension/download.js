@@ -206,7 +206,7 @@ game.YK_qxq_yk_tian=[
 						window.picturelist.remove(window.picturelist[0]);
 						if(window.picturelist.length>0){
 							YK_Text.innerHTML='正在下载云空世界人物皮肤语音——【'+get.translation(window.yk_personlistList[0])+'】（'+window.num+'/'+window.numx+'）';
-							download6(window.picturelist);
+							download(window.picturelist);
 						}else{
 							window.yk_personlistList.remove(window.yk_personlistList[0]);
 							if(window.yk_personlistList.length>0){
