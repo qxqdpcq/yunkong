@@ -896,8 +896,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		else if(dayx1&&!isNaN(dayx1)&&dayx2&&!isNaN(dayx2)){
 			var dayMax=Math.max(dayx1,dayx2);
 			var dayMin=Math.min(dayx1,dayx2);
-			if(monthMax==dayx1&&(day>dayx1||day<dayx2)) return false;
-			if(monthMax==dayx2&&(day>dayx2||day<dayx1)) return false;
+			if(dayMax==dayx1&&(day>dayx1||day<dayx2)) return false;
+			if(dayMax==dayx2&&(day>dayx2||day<dayx1)) return false;
 		}
 		if(year!=undefined&&month!=undefined&&day!=undefined) return true;
 		else{return window.checkOnlineTime1(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2);}
