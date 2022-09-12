@@ -2809,6 +2809,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	game.ykdownloadelse_Button=true;
 	window.ykDownload=function(){
 		ui.click.configMenu();
+		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		if(typeof game.ykHasExtension=='function'&&game.ykHasExtension('斗破苍穹X阴阳师')) alert('请先关闭【斗破苍穹X阴阳师】，否则将可能导致无法正常下载！');
 		if(game.ykdownload_Button==false){
 			alert('请不要频繁点击，若需要重新下载，请重启游戏后再尝试。');
@@ -2829,6 +2830,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}
 	window.ykOpenTaskList=function(){
 		ui.click.configMenu();
+		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		var httpRequest = new XMLHttpRequest();
 		httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/tasks.js",true);
 		httpRequest.send(null);
