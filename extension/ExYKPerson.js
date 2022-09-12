@@ -64,9 +64,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div.style.backgroundSize=(backgroundSize||'100% 100%');
 		if(typeof window.ykCacheImage=='function') window.ykCacheImage(imgUrl,div);
 		else if(lib.device!='android'&&lib.device!='ios'){
+			div.style.backgroundSize='100% 100%';
 			div.setBackgroundImage(imgUrl);
 		}
 		else{
+			div.style.backgroundSize='100% 100%';
 			div.style.backgroundImage='url("'+imgUrl+'")';
 		}
 	}
