@@ -834,142 +834,17 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	//Check时间段
 	window.checkOnlineTime1=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
-		if(window.ykOffline) return false;
-		var year=window.playTime.years;
-		var month=window.playTime.months;
-		var day=window.playTime.days;
-		if(yearx1&&typeof yearx1=='string') yearx1=parseInt(yearx1);
-		if(yearx2&&typeof yearx2=='string') yearx2=parseInt(yearx2);
-		if(monthx1&&typeof monthx1=='string') monthx1=parseInt(monthx1);
-		if(monthx2&&typeof monthx2=='string') monthx2=parseInt(monthx2);
-		if(dayx1&&typeof dayx1=='string') dayx1=parseInt(dayx1);
-		if(dayx2&&typeof dayx2=='string') dayx2=parseInt(dayx2);
-		if(yearx1>yearx2){
-			var yx=yearx1;
-			yearx1=yearx2;
-			yearx2=yx;
+		var isDuringDate=function(beginDateStr,endDateStr){
+			var curDate = new Date(),
+			beginDate = new Date(beginDateStr),
+			endDate = new Date(endDateStr);
+			if (curDate >= beginDate && curDate <= endDate) {
+				return true;
+			}
+			return false;
 		}
-		if(yearx1==yearx2){
-			if(monthx1>monthx2){
-				var mx=monthx1;
-				monthx1=monthx2;
-				monthx2=mx;
-			}
-			if(monthx1==monthx2){
-				if(dayx1>dayx2){
-					var dx=dayx1;
-					dayx1=dayx2;
-					dayx2=dx;
-				}
-			}
-		}
-		if(yearx1&&!isNaN(yearx1)&&yearx2&&!isNaN(yearx2)&&yearx1!=yearx2){
-			if(year<yearx1) return false;
-			else if(year>yearx2) return false;
-			else if(year<yearx2&&year>yearx1) return true;
-			else if(year==yearx1){
-				if(monthx1&&!isNaN(monthx1)){
-					if(month<monthx1) return false;
-					else if(month==monthx1&&dayx1&&!isNaN(dayx1)){
-						if(day<dayx1) return false;
-					}
-				}
-			}
-			else if(year==yearx2){
-				if(monthx2&&!isNaN(monthx2)){
-					if(month>monthx2) return false;
-					else if(month==monthx2&&dayx2&&!isNaN(dayx2)){
-						if(day>dayx2) return false;
-					}
-				}
-			}
-		}
-		else if(monthx1&&!isNaN(monthx1)&&monthx2&&!isNaN(monthx2)&&monthx1!=monthx2){
-			if(month<monthx1||month>monthx2) return false;
-			if(month==monthx1){
-				if(dayx1&&!isNaN(dayx1)&&day<dayx1) return false;
-			}
-			if(month==monthx2){
-				if(dayx2&&!isNaN(dayx2)&&day>dayx2) return false;
-			}
-		}
-		else if(dayx1&&!isNaN(dayx1)&&dayx2&&!isNaN(dayx2)){
-			var dayMax=Math.max(dayx1,dayx2);
-			var dayMin=Math.min(dayx1,dayx2);
-			if(dayMax==dayx1&&(day>dayx1||day<dayx2)) return false;
-			if(dayMax==dayx2&&(day>dayx2||day<dayx1)) return false;
-		}
-		if(year!=undefined&&month!=undefined&&day!=undefined) return true;
-		else{return window.checkOnlineTime1(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2);}
-	}
-	window.checkOnlineTime2=function(hourx1,minutex1,secondx1,hourx2,minutex2,secondx2){
-		if(window.ykOffline) return false;
-		var hour=window.playTime.hours;
-		var minute=window.playTime.minutes;
-		var second=window.playTime.seconds;
-		if(hourx1&&typeof hourx1=='string') hourx1=parseInt(hourx1);
-		if(hourx2&&typeof hourx2=='string') hourx2=parseInt(hourx2);
-		if(minutex1&&typeof minutex1=='string') minutex1=parseInt(minutex1);
-		if(minutex2&&typeof minutex2=='string') minutex2=parseInt(minutex2);
-		if(secondx1&&typeof secondx1=='string') secondx1=parseInt(secondx1);
-		if(secondx2&&typeof secondx2=='string') secondx2=parseInt(secondx2);
-		if(hourx1>hourx2){
-			var yx=hourx1;
-			hourx1=hourx2;
-			hourx2=yx;
-		}
-		if(hourx1==hourx2){
-			if(minutex1>minutex2){
-				var mx=minutex1;
-				minutex1=minutex2;
-				minutex2=mx;
-			}
-			if(minutex1==minutex2){
-				if(secondx1>secondx2){
-					var dx=secondx1;
-					secondx1=secondx2;
-					secondx2=dx;
-				}
-			}
-		}
-		if(hourx1&&!isNaN(hourx1)&&hourx2&&!isNaN(hourx2)&&hourx1!=hourx2){
-			if(hour<hourx1) return false;
-			else if(hour>hourx2) return false;
-			else if(hour<hourx2&&hour>hourx1) return true;
-			else if(hour==hourx1){
-				if(minutex1&&!isNaN(minutex1)){
-					if(minute<minutex1) return false;
-					else if(minute==minutex1&&secondx1&&!isNaN(secondx1)){
-						if(second<secondx1) return false;
-					}
-				}
-			}
-			else if(hour==hourx2){
-				if(minutex2&&!isNaN(minutex2)){
-					if(minute>minutex2) return false;
-					else if(minute==minutex2&&secondx2&&!isNaN(secondx2)){
-						if(second>secondx2) return false;
-					}
-				}
-			}
-		}
-		else if(minutex1&&!isNaN(minutex1)&&minutex2&&!isNaN(minutex2)&&minutex1!=minutex2){
-			if(minute<minutex1||minute>minutex2) return false;
-			if(minute==minutex1){
-				if(secondx1&&!isNaN(secondx1)&&second<secondx1) return false;
-			}
-			if(minute==minutex2){
-				if(secondx2&&!isNaN(secondx2)&&second>secondx2) return false;
-			}
-		}
-		else if(secondx1&&!isNaN(secondx1)&&secondx2&&!isNaN(secondx2)){
-			var secondMax=Math.max(secondx1,secondx2);
-			var secondMin=Math.min(secondx1,secondx2);
-			if(secondMax==secondx1&&(second>secondx1||second<secondx2)) return false;
-			if(secondMax==secondx2&&(second>secondx2||second<secondx1)) return false;
-		}
-		if(hour!=undefined&&minute!=undefined&&second!=undefined) return true;
-		else{return window.checkOnlineTime2(hourx1,minutex1,secondx1,hourx2,minutex2,secondx2);}
+		if(isDuringDate(yearx1+'/'+monthx1+'/'+dayx1,yearx2+'/'+monthx2+'/'+dayx2)) return true;
+		else return false;
 	}
 	//兑换系统
 	if(lib.arenaReady) lib.arenaReady.push(function(){
