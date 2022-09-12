@@ -64,74 +64,73 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		},
 	}
 	window.ykOpenTask=function(){
-			var div=ui.create.div('.menu');
-			div.style.cssText='height:400px;width:500px;top:calc( 50% - 200px );left:calc( 50% - 250px );z-index:9999;';
-			ui.window.appendChild(div);
-			var close=function(){
-				div.delete();
+		var div=ui.create.div('.menu');
+		div.style.cssText='height:400px;width:500px;top:calc( 50% - 200px );left:calc( 50% - 250px );z-index:9999;';
+		ui.window.appendChild(div);
+		var close=function(){
+			div.delete();
+		};
+		var button=ui.create.div('.menubutton.round','×',close);
+		button.style.cssText='top:5px;left:calc(100% - 55px);z-index:99999;';
+		div.appendChild(button);
+		window.yk_clickFK(button);
+		var title=ui.create.div();
+		title.style.cssText='top:5px;width:calc(100% - 55px);left:0px;z-index:99999;text-align:center;';
+		title.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">任务</span></b>';
+		div.appendChild(title);
+		var content=ui.create.div();
+		content.style.cssText='top:60px;height:calc(100% - 60px);left:0px;width:100%;z-index:99999;';
+		div.appendChild(content);
+		var taskChoose=ui.create.div();
+		taskChoose.style.cssText='top:0px;height:100%;left:0px;width:80px;z-index:99999;overflow-y:scroll;';
+		lib.setScroll(taskChoose);
+		content.appendChild(taskChoose);
+		content.div_list=[];
+		var list=['每日任务','本周任务','本月任务','活动任务'];
+		for(var x of list){
+			var choose=ui.create.div();
+			choose.style.cssText='top:0px;height:40px;left:0px;width:100%;z-index:99999;position:relative;text-align:center;border-radius:8px;background-color:white;';
+			choose.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+x+'</span></b>';
+			choose.content=x;
+			choose.onclick=function(){
+				if(window.yktaskList){
+					window.yktaskList.delete();
+					delete window.yktaskList;
+				}
+				window.yktaskList=ui.create.div();
+				window.yktaskList.style.cssText='top:0px;height:100%;left:80px;width:calc(100% - 80px);z-index:99999;overflow-y:scroll;';
+				lib.setScroll(window.yktaskList);
+				content.appendChild(window.yktaskList);
+				this.style.backgroundColor='black';
+				this.innerHTML='<b><span style="color:white;font-size:20px;font-weight:400;font-family:shousha">'+this.content+'</span></b>';
+				for(var a of content.div_list) if(a.content!=this.content){
+					a.style.backgroundColor='white';
+					a.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+a.content+'</span></b>';
+				}
+				var s;
+				if(this.innerHTML.indexOf('每日任务')!=-1) s='daily';
+				if(this.innerHTML.indexOf('本周任务')!=-1) s='weekly';
+				if(this.innerHTML.indexOf('本月任务')!=-1) s='monthly';
+				if(this.innerHTML.indexOf('活动任务')!=-1) s='others';
+				for(var t in lib.ykTask[s]){
+					var divt=ui.create.div(),t=lib.ykTask[s][t];
+					divt.style.cssText='height:50px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:yellow;';
+					window.yktaskList.appendChild(divt);
+					var divt_title=ui.create.div();
+					divt_title.style.cssText='height:30px;left:0px;width:calc(100% - 60px);top:0px;text-align:center;';
+					divt_title.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+t.name+'</span></b>';
+					divt.appendChild(divt_title);
+					var divt_content=ui.create.div();
+					divt_content.style.cssText='height:20px;left:0px;width:calc(100% - 60px);top:30px;';
+					divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(t.filter()?'未完成':'已完成')+'）';
+					divt.appendChild(divt_content);
+					if(t.filter()) divt.onclick=t.content;
+				}
 			};
-			var button=ui.create.div('.menubutton.round','×',close);
-			button.style.cssText='top:5px;left:calc(100% - 55px);z-index:99999;';
-			div.appendChild(button);
-			window.yk_clickFK(button);
-			var title=ui.create.div();
-			title.style.cssText='top:5px;width:calc(100% - 55px);left:0px;z-index:99999;text-align:center;';
-			title.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">任务</span></b>';
-			div.appendChild(title);
-			var content=ui.create.div();
-			content.style.cssText='top:60px;height:calc(100% - 60px);left:0px;width:100%;z-index:99999;';
-			div.appendChild(content);
-			var taskChoose=ui.create.div();
-			taskChoose.style.cssText='top:0px;height:100%;left:0px;width:80px;z-index:99999;overflow-y:scroll;';
-			lib.setScroll(taskChoose);
-			content.appendChild(taskChoose);
-			content.div_list=[];
-			var list=['每日任务','本周任务','本月任务','活动任务'];
-			for(var x of list){
-				var choose=ui.create.div();
-				choose.style.cssText='top:0px;height:40px;left:0px;width:100%;z-index:99999;position:relative;text-align:center;border-radius:8px;background-color:white;';
-				choose.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+x+'</span></b>';
-				choose.content=x;
-				choose.onclick=function(){
-					if(window.yktaskList){
-						window.yktaskList.delete();
-						delete window.yktaskList;
-					}
-					window.yktaskList=ui.create.div();
-					window.yktaskList.style.cssText='top:0px;height:100%;left:80px;width:calc(100% - 80px);z-index:99999;overflow-y:scroll;';
-					lib.setScroll(window.yktaskList);
-					content.appendChild(window.yktaskList);
-					this.style.backgroundColor='black';
-					this.innerHTML='<b><span style="color:white;font-size:20px;font-weight:400;font-family:shousha">'+this.content+'</span></b>';
-					for(var a of content.div_list) if(a.content!=this.content){
-						a.style.backgroundColor='white';
-						a.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+a.content+'</span></b>';
-					}
-					var s;
-					if(this.innerHTML.indexOf('每日任务')!=-1) s='daily';
-					if(this.innerHTML.indexOf('本周任务')!=-1) s='weekly';
-					if(this.innerHTML.indexOf('本月任务')!=-1) s='monthly';
-					if(this.innerHTML.indexOf('活动任务')!=-1) s='others';
-					for(var t in lib.ykTask[s]){
-						var divt=ui.create.div(),t=lib.ykTask[s][t];
-						divt.style.cssText='height:50px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:yellow;';
-						window.yktaskList.appendChild(divt);
-						var divt_title=ui.create.div();
-						divt_title.style.cssText='height:30px;left:0px;width:calc(100% - 60px);top:0px;text-align:center;';
-						divt_title.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+t.name+'</span></b>';
-						divt.appendChild(divt_title);
-						var divt_content=ui.create.div();
-						divt_content.style.cssText='height:20px;left:0px;width:calc(100% - 60px);top:30px;';
-						divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(t.filter()?'未完成':'已完成')+'）';
-						divt.appendChild(divt_content);
-						if(t.filter()) divt.onclick=t.content;
-					}
-				};
-				taskChoose.appendChild(choose);
-				window.yk_clickFK(choose);
-				content.div_list.push(choose);
-				if(choose.innerHTML.indexOf('每日任务')!=-1) choose.onclick();
-			}
+			taskChoose.appendChild(choose);
+			window.yk_clickFK(choose);
+			content.div_list.push(choose);
+			if(choose.innerHTML.indexOf('每日任务')!=-1) choose.onclick();
 		}
 	};
 });
