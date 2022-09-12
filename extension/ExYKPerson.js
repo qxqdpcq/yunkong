@@ -44,10 +44,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(div.style.backgroundSize=='cover'){
 					div.style.backgroundSize='100% 100%';
 				}
-				else{
-					div.style['overflow-y']='hidden';
-					div.style['overflow-x']='hidden';
-					div.style['background-position']='center center';
+				else if(div.style.backgroundSize.indexOf('% ')!=-1){
+					image.style.width=div.style.backgroundSize.slice(0,div.style.backgroundSize.indexOf('% '))+'% ';
+					image.style.width=div.style.backgroundSize.slice(0,div.style.backgroundSize.indexOf('% '))+'%';
+					image.style.height=div.style.backgroundSize.slice(div.style.backgroundSize.indexOf('% ')+2,div.style.backgroundSize.length);
 				}
 				if(!image.style.width) image.style.width='auto';
 				if(!image.style.height) image.style.height='auto';
