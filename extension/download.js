@@ -18,6 +18,7 @@ game.YK_else=[
 	
 	'qxq_yk_tian.jpg',
 	'chunsheng.jpg',
+	'ckdh.mp4',
 	'xiarong.jpg',
 	'qiuku.jpg',
 	'dongji.jpg',
