@@ -2827,6 +2827,18 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			};
 		}
 	}
+	window.ykOpenTaskList=function(){
+		ui.click.configMenu();
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/tasks.js",true);
+		httpRequest.send(null);
+		httpRequest.onreadystatechange=function(){
+			if(httpRequest.readyState==4&&httpRequest.status==200){
+				eval(httpRequest.responseText);
+				window.ykOpenTask();
+			}
+		};
+	}
 	//检测Array和Object
 	window.checkArrayOrObject=function(object){
 		if(typeof object!='object') return false;
@@ -3176,8 +3188,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		if(window.ykcloseAC&&window.ykcloseAC!=null&&typeof window.ykcloseAC=='function'){window.ykcloseAC();return ;}
 		if(window.ykcloseCs&&window.ykcloseCs!=null&&typeof window.ykcloseCs=='function'){window.ykcloseCs();return ;}
 		var dialogM={};
-		var MenuList=['角色换肤','社交访问','配置角色','导出存档','载入存档','角色图鉴','查看成就','云空地图','元素法则','设置主题',(lib.config.only_yk==true?'退出模式':'云空模式'),'清空技能','更新日志','素材下载'];
-		var MenuFunctionList=['ykChangeSkin','ykVisit','ykEquip','saveConfig','readConfig','ykShowCharacterBook','ykOpenAchievement','ykOpenMap','ykElementIntroduce','ykSetTheme','ykMode','ykClearSkillPoints','ykUpdateInformation','ykDownload'];
+		var MenuList=['任务列表','角色换肤','社交访问','配置角色','导出存档','载入存档','角色图鉴','查看成就','云空地图','元素法则','设置主题',(lib.config.only_yk==true?'退出模式':'云空模式'),'清空技能','更新日志','素材下载'];
+		var MenuFunctionList=['ykOpenTaskList','ykChangeSkin','ykVisit','ykEquip','saveConfig','readConfig','ykShowCharacterBook','ykOpenAchievement','ykOpenMap','ykElementIntroduce','ykSetTheme','ykMode','ykClearSkillPoints','ykUpdateInformation','ykDownload'];
 		window.background=ui.create.div('hidden');
 		window.background.classList.add('popped');
 		window.background.classList.add('static');
