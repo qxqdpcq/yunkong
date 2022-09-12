@@ -4401,6 +4401,33 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				setTimeout(window.ykShopListOC,1000);
 			},
 		},
+		'star_dust':{
+			grade:'xuangrade',
+			value:666,
+			translation:'星河神砂',
+			introduce:'当夜空中的流星燃尽，其剩下的灰尘散落于大地之上，在夜空中散发迷幻的色彩，将它们收集起来，也许会派上意想不到的用场。',
+			inscription:'',//铭文
+			countable:true,//是否可叠加
+			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
+		},
+		'predestined_fate':{
+			grade:'godgrade',
+			value:66666,
+			translation:'命定之石',
+			introduce:'古老星辰的核心残尽坠落于大地上，成为极其罕见的珍物，其真正价值难以估量，据说持有它的人，往往能得到神明的眷顾，当你向它许愿时，心中所念所想的那个人，一定会出现在你面前。',
+			inscription:'',//铭文
+			countable:true,//是否可叠加
+			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
+		},
+		'sky_crying':{
+			grade:'digrade',
+			value:10000,
+			translation:'虚空之泪',
+			introduce:'自天穹坠下的泪水，世间最纯净之物之一，若是神明流下的，那祂一定在为谁哭泣吧。',
+			inscription:'',//铭文
+			countable:true,//是否可叠加
+			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
+		},
 		'god_crystal':{
 			grade:'godgrade',
 			value:3368999,
