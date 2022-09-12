@@ -2769,41 +2769,39 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	//更新日志
 	window.ykUpdateInformation=function(){
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
-		var div=ui.create.div('','',function(){
-			window.yk_updateDialog.delete();
-			delete window.yk_updateDialog;
-			window.yk_updateDialog=undefined;
-			this.delete();
-		});
-		div.style.height='100%';
-		div.style.width='100%';
-		div.style.left='0%';
-		div.style.top='0%';
-		div.style['z-index']=9999999999;
-		document.body.appendChild(div);
-		window.yk_updateDialog=ui.create.dialog('hidden');
-		window.yk_updateDialog.style.height='96%';
-		window.yk_updateDialog.style.width='96%';
-		window.yk_updateDialog.style.left='2%';
-		window.yk_updateDialog.style.top='2%';
-		window.yk_updateDialog.style.backgroundColor='black';
-		window.yk_updateDialog.style.opacity=0.8;
-		window.yk_updateDialog.classList.add('popped');
-		window.yk_updateDialog.classList.add('static');
-		window.yk_updateDialog.innerHTML='<b>云空-更新日志（内容需要联网显示，点击框外部分关闭更新日志）</b>';
-		var text;
 		var httpRequest = new XMLHttpRequest();
 		httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/update.js',true);
 		httpRequest.send(null);
 		httpRequest.onreadystatechange=function(){
 			if (httpRequest.readyState==4&&httpRequest.status==200){
-				text=httpRequest.responseText;
-				window.yk_updateDialog.innerHTML+=text;
+				var div=ui.create.div('','',function(){
+					window.yk_updateDialog.delete();
+					delete window.yk_updateDialog;
+					window.yk_updateDialog=undefined;
+					this.delete();
+				});
+				div.style.height='100%';
+				div.style.width='100%';
+				div.style.left='0%';
+				div.style.top='0%';
+				div.style['z-index']=9999999999;
+				document.body.appendChild(div);
+				window.yk_updateDialog=ui.create.dialog('hidden');
+				window.yk_updateDialog.style.height='96%';
+				window.yk_updateDialog.style.width='96%';
+				window.yk_updateDialog.style.left='2%';
+				window.yk_updateDialog.style.top='2%';
+				window.yk_updateDialog.style.backgroundColor='black';
+				window.yk_updateDialog.style.opacity=0.8;
+				window.yk_updateDialog.classList.add('popped');
+				window.yk_updateDialog.classList.add('static');
+				window.yk_updateDialog.innerHTML='<b>云空-更新日志（内容需要联网显示，点击框外部分关闭更新日志）</b>';
+				window.yk_updateDialog.innerHTML+=httpRequest.responseText;
+				window.yk_updateDialog.style['text-align']='left';
+				lib.setScroll(window.yk_updateDialog);
+				div.appendChild(window.yk_updateDialog);
 			}
 		};
-		window.yk_updateDialog.style['text-align']='left';
-		lib.setScroll(window.yk_updateDialog);
-		div.appendChild(window.yk_updateDialog);
 	}
 	//素材下载（云空）
 	game.ykdownload_Button=true;
