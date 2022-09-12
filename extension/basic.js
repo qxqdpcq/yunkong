@@ -965,8 +965,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		else if(secondx1&&!isNaN(secondx1)&&secondx2&&!isNaN(secondx2)){
 			var secondMax=Math.max(secondx1,secondx2);
 			var secondMin=Math.min(secondx1,secondx2);
-			if(minuteMax==secondx1&&(second>secondx1||second<secondx2)) return false;
-			if(minuteMax==secondx2&&(second>secondx2||second<secondx1)) return false;
+			if(secondMax==secondx1&&(second>secondx1||second<secondx2)) return false;
+			if(secondMax==secondx2&&(second>secondx2||second<secondx1)) return false;
 		}
 		if(hour!=undefined&&minute!=undefined&&second!=undefined) return true;
 		else{return window.checkOnlineTime2(hourx1,minutex1,secondx1,hourx2,minutex2,secondx2);}
