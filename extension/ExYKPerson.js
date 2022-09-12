@@ -42,14 +42,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				var image=new Image();
 				image.src=src;
 				if(div.style.backgroundSize=='cover'){
+					div.style.backgroundSize='100% 100%';
+				}
+				else{
 					div.style['overflow-y']='hidden';
 					div.style['overflow-x']='hidden';
 					div.style['background-position']='center center';
-				}
-				else if(div.style.backgroundSize.indexOf('% ')!=-1){
-					image.style.width=div.style.backgroundSize.slice(0,div.style.backgroundSize.indexOf('% '))+'% ';
-					image.style.width=div.style.backgroundSize.slice(0,div.style.backgroundSize.indexOf('% '))+'%';
-					image.style.height=div.style.backgroundSize.slice(div.style.backgroundSize.indexOf('% ')+2,div.style.backgroundSize.length);
 				}
 				if(!image.style.width) image.style.width='auto';
 				if(!image.style.height) image.style.height='auto';
@@ -64,11 +62,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div.style.backgroundSize=(backgroundSize||'100% 100%');
 		if(typeof window.ykCacheImage=='function') window.ykCacheImage(imgUrl,div);
 		else if(lib.device!='android'&&lib.device!='ios'){
-			div.style.backgroundSize='100% 100%';
 			div.setBackgroundImage(imgUrl);
 		}
 		else{
-			div.style.backgroundSize='100% 100%';
 			div.style.backgroundImage='url("'+imgUrl+'")';
 		}
 	}
