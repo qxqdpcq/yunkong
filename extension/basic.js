@@ -835,10 +835,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	//Check时间段
 	window.checkOnlineTime1=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
 		var isDuringDate=function(beginDateStr,endDateStr){
-			var curDate = new Date(),
-			beginDate = new Date(beginDateStr),
-			endDate = new Date(endDateStr);
-			if (curDate >= beginDate && curDate <= endDate) {
+			var curDate = new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),beginDate=new Date(beginDateStr),endDate=new Date(endDateStr);
+			if (curDate>=beginDate&&curDate<=endDate){
 				return true;
 			}
 			return false;
