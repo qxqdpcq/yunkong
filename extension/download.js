@@ -22,7 +22,6 @@ game.YK_else=[
 	'xiarong.jpg',
 	'qiuku.jpg',
 	'dongji.jpg',
-	'gainNewCharacter.gif',
 	'kongzhen.jpg',
 	'zhanshu.jpg',
 	'shenli.jpg',
