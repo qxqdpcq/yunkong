@@ -29,6 +29,9 @@ game.YK_else=[
 	'guqi.jpg',
 	'fuyuan.jpg',
 	
+	'01',
+	'10',
+	
 	'boss_yk_tikui.jpg',
 	'boss_yk_pohuaishen.jpg',
 ];
