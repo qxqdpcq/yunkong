@@ -2409,12 +2409,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			for(var m in lock) if(i==lock[m]){contentx+=m;break;}
 			content=content.slice(1,content.length);
 		}
-		var obj_other=[];
-		for(var it_other of ['predestined_fate','sky_crying','star_dust']){
-			if(lib.config.yk_myBag[it_other]) obj_other.push({name:it_other,info:lib.config.yk_myBag[it_other]});
-		}
-		lib.config.yk_myBag={};
-		for(var it_n of obj_other) if(it_n.num) lib.config.yk_myBag[it_n.name]=it_n.info;
+		for(var it_other in lib.config.yk_myBag) if(['predestined_fate','sky_crying','star_dust'].indexOf(it_other)==-1) delete lib.config.yk_myBag[it_other];
 		game.saveConfig('yk_myBag',lib.config.yk_myBag);
 		var Bag;
 		if(contentx.length&&contentx.indexOf('·')!=-1){
