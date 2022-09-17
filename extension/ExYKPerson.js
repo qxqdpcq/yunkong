@@ -2152,7 +2152,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				var getBag=function(){
 					var ykBag='<br><li>物品信息：';
 					var content='';
-					for(var item in lib.config.yk_myBag){
+					for(var item in lib.config.yk_myBag) if(['predestined_fate','sky_crying','star_dust'].indexOf(item)==-1){
 						if(lib.config.yk_myBag[item]) content+='<br>【<b>'+get.translation(item)+'</b>】';
 						if(typeof lib.config.yk_myBag[item].num=='number') content+='<br>数量：'+lib.config.yk_myBag[item].num;
 						if(typeof lib.config.yk_myBag[item].rank1=='number') content+='<br>'+(lib.ykEquip[item]==undefined?'领悟等级：':'强化等级：')+lib.config.yk_myBag[item].rank1;
