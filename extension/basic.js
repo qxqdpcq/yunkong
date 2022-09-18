@@ -886,25 +886,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		window.timeCaculate();
 	},function(e){
 	},true);
-	//Check时间点
-	window.checkOnlineTime=function(yearx,monthx,dayx,hourx,minutex,secondx){
-		if(window.ykOffline) return false;
-		var year=''+window.playTime.years;
-		var month=''+window.playTime.months;
-		var day=''+window.playTime.days;
-		var hour=''+window.playTime.hours;
-		var minute=''+window.playTime.minutes;
-		var second=''+window.playTime.seconds;
-		if(yearx&&yearx!=undefined&&(yearx+'')!=year) return false;
-		else if(monthx&&monthx!=undefined&&(monthx+'')!=month) return false;
-		else if(dayx&&dayx!=undefined&&(dayx+'')!=day) return false;
-		else if(hourx&&hourx!=undefined&&(hourx+'')!=hour) return false;
-		else if(minutex&&minutex!=undefined&&(minutex+'')!=minute) return false;
-		else if(secondx&&secondx!=undefined&&(secondx+'')!=second) return false;
-		return true;
-	}
-	//Check时间段
-	window.checkOnlineTime1=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
+	//Check时间
+	window.checkOnlineTime=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
 		var isDuringDate=function(beginDateStr,endDateStr){
 			var curDate = new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),beginDate=new Date(beginDateStr),endDate=new Date(endDateStr);
 			if (curDate>=beginDate&&curDate<=endDate){
