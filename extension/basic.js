@@ -1509,7 +1509,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				return ;
 			}
 			if(confirm(tips)){
-				var drawx=function(character,result){
+				var drawx=function(character,result,num,list){
 					var grade;
 					if(character!='usual'){
 						var E=lib.ykEquip[character],B=lib.ykBook[character],O=lib.yk_otherItemLibrary[character],R=lib.config.qxq_YK_person.rank[character];
@@ -1645,15 +1645,15 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						}
 						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 					}
-					return resultCharacterItem;
+					list.push(resultCharacterItem);
+					if(num){
+						num--;
+						drawx(character,this.result,list,num);
+					}
+					else return list;
 				}
-				var resultCharacterItemList=[];
-				for(var i=0;i<10;i++){
-					alert('1')
-					var a=drawx(this.character,(this.result||'sky_crying'));
-					alert(a);
-					resultCharacterItemList.push(a);
-				}
+				var list=[];
+				var resultCharacterItemList=drawx(this.character,(this.result||'sky_crying'),list,10);
 				window.ykDraw(resultCharacterItemList);
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
@@ -1688,4 +1688,3 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2Button.result=div_chooce2.result=result2;
 		div_chooce2Button.character=div_chooce2.character=characterx;
 	}
-});
