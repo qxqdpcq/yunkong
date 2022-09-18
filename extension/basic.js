@@ -1511,7 +1511,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			if(confirm(tips)){
 				var drawx=function(character){
 					var grade;
-					if(character!='usual'){
+					if(this.character!='usual'){
 						var E=lib.ykEquip[character],B=lib.ykBook[character],O=lib.yk_otherItemLibrary[character],R=lib.config.qxq_YK_person.rank[character];
 						i=(E||B||O);
 						if(i) grade=i.grade;
@@ -1632,7 +1632,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else if(resultCharacterItem=='tian2'){
 						if(grade=='tian'||(grade&&grade.indexOf('天级')!=-1)){
 							var a=Math.random();
-							if(a<0.25||a>0.75) resultCharacterItem=this.character;
+							if(a<0.25||a>0.75) resultCharacterItem=character;
 							else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 						}
 						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
@@ -1640,7 +1640,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else if(resultCharacterItem=='others'){
 						if(grade=='half-godgrade'||grade=='godgrade'||(grade&&grade.indexOf('超稀-限定')!=-1)){
 							var a=Math.random();
-							if(a<0.25||a>0.75) resultCharacterItem=this.character;
+							if(a<0.25||a>0.75) resultCharacterItem=character;
 							else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 						}
 						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
