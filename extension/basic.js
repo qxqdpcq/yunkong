@@ -1654,6 +1654,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				var list=[];
 				var resultCharacterItemList=drawx(this.character,(this.result||'sky_crying'),list,10);
+				alert(resultCharacterItemList)
 				window.ykDraw(resultCharacterItemList);
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
