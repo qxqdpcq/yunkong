@@ -3208,10 +3208,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			window['Menu_'+i]=ui.create.div('.menubutton.round','',function(){
 				window.clickMenu=ui.click.configMenu;
 				ui.click.configMenu=function(){};
-				try{window[this.functionName]();}catch(e){alert('模块加载失败！');}
+				window[this.functionName]();
 				ui.click.configMenu=window.clickMenu;
 			});
-			window['Menu_'+i].style.cssText='height:8%;width:50%;left:0px;top:20px;position:relative;text-align:center;border-radius:8px;';
+			window['Menu_'+i].style.height='8%';
+			window['Menu_'+i].style.width='50%';
+			window['Menu_'+i].style.left='0%';
+			window['Menu_'+i].style.top='20px';
+			window['Menu_'+i].style.position='relative';
+			window['Menu_'+i].style['text-align']='center';
+			window['Menu_'+i].style.borderRadius='0px';
 			window['Menu_'+i].functionName=MenuFunctionList[i];
 			window['Menu_'+i].innerHTML=MenuList[i];
 			background.appendChild(window['Menu_'+i]);
