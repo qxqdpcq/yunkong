@@ -39,7 +39,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						divx.source=div;
 						divx.style.cssText='height:100px;width:100px;left:0px;top:0px;position:relative;text-align:center;';
 						divx.innerHTML=i+'号<br>';
-						if(lib.config.yk_signIn_date.days.indexOf(i)==-1&&(''+window.playTime.days)!=(''+i)) divx.innerHTML+='未签到';
+						if(lib.config.yk_signIn_date.days.indexOf(i)==-1&&(''+window.playTime.days)!=(''+i)){
+							divx.innerHTML+='未签到';
+							divx.style.border='1px solid purple';
+						}
 						else if(lib.config.yk_signIn_date.days.indexOf(i)==-1){
 							divx.innerHTML+='<font color=red><b>点击签到</b></font>';
 							divx.onclick=function(){
@@ -50,8 +53,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								this.source.delete();
 								alert('签到成功，测试期间暂无奖励哦！');
 							}
+							divx.style.border='1px solid red';
 						}
-						else divx.innerHTML+='已签到';
+						else{
+							divx.innerHTML+='已签到';
+							divx.style.border='1px solid cyan';
+						}
 						div.appendChild(divx);
 					}
 				},
@@ -115,7 +122,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(this.innerHTML.indexOf('活动任务')!=-1) s='others';
 				for(var t in lib.ykTask[s]){
 					var divt=ui.create.div(),t=lib.ykTask[s][t];
-					divt.style.cssText='height:75px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:yellow;';
+					divt.style.cssText='height:75px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:'+(t.filter()?'yellow':'cyan')+';';
 					window.yktaskList.appendChild(divt);
 					var divt_title=ui.create.div();
 					divt_title.style.cssText='height:30px;left:0px;width:calc(100% - 60px);top:0px;text-align:center;';
