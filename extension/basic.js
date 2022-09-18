@@ -11,7 +11,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
 	}
 	//解锁角色gainNewPerson、gainNewPerson---------用法：game.YKgainNewPerson('qxq_yk_yanmengyuejian-female-3-ykshimeng-ykyueyan');
-	window.yk_unlockScreen=function(content,func,funcContent){
+	/*window.yk_unlockScreen=function(content,func,funcContent){
 		if(!content) return ;
 		window.yk_showName=content;
 		if(Array.isArray(content)){
@@ -720,7 +720,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2Num.onclick=div_chooce2Pict.onclick=div_chooce2.onclick;
 		div_chooce2Num.result=div_chooce2Pict.result=div_chooce2.result1;
 		div_chooce2Num.character=div_chooce2Pict.character=div_chooce2.character;
-	}
+	}*/
 	//升级技能upGradeSkill--------------技能格式：skillname_rank---------例：法则天定0级------------fazetianding_0-----用法：game.upGradeSkill('qxq_yk_yanmengyuejian','fazetianding');
 	game.upGradeSkill=function(skillname,upnum){
 		if(!skillname) return ;
