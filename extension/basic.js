@@ -1299,7 +1299,23 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		
 		var div_chooce1=ui.create.div(),result1=(window.ykDrawCardPool_Switch!='usual'&&num?'predestined_fate':'sky_crying'),result2=(window.ykDrawCardPool_Switch!='usual'&&num&&typeof num=='number'&&num>=10?'predestined_fate':'sky_crying');
 		div_chooce1.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 535px);border-radius:25px;background-color:white';
-		div_chooce1.onclick=function(){
+		window.ykDrawCardPool_div.appendChild(div_chooce1);
+		window.yk_clickFK(div_chooce1);
+		var div_chooce1Pict=ui.create.div();
+		div_chooce1Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 470px);';
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result1+'.jpg',div_chooce1Pict,"cover");
+		window.ykDrawCardPool_div.appendChild(div_chooce1Pict);
+		var div_chooce1Num=ui.create.div();
+		div_chooce1Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 420px);';
+		div_chooce1Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result1=='predestined_fate'?'1':'150')+'</b></span>';
+		window.ykDrawCardPool_div.appendChild(div_chooce1Num);
+		div_chooce1Num.result=div_chooce1Pict.result=div_chooce1.result1;
+		div_chooce1Num.character=div_chooce1Pict.character=div_chooce1.character;
+		var div_chooce1Button=ui.create.div();
+		div_chooce1Button.style.cssText=div_chooce1.style.cssText;
+		div_chooce1Button.style.opacity=0;
+		window.ykDrawCardPool_div.appendChild(div_chooce1Button);
+		div_chooce1Button.onclick=function(){
 			if(!this.character){
 				alert('获取卡池信息失败！');
 				return ;
@@ -1456,23 +1472,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
 		}
-		window.ykDrawCardPool_div.appendChild(div_chooce1);
-		window.yk_clickFK(div_chooce1);
-		var div_chooce1Pict=ui.create.div();
-		div_chooce1Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 470px);';
-		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result1+'.jpg',div_chooce1Pict,"cover");
-		window.ykDrawCardPool_div.appendChild(div_chooce1Pict);
-		var div_chooce1Num=ui.create.div();
-		div_chooce1Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 420px);';
-		div_chooce1Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result1=='predestined_fate'?'1':'150')+'</b></span>';
-		window.ykDrawCardPool_div.appendChild(div_chooce1Num);
-		div_chooce1Num.result=div_chooce1Pict.result=div_chooce1.result1;
-		div_chooce1Num.character=div_chooce1Pict.character=div_chooce1.character;
-		var div_chooce1Button=ui.create.div();
-		div_chooce1Button.style.cssText=div_chooce1.style.cssText;
-		div_chooce1Button.style.opacity=0;
-		window.ykDrawCardPool_div.appendChild(div_chooce1Button);
-		div_chooce1Button.onclick=div_chooce1.onclick;
 		div_chooce1Button.source=div_chooce1;
 		div_chooce1Button.style.transition='opacity 0.5s';
 		div_chooce1Button.addEventListener(lib.config.touchscreen?'touchstart':'mousedown',function(){
@@ -1491,7 +1490,22 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 285px);border-radius:25px;background-color:white;';
 		window.ykDrawCardPool_div.appendChild(div_chooce2);
 		window.yk_clickFK(div_chooce2);
-		div_chooce2.onclick=function(){
+		var div_chooce2Pict=ui.create.div();
+		div_chooce2Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 220px);';
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result2+'.jpg',div_chooce2Pict,"cover");
+		window.ykDrawCardPool_div.appendChild(div_chooce2Pict);
+		var div_chooce2Num=ui.create.div();
+		div_chooce2Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 170px);';
+		div_chooce2Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result2=='predestined_fate'?'10':'1500')+'</b></span>';
+		window.ykDrawCardPool_div.appendChild(div_chooce2Num);
+		div_chooce2Num.result=div_chooce2Pict.result=div_chooce2.result1;
+		div_chooce2Num.character=div_chooce2Pict.character=div_chooce2.character;
+		var div_chooce2Button=ui.create.div();
+		div_chooce2Button.style.cssText=div_chooce2.style.cssText;
+		div_chooce2Button.style.opacity=0;
+		div_chooce2Button.style.backgroundColor='none';
+		window.ykDrawCardPool_div.appendChild(div_chooce2Button);
+		div_chooce2Button.onclick=function(){
 			if(!this.character){
 				alert('获取卡池信息失败！');
 				return ;
@@ -1659,22 +1673,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
 		}
-		var div_chooce2Pict=ui.create.div();
-		div_chooce2Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 220px);';
-		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result2+'.jpg',div_chooce2Pict,"cover");
-		window.ykDrawCardPool_div.appendChild(div_chooce2Pict);
-		var div_chooce2Num=ui.create.div();
-		div_chooce2Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 170px);';
-		div_chooce2Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result2=='predestined_fate'?'10':'1500')+'</b></span>';
-		window.ykDrawCardPool_div.appendChild(div_chooce2Num);
-		div_chooce2Num.result=div_chooce2Pict.result=div_chooce2.result1;
-		div_chooce2Num.character=div_chooce2Pict.character=div_chooce2.character;
-		var div_chooce2Button=ui.create.div();
-		div_chooce2Button.style.cssText=div_chooce2.style.cssText;
-		div_chooce2Button.style.opacity=0;
-		div_chooce2Button.style.backgroundColor='none';
-		window.ykDrawCardPool_div.appendChild(div_chooce2Button);
-		div_chooce2Button.onclick=div_chooce2.onclick;
 		div_chooce2Button.source=div_chooce2;
 		div_chooce2Button.style.transition='opacity 0.5s';
 		div_chooce2Button.addEventListener(lib.config.touchscreen?'touchstart':'mousedown',function(){
@@ -1689,3 +1687,4 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2Button.result=div_chooce2.result=result2;
 		div_chooce2Button.character=div_chooce2.character=characterx;
 	}
+});
