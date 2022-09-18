@@ -1649,6 +1649,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				var resultCharacterItemList=[];
 				for(var i=0;i<10;i++){
+					alert('1')
 					var a=drawx(this.character,(this.result||'sky_crying'));
 					alert(a);
 					resultCharacterItemList.push(a);
