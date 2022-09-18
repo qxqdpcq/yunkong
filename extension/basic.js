@@ -1164,7 +1164,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		window.ykDrawCardPool_div.appendChild(button);
 		window.yk_clickFK(button);
 		var help=ui.create.div('.menubutton.round','!',function(){
-			if(!window.ykDrawCardPool_Switch||window.ykDrawCardPool_Switch=='special') alert('命定之愿：许愿对应up的天级及以上级别的角色/物品概率限时提升（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）！许愿概率：凡级 50%、黄级 30%、玄级 18%、地级 1.5%、天级 0.45%（限定up天级角色/物品占其中出率的50%）、其他 0.05%（限定up天级以上的角色/物品占其中出率的50%）。通常情况下，每个未进入【缘常之愿】的天级及以上级别的角色/物品均有机会进入up池。第60抽以后，获取天级/天级以上的角色/物品概率逐渐增加，当累计99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品，当本次获得天级及以上级别的角色/物品并非当期up角色/物品时，下一次获取天级及以上级别的角色或物品时必定获取该up角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
+			if(!window.ykDrawCardPool_Switch||window.ykDrawCardPool_Switch=='special') alert('命定之愿：许愿对应up的天级及以上级别的角色/物品概率限时提升（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）！许愿概率：凡级 50%、黄级 30%、玄级 18%、地级 1.5%、天级 0.45%（限定up相应稀有等级的角色/物品占其中出率的50%）、其他 0.05%（限定up相应稀有等级的角色/物品占其中出率的50%）。通常情况下，每个未进入【缘常之愿】的天级及以上级别的角色/物品均有机会进入up池。第60抽以后，获取天级/天级以上的角色/物品概率逐渐增加，当累计99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品，当本次获得天级及以上级别的角色/物品并非当期up角色/物品时，下一次获取天级及以上级别的角色或物品时必定获取该up角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
 			else alert('缘常之愿——许愿概率：凡级 50%、黄级 30%、玄级 18%、地级 1.5%、天级 0.5%。（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）同级别内已加入【缘常之愿】的角色和物品平分该级别的概率，第60抽以后，获取天级/天级以上的角色/物品概率逐渐增加，当第99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
 		});
 		help.style.cssText='top:5px;left:calc(100% - 115px);z-index:99999;';
@@ -1315,6 +1315,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				return ;
 			}
 			if(confirm(tips)){
+				var grade;
+				if(this.character!='usual'){
+					var E=lib.ykEquip[this.character],B=lib.ykBook[this.character],O=lib.yk_otherItemLibrary[this.character],R=lib.config.qxq_YK_person.rank[this.character];
+					i=(E||B||O);
+					if(i) grade=i.grade;
+					if(!grade) grade=R;
+				}
 				var r=Math.random(),resultCharacterItem;
 				if(window.ykDrawCardPool_Switch=='usual'){
 					game.yk_loseItem('sky_crying',150);
@@ -1428,13 +1435,19 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
 				}
 				else if(resultCharacterItem=='tian2'){
-					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=this.character;
+					if(grade=='tian'||(grade&&grade.indexOf('天级')!=-1)){
+						var a=Math.random();
+						if(a<0.25||a>0.75) resultCharacterItem=this.character;
+						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+					}
 					else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 				}
 				else if(resultCharacterItem=='others'){
-					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=this.character;
+					if(grade=='half-godgrade'||grade=='godgrade'||(grade&&grade.indexOf('超稀-限定')!=-1)){
+						var a=Math.random();
+						if(a<0.25||a>0.75) resultCharacterItem=this.character;
+						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+					}
 					else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 				}
 				window.ykDraw(resultCharacterItem);
@@ -1497,6 +1510,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			}
 			if(confirm(tips)){
 				var drawx=function(character){
+					var grade;
+					if(this.character!='usual'){
+						var E=lib.ykEquip[this.character],B=lib.ykBook[this.character],O=lib.yk_otherItemLibrary[this.character],R=lib.config.qxq_YK_person.rank[this.character];
+						i=(E||B||O);
+						if(i) grade=i.grade;
+						if(!grade) grade=R;
+					}
 					var r=Math.random(),resultCharacterItem;
 					if(window.ykDrawCardPool_Switch=='usual'){
 						game.yk_loseItem('sky_crying',150);
@@ -1610,13 +1630,19 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						else resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
 					}
 					else if(resultCharacterItem=='tian2'){
-						var a=Math.random();
-						if(a<0.25||a>0.75) resultCharacterItem=character;
+						if(grade=='tian'||(grade&&grade.indexOf('天级')!=-1)){
+							var a=Math.random();
+							if(a<0.25||a>0.75) resultCharacterItem=this.character;
+							else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						}
 						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 					}
 					else if(resultCharacterItem=='others'){
-						var a=Math.random();
-						if(a<0.25||a>0.75) resultCharacterItem=character;
+						if(grade=='half-godgrade'||grade=='godgrade'||(grade&&grade.indexOf('超稀-限定')!=-1)){
+							var a=Math.random();
+							if(a<0.25||a>0.75) resultCharacterItem=this.character;
+							else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						}
 						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
 					}
 					return resultCharacterItem;
