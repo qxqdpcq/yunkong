@@ -14,7 +14,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				},
 				content:function(){
 					var div=ui.create.div('.menu');
-					div.style.cssText='height:400px;width:700px;left:calc(50% - 350px);top:calc(50% - 200px);z-index:999999;';
+					div.style.cssText='height:400px;width:700px;left:calc(50% - 350px);top:calc(50% - 200px);z-index:999999;overflow-y:scroll;';
+					lib.setScroll(div);
 					ui.window.appendChild(div);
 					var num,closeS=function(){
 						div.delete();
@@ -33,7 +34,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(window.playTime.months!=lib.config.yk_signIn_date.months||window.playTime.years!=window.playTime.years) lib.config.yk_signIn_date={};
 					if(!lib.config.yk_signIn_date.days) lib.config.yk_signIn_date.days=[];
 					game.saveConfig('yk_signIn_date',lib.config.yk_signIn_date);
-					for(var i=1;i<num;i++){
+					for(var i=1;i<num+1;i++){
 						var divx=ui.create.div();
 						divx.source=div;
 						divx.style.cssText='height:100px;width:100px;left:0px;top:0px;position:relative;text-align:center;';
@@ -114,14 +115,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(this.innerHTML.indexOf('活动任务')!=-1) s='others';
 				for(var t in lib.ykTask[s]){
 					var divt=ui.create.div(),t=lib.ykTask[s][t];
-					divt.style.cssText='height:50px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:yellow;';
+					divt.style.cssText='height:75px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:yellow;';
 					window.yktaskList.appendChild(divt);
 					var divt_title=ui.create.div();
 					divt_title.style.cssText='height:30px;left:0px;width:calc(100% - 60px);top:0px;text-align:center;';
 					divt_title.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+t.name+'</span></b>';
 					divt.appendChild(divt_title);
 					var divt_content=ui.create.div();
-					divt_content.style.cssText='height:20px;left:0px;width:calc(100% - 60px);top:30px;';
+					divt_content.style.cssText='height:45px;left:0px;width:calc(100% - 60px);top:30px;';
 					divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(t.filter()?'未完成':'已完成')+'）';
 					divt.appendChild(divt_content);
 					if(t.filter()) divt.onclick=t.content;
