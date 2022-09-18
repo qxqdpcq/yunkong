@@ -1486,8 +1486,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		};
 		div_chooce1Button.result=div_chooce1.result=result1;
 		div_chooce1Button.character=div_chooce1.character=characterx;
-		div_chooce1Button.divx=div_chooce1.divx=divx;
-		div_chooce1Button.divx2=div_chooce1.divx2=divx2;
 		
 		var div_chooce2=ui.create.div(),result1=(num?'predestined_fate':'sky_crying'),result2=(num&&typeof num=='number'&&num>=10?'predestined_fate':'sky_crying');
 		div_chooce2.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 285px);border-radius:25px;background-color:white;';
@@ -1521,7 +1519,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					var r=Math.random(),resultCharacterItem;
 					if(window.ykDrawCardPool_Switch=='usual'){
-						game.yk_loseItem('sky_crying',1500);
+						game.yk_loseItem('sky_crying',150);
 						if(!lib.config.yk_usual_drawCardTime||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.time!='number')||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.T!='number')) lib.config.yk_usual_drawCardTime={time:0,T:0};
 						lib.config.yk_usual_drawCardTime.time++;
 						lib.config.yk_usual_drawCardTime.T++;
@@ -1549,7 +1547,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						}
 					}
 					else{
-						game.yk_loseItem('sky_crying',1500);
+						game.yk_loseItem('sky_crying',150);
 						if(!lib.ykDrawCardPoolSchel[character][5]||(lib.ykDrawCardPoolSchel[character][5]&&!lib.ykDrawCardPoolSchel[character][5].length)) lib.ykDrawCardPoolSchel[character][5]=lib.ykUsualDrawCardPool.tian;
 						if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
 						lib.config.yk_limit_drawCardTime.time1++;
@@ -1573,7 +1571,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							}
 						}
 						else if(result=='predestined_fate'){//命定之石
-							game.yk_loseItem('predestined_fate',10);
+							game.yk_loseItem('predestined_fate',1);
 							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.6)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
 							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.6&&r<0.7)||(r>0.9&&r<=0.95)) resultCharacterItem='di2';
 							else if((r>0.95&&r<=0.97)||(r>=0.98&&r<=1)) resultCharacterItem='tian2';
@@ -1650,7 +1648,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					return resultCharacterItem;
 				}
 				var resultCharacterItemList=[];
-				for(var i=0;i<10;i++) resultCharacterItemList.push(drawx(this.character,(this.result2||'sky_crying')));
+				for(var i=0;i<10;i++){
+					var a=drawx(this.character,(this.result||'sky_crying'));
+					alert(a);
+					resultCharacterItemList.push(a);
+				}
 				window.ykDraw(resultCharacterItemList);
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
@@ -1684,7 +1686,5 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		};
 		div_chooce2Button.result=div_chooce2.result=result2;
 		div_chooce2Button.character=div_chooce2.character=characterx;
-		div_chooce2Button.divx=div_chooce2.divx=divx;
-		div_chooce2Button.divx2=div_chooce2.divx2=divx2;
 	}
 });
