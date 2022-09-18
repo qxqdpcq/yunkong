@@ -530,6 +530,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				if(func!=undefined&&window[func]!=undefined&&typeof window[func]=='function') setTimeout(function(){window[func](funcContent);},50);
 				else if(func!=undefined&&game[func]!=undefined&&typeof game[func]=='function') setTimeout(function(){game[func](funcContent);},50);
+				if(body) body.delete();
 			};
 		};
 	}
