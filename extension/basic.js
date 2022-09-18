@@ -389,7 +389,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	//div画图
 	if (!window.yk_divMoveCanvas) {
 		let isMobile = navigator.userAgent.match(/(Android|iPhone|SymbianOS|Windows Phone|iPad|iPod)/i);
-		window.yk_divMoveCanvas = function zyile_dragZoom(element, body, drawPath, pathColor, moveElementBool, func, funcContent, Tran, XZ, isImp) {
+		window.yk_divMoveCanvas = function zyile_dragZoom(element, body, drawPath, pathColor, moveElementBool, func, funcContent, elementDelete, Tran, XZ, isImp) {
 			if(moveElementBool!=false) moveElementBool=true;
 			element.movable=moveElementBool;
 			var disX = 0,
@@ -530,7 +530,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				if(func!=undefined&&window[func]!=undefined&&typeof window[func]=='function') setTimeout(function(){window[func](funcContent);},50);
 				else if(func!=undefined&&game[func]!=undefined&&typeof game[func]=='function') setTimeout(function(){game[func](funcContent);},50);
-				if(body) body.delete();
+				if(elementDelete!=false) element.delete();
 			};
 		};
 	}
