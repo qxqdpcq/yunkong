@@ -1511,7 +1511,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			if(confirm(tips)){
 				var drawx=function(character){
 					var grade;
-					if(this.character!='usual'){
+					if(character!='usual'){
 						var E=lib.ykEquip[character],B=lib.ykBook[character],O=lib.yk_otherItemLibrary[character],R=lib.config.qxq_YK_person.rank[character];
 						i=(E||B||O);
 						if(i) grade=i.grade;
