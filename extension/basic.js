@@ -10,45 +10,38 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_fuling:["female",3,["yktianyi","ykwuji"]],
 		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
 	}
-	lib.yk_personInfo={
-		qxq_yk_xiaoqiao:["female",3,["yktianxiang","ykzhuyan","ykpiaoling"]],
-		qxq_yk_yanmengyuejian:["female",3,["ykshimeng","ykyueyan"]],
-		qxq_yk_kongshanlingxue:["female",3,["ykfuji"]],
-		qxq_yk_fuling:["female",3,["yktianyi","ykwuji"]],
-		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
-	}
 	//解锁角色gainNewPerson、gainNewPerson---------用法：game.YKgainNewPerson('qxq_yk_yanmengyuejian-female-3-ykshimeng-ykyueyan');
 	window.yk_unlockScreen=function(content,func,funcContent){
 		if(!content) return ;
 		window.yk_showName=content;
 		if(Array.isArray(content)){
-			window.div_animationBackground_block=ui.create.div();
-			window.div_animationBackground_block.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:999999999999;opacity:0;';
-			ui.window.appendChild(window.div_animationBackground_block);
-			window.div_animationBackground=ui.create.div();
-			window.div_animationBackground.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:99999999999999;transition:all 1.5s;';
-			ui.window.appendChild(window.div_animationBackground);
-			window.div_animationBackground_x=ui.create.div();
-			window.div_animationBackground_x.style.cssText='height:100%;width:100%;left:0px;top:0px;';
-			window.div_animationBackground_x.innerHTML = "<video width='320' height='240' autoplay style='width:100%;height:100%;object-fit:fill;'><source src='"+lib.assetURL+"extension/云空/10' type='video/mp4'></video>";
-			window.div_animationBackground.appendChild(window.div_animationBackground_x);
+			var div_animationBackground_block=ui.create.div();
+			div_animationBackground_block.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:999999999999;opacity:0;';
+			ui.window.appendChild(div_animationBackground_block);
+			var div_animationBackground=ui.create.div('.menu');
+			div_animationBackground.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:99999999999999;transition:all 1.5s;';
+			ui.window.appendChild(div_animationBackground);
+			div_animationBackground.x=ui.create.div();
+			div_animationBackground.x.style.cssText='height:100%;width:100%;left:0px;top:0px;';
+			div_animationBackground.x.innerHTML = "<video width='320' height='240' autoplay style='width:100%;height:100%;object-fit:fill;'><source src='"+lib.assetURL+"extension/云空/10' type='video/mp4'></video>";
+			div_animationBackground.appendChild(div_animationBackground.x);
 			setTimeout(function(){
-				window.div_animationBackground.delete();
-				window.div_animationBackground=null;
-				window.div_result=ui.create.div();
-				window.div_result.style.cssText='height:300px;width:80%;left:10%;top:calc(50% - 150px);z-index:99999999999999;border-radius:8px;background-color:black;opacity:0.85;';
-				ui.window.appendChild(window.div_result);
-				window.div_resultTitle=ui.create.div();
-				window.div_resultTitle.style.cssText='height:50px;width:100%;left:0px;top:0px;text-align:center;';
-				window.div_resultTitle.innerHTML='<span style="color:white;font-size:25px;font-weight:400;font-family:shousha"><b>恭喜获得</b></span>';
-				window.div_result.appendChild(window.div_resultTitle);
-				window.div_resultShow=ui.create.div();
-				window.div_resultShow.style.cssText='height:250px;width:376px;left:calc(50% - 188px);top:calc(95% - 250px);text-align:center;';
-				window.div_result.appendChild(window.div_resultShow);
+				div_animationBackground.delete();
+				div_animationBackground=null;
+				var div_result=ui.create.div();
+				div_result.style.cssText='height:300px;width:80%;left:10%;top:calc(50% - 150px);z-index:99999999999999;border-radius:8px;background-color:black;opacity:0.85;';
+				ui.window.appendChild(div_result);
+				var div_resultTitle=ui.create.div();
+				div_resultTitle.style.cssText='height:50px;width:100%;left:0px;top:0px;text-align:center;';
+				div_resultTitle.innerHTML='<span style="color:white;font-size:25px;font-weight:400;font-family:shousha"><b>恭喜获得</b></span>';
+				div_result.appendChild(div_resultTitle);
+				var div_resultShow=ui.create.div();
+				div_resultShow.style.cssText='height:250px;width:calc(100% - 5px);left:5px;top:calc(95% - 250px);text-align:center;';
+				div_result.appendChild(div_resultShow);
 				for(var item of window.yk_showName){
 					var b=ui.create.div();
 					b.style.cssText='height:95px;width:75px;left:0px;top:0px;position:relative;';
-					window.div_resultShow.appendChild(b);
+					div_resultShow.appendChild(b);
 					var c=ui.create.div(),color='white',E=lib.ykEquip[item],B=lib.ykBook[item],O=lib.yk_otherItemLibrary[item],R=lib.config.qxq_YK_person.rank[item],i,img;
 					i=(E||B||O);
 					if(i) i=i.grade,img=i.image;
@@ -75,64 +68,60 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+(img||item+'.jpg'),c,true,"cover");
 					c.name.style.cssText='height:20px;width:100%;left:0px;bottom:0px;text-align:center;position:absolute;';
 					var name_size=18;
-					if(get.translation(item).length>4) name_size-=((get.translation(item).length-4)*3);
+					if(get.translation(item).length>4) name_size-=((get.translation(item).length-4)*(8/3))
 					c.name.innerHTML='<span style="color:white;font-size:'+name_size+'px;font-weight:400;font-family:shousha"><b>'+get.translation(item)+'</b></span>';
 					b.appendChild(c.name);
 				}
-				window.div_animationBackground_block.dialog=window.div_result.dialog=window.div_resultShow.dialog;
-				window.div_animationBackground_block.onclick=window.div_result.onclick=window.div_resultShow.onclick=function(){
+				div_result.onclick=div_resultShow.onclick=function(){
 					var list=window.yk_showName,listp=[];
 					for(var itx of list){
 						if(lib.config.qxq_YK_person.rank[itx]) listp.push(itx);
 						else if(lib.ykEquip[itx]) game.yk_gainEquip(itx);
 						else if(lib.ykBook[itx]) game.yk_gainBook(itx);
-						else if(lib.yk_otherItemLibrary[itx]) game.yk_gainItem(itx);
+						else if(lib.ykBook[itx]) game.yk_gainItem(itx);
 					}
 					game.sayyk('恭喜获得&nbsp'+get.translation(list)+'！');
-					if(listp.length) game.YKgainNewPerson(listp);
-					window.div_animationBackground_x.delete();
-					delete window.div_animationBackground_x;
-					window.div_animationBackground_x=null;
-					window.div_animationBackground_block.delete();
-					delete window.div_animationBackground_block;
-					window.div_animationBackground_block=null;
-					window.div_result.delete();
-					delete window.div_result;
-					window.div_result=null;
-					window.div_resultShow.delete();
-					delete window.div_resultShow;
-					window.div_resultShow=null;
-					window.ykOpenDrawCardPool();
+					game.YKgainNewPerson(listp);
+				}
+				div_animationBackground_block.onclick=div_result.onclick=function(){
+					div_animationBackground_block.delete();
+					div_animationBackground_block=null;
+					div_result.delete();
+					div_result=null;
+					div_resultShow.delete();
+					div_resultShow=null;
 				}
 			},10000);
 			
 		}
 		else{
-			window.div_animationBackground_block=ui.create.div();
-			window.div_animationBackground_block.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:999999999999;opacity:0;';
-			ui.window.appendChild(window.div_animationBackground_block);
-			window.div_animationBackground=ui.create.div();
-			window.div_animationBackground.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:99999999999999;transition:all 1.5s;';
-			ui.window.appendChild(window.div_animationBackground);
-			window.div_animationBackground_x=ui.create.div();
-			window.div_animationBackground_x.style.cssText='height:100%;width:100%;left:0px;top:0px;';
-			window.div_animationBackground_x.innerHTML = "<video width='320' height='240' autoplay style='width:100%;height:100%;object-fit:fill;'><source src='"+lib.assetURL+"extension/云空/01' type='video/mp4'></video>";
-			window.div_animationBackground.appendChild(window.div_animationBackground_x);
-			window.div_animationBackgroundCharacter=ui.create.div();
-			window.div_animationBackgroundCharacter.style.cssText='height:73%;width:24.5%;left:37.5%;top:10%;transition:all 2s;background-color:black;opacity:0;background-position:center center;';
+			var div_animationBackground_block=ui.create.div();
+			div_animationBackground_block.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:999999999999;opacity:0;';
+			ui.window.appendChild(div_animationBackground_block);
+			var div_animationBackground=ui.create.div('.menu');
+			div_animationBackground.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:99999999999999;transition:all 1.5s;';
+			ui.window.appendChild(div_animationBackground);
+			div_animationBackground.x=ui.create.div();
+			div_animationBackground.x.style.cssText='height:100%;width:100%;left:0px;top:0px;';
+			div_animationBackground.x.innerHTML = "<video width='320' height='240' autoplay style='width:100%;height:100%;object-fit:fill;'><source src='"+lib.assetURL+"extension/云空/01' type='video/mp4'></video>";
+			div_animationBackground.appendChild(div_animationBackground.x);
+			var div_animationBackgroundCharacter=ui.create.div();
+			div_animationBackgroundCharacter.classList.add('popped');
+			div_animationBackgroundCharacter.classList.add('static');
+			div_animationBackgroundCharacter.style.cssText='height:73%;width:24.5%;left:37.5%;top:10%;transition:all 2s;background-color:black;opacity:0;background-position:center center;';
 			var E=lib.ykEquip[window.yk_showName],B=lib.ykBook[window.yk_showName],O=lib.yk_otherItemLibrary[window.yk_showName],R=lib.config.qxq_YK_person.rank[window.yk_showName],i,img;
 			i=(E||B||O);
-			window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+(i&&i.image?i.image:(content+'.jpg')),window.div_animationBackgroundCharacter,true,"cover");
-			div_animationBackground.appendChild(window.div_animationBackgroundCharacter);
+			window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+(i&&i.image?i.image:(content+'.jpg')),div_animationBackgroundCharacter,true,"cover");
+			div_animationBackground.appendChild(div_animationBackgroundCharacter);
 			setTimeout(function(){
-				window.div_animationBackgroundCharacter.style.opacity=1;
+				div_animationBackgroundCharacter.style.opacity=1;
 			},10000);
 			setTimeout(function(){
 				var E=lib.ykEquip[window.yk_showName],B=lib.ykBook[window.yk_showName],O=lib.yk_otherItemLibrary[window.yk_showName],R=lib.config.qxq_YK_person.rank[window.yk_showName],i,img;
 				i=(E||B||O);
-				div_animationBackground_x.delete();
-				delete div_animationBackground_x;
-				div_animationBackground_x=undefined;
+				div_animationBackground.x.delete();
+				delete div_animationBackground.x;
+				div_animationBackground.x=undefined;
 				div_animationBackground.style.height='450px';
 				div_animationBackground.style.width='900px';
 				div_animationBackground.style.left='calc( 50% - 450px)';
@@ -177,9 +166,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					div_animationBackgroundCharacterIntroButtom.style.opacity=1;
 					div_animationBackgroundCharacterIntroLeft.style.opacity=1;
 					div_animationBackgroundCharacterIntroRight.style.opacity=1;
-					window.div_animationBackground_block.onclick=div_animationBackground.onclick=function(){
-						window.div_animationBackground_block.delete();
-						window.div_animationBackground_block=null;
+					div_animationBackground_block.onclick=div_animationBackground.onclick=function(){
+						div_animationBackground_block.delete();
+						div_animationBackground_block=null;
 						div_animationBackground.delete();
 						div_animationBackground=null;
 						if(func!=undefined&&window[func]!=undefined&&typeof window[func]=='function') window[func](funcContent);
@@ -189,7 +178,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							delete window.background_callMyCharacterBackground;
 							window.background_callMyCharacterBackground=null;
 						}
-						window.ykOpenDrawCardPool();
 					}
 				},50);
 			},12000);
@@ -248,10 +236,17 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	window.ykDraw=function(character){
 		if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('按住并拖动鼠标或划动屏幕画出你喜欢的符号，召唤武将');
+		window.background_callMyCharacterBackground=ui.create.dialog('hidden');
+		window.background_callMyCharacterBackground.classList.add('popped');
+		window.background_callMyCharacterBackground.classList.add('static');
+		window.background_callMyCharacterBackground.style.cssText='height:100%;width:100%;left:0%;top:0%;';
+		ui.window.appendChild(window.background_callMyCharacterBackground);
 		window.background_callMyCharacter=ui.create.div();
-		window.background_callMyCharacter.style.cssText='height:100%;width:100%;left:0%;top:0%;background-color:black;opacity:0.8;text-align:center;z-index:99999999999999';
+		window.background_callMyCharacter.classList.add('popped');
+		window.background_callMyCharacter.classList.add('static');
+		window.background_callMyCharacter.style.cssText='height:100%;width:100%;left:0%;top:0%;background-color:black;opacity:0.8;text-align:center;';
 		window.background_callMyCharacter.innerHTML='<span style="color:white;font-size:35px;font-weight:400;font-family:shousha"><b>按住并拖动鼠标或划动屏幕画出你喜欢的符号，召唤武将</b></span>';
-		ui.window.appendChild(window.background_callMyCharacter);
+		window.background_callMyCharacterBackground.appendChild(window.background_callMyCharacter);
 		if(!Array.isArray(character)&&character.indexOf('-')!=-1) character=character.slice(0,str.indexOf('-'));
 		window.yk_divMoveCanvas(window.background_callMyCharacter,document.body,true,'yellow',false,'yk_unlockScreen',character);
 	}
@@ -275,36 +270,32 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>'],
 	};
 	window.ykOpenDrawCardPool=function(){
-		window.ykDrawCardPool_div=ui.create.div('.menu');
-		window.ykDrawCardPool_div.style.cssText='height:100%;width:100%;top:0px;left:0px;opacity:0.85;background-color:black;z-index:5000;';
-		ui.window.appendChild(window.ykDrawCardPool_div);
-		window.yk_closeODCP=function(){
-			window.ykDrawCardPool_div.delete();
-			delete window.ykDrawCardPool_div;
-			window.ykDrawCardPool_div=null;
-			delete window.yk_closeODCP;
-			window.yk_closeODCP=null;
+		var div=ui.create.div('.menu');
+		div.style.cssText='height:100%;width:100%;top:0px;left:0px;opacity:0.85;background-color:black;z-index:5000;';
+		ui.window.appendChild(div);
+		var closeODCP=function(){
+			div.delete();
 		};
-		var button=ui.create.div('.menubutton.round','×',window.yk_closeODCP);
+		var button=ui.create.div('.menubutton.round','×',closeODCP);
 		button.style.cssText='top:5px;left:calc(100% - 55px);z-index:99999;';
-		window.ykDrawCardPool_div.appendChild(button);
+		div.appendChild(button);
 		window.yk_clickFK(button);
 		var help=ui.create.div('.menubutton.round','!',function(){
-			if(!window.ykDrawCardPool_Switch||window.ykDrawCardPool_Switch=='special') alert('命定之愿：许愿对应up的天级及以上级别的角色/物品概率限时提升（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）！许愿概率：凡级 50%、黄级 30%、玄级 18%、地级 1.5%、天级 0.45%（限定up天级角色/物品占其中出率的50%）、其他 0.05%（限定up天级以上的角色/物品占其中出率的50%）。通常情况下，每个未进入【缘常之愿】的天级及以上级别的角色/物品均有机会进入up池。第60抽以后，获取天级/天级以上的角色/物品概率逐渐增加，当累计99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品，当本次获得天级及以上级别的角色/物品并非当期up角色/物品时，下一次获取天级及以上级别的角色或物品时必定获取该up角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
-			else alert('缘常之愿——许愿概率：凡级 50%、黄级 30%、玄级 18%、地级 1.5%、天级 0.5%。（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）同级别内已加入【缘常之愿】的角色和物品平分该级别的概率，第60抽以后，获取天级/天级以上的角色/物品概率逐渐增加，当第99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
+			if(!window.ykDrawCardPool_Switch||window.ykDrawCardPool_Switch=='special') alert('命定之愿：许愿对应up的天级及以上级别的角色/物品概率限时提升（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）！许愿概率：凡级 40%、黄级 30%、玄级 18%、地级 10%、天级 1.5%（限定up天级角色/物品占其中出率的50%）、其他 0.5%（限定up天级以上的角色/物品占其中出率的50%）。通常情况下，每个未进入【缘常之愿】的天级及以上级别的角色/物品均有机会进入up池。当累计99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品，当本次获得天级及以上级别的角色/物品并非当期up角色/物品时，下一次获取天级及以上级别的角色或物品时必定获取该up角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
+			else alert('缘常之愿——许愿概率：凡级 40%、黄级 30%、玄级 18%、地级 10%、天级 2%。（概率优先级：100抽保底>命定之石>10抽必紫>限时概率up>虚空之泪）同级别内已加入【缘常之愿】的角色和物品平分该级别的概率，当第99抽未获取天级及以上级别的角色/物品时，下一抽必定获取天级及以上角色/物品（点击左上角的【命定之愿】/【缘常之愿】切换许愿池，显示名称为当前许愿池名称）');
 		});
 		help.style.cssText='top:5px;left:calc(100% - 115px);z-index:99999;';
-		window.ykDrawCardPool_div.appendChild(help);
+		div.appendChild(help);
 		window.yk_clickFK(help);
 		var Switch=ui.create.div();
 		Switch.style.cssText='height:50px;width:150px;top:10px;left:10px;border-radius:10px;background-color:white;text-align:center;';
 		if(!window.ykDrawCardPool_Switch||window.ykDrawCardPool_Switch=='special') Switch.innerHTML='<span style="color:black;font-size:35px;font-weight:400;"><b>命定之愿</b></span>';
 		else Switch.innerHTML='<span style="color:black;font-size:35px;font-weight:400;"><b>缘常之愿</b></span>';
-		window.ykDrawCardPool_div.appendChild(Switch);
+		div.appendChild(Switch);
 		Switch.onclick=function(){
 			if(Switch.innerHTML.indexOf('命定之愿')!=-1){//切换缘常池
 				window.ykDrawCardPool_Switch='usual';
-				window.yk_closeODCP();
+				closeODCP();
 				setTimeout(window.ykOpenDrawCardPool,500);
 			}
 			else{//切换限定池
@@ -317,15 +308,15 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		
 		var div_own1=ui.create.div();
 		div_own1.style.cssText='height:50px;width:225px;top:65px;left:calc(100% - 285px);text-align:center;';
-		window.ykDrawCardPool_div.appendChild(div_own1);
+		div.appendChild(div_own1);
 		div_own1.style.border='1px solid white';
 		var div_name=ui.create.div();
 		div_name.style.cssText='height:25px;width:150px;top:65px;left:calc(100% - 235px);text-align:center;';
 		div_name.innerHTML='<span style="color:black;font-size:25px;font-weight:400;font-family:shousha"><b>命定之石</b></span>';
-		window.ykDrawCardPool_div.appendChild(div_name);
+		div.appendChild(div_name);
 		var divPict=ui.create.div();
 		divPict.style.cssText='height:50px;width:50px;top:65px;left:calc(100% - 285px);';
-		window.ykDrawCardPool_div.appendChild(divPict);
+		div.appendChild(divPict);
 		divPict.onclick=function(){
 			alert('使用【命定之石】许愿时必得玄级及以上角色/物品，【命定之石】不能用于【缘常之愿】卡池！许愿概率：玄级 60%、地级 35%、天级 4%、其他 1%。');
 		}
@@ -336,25 +327,25 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		var divx=ui.create.div();
 		divx.style.cssText='height:25px;width:150px;top:90px;left:calc(100% - 235px);border-radius:8px;text-align:center;';
 		divx.innerHTML='<b>'+num+'</b>';
-		window.ykDrawCardPool_div.appendChild(divx);
+		div.appendChild(divx);
 		var div_add=ui.create.div();
 		div_add.style.cssText='height:25px;width:25px;top:90px;left:calc(100% - 85px);border-radius:100px;background-color:white;text-align:center;';
 		div_add.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b>+</b></span>';
 		div_add.onclick=function(){alert('【命定之石】获取途径：活动获得。');};
-		window.ykDrawCardPool_div.appendChild(div_add);
+		div.appendChild(div_add);
 		window.yk_clickFK(div_add);
 		
 		var div_own2=ui.create.div();
 		div_own2.style.cssText='height:50px;width:225px;top:65px;left:calc(100% - 535px);text-align:center;';
-		window.ykDrawCardPool_div.appendChild(div_own2);
+		div.appendChild(div_own2);
 		div_own2.style.border='1px solid white';
 		var div_name2=ui.create.div();
 		div_name2.style.cssText='height:25px;width:150px;top:65px;left:calc(100% - 485px);text-align:center;';
 		div_name2.innerHTML='<span style="color:black;font-size:25px;font-weight:400;font-family:shousha"><b>虚空之泪</b></span>';
-		window.ykDrawCardPool_div.appendChild(div_name2);
+		div.appendChild(div_name2);
 		var divPict2=ui.create.div();
 		divPict2.style.cssText='height:50px;width:50px;top:65px;left:calc(100% - 535px);';
-		window.ykDrawCardPool_div.appendChild(divPict2);
+		div.appendChild(divPict2);
 		divPict2.onclick=function(){
 			alert('每使用【虚空之泪】许愿十次时必得玄级及以上角色/物品！此保底许愿概率：【命定之愿】：玄级 65%、地级 32%、天级 2%、其他 1%；【缘常之愿】：玄级 65%、地级 32%、天级 3%。');
 		}
@@ -365,12 +356,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		var divx2=ui.create.div();
 		divx2.style.cssText='height:25px;width:150px;top:90px;left:calc(100% - 485px);border-radius:8px;text-align:center;';
 		divx2.innerHTML='<b>'+num2+'</b>';
-		window.ykDrawCardPool_div.appendChild(divx2);
+		div.appendChild(divx2);
 		var div_add2=ui.create.div();
 		div_add2.style.cssText='height:25px;width:25px;top:90px;left:calc(100% - 335px);border-radius:100px;background-color:white;text-align:center;';
 		div_add2.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b>+</b></span>';
 		div_add2.onclick=function(){alert('【虚空之泪】获取途径：任务获得、活动获得。');};
-		window.ykDrawCardPool_div.appendChild(div_add2);
+		div.appendChild(div_add2);
 		window.yk_clickFK(div_add2);
 		
 		//卡池
@@ -384,7 +375,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			for(var character in lib.ykDrawCardPoolSchel){
 				var c=lib.ykDrawCardPoolSchel[character];
 				var yearx1=c[0][0],monthx1=c[0][1],dayx1=c[0][2],yearx2=c[1][0],monthx2=c[1][1],dayx2=c[1][2];
-				if(window.checkOnlineTime(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2)){
+				if(window.checkOnlineTime1(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2)){
 					characterx=character;
 					tagx+=(c[2]||'')+'</b></span></i>';
 				}
@@ -392,13 +383,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		}
 		var div_show=ui.create.div();
 		div_show.style.cssText='height:calc(100% - 325px);width:calc(100% - 60px);top:150px;left:30px;';
-		window.ykDrawCardPool_div.appendChild(div_show);
+		div.appendChild(div_show);
 		div_show.style.border='1px solid white';
 		var div_t=ui.create.div();
 		div_t.style.cssText='height:100px;width:200px;top:0px;left:0px;';
 		div_t.innerHTML=tagx;
 		div_show.appendChild(div_t);
-		var div_showCharacter=ui.create.div();
+		div_showCharacter=ui.create.div();
 		div_showCharacter.style.cssText='height:270px;width:200px;top:calc(50% - 135px);left:calc(50% - 100px);background-position:center center;';
 		div_show.appendChild(div_showCharacter);
 		if(characterx){
@@ -406,16 +397,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		}
 		
 		var div_chooce1=ui.create.div(),result1=(window.ykDrawCardPool_Switch!='usual'&&num?'predestined_fate':'sky_crying'),result2=(window.ykDrawCardPool_Switch!='usual'&&num&&typeof num=='number'&&num>=10?'predestined_fate':'sky_crying');
-		div_chooce1.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 535px);border-radius:25px;background-color:white';
+		div_chooce1.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 535px);border-radius:25px;background-color:white;';
+		div_chooce1.result=result1;
+		div_chooce1.character=characterx;
 		div_chooce1.onclick=function(){
-			if(!this.character){
-				alert('获取卡池信息失败！');
-				return ;
-			}
 			var tips='将使用';
 			if(this.result=='predestined_fate') tips+='【命定之石】x1 ';
 			else tips+='【虚空之泪】x150 ';
-			tips+='进行一次许愿';
+			tips+='进行一次抽卡';
 			if(this.result=='predestined_fate'&&(!lib.config.yk_myBag.predestined_fate||lib.config.yk_myBag.predestined_fate.num<1||typeof lib.config.yk_myBag.predestined_fate.num!='number')){
 				alert('道具【命定之石】数量不足！');
 				return ;
@@ -433,11 +422,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					lib.config.yk_usual_drawCardTime.T++;
 					game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
 					if(lib.config.yk_usual_drawCardTime.time>99){
+						game.yk_loseItem('sky_crying',150);
 						resultCharacterItem='tian';
 						lib.config.yk_usual_drawCardTime.time=0;
 						game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
 					}
 					else if(lib.config.yk_usual_drawCardTime.T>9){
+						game.yk_loseItem('sky_crying',150);
 						if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.65)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan';
 						else if(r<0.1||(r>0.3&&r<0.4)||(r>0.65&&r<0.7)||(r>0.9&&r<=0.97)) resultCharacterItem='di';
 						else resultCharacterItem='tian';
@@ -445,22 +436,20 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
 					}
 					else{
-						var add=0;
-						if(lib.config.yk_usual_drawCardTime.time>60&&typeof lib.config.yk_usual_drawCardTime.time=='number') add=(100-0.5)/(100-lib.config.yk_usual_drawCardTime.time);
-						if(r>0&&r<(0.005+add)) resultCharacterItem='tian';//0.5+add
-						else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di';//1.5-0.25*add
-						else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan';//18-0.25*add
-						else if(r>(0.2+0.5*add)&&r<=(0.5+0.25*add)) resultCharacterItem='huang';//30-0.25*add
-						else resultCharacterItem='fan';//50-0.25*add
+						if((r>=0.2&&r<=0.3)||(r>=0.4&&r<=0.5)||(r>=0.7&&r<=0.8)||r>=0.9) resultCharacterItem='fan';
+						if((r>=0.3&&r<=0.4)||(r>=0.5&&r<=0.6)||(r>=0.8&&r<=0.9)) resultCharacterItem='huang';
+						if((r>=0.1&&r<=0.2)||(r>=0.6&&r<=0.68)) resultCharacterItem='xuan';
+						else if((r>0.68&&r<0.7)||r<=0.08) resultCharacterItem='di';
+						else resultCharacterItem='tian';
 					}
 				}
 				else{
-					game.yk_loseItem('sky_crying',150);
 					if(!lib.ykSpecialDrawCardPool.others||(lib.ykSpecialDrawCardPool.others&&!lib.ykSpecialDrawCardPool.others.length)) lib.ykSpecialDrawCardPool.others=lib.ykUsualDrawCardPool.tian;
 					if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
 					lib.config.yk_limit_drawCardTime.time1++;
 					game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
 					if(lib.config.yk_limit_drawCardTime.time1>99){
+						game.yk_loseItem('sky_crying',150);
 						if(lib.config.yk_limit_drawCardTime.time2&&window.ykDrawCardPool_Switch!='usual'&&this.character) resultCharacterItem=this.character;//大保底
 						else{//小保底
 							if(window.ykDrawCardPool_Switch!='usual'){
@@ -486,6 +475,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						else resultCharacterItem='others';
 					}
 					else if(lib.config.yk_limit_drawCardTime.T>9){
+						game.yk_loseItem('sky_crying',150);
 						if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.65)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
 						else if(r<0.1||(r>0.3&&r<0.4)||(r>0.65&&r<0.7)||(r>0.9&&r<=0.97)) resultCharacterItem='di2';
 						else if((r>0.97&&r<=0.98)||(r>=0.99&&r<=1)) resultCharacterItem='tian2';
@@ -494,198 +484,17 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
 					}
 					else{
-						var add=0;
-						if(lib.config.yk_limit_drawCardTime.time>60&&typeof lib.config.yk_limit_drawCardTime.time=='number') add=(lib.config.yk_limit_drawCardTime.time-60)*2.4875;
-						if(r>0&&r<(0.0005+0.5*add)) resultCharacterItem='others';//0.05+0.5*add
-						else if(r>(0.0005+0.5*add)&&r<(0.005+add)) resultCharacterItem='tian';//0.45+0.5*add
-						else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di';//1.5-0.25*add
-						else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan';//18-0.25*add
-						else if(r>(0.2+0.5*add)&&r<=(0.5+0.25*add)) resultCharacterItem='huang';//30-0.25*add
-						else resultCharacterItem='fan';//50-0.25*add
-					}
-				}
-				if(resultCharacterItem=='fan'){
-					var fanListE=[],fanListB=[],fanListO=[];
-					for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
-					for(var item in lib.ykBook) if(lib.ykBook[item].grade=='fangrade'&&lib.ykBook[item].showupRate1) fanListB.push(item);
-					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1) fanListO.push(item);
-					resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(huangListO).concat(huangListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).randomSort().randomSort().randomGet();
-				}
-				else if(resultCharacterItem=='huang'){
-					var huangListE=[],huangListB=[],huangListO=[];
-					for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='huanggrade'&&lib.ykEquip[item].showupRate1) huangListE.push(item);
-					for(var item in lib.ykBook) if(lib.ykBook[item].grade=='huanggrade'&&lib.ykBook[item].showupRate1) huangListB.push(item);
-					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1) huangListO.push(item);
-					resultCharacterItem=huangListE.concat(huangListB).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
-				}
-				else if(resultCharacterItem=='xuan'){
-					resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
-				}
-				else if(resultCharacterItem=='di'){
-					resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
-				}
-				else if(resultCharacterItem=='tian'){
-					resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
-				}
-				else if(resultCharacterItem=='xuan2'){
-					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.xuan.randomGet();
-					else resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
-				}
-				else if(resultCharacterItem=='di2'){
-					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.di.randomGet();
-					else resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
-				}
-				else if(resultCharacterItem=='tian2'){
-					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.tian.randomGet();
-					else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
-				}
-				else if(resultCharacterItem=='others'){
-					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.tian.randomGet();
-					else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
-				}
-				window.ykDraw(resultCharacterItem);
-				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
-			}
-		}
-		window.ykDrawCardPool_div.appendChild(div_chooce1);
-		window.yk_clickFK(div_chooce1);
-		var div_chooce1Pict=ui.create.div();
-		div_chooce1Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 470px);';
-		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result1+'.jpg',div_chooce1Pict,"cover");
-		window.ykDrawCardPool_div.appendChild(div_chooce1Pict);
-		var div_chooce1Num=ui.create.div();
-		div_chooce1Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 420px);';
-		div_chooce1Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result1=='predestined_fate'?'1':'150')+'</b></span>';
-		window.ykDrawCardPool_div.appendChild(div_chooce1Num);
-		div_chooce1Num.result=div_chooce1Pict.result=div_chooce1.result1;
-		div_chooce1Num.character=div_chooce1Pict.character=div_chooce1.character;
-		var div_chooce1Button=ui.create.div();
-		div_chooce1Button.style.cssText=div_chooce1.style.cssText;
-		div_chooce1Button.style.opacity=0;
-		window.ykDrawCardPool_div.appendChild(div_chooce1Button);
-		div_chooce1Button.onclick=div_chooce1.onclick;
-		div_chooce1Button.source=div_chooce1;
-		div_chooce1Button.style.transition='opacity 0.5s';
-		div_chooce1Button.addEventListener(lib.config.touchscreen?'touchstart':'mousedown',function(){
-			this.source.style.transform='scale(0.95)';
-		});
-		div_chooce1Button.addEventListener(lib.config.touchscreen?'touchend':'mouseup',function(){
-			this.source.style.transform='';
-		});
-		div_chooce1Button.onmouseout=function(){
-			this.source.style.transform='';
-		};
-		div_chooce1Button.result=div_chooce1.result=result1;
-		div_chooce1Button.character=div_chooce1.character=characterx;
-		div_chooce1Button.divx=div_chooce1.divx=divx;
-		div_chooce1Button.divx2=div_chooce1.divx2=divx2;
-		
-		var div_chooce2=ui.create.div(),result1=(num?'predestined_fate':'sky_crying'),result2=(num&&typeof num=='number'&&num>=10?'predestined_fate':'sky_crying');
-		div_chooce2.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 285px);border-radius:25px;background-color:white;';
-		window.ykDrawCardPool_div.appendChild(div_chooce2);
-		window.yk_clickFK(div_chooce2);
-		div_chooce2.onclick=function(){
-			if(!this.character){
-				alert('获取卡池信息失败！');
-				return ;
-			}
-			var tips='将使用';
-			if(this.result=='predestined_fate') tips+='【命定之石】x10 ';
-			else tips+='【虚空之泪】x1500 ';
-			tips+='进行十次许愿';
-			if(this.result=='predestined_fate'&&(!lib.config.yk_myBag.predestined_fate||lib.config.yk_myBag.predestined_fate.num<10||typeof lib.config.yk_myBag.predestined_fate.num!='number')){
-				alert('道具【命定之石】数量不足！');
-				return ;
-			}
-			if(this.result!='predestined_fate'&&(!lib.config.yk_myBag.sky_crying||lib.config.yk_myBag.sky_crying.num<1500||typeof lib.config.yk_myBag.sky_crying.num!='number')){
-				alert('道具【虚空之泪】数量不足！');
-				return ;
-			}
-			if(confirm(tips)){
-				var drawx=function(){
-					var r=Math.random(),resultCharacterItem;
-					if(window.ykDrawCardPool_Switch=='usual'){
 						game.yk_loseItem('sky_crying',150);
-						if(!lib.config.yk_usual_drawCardTime||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.time!='number')||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.T!='number')) lib.config.yk_usual_drawCardTime={time:0,T:0};
-						lib.config.yk_usual_drawCardTime.time++;
-						lib.config.yk_usual_drawCardTime.T++;
-						game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
-						if(lib.config.yk_usual_drawCardTime.time>99){
-							resultCharacterItem='tian';
-							lib.config.yk_usual_drawCardTime.time=0;
-							game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
-						}
-						else if(lib.config.yk_usual_drawCardTime.T>9){
-							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.65)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan';
-							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.65&&r<0.7)||(r>0.9&&r<=0.97)) resultCharacterItem='di';
-							else resultCharacterItem='tian';
-							lib.config.yk_usual_drawCardTime.T=0;
-							game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
-						}
-						else{
-							var add=0;
-							if(lib.config.yk_usual_drawCardTime.time>60&&typeof lib.config.yk_usual_drawCardTime.time=='number') add=(100-0.5)/(100-lib.config.yk_usual_drawCardTime.time);
-							if(r>0&&r<(0.005+add)) resultCharacterItem='tian';//0.5+add
-							else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di';//1.5-0.25*add
-							else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan';//18-0.25*add
-							else if(r>(0.2+0.5*add)&&r<=(0.5+0.25*add)) resultCharacterItem='huang';//30-0.25*add
-							else resultCharacterItem='fan';//50-0.25*add
-						}
+						if((r>=0.2&&r<=0.3)||(r>=0.4&&r<=0.5)||(r>=0.7&&r<=0.8)||r>=0.9) resultCharacterItem='fan';
+						if((r>=0.3&&r<=0.4)||(r>=0.5&&r<=0.6)||(r>=0.8&&r<=0.9)) resultCharacterItem='huang';
+						if((r>=0.1&&r<=0.2)||(r>=0.6&&r<=0.68)) resultCharacterItem='xuan2';
+						else if((r>0.68&&r<0.7)||r<=0.08) resultCharacterItem='di2';
+						else if(r>0.08&&r<=0.095) resultCharacterItem='tian2';
+						else resultCharacterItem='others';
 					}
-					else{
-						game.yk_loseItem('sky_crying',150);
-						if(!lib.ykSpecialDrawCardPool.others||(lib.ykSpecialDrawCardPool.others&&!lib.ykSpecialDrawCardPool.others.length)) lib.ykSpecialDrawCardPool.others=lib.ykUsualDrawCardPool.tian;
-						if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
-						lib.config.yk_limit_drawCardTime.time1++;
-						game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
-						if(lib.config.yk_limit_drawCardTime.time1>99){
-							if(lib.config.yk_limit_drawCardTime.time2&&window.ykDrawCardPool_Switch!='usual'&&this.character) resultCharacterItem=this.character;//大保底
-							else{//小保底
-								if(window.ykDrawCardPool_Switch!='usual'){
-									if(Math.random()<0.5){
-										resultCharacterItem='tian2';
-										lib.config.yk_limit_drawCardTime.time1=0;
-										lib.config.yk_limit_drawCardTime.time2=true;
-										game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
-									}
-									else{
-										lib.config.yk_limit_drawCardTime.time1=0;
-										game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
-										resultCharacterItem=this.character;
-									}
-								}
-							}
-						}
-						else if(this.result=='predestined_fate'){//命定之石
-							game.yk_loseItem('predestined_fate',1);
-							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.6)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
-							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.6&&r<0.7)||(r>0.9&&r<=0.95)) resultCharacterItem='di2';
-							else if((r>0.95&&r<=0.97)||(r>=0.98&&r<=1)) resultCharacterItem='tian2';
-							else resultCharacterItem='others';
-						}
-						else if(lib.config.yk_limit_drawCardTime.T>9){
-							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.65)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
-							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.65&&r<0.7)||(r>0.9&&r<=0.97)) resultCharacterItem='di2';
-							else if((r>0.97&&r<=0.98)||(r>=0.99&&r<=1)) resultCharacterItem='tian2';
-							else resultCharacterItem='others';
-							lib.config.yk_limit_drawCardTime.T=0;
-							game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
-						}
-						else{
-							var add=0;
-							if(lib.config.yk_limit_drawCardTime.time>60&&typeof lib.config.yk_limit_drawCardTime.time=='number') add=(lib.config.yk_limit_drawCardTime.time-60)*2.4875;
-							if(r>0&&r<(0.0005+0.5*add)) resultCharacterItem='others';//0.05+0.5*add
-							else if(r>(0.0005+0.5*add)&&r<(0.005+add)) resultCharacterItem='tian';//0.45+0.5*add
-							else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di';//1.5-0.25*add
-							else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan';//18-0.25*add
-							else if(r>(0.2+0.5*add)&&r<=(0.5+0.25*add)) resultCharacterItem='huang';//30-0.25*add
-							else resultCharacterItem='fan';//50-0.25*add
-						}
-					}
+				}
+				if(resultCharacterItem==this.character&&this.character!='usual') window.ykDraw(resultCharacterItem);
+				else{
 					if(resultCharacterItem=='fan'){
 						var fanListE=[],fanListB=[],fanListO=[];
 						for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
@@ -727,47 +536,190 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else if(resultCharacterItem=='others'){
 						var a=Math.random();
 						if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.tian.randomGet();
-						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						else resultCharacterItem=lib.ykUsualDrawCardPool.others.randomGet();
 					}
-					return resultCharacterItem;
+					window.ykDraw(resultCharacterItem);
+				}
+			}
+		}
+		div.appendChild(div_chooce1);
+		window.yk_clickFK(div_chooce1);
+		var div_chooce1Pict=ui.create.div();
+		div_chooce1Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 470px);';
+		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result1+'.jpg',div_chooce1Pict,"cover");
+		div.appendChild(div_chooce1Pict);
+		var div_chooce1Num=ui.create.div();
+		div_chooce1Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 420px);';
+		div_chooce1Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result1=='predestined_fate'?'1':'150')+'</b></span>';
+		div.appendChild(div_chooce1Num);
+		div_chooce1Num.onclick=div_chooce1Pict.onclick=div_chooce1.onclick;
+		div_chooce1Num.result=div_chooce1Pict.result=div_chooce1.result1;
+		div_chooce1Num.character=div_chooce1Pict.character=div_chooce1.character;
+		
+		var div_chooce2=ui.create.div(),result1=(num?'predestined_fate':'sky_crying'),result2=(num&&typeof num=='number'&&num>=10?'predestined_fate':'sky_crying');
+		div_chooce2.style.cssText='height:50px;width:225px;top:calc(100% - 90px);left:calc(100% - 285px);border-radius:25px;background-color:white;';
+		div.appendChild(div_chooce2);
+		window.yk_clickFK(div_chooce2);
+		div_chooce2.result=result2;
+		div_chooce2.character=characterx;
+		div_chooce2.onclick=function(){
+			var tips='将使用';
+			if(this.result=='predestined_fate') tips+='【命定之石】x10 ';
+			else tips+='【虚空之泪】x1500 ';
+			tips+='进行十次抽卡';
+			if(this.result=='predestined_fate'&&(!lib.config.yk_myBag.predestined_fate||lib.config.yk_myBag.predestined_fate.num<10||typeof lib.config.yk_myBag.predestined_fate.num!='number')){
+				alert('道具【命定之石】数量不足！');
+				return ;
+			}
+			if(this.result!='predestined_fate'&&(!lib.config.yk_myBag.sky_crying||lib.config.yk_myBag.sky_crying.num<1500||typeof lib.config.yk_myBag.sky_crying.num!='number')){
+				alert('道具【虚空之泪】数量不足！');
+				return ;
+			}
+			if(confirm(tips)){
+				var drawx=function(){
+					var r=Math.random(),resultCharacterItem;
+					if(window.ykDrawCardPool_Switch=='usual'){
+						game.yk_loseItem('sky_crying',150);
+						if(!lib.config.yk_usual_drawCardTime||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.time!='number')||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.T!='number')) lib.config.yk_usual_drawCardTime={time:0,T:0};
+						lib.config.yk_usual_drawCardTime.time++;
+						lib.config.yk_usual_drawCardTime.T++;
+						game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
+						if(lib.config.yk_usual_drawCardTime.time>99){
+							game.yk_loseItem('sky_crying',150);
+							resultCharacterItem='tian';
+							lib.config.yk_usual_drawCardTime.time=0;
+							game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
+						}
+						else if(lib.config.yk_usual_drawCardTime.T>9){
+							game.yk_loseItem('sky_crying',150);
+							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.65)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan';
+							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.65&&r<0.7)||(r>0.9&&r<=0.97)) resultCharacterItem='di';
+							else resultCharacterItem='tian';
+							lib.config.yk_usual_drawCardTime.T=0;
+							game.saveConfig('yk_usual_drawCardTime',lib.config.yk_usual_drawCardTime.time);
+						}
+						else{
+							if((r>=0.2&&r<=0.3)||(r>=0.4&&r<=0.5)||(r>=0.7&&r<=0.8)||r>=0.9) resultCharacterItem='fan';
+							if((r>=0.3&&r<=0.4)||(r>=0.5&&r<=0.6)||(r>=0.8&&r<=0.9)) resultCharacterItem='huang';
+							if((r>=0.1&&r<=0.2)||(r>=0.6&&r<=0.68)) resultCharacterItem='xuan';
+							else if((r>0.68&&r<0.7)||r<=0.08) resultCharacterItem='di';
+							else resultCharacterItem='tian';
+						}
+					}
+					else{
+						if(!lib.ykSpecialDrawCardPool.others||(lib.ykSpecialDrawCardPool.others&&!lib.ykSpecialDrawCardPool.others.length)) lib.ykSpecialDrawCardPool.others=lib.ykUsualDrawCardPool.tian;
+						if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
+						lib.config.yk_limit_drawCardTime.time1++;
+						game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
+						if(lib.config.yk_limit_drawCardTime.time1>99){
+							game.yk_loseItem('sky_crying',150);
+							if(lib.config.yk_limit_drawCardTime.time2&&window.ykDrawCardPool_Switch!='usual'&&this.character) resultCharacterItem=this.character;//大保底
+							else{//小保底
+								if(window.ykDrawCardPool_Switch!='usual'){
+									if(Math.random()<0.5){
+										resultCharacterItem='tian2';
+										lib.config.yk_limit_drawCardTime.time1=0;
+										lib.config.yk_limit_drawCardTime.time2=true;
+										game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
+									}
+									else{
+										lib.config.yk_limit_drawCardTime.time1=0;
+										game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
+										resultCharacterItem=this.character;
+									}
+								}
+							}
+							}
+						else if(this.result=='predestined_fate'){//命定之石
+							game.yk_loseItem('predestined_fate',1);
+							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.6)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
+							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.6&&r<0.7)||(r>0.9&&r<=0.95)) resultCharacterItem='di2';
+							else if((r>0.95&&r<=0.97)||(r>=0.98&&r<=1)) resultCharacterItem='tian2';
+							else resultCharacterItem='others';
+						}
+						else if(lib.config.yk_limit_drawCardTime.T>9){
+							game.yk_loseItem('sky_crying',150);
+							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.65)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
+							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.65&&r<0.7)||(r>0.9&&r<=0.97)) resultCharacterItem='di2';
+							else if((r>0.97&&r<=0.98)||(r>=0.99&&r<=1)) resultCharacterItem='tian2';
+							else resultCharacterItem='others';
+							lib.config.yk_limit_drawCardTime.T=0;
+							game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
+						}
+						else{
+							game.yk_loseItem('sky_crying',150);
+							if((r>=0.2&&r<=0.3)||(r>=0.4&&r<=0.5)||(r>=0.7&&r<=0.8)||r>=0.9) resultCharacterItem='fan';
+							if((r>=0.3&&r<=0.4)||(r>=0.5&&r<=0.6)||(r>=0.8&&r<=0.9)) resultCharacterItem='huang';
+							if((r>=0.1&&r<=0.2)||(r>=0.6&&r<=0.68)) resultCharacterItem='xuan2';
+							else if((r>0.68&&r<0.7)||r<=0.08) resultCharacterItem='di2';
+							else if(r>0.08&&r<=0.095) resultCharacterItem='tian2';
+							else resultCharacterItem='others';
+						}
+					}
+					if(resultCharacterItem==this.character&&this.character!='usual') return resultCharacterItem;
+					else{
+						if(resultCharacterItem=='fan'){
+							var fanListE=[],fanListB=[],fanListO=[];
+							for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
+							for(var item in lib.ykBook) if(lib.ykBook[item].grade=='fangrade'&&lib.ykBook[item].showupRate1) fanListB.push(item);
+							for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1) fanListO.push(item);
+							resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
+						}
+						else if(resultCharacterItem=='huang'){
+							var huangListE=[],huangListB=[],huangListO=[];
+							for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='huanggrade'&&lib.ykEquip[item].showupRate1) huangListE.push(item);
+							for(var item in lib.ykBook) if(lib.ykBook[item].grade=='huanggrade'&&lib.ykBook[item].showupRate1) huangListB.push(item);
+							for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1) huangListO.push(item);
+							resultCharacterItem=huangListE.concat(huangListB).concat(huangListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
+						}
+						else if(resultCharacterItem=='xuan'){
+							resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
+						}
+						else if(resultCharacterItem=='di'){
+							resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
+						}
+						else if(resultCharacterItem=='tian'){
+							resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						}
+						else if(resultCharacterItem=='xuan2'){
+							var a=Math.random();
+							if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.xuan.randomGet();
+							else resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
+						}
+						else if(resultCharacterItem=='di2'){
+							var a=Math.random();
+							if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.di.randomGet();
+							else resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
+						}
+						else if(resultCharacterItem=='tian2'){
+							var a=Math.random();
+							if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.tian.randomGet();
+							else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						}
+						else if(resultCharacterItem=='others'){
+							var a=Math.random();
+							if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.tian.randomGet();
+							else resultCharacterItem=lib.ykUsualDrawCardPool.others.randomGet();
+						}
+						return resultCharacterItem;
+					}
 				}
 				var resultCharacterItemList=[];
 				for(var i=0;i<10;i++) resultCharacterItemList.push(drawx());
 				window.ykDraw(resultCharacterItemList);
-				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
 		}
 		var div_chooce2Pict=ui.create.div();
 		div_chooce2Pict.style.cssText='height:40px;width:40px;top:calc(100% - 85px);left:calc(100% - 220px);';
 		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+result2+'.jpg',div_chooce2Pict,"cover");
-		window.ykDrawCardPool_div.appendChild(div_chooce2Pict);
+		div.appendChild(div_chooce2Pict);
 		var div_chooce2Num=ui.create.div();
 		div_chooce2Num.style.cssText='height:25px;width:110px;top:calc(100% - 77px);left:calc(100% - 170px);';
 		div_chooce2Num.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b> x'+(result2=='predestined_fate'?'10':'1500')+'</b></span>';
-		window.ykDrawCardPool_div.appendChild(div_chooce2Num);
+		div.appendChild(div_chooce2Num);
+		div_chooce2Num.onclick=div_chooce2Pict.onclick=div_chooce2.onclick;
 		div_chooce2Num.result=div_chooce2Pict.result=div_chooce2.result1;
 		div_chooce2Num.character=div_chooce2Pict.character=div_chooce2.character;
-		var div_chooce2Button=ui.create.div();
-		div_chooce2Button.style.cssText=div_chooce2.style.cssText;
-		div_chooce2Button.style.opacity=0;
-		div_chooce2Button.style.backgroundColor='none';
-		window.ykDrawCardPool_div.appendChild(div_chooce2Button);
-		div_chooce2Button.onclick=div_chooce2.onclick;
-		div_chooce2Button.source=div_chooce2;
-		div_chooce2Button.style.transition='opacity 0.5s';
-		div_chooce2Button.addEventListener(lib.config.touchscreen?'touchstart':'mousedown',function(){
-			this.source.style.transform='scale(0.95)';
-		});
-		div_chooce2Button.addEventListener(lib.config.touchscreen?'touchend':'mouseup',function(){
-			this.source.style.transform='';
-		});
-		div_chooce2Button.onmouseout=function(){
-			this.source.style.transform='';
-		};
-		div_chooce2Button.result=div_chooce2.result=result2;
-		div_chooce2Button.character=div_chooce2.character=characterx;
-		div_chooce2Button.divx=div_chooce2.divx=divx;
-		div_chooce2Button.divx2=div_chooce2.divx2=divx2;
 	}
 	//升级技能upGradeSkill--------------技能格式：skillname_rank---------例：法则天定0级------------fazetianding_0-----用法：game.upGradeSkill('qxq_yk_yanmengyuejian','fazetianding');
 	game.upGradeSkill=function(skillname,upnum){
@@ -1386,8 +1338,25 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		window.timeCaculate();
 	},function(e){
 	},true);
-	//Check时间
-	window.checkOnlineTime=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
+	//Check时间点
+	window.checkOnlineTime=function(yearx,monthx,dayx,hourx,minutex,secondx){
+		if(window.ykOffline) return false;
+		var year=''+window.playTime.years;
+		var month=''+window.playTime.months;
+		var day=''+window.playTime.days;
+		var hour=''+window.playTime.hours;
+		var minute=''+window.playTime.minutes;
+		var second=''+window.playTime.seconds;
+		if(yearx&&yearx!=undefined&&(yearx+'')!=year) return false;
+		else if(monthx&&monthx!=undefined&&(monthx+'')!=month) return false;
+		else if(dayx&&dayx!=undefined&&(dayx+'')!=day) return false;
+		else if(hourx&&hourx!=undefined&&(hourx+'')!=hour) return false;
+		else if(minutex&&minutex!=undefined&&(minutex+'')!=minute) return false;
+		else if(secondx&&secondx!=undefined&&(secondx+'')!=second) return false;
+		return true;
+	}
+	//Check时间段
+	window.checkOnlineTime1=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
 		var isDuringDate=function(beginDateStr,endDateStr){
 			var curDate = new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),beginDate=new Date(beginDateStr),endDate=new Date(endDateStr);
 			if (curDate>=beginDate&&curDate<=endDate){
