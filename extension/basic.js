@@ -1142,7 +1142,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		xuan:[],
 	};
 	lib.ykDrawCardPoolSchel={
-		qxq_yk_kongshanlingxue:[[2022,8,31],[2022,9,17],'<small><u>既知</u></small><span style=\"color: #FF00FF;\">天命</span>',[],[],[]],//[开始时间，结束时间],玄级陪跑物品/角色,地级陪跑物品/角色
+		qxq_yk_kongshanlingxue:[[2022,8,31],[2022,9,17],'<small><u>既知</u></small><span style=\"color: #FF00FF;\">天命</span>',['qxq_yk_fuling'],[],[]],//[开始时间，结束时间],玄级陪跑物品/角色,地级陪跑物品/角色
 		qxq_yk_wuwangxuanyue:[[2022,9,18],[2022,10,3],'<span style=\"color: #FF0000;\">千古</span><small><u>一念</u></small>',[],[],[]],
 		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>',[],[],[]],
 		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',[],[],[]],
@@ -1291,7 +1291,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		}
 		var div_introduce=ui.create.div();
 		div_introduce.style.cssText='height:100px;width:250px;bottom:15px;right:10px;background-color:white;';
-		if(characterx!='usual'&&characterx) div_introduce.innerHTML='*命定之愿<br>————【<span style=\"color: '+color+';\">'+get.translation(characterx)+'</span>】<span style=\"color: #FF0000;\">限时</span><span style=\"color: #FFA500;\">概率up！</span>：<br><b>&nbsp&nbsp'+lib.ykDrawCardPoolSchel[characterx][0][0]+'/'+lib.ykDrawCardPoolSchel[characterx][0][1]+'/'+lib.ykDrawCardPoolSchel[characterx][0][2]+'&nbsp——&nbsp'+lib.ykDrawCardPoolSchel[characterx][1][0]+'/'+lib.ykDrawCardPoolSchel[characterx][1][1]+'/'+lib.ykDrawCardPoolSchel[characterx][1][2];
+		if(characterx!='usual'&&characterx) div_introduce.innerHTML='*命定之愿<br>————【<span style=\"color: '+color+';\">'+get.translation(characterx)+'</span>】'+(lib.ykDrawCardPoolSchel[characterx][5]&&lib.ykDrawCardPoolSchel[characterx][5].length?'，<span style=\"color: #FFA500;\">'+get.translation(lib.ykDrawCardPoolSchel[characterx][5])+'</span>':'')+(lib.ykDrawCardPoolSchel[characterx][4]&&lib.ykDrawCardPoolSchel[characterx][4].length?'，<span style=\"color: #FF00FF;\">'+get.translation(lib.ykDrawCardPoolSchel[characterx][4])+'</span>':'')+(lib.ykDrawCardPoolSchel[characterx][3]&&lib.ykDrawCardPoolSchel[characterx][3].length?'，<span style=\"color: #0000FF;\">'+get.translation(lib.ykDrawCardPoolSchel[characterx][3])+'</span>':'')+'<span style=\"color: #FF0000;\">限时</span><span style=\"color: #FFA500;\">概率up！</span>：<br><b>&nbsp&nbsp'+lib.ykDrawCardPoolSchel[characterx][0][0]+'/'+lib.ykDrawCardPoolSchel[characterx][0][1]+'/'+lib.ykDrawCardPoolSchel[characterx][0][2]+'&nbsp——&nbsp'+lib.ykDrawCardPoolSchel[characterx][1][0]+'/'+lib.ykDrawCardPoolSchel[characterx][1][1]+'/'+lib.ykDrawCardPoolSchel[characterx][1][2];
 		else if(characterx) div_introduce.innerHTML='*缘常之愿<br>————常驻许愿活动';
 		div_show.appendChild(div_introduce);
 		
