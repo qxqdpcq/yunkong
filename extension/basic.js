@@ -644,8 +644,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		else if(secondx&&secondx!=undefined&&(secondx+'')!=second) return false;
 		return true;
 	}
-	//Check时间段
-	window.checkOnlineTime1=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
+	//Check时间
+	window.checkOnlineTime=function(yearx1,monthx1,dayx1,yearx2,monthx2,dayx2){
 		var isDuringDate=function(beginDateStr,endDateStr){
 			var curDate = new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),beginDate=new Date(beginDateStr),endDate=new Date(endDateStr);
 			if (curDate>=beginDate&&curDate<=endDate){
