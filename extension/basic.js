@@ -1013,7 +1013,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				var E=lib.ykEquip[window.yk_showName],B=lib.ykBook[window.yk_showName],O=lib.yk_otherItemLibrary[window.yk_showName],R=lib.config.qxq_YK_person.rank[window.yk_showName],i,img;
 				i=(E||B||O);
 				div_animationBackground_x.delete();
-				delete div_animationBackground_x;
 				div_animationBackground_x=undefined;
 				div_animationBackground.style.height='450px';
 				div_animationBackground.style.width='900px';
@@ -1155,7 +1154,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>'],
 		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>'],
 	};
-	/*window.ykOpenDrawCardPool=function(){
+	window.ykOpenDrawCardPool=function(){
 		//if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		window.ykDrawCardPool_div=ui.create.div('.menu');
 		window.ykDrawCardPool_div.style.cssText='height:100%;width:100%;top:0px;left:0px;opacity:0.85;background-color:black;z-index:5000;';
@@ -1650,5 +1649,5 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2Button.character=div_chooce2.character=characterx;
 		div_chooce2Button.divx=div_chooce2.divx=divx;
 		div_chooce2Button.divx2=div_chooce2.divx2=divx2;
-	}*/
+	}
 });
