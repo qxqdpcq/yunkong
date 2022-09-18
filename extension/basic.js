@@ -972,12 +972,16 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					game.sayyk('恭喜获得&nbsp'+get.translation(list)+'！');
 					if(listp.length) game.YKgainNewPerson(listp);
-					window.div_animationBackground_x.delete();
-					delete window.div_animationBackground_x;
-					window.div_animationBackground_x=null;
-					window.div_animationBackground_block.delete();
-					delete window.div_animationBackground_block;
-					window.div_animationBackground_block=null;
+					if(window.div_animationBackground_x){
+						window.div_animationBackground_x.delete();
+						delete window.div_animationBackground_x;
+						window.div_animationBackground_x=null;
+					}
+					if(window.div_animationBackground_block){
+						window.div_animationBackground_block.delete();
+						delete window.div_animationBackground_block;
+						window.div_animationBackground_block=null;
+					}
 					window.div_result.delete();
 					delete window.div_result;
 					window.div_result=null;
