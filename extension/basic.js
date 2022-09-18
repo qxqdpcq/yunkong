@@ -963,32 +963,30 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				window.div_animationBackground_block.dialog=window.div_result.dialog=window.div_resultShow.dialog;
 				window.div_animationBackground_block.onclick=window.div_result.onclick=window.div_resultShow.onclick=function(){
-					var list=window.yk_showName,listp=[];
-					for(var itx of list){
-						if(lib.config.qxq_YK_person.rank[itx]) listp.push(itx);
-						else if(lib.ykEquip[itx]) game.yk_gainEquip(itx);
-						else if(lib.ykBook[itx]) game.yk_gainBook(itx);
-						else if(lib.yk_otherItemLibrary[itx]) game.yk_gainItem(itx);
-					}
-					game.sayyk('恭喜获得&nbsp'+get.translation(list)+'！');
-					if(listp.length) game.YKgainNewPerson(listp);
-					if(window.div_animationBackground_x){
+					if(window.div_result){
+						var list=window.yk_showName,listp=[];
+						for(var itx of list){
+							if(lib.config.qxq_YK_person.rank[itx]) listp.push(itx);
+							else if(lib.ykEquip[itx]) game.yk_gainEquip(itx);
+							else if(lib.ykBook[itx]) game.yk_gainBook(itx);
+							else if(lib.yk_otherItemLibrary[itx]) game.yk_gainItem(itx);
+						}
+						game.sayyk('恭喜获得&nbsp'+get.translation(list)+'！');
+						if(listp.length) game.YKgainNewPerson(listp);
 						window.div_animationBackground_x.delete();
 						delete window.div_animationBackground_x;
 						window.div_animationBackground_x=null;
-					}
-					if(window.div_animationBackground_block){
 						window.div_animationBackground_block.delete();
 						delete window.div_animationBackground_block;
 						window.div_animationBackground_block=null;
+						window.div_result.delete();
+						delete window.div_result;
+						window.div_result=null;
+						window.div_resultShow.delete();
+						delete window.div_resultShow;
+						window.div_resultShow=null;
+						window.ykOpenDrawCardPool();
 					}
-					window.div_result.delete();
-					delete window.div_result;
-					window.div_result=null;
-					window.div_resultShow.delete();
-					delete window.div_resultShow;
-					window.div_resultShow=null;
-					window.ykOpenDrawCardPool();
 				}
 			},10000);
 			
@@ -1523,7 +1521,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					var r=Math.random(),resultCharacterItem;
 					if(window.ykDrawCardPool_Switch=='usual'){
-						game.yk_loseItem('sky_crying',150);
+						game.yk_loseItem('sky_crying',1500);
 						if(!lib.config.yk_usual_drawCardTime||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.time!='number')||(lib.config.yk_usual_drawCardTime&&typeof lib.config.yk_usual_drawCardTime.T!='number')) lib.config.yk_usual_drawCardTime={time:0,T:0};
 						lib.config.yk_usual_drawCardTime.time++;
 						lib.config.yk_usual_drawCardTime.T++;
@@ -1551,7 +1549,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						}
 					}
 					else{
-						game.yk_loseItem('sky_crying',150);
+						game.yk_loseItem('sky_crying',1500);
 						if(!lib.ykDrawCardPoolSchel[character][5]||(lib.ykDrawCardPoolSchel[character][5]&&!lib.ykDrawCardPoolSchel[character][5].length)) lib.ykDrawCardPoolSchel[character][5]=lib.ykUsualDrawCardPool.tian;
 						if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
 						lib.config.yk_limit_drawCardTime.time1++;
@@ -1575,7 +1573,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							}
 						}
 						else if(result=='predestined_fate'){//命定之石
-							game.yk_loseItem('predestined_fate',1);
+							game.yk_loseItem('predestined_fate',10);
 							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.6)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
 							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.6&&r<0.7)||(r>0.9&&r<=0.95)) resultCharacterItem='di2';
 							else if((r>0.95&&r<=0.97)||(r>=0.98&&r<=1)) resultCharacterItem='tian2';
@@ -1652,7 +1650,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					return resultCharacterItem;
 				}
 				var resultCharacterItemList=[];
-				for(var i=0;i<10;i++) resultCharacterItemList.push(drawx(this.character,(this.result||'sky_crying')));
+				for(var i=0;i<10;i++) resultCharacterItemList.push(drawx(this.character,(this.result2||'sky_crying')));
 				window.ykDraw(resultCharacterItemList);
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
 			}
