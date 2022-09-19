@@ -3,6 +3,21 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	//防止反复加载
 	/*if(window.ykloadJSON_basic) return ;
 	window.ykloadJSON_basic=true;*/
+	game.ykFileExist= url => {
+		if(window.XMLHttpRequest){
+			var http = new XMLHttpRequest();
+		}
+		else{
+			var http = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		http.open('HEAD', url, false);
+		try{
+			http.send();
+		}catch (err){
+			return false;
+		}
+		return http.status != 404;
+	}
 	lib.yk_personInfo={
 		qxq_yk_xiaoqiao:["female",3,["yktianxiang","ykzhuyan","ykpiaoling"]],
 		qxq_yk_yanmengyuejian:["female",3,["ykshimeng","ykyueyan"]],
