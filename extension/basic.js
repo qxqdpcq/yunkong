@@ -3,7 +3,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	//防止反复加载
 	/*if(window.ykloadJSON_basic) return ;
 	window.ykloadJSON_basic=true;*/
-	game.ykFileExist= url => {
+	window.ykFileExist= url => {
 		if(window.XMLHttpRequest){
 			var http = new XMLHttpRequest();
 		}
@@ -1165,6 +1165,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',[],[],[]],
 	};
 	window.ykOpenDrawCardPool=function(){
+		if(!window.ykFileExist(lib.assetURL+'extension/云空/10')||!window.ykFileExist(lib.assetURL+'extension/云空/01')){
+			alert('检测到有素材缺失，许愿前请先更新素材至最新版！若已更新或无法下载，请联系扩展作者！');
+			return ;
+		}
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		window.ykDrawCardPool_div=ui.create.div('.menu');
 		window.ykDrawCardPool_div.style.cssText='height:100%;width:100%;top:0px;left:0px;opacity:0.85;background-color:black;z-index:5000;';
