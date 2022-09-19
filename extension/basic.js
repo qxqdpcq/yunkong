@@ -1166,7 +1166,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	};
 	window.ykOpenDrawCardPool=function(){
 		if(!window.ykFileExist(lib.assetURL+'extension/云空/10')||!window.ykFileExist(lib.assetURL+'extension/云空/01')){
-			alert('检测到有素材缺失，许愿前请先更新素材至最新版！若已更新或无法下载，请联系扩展作者！');
+			alert('检测到有文件缺失，许愿前请先更新至最新版！若已更新或无法下载，请联系扩展作者！');
 			return ;
 		}
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
