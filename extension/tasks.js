@@ -52,6 +52,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								game.saveConfig('yk_signIn_date',lib.config.yk_signIn_date);
 								this.source.delete();
 								alert('签到成功，测试期间暂无奖励哦！');
+								window['choose_每日任务'].onclick();
 							}
 							divx.style.border='1px solid red';
 						}
@@ -96,11 +97,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		content.div_list=[];
 		var list=['每日任务','本周任务','本月任务','活动任务'];
 		for(var x of list){
-			var choose=ui.create.div();
-			choose.style.cssText='top:0px;height:40px;left:0px;width:100%;z-index:99999;position:relative;text-align:center;border-radius:8px;background-color:white;';
-			choose.innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+x+'</span></b>';
-			choose.content=x;
-			choose.onclick=function(){
+			window['choose_'+x]=ui.create.div();
+			window['choose_'+x].style.cssText='top:0px;height:40px;left:0px;width:100%;z-index:99999;position:relative;text-align:center;border-radius:8px;background-color:white;';
+			window['choose_'+x].innerHTML='<b><span style="color:black;font-size:20px;font-weight:400;font-family:shousha">'+x+'</span></b>';
+			window['choose_'+x].content=x;
+			window['choose_'+x].onclick=function(){
 				if(window.yktaskList){
 					window.yktaskList.delete();
 					delete window.yktaskList;
@@ -135,10 +136,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(t.filter()) divt.onclick=t.content;
 				}
 			};
-			taskChoose.appendChild(choose);
-			window.yk_clickFK(choose);
-			content.div_list.push(choose);
-			if(choose.innerHTML.indexOf('每日任务')!=-1) choose.onclick();
+			taskChoose.appendChild(window['choose_'+x]);
+			window.yk_clickFK(window['choose_'+x]);
+			content.div_list.push(window['choose_'+x]);
+			if(window['choose_'+x].innerHTML.indexOf('每日任务')!=-1) window['choose_'+x].onclick();
 		}
 	};
 });
