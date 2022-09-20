@@ -1420,7 +1420,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
 					for(var item in lib.ykBook) if(lib.ykBook[item].grade=='fangrade'&&lib.ykBook[item].showupRate1) fanListB.push(item);
 					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1) fanListO.push(item);
-					resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(huangListO).concat(huangListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).randomSort().randomSort().randomGet();
+					resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).randomSort().randomSort().randomGet();
 				}
 				else if(resultCharacterItem=='huang'){
 					var huangListE=[],huangListB=[],huangListO=[];
@@ -1602,14 +1602,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
 						for(var item in lib.ykBook) if(lib.ykBook[item].grade=='fangrade'&&lib.ykBook[item].showupRate1) fanListB.push(item);
 						for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1) fanListO.push(item);
-						resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
+						resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).randomSort().randomSort().randomGet();
 					}
 					else if(resultCharacterItem=='huang'){
 						var huangListE=[],huangListB=[],huangListO=[];
 						for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='huanggrade'&&lib.ykEquip[item].showupRate1) huangListE.push(item);
 						for(var item in lib.ykBook) if(lib.ykBook[item].grade=='huanggrade'&&lib.ykBook[item].showupRate1) huangListB.push(item);
 						for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1) huangListO.push(item);
-						resultCharacterItem=huangListE.concat(huangListB).concat(huangListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
+						resultCharacterItem=huangListE.concat(huangListB).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
 					}
 					else if(resultCharacterItem=='xuan'){
 						resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
