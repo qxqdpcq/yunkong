@@ -4395,6 +4395,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			inscription:'',//铭文
 			countable:true,//是否可叠加
 			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
+			subtype:'货币',
 			func:function(){
 				window.ykOpenMap();
 				window.ykEquip();
@@ -4407,6 +4408,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'星河神砂',
 			introduce:'当夜空中的流星燃尽，其剩下的灰尘散落于大地之上，在夜空中散发迷幻的色彩，将它们收集起来，也许会派上意想不到的用场。（许愿相关道具不会计入存档）',
 			inscription:'',//铭文
+			subtype:'货币',
 			countable:true,//是否可叠加
 			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
 		},
@@ -4416,6 +4418,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'命定之石',
 			introduce:'古老星辰的核心残尽坠落于大地上，成为极其罕见的珍物，其真正价值难以估量，据说持有它的人，往往能得到神明的眷顾，当你向它许愿时，心中所念所想的那个人，一定会出现在你面前。（许愿相关道具不会计入存档）',
 			inscription:'',//铭文
+			subtype:'抽卡道具',
 			countable:true,//是否可叠加
 			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
 		},
@@ -4425,6 +4428,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'虚空之泪',
 			introduce:'自天穹坠下的泪水，世间最纯净之物之一，若是神明流下的，那祂一定在为谁哭泣吧。（许愿相关道具不会计入存档）',
 			inscription:'',//铭文
+			subtype:'抽卡道具',
 			countable:true,//是否可叠加
 			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
 		},
@@ -4434,6 +4438,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神晶',
 			introduce:'云空大陆上最为珍贵的晶种之一，几乎只存在于传说之中，即便是皇室贵胄也百世难得一见，是无价之宝，据说这些晶石里流淌有来自于神明的少许能量，因此而拥有部分神性，像仙神那样不惹尘埃，离地半尺。',
 			inscription:'盈盈流光，宛若皎月，华光天彩，美妙绝伦。',//铭文
+			subtype:'强化材料',
 			countable:true,//是否可叠加
 			destroyable:true,//任务道具此处为fasle，不为false均可丢弃
 			showupRate1:0.0001,//小商店刷新百分率，不填时不会刷新出该类商品
@@ -4448,6 +4453,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			introduce:'掺杂有半丝神力的不纯粹的晶石，比起天晶更是旷世难寻，价值也不弱于绝大部分的异种晶石，更是因为神晶的罕见，天神半晶就几乎是唯一的神性能量的来源，但偏偏这种石头可遇而不可求，也注定了它一旦出现，必是天价。',
 			inscription:'如灯映昼，光可鉴人，流光溢彩，美不胜收。',
 			image:'god_crystal.jpg',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.0537,
 			showupRate2:0.0905,
@@ -4460,6 +4466,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'天晶',
 			introduce:'常人难以想象的晶石，其色璀璨，即便是白天都能看见它柔和的荧光，将其放置于身边，有宁神静心之效，这种晶石格外稀有，仅有少数的贵族子弟方得一见。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.099,
 			showupRate2:0.647,
@@ -4472,6 +4479,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'地晶',
 			introduce:'相比玄晶，其色泽偏紫，在黑暗中能散发淡淡的紫色荧光，一小丁点地晶的能量可相当于数十块玄晶的能量，这种晶石在大陆上十分稀有，通常被用于一些隆重场合的装饰品，并非是由于其应用价值过低，而是其较为过于少见，往往被用于收藏。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:1.75,
 			showupRate2:6.05,
@@ -4484,6 +4492,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'玄晶',
 			introduce:'相比黄晶，其色泽偏蓝，且更加纯粹，高品质的玄晶已接近完全透明，这种晶石的用途也更加广泛。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:22.05,
 			showupRate2:36.05,
@@ -4496,6 +4505,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'黄晶',
 			introduce:'相比起普通的晶石块，其重偏沉，但相较后者，所含杂质少了许多，是大陆上较为常用的贵重晶石。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:48.24,
 			showupRate2:66.34,
@@ -4508,6 +4518,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'凡晶',
 			introduce:'大陆上最普通的晶石，其色斑驳，修士们之间交易物品的硬通货，凡晶之于修士，相当于金银之于凡人。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:88.32,
 			showupRate2:95.68,
@@ -4520,6 +4531,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'火灵晶',
 			introduce:'珍贵的异种晶石，拥有灼热的火元素能量，对于火系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4532,6 +4544,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'水灵晶',
 			introduce:'珍贵的异种晶石，拥有清凉的水元素能量，对于水系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4544,6 +4557,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'冰灵晶',
 			introduce:'珍贵的异种晶石，拥有寒冷的冰元素能量，对于冰系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4556,6 +4570,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'雷灵晶',
 			introduce:'珍贵的异种晶石，拥有狂暴的雷元素能量，对于雷系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4568,6 +4583,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'木灵晶',
 			introduce:'珍贵的异种晶石，拥有亲和的草元素能量，对于草系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4580,6 +4596,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'风灵晶',
 			introduce:'珍贵的异种晶石，拥有轻盈的风元素能量，对于风系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4592,6 +4609,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'地灵晶',
 			introduce:'珍贵的异种晶石，拥有厚重的土元素能量，对于岩系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4604,6 +4622,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'光灵晶',
 			introduce:'珍贵的异种晶石，拥有璀璨的光元素能量，对于光系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4616,6 +4635,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'暗灵晶',
 			introduce:'珍贵的异种晶石，拥有深邃的暗元素能量，对于暗系武器附魔或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4628,6 +4648,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'幻灵晶',
 			introduce:'珍贵的异种晶石，可用于某些装备强化，拥有奇异的未知能量，对于元系武器强化或有奇效。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4640,6 +4661,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'黑蛇之牙',
 			introduce:'黑蛇的毒牙，可用于某些装备强化和附魔，据说能吸收触及之物的部分光彩。',
 			inscription:'',
+			subtype:'强化材料',
 			image:'yk_teech.jpg',
 			countable:true,
 			showupRate1:0.109,
@@ -4653,6 +4675,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'曦龙之珠',
 			introduce:'曦龙腹中的宝珠，可用于某些装备强化和附魔，置于室内可长明彻夜。',
 			inscription:'',
+			subtype:'强化材料',
 			image:'yk_pearl.jpg',
 			countable:true,
 			showupRate1:0.109,
@@ -4666,6 +4689,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'白胤之羽',
 			introduce:'白胤鸟的羽毛，可用于某些装备强化和附魔，抚摸上去如同清风吹拂，清凉舒适。',
 			inscription:'',
+			subtype:'强化材料',
 			image:'yk_feather.jpg',
 			countable:true,
 			showupRate1:0.109,
@@ -4679,6 +4703,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'星龙之鳞',
 			introduce:'星龙的鳞片，可用于某些装备强化和附魔，周围总有薄薄的雾气，挥之不去。',
 			inscription:'',
+			subtype:'强化材料',
 			image:'yk_scale.jpg',
 			countable:true,
 			showupRate1:0.109,
@@ -4692,6 +4717,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'燃麟之角',
 			introduce:'燃麟的断角，可用于某些装备强化和附魔，光是靠近就感到一阵灼热。',
 			inscription:'',
+			subtype:'强化材料',
 			image:'yk_horns.jpg',
 			countable:true,
 			showupRate1:0.109,
@@ -4705,6 +4731,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'磐龙之爪',
 			introduce:'无比坚硬的爪子，可用于某些装备强化和附魔，是难得的锻造之材。',
 			inscription:'',
+			subtype:'强化材料',
 			image:'yk_claw.jpg',
 			countable:true,
 			showupRate1:0.109,
@@ -4719,6 +4746,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			introduce:'绡狐的第三只眼，可用于某些装备强化和附魔，半透半明，触之如无物，就像是不存在一般，神奇无比，还是好好保管，别把它真的弄丢了吧……',
 			image:'yk_eye.jpg',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4732,6 +4760,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			introduce:'仅诞生于九天之上的神雷之中，是纯净无比的神雷之力凝结的表现，蕴含有极大的毁灭雷霆之力。',
 			image:'yk_purpleStone.jpg',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4745,6 +4774,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			introduce:'采集千百只汐兽之血绘成的锦符，其上的冰寒之力让人难以忍受。',
 			image:'yk_spell.jpg',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4758,6 +4788,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			introduce:'蕴含惊人生命之气的甘露，抿一口便足以消去一天的疲惫，对于伤势亦有极佳的恢复效果，但像是物极必反，这种露水只有在遍布毒瘴的南方沼泽中可见，那里有着不计其数的毒物。',
 			image:'yk_tea.jpg',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.109,
 			showupRate2:0.947,
@@ -4770,6 +4801,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'金块',
 			introduce:'云空大陆上十分贵重的金属，常用于装备强化。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:0.41,
 			showupRate2:1.647,
@@ -4782,6 +4814,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'银锭',
 			introduce:'云空大陆上比较贵重的金属，常用于装备强化。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:11.52,
 			showupRate2:33.75,
@@ -4794,6 +4827,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'铜板',
 			introduce:'云空大陆上比较常见的金属，常用于装备强化。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:41.52,
 			showupRate2:83.75,
@@ -4806,6 +4840,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'铁石',
 			introduce:'云空大陆上十分常见的金属，常用于装备强化。',
 			inscription:'',
+			subtype:'强化材料',
 			countable:true,
 			showupRate1:99.99,
 			showupRate2:99.99,
@@ -4818,6 +4853,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'秘籍残页·凡阶',
 			introduce:'写有云空大陆上流行的比较常见的部分秘籍信息，可惜不全，使用30张秘籍残页可以合成一本随机凡阶秘籍。',
 			inscription:'',
+			subtype:'秘籍残页',
 			func:function(){
 				if(!lib.config.yk_myBag) return ;
 				if(!lib.config.yk_myBag['yk_fan_bookPage']) return ;
@@ -4847,6 +4883,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'秘籍残页·黄阶',
 			introduce:'写有较为珍贵的部分秘籍信息，可惜不全，使用50张秘籍残页可以合成一本随机黄阶秘籍。',
 			inscription:'',
+			subtype:'秘籍残页',
 			func:function(){
 				if(!lib.config.yk_myBag) return ;
 				if(!lib.config.yk_myBag['yk_huang_bookPage']) return ;
@@ -4876,6 +4913,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'秘籍残页·玄阶',
 			introduce:'写有很珍贵的部分秘籍信息，可惜不全，使用75张秘籍残页可以合成一本随机黄阶秘籍。',
 			inscription:'',
+			subtype:'秘籍残页',
 			func:function(){
 				if(!lib.config.yk_myBag) return ;
 				if(!lib.config.yk_myBag['yk_xuan_bookPage']) return ;
@@ -4905,6 +4943,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'秘籍残页·地阶',
 			introduce:'写有十分珍贵的部分秘籍信息，可惜不全，使用100张秘籍残页可以合成一本随机低阶秘籍。',
 			inscription:'',
+			subtype:'秘籍残页',
 			func:function(){
 				if(!lib.config.yk_myBag) return ;
 				if(!lib.config.yk_myBag['yk_di_bookPage']) return ;
@@ -4934,6 +4973,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'秘籍残页·天阶',
 			introduce:'写有及其珍贵的部分秘籍信息，可惜不全，使用150张秘籍残页可以合成一本随机天阶秘籍。',
 			inscription:'',
+			subtype:'秘籍残页',
 			func:function(){
 				if(!lib.config.yk_myBag) return ;
 				if(!lib.config.yk_myBag['yk_tian_bookPage']) return ;
@@ -4963,6 +5003,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'拓本·凡阶',
 			introduce:'比较常见的拓本，能录下任何一本凡阶秘籍内容的神奇书本，但其本身未曾记载任何信息，能以它作为任意凡阶秘籍进阶时的万能材料。',
 			inscription:'',
+			subtype:'秘籍拓本',
 			countable:true,
 			showupRate1:12.03,
 			showupRate2:23.55,
@@ -4975,6 +5016,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'拓本·黄阶',
 			introduce:'还算较常见的拓本，能录下任何一本黄阶秘籍内容的神奇书本，但其本身未曾记载任何信息，能以它作为任意黄阶秘籍进阶时的万能材料。',
 			inscription:'',
+			subtype:'秘籍拓本',
 			countable:true,
 			showupRate1:2.03,
 			showupRate2:13.55,
@@ -4987,6 +5029,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'拓本·玄阶',
 			introduce:'少见的拓本，能录下任何一本玄阶秘籍内容的神奇书本，但其本身未曾记载任何信息，能以它作为任意玄阶秘籍进阶时的万能材料。',
 			inscription:'',
+			subtype:'秘籍拓本',
 			countable:true,
 			showupRate1:0.23,
 			showupRate2:0.55,
@@ -4999,6 +5042,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'拓本·地阶',
 			introduce:'十分稀少的拓本，这种纸张是历代君王赏赐给重功之臣的物品之一，能录下任何一本地阶秘籍内容的神奇书本，但其本身未曾记载任何信息，能以它作为任意地阶秘籍进阶时的万能材料。',
 			inscription:'',
+			subtype:'秘籍拓本',
 			countable:true,
 			showupRate1:0.013,
 			showupRate2:0.045,
@@ -5011,6 +5055,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'拓本·天阶',
 			introduce:'几乎只存在于传说之中，能录下任何一本天阶秘籍内容的神奇书本，但其本身未曾记载任何信息，能以它作为任意天阶秘籍进阶时的万能材料。',
 			inscription:'',
+			subtype:'秘籍拓本',
 			countable:true,
 			showupRate1:0.0006,
 			showupRate2:0.0008,
@@ -5023,6 +5068,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'真悟手札·凡阶',
 			introduce:'写有对凡阶秘籍的部分感悟，能加快对凡阶秘籍的领悟。',
 			inscription:'',
+			subtype:'秘籍手札',
 			countable:true,
 			showupRate1:75.54,
 			showupRate2:86.77,
@@ -5035,6 +5081,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'真悟手札·黄阶',
 			introduce:'写有对黄阶秘籍的部分感悟，能加快对黄阶秘籍的领悟。',
 			inscription:'',
+			subtype:'秘籍手札',
 			countable:true,
 			showupRate1:55.34,
 			showupRate2:74.73,
@@ -5047,6 +5094,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'真悟手札·玄阶',
 			introduce:'写有对玄阶秘籍的部分感悟，能加快对玄阶秘籍的领悟。',
 			inscription:'',
+			subtype:'秘籍手札',
 			countable:true,
 			showupRate1:39.63,
 			showupRate2:53.24,
@@ -5059,6 +5107,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'真悟手札·地阶',
 			introduce:'写有对地阶秘籍的部分感悟，能加快对地阶秘籍的领悟，因地阶秘籍比较稀有，因而地阶秘籍感悟也十分少见和昂贵。',
 			inscription:'',
+			subtype:'秘籍手札',
 			countable:true,
 			showupRate1:24.13,
 			showupRate2:32.21,
@@ -5071,6 +5120,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'真悟手札·天阶',
 			introduce:'写有对天阶秘籍的部分感悟，能加快对天阶秘籍的领悟，这种手札一旦出现则必定是天价。虽然皇室贵族可以承受，但天阶秘籍十分罕见，天阶感悟手札更算是奇物，普通金银根本无法衡量其真正价值。',
 			inscription:'',
+			subtype:'秘籍手札',
 			countable:true,
 			showupRate1:1.13,
 			showupRate2:3.21,
@@ -5083,6 +5133,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神龛·传说',
 			introduce:'盛放有十分珍贵物品的精致小箱子，只有身份尊贵的贵族皇室才能见到，据传里面必然能开出一件地阶及以上的物品。',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:6.26,
 			showupRate2:12.07,
@@ -5095,6 +5146,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神龛·神话',
 			introduce:'盛放有及其珍贵物品的超大华丽箱子，即便是历代帝君都难得一见，据传里面必然能开出一件天阶及以上的物品。',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:0.006,
 			showupRate2:0.017,
@@ -5107,6 +5159,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神龛·史诗·小',
 			introduce:'盛放有贵重物品的精致小箱子，据传里面必然能开出一件玄阶及以上的物品，有几率开出地阶及以上物品。',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:26.26,
 			showupRate2:32.07,
@@ -5119,6 +5172,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神龛·史诗·大',
 			introduce:'盛放有贵重物品的华丽大箱子，据传里面必然能开出一件玄阶及以上的物品，有较大几率开出地阶及以上物品。',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:10.26,
 			showupRate2:25.07,
@@ -5131,6 +5185,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神龛·精品·小',
 			introduce:'盛放有贵重物品的精致小箱子，据传里面必然能开出一件黄阶及以上的物品，有几率开出玄阶及以上物品。',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:36.66,
 			showupRate2:45.67,
@@ -5143,6 +5198,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'神龛·精品·大',
 			introduce:'盛放有贵重物品的华丽大箱子，据传里面必然能开出一件黄阶及以上的物品，有较大几率开出玄阶及以上物品。',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:18.18,
 			showupRate2:27.27,
@@ -5155,6 +5211,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			translation:'小红包',
 			introduce:'红包到啦，试试手气把！',
 			inscription:'',
+			subtype:'宝箱',
 			countable:true,
 			showupRate1:28.18,
 			showupRate2:47.27,
