@@ -1164,7 +1164,18 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>',[],[],[]],
 		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',[],[],[]],
 	};
-	/*window.ykOpenDrawCardPool=function(){
+	lib.ykUsualDrawCardPool={
+		tian:[],
+		di:[],
+		xuan:[],
+	};
+	lib.ykDrawCardPoolSchel={
+		qxq_yk_kongshanlingxue:[[2022,8,31],[2022,9,17],'<small><u>既知</u></small><span style=\"color: #FF00FF;\">天命</span>',['qxq_yk_fuling'],[],[]],//[开始时间，结束时间],玄级陪跑物品/角色,地级陪跑物品/角色
+		qxq_yk_wuwangxuanyue:[[2022,9,18],[2022,10,3],'<span style=\"color: #FF0000;\">千古</span><small><u>一念</u></small>',[],[],[]],
+		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>',[],[],[]],
+		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',[],[],[]],
+	};
+	window.ykOpenDrawCardPool=function(){
 		if(!window.ykFileExist(lib.assetURL+'extension/云空/10')||!window.ykFileExist(lib.assetURL+'extension/云空/01')){
 			alert('检测到有文件缺失，许愿前请先更新至最新版！若已更新或无法下载，请联系扩展作者！');
 			return ;
@@ -1336,6 +1347,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				return ;
 			}
 			if(confirm(tips)){
+				lib.ykSpecialDrawCardPool={
+					xuan:lib.ykDrawCardPoolSchel[this.character][3],
+					di:lib.ykDrawCardPoolSchel[this.character][4],
+					tian:lib.ykDrawCardPoolSchel[this.character][5],
+					upItem:this.character,
+				};
 				var r=Math.random(),resultCharacterItem;
 				if(window.ykDrawCardPool_Switch=='usual'){
 					game.yk_loseItem('sky_crying',150);
@@ -1367,7 +1384,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				else{
 					game.yk_loseItem('sky_crying',150);
-					if(!lib.ykDrawCardPoolSchel[this.character][5]||(lib.ykDrawCardPoolSchel[this.character][5]&&!lib.ykDrawCardPoolSchel[this.character][5].length)) lib.ykDrawCardPoolSchel[this.character][5]=lib.ykUsualDrawCardPool.tian;
+					if(!lib.ykSpecialDrawCardPool.tian||(lib.ykSpecialDrawCardPool.tian&&!lib.ykSpecialDrawCardPool.tian.length)) lib.ykSpecialDrawCardPool.tian=lib.ykUsualDrawCardPool.tian;
 					if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
 					lib.config.yk_limit_drawCardTime.time1++;
 					game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
@@ -1419,14 +1436,24 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					var fanListE=[],fanListB=[],fanListO=[];
 					for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
 					for(var item in lib.ykBook) if(lib.ykBook[item].grade=='fangrade'&&lib.ykBook[item].showupRate1) fanListB.push(item);
-					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1) fanListO.push(item);
+					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1){
+						if(lib.yk_otherItemLibrary[item].subtype=='秘籍拓本'||lib.yk_otherItemLibrary[item].subtype=='秘籍手札'){
+							if(Math.random()<(lib.yk_otherItemLibrary[item].showupRate4||0.01)/500) fanListO.push(item);
+						}
+						else fanListO.push(item);
+					}
 					resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).randomSort().randomSort().randomGet();
 				}
 				else if(resultCharacterItem=='huang'){
 					var huangListE=[],huangListB=[],huangListO=[];
 					for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='huanggrade'&&lib.ykEquip[item].showupRate1) huangListE.push(item);
 					for(var item in lib.ykBook) if(lib.ykBook[item].grade=='huanggrade'&&lib.ykBook[item].showupRate1) huangListB.push(item);
-					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1) huangListO.push(item);
+					for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1){
+						if(lib.yk_otherItemLibrary[item].subtype=='秘籍拓本'||lib.yk_otherItemLibrary[item].subtype=='秘籍手札'){
+							if(Math.random()<(lib.yk_otherItemLibrary[item].showupRate4||0.01)/500) huangListO.push(item);
+						}
+						else huangListO.push(item);
+					}
 					resultCharacterItem=huangListE.concat(huangListB).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
 				}
 				else if(resultCharacterItem=='xuan'){
@@ -1440,23 +1467,23 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 				else if(resultCharacterItem=='xuan2'){
 					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=lib.ykDrawCardPoolSchel[this.character][3].randomGet();
+					if((a<0.25||a>0.75)&&lib.ykSpecialDrawCardPool.xuan&&lib.ykSpecialDrawCardPool.xuan.length) resultCharacterItem=lib.ykSpecialDrawCardPool.xuan.randomGet();
 					else resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
 				}
 				else if(resultCharacterItem=='di2'){
 					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=lib.ykDrawCardPoolSchel[this.character][4].randomGet();
+					if((a<0.25||a>0.75)&&lib.ykSpecialDrawCardPool.di&&lib.ykSpecialDrawCardPool.di.length) resultCharacterItem=lib.ykSpecialDrawCardPool.di.randomGet();
 					else resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
 				}
 				else if(resultCharacterItem=='tian2'){
 					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=this.character;
-					else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
+					else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 				}
 				else if(resultCharacterItem=='others'){
 					var a=Math.random();
-					if(a<0.25||a>0.75) resultCharacterItem=this.character;
-					else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
+					else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 				}
 				window.ykDraw(resultCharacterItem);
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
@@ -1517,6 +1544,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				return ;
 			}
 			if(confirm(tips)){
+				lib.ykSpecialDrawCardPool={
+					xuan:lib.ykDrawCardPoolSchel[this.character][3],
+					di:lib.ykDrawCardPoolSchel[this.character][4],
+					tian:lib.ykDrawCardPoolSchel[this.character][5],
+					upItem:this.character,
+				};
 				var drawx=function(character,result){
 					var r=Math.random(),resultCharacterItem;
 					if(window.ykDrawCardPool_Switch=='usual'){
@@ -1549,12 +1582,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					else{
 						game.yk_loseItem('sky_crying',150);
-						if(!lib.ykDrawCardPoolSchel[character][5]||(lib.ykDrawCardPoolSchel[character][5]&&!lib.ykDrawCardPoolSchel[character][5].length)) lib.ykDrawCardPoolSchel[character][5]=lib.ykUsualDrawCardPool.tian;
+						if(!lib.ykSpecialDrawCardPool.tian||(lib.ykSpecialDrawCardPool.tian&&!lib.ykSpecialDrawCardPool.tian.length)) lib.ykSpecialDrawCardPool.tian=lib.ykUsualDrawCardPool.tian;
 						if(!lib.config.yk_limit_drawCardTime||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.time1!='number')||(lib.config.yk_limit_drawCardTime&&typeof lib.config.yk_limit_drawCardTime.T!='number')) lib.config.yk_limit_drawCardTime={time1:0,time2:false,T:0};
 						lib.config.yk_limit_drawCardTime.time1++;
 						game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
 						if(lib.config.yk_limit_drawCardTime.time1>99){
-							if(lib.config.yk_limit_drawCardTime.time2&&window.ykDrawCardPool_Switch!='usual'&&character) resultCharacterItem=character;//大保底
+							if(lib.config.yk_limit_drawCardTime.time2&&window.ykDrawCardPool_Switch!='usual'&&lib.ykSpecialDrawCardPool.upItem) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;//大保底
 							else{//小保底
 								if(window.ykDrawCardPool_Switch!='usual'){
 									if(Math.random()<0.5){
@@ -1566,12 +1599,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 									else{
 										lib.config.yk_limit_drawCardTime.time1=0;
 										game.saveConfig('yk_limit_drawCardTime',lib.config.yk_limit_drawCardTime);
-										resultCharacterItem=character;
+										resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
 									}
 								}
 							}
 						}
-						else if(result=='predestined_fate'){//命定之石
+						else if(this.result=='predestined_fate'){//命定之石
 							game.yk_loseItem('predestined_fate',1);
 							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.6)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
 							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.6&&r<0.7)||(r>0.9&&r<=0.95)) resultCharacterItem='di2';
@@ -1601,14 +1634,24 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						var fanListE=[],fanListB=[],fanListO=[];
 						for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='fangrade'&&lib.ykEquip[item].showupRate1) fanListE.push(item);
 						for(var item in lib.ykBook) if(lib.ykBook[item].grade=='fangrade'&&lib.ykBook[item].showupRate1) fanListB.push(item);
-						for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1) fanListO.push(item);
+						for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='fangrade'&&lib.yk_otherItemLibrary[item].showupRate1){
+							if(lib.yk_otherItemLibrary[item].subtype=='秘籍拓本'||lib.yk_otherItemLibrary[item].subtype=='秘籍手札'){
+								if(Math.random()<(lib.yk_otherItemLibrary[item].showupRate4||0.01)/500) fanListO.push(item);
+							}
+							else fanListO.push(item);
+						}
 						resultCharacterItem=fanListE.concat(fanListB).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).concat(fanListO).randomSort().randomSort().randomGet();
 					}
 					else if(resultCharacterItem=='huang'){
 						var huangListE=[],huangListB=[],huangListO=[];
 						for(var item in lib.ykEquip) if(lib.ykEquip[item].grade=='huanggrade'&&lib.ykEquip[item].showupRate1) huangListE.push(item);
 						for(var item in lib.ykBook) if(lib.ykBook[item].grade=='huanggrade'&&lib.ykBook[item].showupRate1) huangListB.push(item);
-						for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1) huangListO.push(item);
+						for(var item in lib.yk_otherItemLibrary) if(lib.yk_otherItemLibrary[item].grade=='huanggrade'&&lib.yk_otherItemLibrary[item].showupRate1){
+							if(lib.yk_otherItemLibrary[item].subtype=='秘籍拓本'||lib.yk_otherItemLibrary[item].subtype=='秘籍手札'){
+								if(Math.random()<(lib.yk_otherItemLibrary[item].showupRate4||0.01)/500) huangListO.push(item);
+							}
+							else huangListO.push(item);
+						}
 						resultCharacterItem=huangListE.concat(huangListB).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).concat(huangListO).randomSort().randomSort().randomGet();
 					}
 					else if(resultCharacterItem=='xuan'){
@@ -1622,23 +1665,23 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					else if(resultCharacterItem=='xuan2'){
 						var a=Math.random();
-						if(a<0.25||a>0.75) resultCharacterItem=lib.ykDrawCardPoolSchel[character][3].randomGet();
+						if((a<0.25||a>0.75)&&lib.ykSpecialDrawCardPool.xuan&&lib.ykSpecialDrawCardPool.xuan.length) resultCharacterItem=lib.ykSpecialDrawCardPool.xuan.randomGet();
 						else resultCharacterItem=lib.ykUsualDrawCardPool.xuan.randomGet();
 					}
 					else if(resultCharacterItem=='di2'){
 						var a=Math.random();
-						if(a<0.25||a>0.75) resultCharacterItem=lib.ykDrawCardPoolSchel[character][4].randomGet();
+						if((a<0.25||a>0.75)&&lib.ykSpecialDrawCardPool.di&&lib.ykSpecialDrawCardPool.di.length) resultCharacterItem=lib.ykSpecialDrawCardPool.di.randomGet();
 						else resultCharacterItem=lib.ykUsualDrawCardPool.di.randomGet();
 					}
 					else if(resultCharacterItem=='tian2'){
 						var a=Math.random();
-						if(a<0.25||a>0.75) resultCharacterItem=character;
-						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
+						else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 					}
 					else if(resultCharacterItem=='others'){
 						var a=Math.random();
-						if(a<0.25||a>0.75) resultCharacterItem=character;
-						else resultCharacterItem=lib.ykUsualDrawCardPool.tian.randomGet();
+						if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
+						else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 					}
 					return resultCharacterItem;
 				}
@@ -1679,5 +1722,5 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2Button.character=div_chooce2.character=characterx;
 		div_chooce2Button.divx=div_chooce2.divx=divx;
 		div_chooce2Button.divx2=div_chooce2.divx2=divx2;
-	}*/
+	}
 });
