@@ -2,7 +2,7 @@
 window.YKimport(function(lib,game,ui,get,ai,_status){
 game.YK_else=[
 	'skin.js',
-	'juqingAndchallenge.jpg',
+	'ykChallenge.jpg',
 	
 	//元素
 	'yk_fire.jpg',
