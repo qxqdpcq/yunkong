@@ -1604,7 +1604,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								}
 							}
 						}
-						else if(this.result=='predestined_fate'){//命定之石
+						else if(result=='predestined_fate'){//命定之石
 							game.yk_loseItem('predestined_fate',1);
 							if((r>=0.1&&r<=0.3)||(r>=0.4&&r<=0.6)||(r>=0.7&&r<=0.9)) resultCharacterItem='xuan2';
 							else if(r<0.1||(r>0.3&&r<0.4)||(r>0.6&&r<0.7)||(r>0.9&&r<=0.95)) resultCharacterItem='di2';
