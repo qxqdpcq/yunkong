@@ -2321,7 +2321,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}
 	game.readSaveConfig=function(){
 		if(!lib.config.ykSaveConfigRead[0]){alert('无存档或存档加载失败，请重启后再次尝试！');return ;}
-		if(confirm('选择载入新存档，道具【虚空之泪】与【命定之石】将不会保留，是否继续？')){
+		if(confirm('选择载入新存档，道具【虚空之泪】、【命定之石】与【星河神砂】将不会保留，是否继续？')){
 			var str=lib.config.ykSaveConfigRead[0];
 			if(typeof str!='string'){alert('数据类型错误！');return ;}
 			while(str.indexOf('з')!=-1){
