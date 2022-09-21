@@ -2321,143 +2321,146 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}
 	game.readSaveConfig=function(){
 		if(!lib.config.ykSaveConfigRead[0]){alert('无存档或存档加载失败，请重启后再次尝试！');return ;}
-		var str=lib.config.ykSaveConfigRead[0];
-		if(typeof str!='string'){alert('数据类型错误！');return ;}
-		while(str.indexOf('з')!=-1){
-			var strx=str.slice(0,str.indexOf('з'));
-			var stry=str.slice(str.indexOf('з')+1,str.length);
-			str=strx+'%u'+stry;
-		}
-		while(str.indexOf('/x')!=-1){
-			var strx=str.slice(0,str.indexOf('/x'));
-			var stry=str.slice(str.indexOf('/x')+2,str.length);
-			str=strx+'%'+stry;
-		}
-		str=unescape(str);
-		var content=str.slice(67,str.length);
-		str=str.slice(0,65);
-		var lock={
-			'0':str.slice(0,1),
-			'1':str.slice(1,2),
-			'2':str.slice(2,3),
-			'3':str.slice(3,4),
-			'4':str.slice(4,5),
-			'5':str.slice(5,6),
-			'6':str.slice(6,7),
-			'7':str.slice(7,8),
-			'8':str.slice(8,9),
-			'9':str.slice(9,10),
-			'a':str.slice(10,11),
-			'b':str.slice(11,12),
-			'c':str.slice(12,13),
-			'd':str.slice(13,14),
-			'e':str.slice(14,15),
-			'f':str.slice(15,16),
-			'g':str.slice(16,17),
-			'h':str.slice(17,18),
-			'i':str.slice(18,19),
-			'j':str.slice(19,20),
-			'k':str.slice(20,21),
-			'l':str.slice(21,22),
-			'm':str.slice(22,23),
-			'n':str.slice(23,24),
-			'o':str.slice(24,25),
-			'p':str.slice(25,26),
-			'q':str.slice(26,27),
-			'r':str.slice(27,28),
-			's':str.slice(28,29),
-			't':str.slice(29,30),
-			'u':str.slice(30,31),
-			'v':str.slice(31,32),
-			'w':str.slice(32,33),
-			'x':str.slice(33,34),
-			'y':str.slice(34,35),
-			'z':str.slice(35,36),
-			'A':str.slice(36,37),
-			'B':str.slice(37,38),
-			'C':str.slice(38,39),
-			'D':str.slice(39,40),
-			'E':str.slice(40,41),
-			'F':str.slice(41,42),
-			'G':str.slice(42,43),
-			'H':str.slice(43,44),
-			'I':str.slice(44,45),
-			'J':str.slice(45,46),
-			'K':str.slice(46,47),
-			'L':str.slice(47,48),
-			'M':str.slice(48,49),
-			'N':str.slice(49,50),
-			'O':str.slice(50,51),
-			'P':str.slice(51,52),
-			'Q':str.slice(52,53),
-			'R':str.slice(53,54),
-			'S':str.slice(54,55),
-			'T':str.slice(55,56),
-			'U':str.slice(56,57),
-			'V':str.slice(57,58),
-			'W':str.slice(58,59),
-			'X':str.slice(59,60),
-			'Y':str.slice(60,61),
-			'Z':str.slice(61,62),
-			'_':str.slice(62,63),
-			'-':str.slice(63,64),
-			'·':str.slice(64,65),
-		};
-		var contentx='';
-		while(content.length){
-			var i=content.slice(0,1);
-			for(var m in lock) if(i==lock[m]){contentx+=m;break;}
-			content=content.slice(1,content.length);
-		}
-		for(var it_other in lib.config.yk_myBag) if(['predestined_fate','sky_crying','star_dust'].indexOf(it_other)==-1) delete lib.config.yk_myBag[it_other];
-		game.saveConfig('yk_myBag',lib.config.yk_myBag);
-		var Bag;
-		if(contentx.length&&contentx.indexOf('·')!=-1){
-			Bag=contentx.slice(contentx.indexOf('·')+1,contentx.length)
-			var contentx=contentx.slice(0,contentx.indexOf('·'));
-		}
-		if(Bag){
-			var BagList=[];
-			while(Bag.length&&Bag.indexOf('·')!=-1){
-				var item=Bag.slice(0,Bag.indexOf('·'));
-				BagList.push(item);
-				Bag=Bag.slice(Bag.indexOf('·')+1,Bag.length);
+		if(confirm('选择载入新存档，道具【虚空之泪】与【命定之石】将不会保留，是否继续？')){
+			var str=lib.config.ykSaveConfigRead[0];
+			if(typeof str!='string'){alert('数据类型错误！');return ;}
+			while(str.indexOf('з')!=-1){
+				var strx=str.slice(0,str.indexOf('з'));
+				var stry=str.slice(str.indexOf('з')+1,str.length);
+				str=strx+'%u'+stry;
 			}
-			if(Bag.length) BagList.push(Bag);
-			for(var itemx of BagList){
-				var name=itemx.slice(0,itemx.indexOf('-'));
-				lib.config.yk_myBag[name]={};
-				itemx=itemx.slice(itemx.indexOf('-')+1,itemx.length);
-				var num=itemx.slice(0,itemx.indexOf('-'));
-				if(num!='null') lib.config.yk_myBag[name].num=parseInt(num);
-				itemx=itemx.slice(itemx.indexOf('-')+1,itemx.length);
-				var rank1=itemx.slice(0,itemx.indexOf('-'));
-				if(rank1!='null') lib.config.yk_myBag[name].rank1=parseInt(rank1);
-				var rank2=itemx.slice(itemx.indexOf('-')+1,itemx.length);
-				if(rank2!='null') lib.config.yk_myBag[name].rank2=parseInt(rank2);
+			while(str.indexOf('/x')!=-1){
+				var strx=str.slice(0,str.indexOf('/x'));
+				var stry=str.slice(str.indexOf('/x')+2,str.length);
+				str=strx+'%'+stry;
 			}
-			game.saveConfig('yk_myBag',lib.config.yk_myBag);
+			str=unescape(str);
+			var content=str.slice(67,str.length);
+			str=str.slice(0,65);
+			var lock={
+				'0':str.slice(0,1),
+				'1':str.slice(1,2),
+				'2':str.slice(2,3),
+				'3':str.slice(3,4),
+				'4':str.slice(4,5),
+				'5':str.slice(5,6),
+				'6':str.slice(6,7),
+				'7':str.slice(7,8),
+				'8':str.slice(8,9),
+				'9':str.slice(9,10),
+				'a':str.slice(10,11),
+				'b':str.slice(11,12),
+				'c':str.slice(12,13),
+				'd':str.slice(13,14),
+				'e':str.slice(14,15),
+				'f':str.slice(15,16),
+				'g':str.slice(16,17),
+				'h':str.slice(17,18),
+				'i':str.slice(18,19),
+				'j':str.slice(19,20),
+				'k':str.slice(20,21),
+				'l':str.slice(21,22),
+				'm':str.slice(22,23),
+				'n':str.slice(23,24),
+				'o':str.slice(24,25),
+				'p':str.slice(25,26),
+				'q':str.slice(26,27),
+				'r':str.slice(27,28),
+				's':str.slice(28,29),
+				't':str.slice(29,30),
+				'u':str.slice(30,31),
+				'v':str.slice(31,32),
+				'w':str.slice(32,33),
+				'x':str.slice(33,34),
+				'y':str.slice(34,35),
+				'z':str.slice(35,36),
+				'A':str.slice(36,37),
+				'B':str.slice(37,38),
+				'C':str.slice(38,39),
+				'D':str.slice(39,40),
+				'E':str.slice(40,41),
+				'F':str.slice(41,42),
+				'G':str.slice(42,43),
+				'H':str.slice(43,44),
+				'I':str.slice(44,45),
+				'J':str.slice(45,46),
+				'K':str.slice(46,47),
+				'L':str.slice(47,48),
+				'M':str.slice(48,49),
+				'N':str.slice(49,50),
+				'O':str.slice(50,51),
+				'P':str.slice(51,52),
+				'Q':str.slice(52,53),
+				'R':str.slice(53,54),
+				'S':str.slice(54,55),
+				'T':str.slice(55,56),
+				'U':str.slice(56,57),
+				'V':str.slice(57,58),
+				'W':str.slice(58,59),
+				'X':str.slice(59,60),
+				'Y':str.slice(60,61),
+				'Z':str.slice(61,62),
+				'_':str.slice(62,63),
+				'-':str.slice(63,64),
+				'·':str.slice(64,65),
+			};
+			var contentx='';
+			while(content.length){
+				var i=content.slice(0,1);
+				for(var m in lock) if(i==lock[m]){contentx+=m;break;}
+				content=content.slice(1,content.length);
+			}
+			//for(var it_other in lib.config.yk_myBag) if(['predestined_fate','sky_crying','star_dust'].indexOf(it_other)==-1) delete lib.config.yk_myBag[it_other];
+			//game.saveConfig('yk_myBag',lib.config.yk_myBag);
+			game.saveConfig('yk_myBag',{});
+			var Bag;
+			if(contentx.length&&contentx.indexOf('·')!=-1){
+				Bag=contentx.slice(contentx.indexOf('·')+1,contentx.length)
+				var contentx=contentx.slice(0,contentx.indexOf('·'));
+			}
+			if(Bag){
+				var BagList=[];
+				while(Bag.length&&Bag.indexOf('·')!=-1){
+					var item=Bag.slice(0,Bag.indexOf('·'));
+					BagList.push(item);
+					Bag=Bag.slice(Bag.indexOf('·')+1,Bag.length);
+				}
+				if(Bag.length) BagList.push(Bag);
+				for(var itemx of BagList){
+					var name=itemx.slice(0,itemx.indexOf('-'));
+					lib.config.yk_myBag[name]={};
+					itemx=itemx.slice(itemx.indexOf('-')+1,itemx.length);
+					var num=itemx.slice(0,itemx.indexOf('-'));
+					if(num!='null') lib.config.yk_myBag[name].num=parseInt(num);
+					itemx=itemx.slice(itemx.indexOf('-')+1,itemx.length);
+					var rank1=itemx.slice(0,itemx.indexOf('-'));
+					if(rank1!='null') lib.config.yk_myBag[name].rank1=parseInt(rank1);
+					var rank2=itemx.slice(itemx.indexOf('-')+1,itemx.length);
+					if(rank2!='null') lib.config.yk_myBag[name].rank2=parseInt(rank2);
+				}
+				game.saveConfig('yk_myBag',lib.config.yk_myBag);
+			}
+			if(window.yunkong_Character&&window.yunkong_Character.character) for(var ykperson in window.yunkong_Character.character){
+				var equipTypeList=['equip1','equip2','equip3','equip4'];//武器、防具、饰品、其他
+				for(var item of equipTypeList) game.saveConfig(ykperson+'_'+item,undefined);
+				game.saveConfig(ykperson+'_book',undefined);
+			}
+			var list=[];
+			while(contentx.length&&contentx.indexOf('--')!=-1){
+				var item=contentx.slice(0,contentx.indexOf('--'));
+				list.push(item);
+				contentx=contentx.slice(contentx.indexOf('--')+2,contentx.length);
+				var equipTypeList=['equip1','equip2','equip3','equip4'];//武器、防具、饰品、其他
+				for(var item of equipTypeList) game.saveConfig(contentx.slice(0,contentx.indexOf('-'))+'_'+item,undefined);
+				game.saveConfig(contentx.slice(0,contentx.indexOf('-'))+'_book',undefined);
+			}
+			if(contentx!='none') list.push(contentx);
+			game.removeExtension('云空存档');
+			game.saveConfig('YKcharacterNameList',list);
+			game.saveConfig('ykSaveConfigRead',undefined);
+			alert('导入成功，已自动删除原存档，即将自动重启以保存，祝您游戏愉快！');
+			setTimeout(function(){game.reload();},3000);
 		}
-		if(window.yunkong_Character&&window.yunkong_Character.character) for(var ykperson in window.yunkong_Character.character){
-			var equipTypeList=['equip1','equip2','equip3','equip4'];//武器、防具、饰品、其他
-			for(var item of equipTypeList) game.saveConfig(ykperson+'_'+item,undefined);
-			game.saveConfig(ykperson+'_book',undefined);
-		}
-		var list=[];
-		while(contentx.length&&contentx.indexOf('--')!=-1){
-			var item=contentx.slice(0,contentx.indexOf('--'));
-			list.push(item);
-			contentx=contentx.slice(contentx.indexOf('--')+2,contentx.length);
-			var equipTypeList=['equip1','equip2','equip3','equip4'];//武器、防具、饰品、其他
-			for(var item of equipTypeList) game.saveConfig(contentx.slice(0,contentx.indexOf('-'))+'_'+item,undefined);
-			game.saveConfig(contentx.slice(0,contentx.indexOf('-'))+'_book',undefined);
-		}
-		if(contentx!='none') list.push(contentx);
-		game.removeExtension('云空存档');
-		game.saveConfig('YKcharacterNameList',list);
-		game.saveConfig('ykSaveConfigRead',undefined);
-		alert('导入成功，已自动删除原存档，即将自动重启以保存，祝您游戏愉快！');
-		setTimeout(function(){game.reload();},3000);
 	}
 	window.readConfig=function(){
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
