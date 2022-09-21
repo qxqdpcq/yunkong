@@ -48,26 +48,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		alert('增加【更新日志】和【文件下载】功能啦！详见云空菜单栏。（此提示显示一次后自动不再显示）');
 		game.saveConfig('yktips_2022/3/22',true);
 	}*/
-	//----------------------------------加载文件----------------------------//
-	window.ykloadjs("achievement");
-	var ykdateUpdate=function(){
-		var date=new Date();
-		var day=date.getDate();
-		if(lib.config.yk_updateDate==undefined||lib.config.yk_updateDate!=day){
-			var date=new Date();
-			var day=date.getDate();
-			lib.config.yk_updateDate=day;
-			game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/skin.js','extension/云空/skin.js',function(){},function(){});
-			game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css','extension/云空/yk2.css',function(){},function(){});
-			game.saveConfig('yk_updateDate',lib.config.yk_updateDate);
-		}
-	};
-	ykdateUpdate();
-	window.yk_downloadElementJson=function(){
-		if(lib.config.ykDTSCache&&lib.config.ykDTSCache.content&&typeof lib.config.ykDTSCache.content.element=='string') eval(lib.config.ykDTSCache.content.element);
-		else window.ykloadjs("element");
-	}
-	window.yk_downloadElementJson();
 // ---------------------------------------适配十周年用------------------------------------------//
 	game.dpcqHasExtension = function(str){
 		return lib.config.extensions && lib.config.extensions.contains(str) && lib.config['extension_'+str+'_enable'];
