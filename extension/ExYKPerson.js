@@ -3192,8 +3192,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		if(window.ykcloseAC&&window.ykcloseAC!=null&&typeof window.ykcloseAC=='function'){window.ykcloseAC();return ;}
 		if(window.ykcloseCs&&window.ykcloseCs!=null&&typeof window.ykcloseCs=='function'){window.ykcloseCs();return ;}
 		var dialogM={};
-		var MenuList=['星空之愿','任务列表','角色换肤','社交访问','配置角色','导出存档','载入存档','角色图鉴','查看成就','云空地图','元素法则','设置主题',(lib.config.only_yk==true?'退出模式':'云空模式'),'清空技能','更新日志','素材下载'];
-		var MenuFunctionList=['ykOpenDrawCardPool','ykOpenTaskList','ykChangeSkin','ykVisit','ykEquip','saveConfig','readConfig','ykShowCharacterBook','ykOpenAchievement','ykOpenMap','ykElementIntroduce','ykSetTheme','ykMode','ykClearSkillPoints','ykUpdateInformation','ykDownload'];
+		var MenuList=['星空之愿','任务列表','角色换肤','社交访问','配置角色','导出存档','载入存档','角色图鉴','云空地图','元素法则','设置主题',(lib.config.only_yk==true?'退出模式':'云空模式'),'清空技能','更新日志','素材下载'];
+		var MenuFunctionList=['ykOpenDrawCardPool','ykOpenTaskList','ykChangeSkin','ykVisit','ykEquip','saveConfig','readConfig','ykShowCharacterBook','ykOpenMap','ykElementIntroduce','ykSetTheme','ykMode','ykClearSkillPoints','ykUpdateInformation','ykDownload'];
 		window.background=ui.create.div();
 		window.background.style.height='calc(60%)';
 		window.background.style.width='calc(40%)';
