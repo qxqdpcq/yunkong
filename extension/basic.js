@@ -1132,18 +1132,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		if(!Array.isArray(character)&&character.indexOf('-')!=-1) character=character.slice(0,str.indexOf('-'));
 		window.yk_divMoveCanvas(window.background_callMyCharacter,document.body,true,'yellow',false,'yk_unlockScreen',character);
 	}
-
-	lib.ykUsualDrawCardPool={
-		tian:[],
-		di:[],
-		xuan:[],
-	};
-	lib.ykDrawCardPoolSchel={
-		qxq_yk_kongshanlingxue:[[2022,8,31],[2022,9,17],'<small><u>既知</u></small><span style=\"color: #FF00FF;\">天命</span>',['qxq_yk_fuling'],[],[]],//[开始时间，结束时间],玄级陪跑物品/角色,地级陪跑物品/角色
-		qxq_yk_wuwangxuanyue:[[2022,9,18],[2022,10,3],'<span style=\"color: #FF0000;\">千古</span><small><u>一念</u></small>',[],[],[]],
-		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>',[],[],[]],
-		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',[],[],[]],
-	};
 	lib.ykUsualDrawCardPool={
 		tian:[],
 		di:[],
