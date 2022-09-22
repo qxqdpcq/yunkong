@@ -23,7 +23,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		httpRequest.send(null);
 		httpRequest.onreadystatechange=function(){
 			if (httpRequest.readyState==4&&httpRequest.status==200){
-				alert(x);
+				alert('x');
 			}
 		};
 	lib.yk_personInfo={
