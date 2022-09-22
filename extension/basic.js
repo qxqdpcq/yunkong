@@ -24,6 +24,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	httpRequest.onreadystatechange= () =>{
 		if (httpRequest.readyState==4&&httpRequest.status==200){
 			if(lib.config.ykDTSCache.content.version!=httpRequest.responseText){
+				alert();
 				lib.config.ykDTSCache.content.version=httpRequest.responseText;
 				game.saveConfig('ykDTSCache',lib.config.ykDTSCache);
 				var loadList=['ExYKPerson','basic','equip','element','skin'];
