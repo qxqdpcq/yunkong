@@ -1151,11 +1151,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	};
 	lib.ykDrawCardPoolSchel={
 		qxq_yk_kongshanlingxue:[[2022,8,31],[2022,9,17],'<small><u>既知</u></small><span style=\"color: #FF00FF;\">天命</span>',['qxq_yk_fuling'],[],[]],//[开始时间，结束时间],玄级陪跑物品/角色,地级陪跑物品/角色
-		qxq_yk_wuwangxuanyue:[[2022,9,18],[2022,10,3],'<span style=\"color: #FF0000;\">千古</span><small><u>一念</u></small>',[],[],[]],
-		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>',[],[],[]],
-		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',[],[],[]],
+		qxq_yk_wuwangxuanyue:[[2022,9,18],[2022,10,3],'<span style=\"color: #FF0000;\">千古</span><small><u>一念</u></small>',['qxq_yk_fuling'],[],[]],
+		qxq_yk_xiaoqiao:[[2022,10,4],[2022,10,22],'<span style=\"color: #00FFFF;\">浮世</span><small><u>飘零</u></small>',['qxq_yk_fuling'],[],[]],
+		qxq_yk_yanmengyuejian:[[2022,10,23],[2022,11,11],'<span style=\"color: #00FFFF;\">梦与</span><small><u>君同</u></small>',['qxq_yk_fuling'],[],[]],
 	};
-	/*window.ykOpenDrawCardPool=function(){
+	window.ykOpenDrawCardPool=function(){
 		if(!window.ykFileExist(lib.assetURL+'extension/云空/10')||!window.ykFileExist(lib.assetURL+'extension/云空/01')){
 			alert('检测到有文件缺失，许愿前请先更新至最新版！若已更新或无法下载，请联系扩展作者！');
 			return ;
@@ -1702,5 +1702,5 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_chooce2Button.character=div_chooce2.character=characterx;
 		div_chooce2Button.divx=div_chooce2.divx=divx;
 		div_chooce2Button.divx2=div_chooce2.divx2=divx2;
-	}*/
+	}
 });
