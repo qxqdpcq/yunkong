@@ -18,20 +18,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		}
 		return http.status != 404;
 	}
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
-	httpRequest.send(null);
-	httpRequest.onreadystatechange= () =>{
-		if (httpRequest.readyState==4&&httpRequest.status==200){
-			if(lib.config.ykDTSCache.content.version!=httpRequest.responseText){
-				alert();
-				lib.config.ykDTSCache.content.version=httpRequest.responseText;
-				game.saveConfig('ykDTSCache',lib.config.ykDTSCache);
-				var loadList=['ExYKPerson','basic','equip','element','skin'];
-				for(var js of loadList) window.ykloadjs(js);
-			}
-		}
-	};
 	lib.yk_personInfo={
 		qxq_yk_xiaoqiao:["female",3,["yktianxiang","ykzhuyan","ykpiaoling"]],
 		qxq_yk_yanmengyuejian:["female",3,["ykshimeng","ykyueyan"]],
