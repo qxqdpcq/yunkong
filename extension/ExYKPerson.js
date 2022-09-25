@@ -173,6 +173,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	lib.qxq_yk_bossList=['qxq_yk_tian'];
 	if(!lib.config.qxq_YK_person||lib.config.qxq_YK_person==undefined) lib.config.qxq_YK_person={};
 	lib.config.qxq_YK_person.rank={
+		"qxq_yk_akalai":"<font color=purple>地级</font>",
 		"qxq_yk_dijunxuanpin":"<font color=orange>天级</font>",
 		"qxq_yk_fuling":"<font color=cyan>玄级</font>",
 		"qxq_yk_xiaoqiao":"<body><samp id='超稀-限定'>超稀-限定</samp></body><style>#超稀-限定{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
@@ -187,6 +188,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		"qxq_yk_yunling":"<font color=orange>天级</font>",
 	}
 	lib.config.qxq_YK_person.birthday={
+		"qxq_yk_akalai":"1/11",
 		"qxq_yk_dijunxuanpin":"9/23",
 		"qxq_yk_fuling":"4/22",
 		"qxq_yk_xiaoqiao":"NaN/NaN",
@@ -203,6 +205,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	//设置非BOSS人物基础属性值：法力、气力、真气、元力
 	lib.config.qxq_YK_person.nature={
 		Mp:{//基础术法值-------用于发动一般性技能：凡级<100，100<=黄级<200，200<=玄级<400，400<=地级<600，600<=天级<800，800<=超稀-限定
+			"qxq_yk_akalai":510,
 			"qxq_yk_dijunxuanpin":800,
 			"qxq_yk_fuling":320,
 			"qxq_yk_xiaoqiao":880,
@@ -217,6 +220,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			"qxq_yk_zhixu":1180,
 		},
 		Strength:{//基础气力值---------用于发动身法类技能：凡级<50，50<=黄级<80，80<=玄级<120，120<=地级<180，180<=天级，220<=超稀-限定
+			"qxq_yk_akalai":160,
 			"qxq_yk_dijunxuanpin":320,
 			"qxq_yk_fuling":80,
 			"qxq_yk_xiaoqiao":280,
@@ -231,6 +235,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			"qxq_yk_zhixu":300,
 		},
 		Defend:{//基础真气值----------真气较高时减少所受伤害，空真气时受到伤害增加。凡级<200，200<=黄级<400，400<=玄级<600，600<=地级<800，800<=天级<1000，1000<=超稀-限定
+			"qxq_yk_akalai":660,
 			"qxq_yk_dijunxuanpin":940,
 			"qxq_yk_fuling":480,
 			"qxq_yk_xiaoqiao":1080,
@@ -262,6 +267,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
 	window.qxq_YK_personWeaponType={
+		"qxq_yk_akalai":["sword2","sword1","sword0"],
 		"qxq_yk_dijunxuanpin":["sword2","sword1","sword0"],
 		"qxq_yk_fuling":["magic","swordx"],
 		"qxq_yk_xiaoqiao":["sword1","sword0"],
@@ -276,6 +282,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		"qxq_yk_zhixu":["magic","special"],
 	}
 	window.qxq_YK_personBookType={
+		"qxq_yk_akalai":["yk_light"],
 		"qxq_yk_dijunxuanpin":["yk_fire","yk_light"],
 		"qxq_yk_fuling":["yk_wind","yk_water","yk_wood"],
 		"qxq_yk_xiaoqiao":["yk_soul","yk_water","yk_dark","yk_ice"],
@@ -290,6 +297,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		"qxq_yk_zhixu":["yk_thunder","yk_dark"],
 	}
 	window.qxq_YK_gainPath={//获取方式
+		"qxq_yk_akalai":"",
 		"qxq_yk_dijunxuanpin":"",
 		"qxq_yk_fuling":"2022/01/31-2022/04/15，通关【宗师】或【绝境】难度的副本【缇傀】获得。",
 		"qxq_yk_xiaoqiao":"①、2022/01/31-2022/02/01，限时兑换。<br>②、2022/01/31-2022/02/07，通关【梦魇】或【神话】难度的副本【缇傀】获得。",
@@ -1191,6 +1199,20 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}
 	//角色对话
 	lib.config.qxq_YK_personChat={
+		"qxq_yk_akalai":{
+			'birthday':[""].randomGet(),
+			'-100':[""].randomGet(),
+			'-80':[""].randomGet(),
+			'-60':[""].randomGet(),
+			'-40':[""].randomGet(),
+			'-20':[""].randomGet(),
+			'0':[""].randomGet(),
+			'20':[""].randomGet(),
+			'40':[""].randomGet(),
+			'60':[""].randomGet(),
+			'80':[""].randomGet(),
+			'100':[""].randomGet(),
+		},
 		"qxq_yk_dijunxuanpin":{
 			'birthday':[""].randomGet(),
 			'-100':[""].randomGet(),
@@ -2940,12 +2962,13 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				"qxq_yk_wuwangxuanyue":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;——“说起巫王玄月，那可是三千年前的传奇般的人物了”<br>&nbsp;&nbsp;&nbsp;&nbsp;——“啊，三千年？！这么久？！想来整部东荒古史也不过五千载……三千年，真是好漫长的岁月……”<br>&nbsp;&nbsp;&nbsp;&nbsp;——“是的，他就是那时候的人，那个很久远的年代。嗯……凭借一人，震慑帝国十大高手，诸君面前犹如闲庭信步，可惜最终……”<br>&nbsp;&nbsp;&nbsp;&nbsp;她掸去厚厚的灰尘，眼中的遥思一闪而没，合上那陈旧而又脆弱的黄色书页，将其随意地丢了过来，“上面记载了些巫术，或许对你有用，你若有兴趣便看看吧。”<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;出场：巫术·大成-半步道玄（道玄：道之玄境）<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;巫山-巫王<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;巫山-天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“万古修行长生梦，难住古今多少人。”</i></font>",
 				"qxq_yk_kongshanlingxue":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;大雪山，即巫山，第三百六十五代巫女，亦是第三百二十任大雪山执剑人，师从巫山时前任大祭司，习有扶乩之术，入道境之前资质超绝；亦是时任巫王之徒，因变故被废黜巫女之位，流放四海。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;巫术·小成-入道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;原巫山巫女、原大雪山执剑人<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;巫山&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“易知天意，难测人心。”</i></font>",
 				"qxq_yk_dijunxuanpin":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;昔日的天曌帝君，其名玄牝，统御四海，君临八荒。<br>&nbsp;&nbsp;&nbsp;&nbsp;在他统治的年代，四海八荒无不慑服。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;末道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;天曌帝君<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“。”</i></font>",
+				"qxq_yk_akalai":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;来自未知之境，异族弃儿，因天生辉光而被监国司御史狄青收留，授以察罪断案之任。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;绘道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;督察使<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“黑暗，是光的敌人，我愿以此刃，涤净罪恶。。”</i></font>",
 			},
 			characterSort:{
 				'yunkong_Character':{
 					ykws:["qxq_yk_wuwangxuanyue","qxq_yk_kongshanlingxue","qxq_yk_kongshanyaoyun"],
 					ykyl:["qxq_yk_yunling","qxq_yk_yunying"],
-					yktz:["qxq_yk_fuling","qxq_yk_dijunxuanpin"],
+					yktz:["qxq_yk_fuling","qxq_yk_dijunxuanpin","qxq_yk_akalai"],
 					ykelse:["qxq_yk_tian","qxq_yk_xiaoqiao","qxq_yk_tiandaozhiying","qxq_yk_yanmengyuejian","qxq_yk_mingyun","qxq_yk_zhixu"],
 				},
 			},
@@ -2959,6 +2982,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			},
 			translate:{
 				"qxq_yk_tian":"“天”",
+				"qxq_yk_akalai":"阿卡莱",
 				"qxq_yk_dijunxuanpin":"帝君玄牝",
 				"qxq_yk_fuling":"茯苓",
 				"qxq_yk_xiaoqiao":"小乔",
@@ -13408,5 +13432,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		delete lib.skill.ykjuejian;
 		lib.skill.ykshilie={};
 		delete lib.skill.ykshilie;
+	}
+	if(!game.ykHasCharacter('qxq_yk_akalai')){
+		
 	}
 });
