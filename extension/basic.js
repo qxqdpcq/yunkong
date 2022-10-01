@@ -1076,8 +1076,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	game.YKgainNewPerson=function(characterx,bool){
 		if(Array.isArray(characterx)){character=characterx[0];characterx=characterx.slice(1,characterx.length);}
+		else character=characterx;
 		if(characterx.length<=1) bool=true;
-		if(!characterx){alert('角色名错误！');return ;}
+		if(!character){alert('角色名错误！');return ;}
 		if(typeof game.ykHasCharacter=='function'&&game.ykHasCharacter(character)){alert('您已拥角色【'+get.translation(character.slice(0,character.indexOf('-')))+'】！');return ;}
 		if(typeof character!='string') var character=''+character;
 		if(character.indexOf('qxq_yk')==-1||character.indexOf('-')==-1){
