@@ -13457,7 +13457,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							player.chooseToDiscard('he',1,true);
 							player.draw();
 						}
-						else{
+						else if(lib.card[trigger.player.ykshenming_card]){
 							player.draw();
 						}
 					}
@@ -13465,7 +13465,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						if(lib.card[trigger.player.ykshenming_card]&&lib.card[trigger.player.ykshenming_card].type=='basic'){
 							player.draw();
 						}
-						else{
+						else if(lib.card[trigger.player.ykshenming_card]){
 							player.recover();
 						}
 						if(!trigger.player.ykshenming_beGuessed){
