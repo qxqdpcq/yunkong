@@ -13452,13 +13452,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					if(result.control==event.choose1){
 						trigger.cancel();
 						trigger._triggered=null;
-						game.log('<span class="bluetext">'+get.translation(trigger.player.name)+'</span>的用牌<span class="yellowtext">'+get.translation(trigger.player.ykshenming_card)+'</span>被猜测成功，本次出牌无效！');
 						if(lib.card[trigger.player.ykshenming_card]&&lib.card[trigger.player.ykshenming_card].type=='basic'){
 							player.chooseToDiscard('he',1,true);
 							player.draw();
 						}
 						else if(lib.card[trigger.player.ykshenming_card]){
 							player.draw();
+						}
+						else{
+							event.finish();
+							return ;
 						}
 					}
 					else if(result.control==event.choose2){
@@ -13468,6 +13471,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						else if(lib.card[trigger.player.ykshenming_card]){
 							player.recover();
 						}
+						else{
+							event.finish();
+							return ;
+						}
 						if(!trigger.player.ykshenming_beGuessed){
 							trigger.player.ykshenming_beGuessed=true;
 							player.yk_mingyun=(player.yk_mingyun||0);
@@ -13475,6 +13482,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							player.yk_mingyun=Math.min(player.yk_mingyun,7);
 						}
 					}
+					game.log('<span class="bluetext">'+get.translation(trigger.player.name)+'</span>的用牌<span class="yellowtext">'+get.translation(trigger.player.ykshenming_card)+'</span>被猜测成功，本次出牌无效！');
 					player.popup('神命');
 					delete trigger.player.ykshenming_card;
 					trigger.player.ykshenming_card=null;
