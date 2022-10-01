@@ -14086,7 +14086,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykwujian_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'无剑Lv5.未装备武器时，每当你因此技能失去最后一张手牌，你立即摸一张</font>';
 	lib.translate['ykjuejian']='绝剑';
 	lib.translate['ykjuejian_info']='<small><i>————剑既出，断无收回之理。</i></small><br>你有武器牌且使用“杀”时，自动消耗35术法值，令此“杀”无视防具。';
-	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+=((lib.config['yk_ykjuejian_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'绝剑</font>';
+	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br><br>'+((lib.config['yk_ykjuejian_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'绝剑</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykjuejian_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'绝剑Lv1.每次发动此技能，回复10术法值</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykjuejian_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'绝剑Lv2.每次发动此技能，回复35真气值</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykjuejian_rank']||0)>=3?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'绝剑Lv3.每次发动此技能，有15%概率摸一张牌</font>';
@@ -14094,12 +14094,13 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykjuejian_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'绝剑Lv5.若你打出的“杀”为黑色，则有20%概率获得一点护甲</font>';
 	lib.translate['ykshilie']='时裂';
 	lib.translate['ykshilie_info']='<small><i>————此乃超越天道之一剑，惊艳万古，即便是道则亦不能阻之！<br>巫王玄月集精气神，斩出超越常理的一剑，甚至割裂了时空！</i></small><br>出牌阶段限一次，消耗300术法值打出一张不计入出杀次数且不可被响应的“杀”，此杀造成伤害时为目标附加【时之裂隙】效果：该角色不能打出和响应任何牌，暂时失去所有技能且在此效果结束前迟滞所有伤害、回复/流失体力、摸/弃牌、增/减体力上限事件的结算直到其回合开始时或你发动第二段斩击【时裂·断绝】时消除此效果，消除时统一结算迟滞期间累积的所有事件。直到该角色回合开始前，你可于任意事件发生时发动【时裂·断绝】';
-	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+=((lib.config['yk_ykshilie_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'时裂</font>';
+	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br><br>'+((lib.config['yk_ykshilie_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'时裂</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykshilie_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'时裂Lv1.每次发动此技能时，回复75真气值</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykshilie_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'时裂Lv2.每次发动此技能时，回复50术法值</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykshilie_rank']||0)>=3?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'时裂Lv3.此杀造成伤害时，有50%概率清除目标所有护甲</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykshilie_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'时裂Lv4.此杀造成伤害时，有30%概率弃置目标所有牌</font>';
 	lib.translate['qxq_yk_wuwangxuanyue_ykIntroduce']+='<br>'+((lib.config['yk_ykshilie_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'时裂Lv5.此杀造成伤害时，有25%概率为目标附加翻面效果</font>';
+	
 	//命运
 	lib.translate['ykshenming']='神命';
 	lib.translate['ykshenming_info']='牌堆顶的x张牌始终对你可见（x为“命”的数量，“命”上限为7个），其他角色的回合开始/回合结束后，你可以猜测一种牌名，若目标在直到其回合结束/回合开始前期间使用此牌，则你可执行以下一项：1、基本牌：令此牌失效，你弃置一张牌并摸一张牌，或令此牌继续生效，你摸一张牌；2、非基本牌：令此牌失效，你摸一张牌，或令此牌继续生效，你回复一点体力；若期间目标未使用此牌，则你失去一个“命”；猜中非基本牌名时，若该角色此前未被猜中过任何非基本牌型且未被【天算】猜中过任何牌，则你获得一个“命”。';
@@ -14111,7 +14112,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykshenming_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'神命Lv5.猜测目标用牌成功时可再次猜测</font>';
 	lib.translate['yktiansuan']='天算';
 	lib.translate['yktiansuan_info']='其他角色的摸牌阶段开始时，你可以选择猜测其即将获得的牌名，若其中有与你猜测相同牌名的牌，你可以弃置等量牌，立即获得这些牌，或选择用任意一张手牌代替其中一张牌并对其造成一点伤害；若该角色此前未被【神命】猜中过任何非基本牌型且未被【天算】猜中过任何牌，则你获得一个“命”。';
-	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'天算</font>';
+	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br><br>'+((lib.config['yk_yktiansuan_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'天算</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv1.选择获得牌时，额外回复术法值20点</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv2.选择获得牌时，额外回复真气值50点</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=3?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv3.选择获得牌时，额外摸一张牌</font>';
@@ -14119,7 +14120,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv5.选择替换牌时，50%概率回复一点体力</font>';
 	lib.translate['ykmingyunInterweave']='命运';
 	lib.translate['ykmingyunInterweave_info']='使命技，当你首次进入濒死状态时失去此技能并减一点体力上限，若此时你的“命”数量超过5，则你增加一点体力上限并回复至满体力，获得技能「交织」，否则你回复体力值至1。「交织」：即时技，一名其他角色回合结束后，你从因其打出或丢弃进入弃牌堆的牌中获得一张牌，然后将剩余牌以任意顺序置于牌堆顶或牌堆底或置入弃牌堆，即时效果：无法对同一角色连续使用此技能，你可以于一名其他角色回合内的任意时刻发动，令其弃置身上所有牌并摸等量牌，若其因此而弃置的装备牌数不少于两张，你流失一点体力并摸两张牌，否则你弃置两张牌并回复一点体力。';
-	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'命运</font>';
+	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br><br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'命运</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv1.触发使命技时，摸一张牌</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv2.触发使命技时，回复400点真气值</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=3?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv3.触发使命技时，回复200点术法值</font>';
