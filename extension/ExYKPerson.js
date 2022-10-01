@@ -13727,6 +13727,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if((lib.config['yk_yktiansuan_rank']||0)>=1) player.ykRecover('Mp',20);
 				if((lib.config['yk_yktiansuan_rank']||0)>=2) player.ykRecover('Defend',50);
 				if((lib.config['yk_yktiansuan_rank']||0)>=3) player.draw();
+				trigger.cards=event.rest;
 				event.finish();
 				return ;
 			}
