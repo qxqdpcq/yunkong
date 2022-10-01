@@ -13428,7 +13428,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					var use_card;
 					if(trigger.cards) use_card=trigger.cards[0];
 					else use_card=trigger.card;
-					if(trigger.name=='useCard'&&trigger.player.ykshenming_card&&trigger.player.ykshenming_card==use_card){
+					if(trigger.name=='useCard'&&trigger.player.ykshenming_card&&use_card&&trigger.player.ykshenming_card==use_card.name){
 						event.target=trigger.player;
 						event.choose1='令【'+get.translation(trigger.player.name)+'】的【'+get.translation(trigger.player.ykshenming_card)+'】无效';
 						event.choose2='令【'+get.translation(trigger.player.name)+'】的【'+get.translation(trigger.player.ykshenming_card)+'】继续生效';
