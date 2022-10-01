@@ -101,6 +101,9 @@ game.YK_qxq_yk_tian=[
 	'qxq_yk_tian_huayanxiaozhu.jpg',
 	'qxq_yk_tian_guanghanzhexian.jpg',
 ];
+game.YK_qxq_yk_mingyun=[
+	'qxq_yk_mingyun_moouyuezhang.jpg';
+];
 	var YK_Text=document.createElement("div");
 	var YK_Text_style={
 		width:"calc(25%)",
