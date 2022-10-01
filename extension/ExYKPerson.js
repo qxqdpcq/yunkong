@@ -13304,11 +13304,12 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			global:["phaseZhunbeiBegin","phaseAfter"],
 		},
 		filter:(event,player)=>{
-			return event.player!=player;
+			if(player.ykConsume('Mp',25)) return event.player!=player;
 		},
 		forced:true,
 		content:()=>{
 			"step 0"
+			player.ykConsume('Mp',25);
 			window.yk_findCard=()=>{
 				event.value=input.value;
 				alert('输入关键词【'+event.value+'】成功！');
@@ -13587,6 +13588,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			global:["gainBegin","phaseDrawBefore"],
 		},
 		filter:(event,player)=>{
+			if(!player.ykConsume('Mp',40)) return ;
 			if(event.name=='gain'){
 				return event.getParent().getParent().name=='phaseDraw'&&event.player!=player;
 			}
@@ -13595,6 +13597,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		forced:true,
 		content:()=>{
 			"step 0"
+			player.ykConsume('Mp',40);
 			if(trigger.name=='gain') event.goto(4);
 			"step 1"
 			if(!trigger.num) return ;
@@ -13790,6 +13793,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							window['ykinterweave_actual_'+player.name].owner=player.name;
 							window['ykinterweave_actual_'+player.name].owner_pl=player;
 							window['ykinterweave_actual_'+player.name].onclick=function(){
+								if(!this.owner_pl.ykConsume('Mp',75)){
+									alert('术法值不足！');
+									return ;
+								}
 								if(window['ykinterweave_actual_'+this.owner].target&&window['ykinterweave_actual_'+this.owner].target.playerid==_status.currentPhase.playerid){
 									alert('不可连续对【'+get.translation(_status.currentPhase.name)+'】发动');
 									return ;
@@ -13806,6 +13813,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 									current.discard(cards);
 									current.draw(cards.length);
 									for(var i of cards) if(i.type=='equip') equip_num++;
+									player.ykConsume('Mp',75);
 									if(equip_num>=2){
 										player.loseHp();
 										player.draw(2);
@@ -13828,23 +13836,26 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 									if(!ykAI_thinkInterVal.player) return ;
 									game.ykAI_think(ykAI_thinkInterVal.player,get.rand(60,360)*1000);
 									if((get.attitude(ykAI_thinkInterVal.player,_status.currentPhase)<0&&_status.currentPhase.getCards('e')>=2)||(get.attitude(ykAI_thinkInterVal.player,_status.currentPhase)>0&&_status.currentPhase.getCards('e')==0)){
-										var next = game.createEvent('interweave');
-										next.setContent(function(){
-											var current=_status.currentPhase,cards=current.getCards('he'),equip_num=0;
-											current.discard(cards);
-											current.draw(cards.length);
-											for(var i of cards) if(i.type=='equip') equip_num++;
-											if(equip_num>=2){
-												player.loseHp();
-												player.draw(2);
-											}
-											else{
-												player.chooseToDiscard('he',2,true);
-												player.recover();
-											}
-										});
-										next.set('player',ykAI_thinkInterVal.player);
-										return next;
+										if(player.ykCheckConsume('Mp',player.ykMaxMp/2)){
+											var next = game.createEvent('interweave');
+											next.setContent(function(){
+												var current=_status.currentPhase,cards=current.getCards('he'),equip_num=0;
+												current.discard(cards);
+												current.draw(cards.length);
+												player.ykConsume('Mp',75);
+												for(var i of cards) if(i.type=='equip') equip_num++;
+												if(equip_num>=2){
+													player.loseHp();
+													player.draw(2);
+												}
+												else{
+													player.chooseToDiscard('he',2,true);
+													player.recover();
+												}
+											});
+											next.set('player',ykAI_thinkInterVal.player);
+											return next;
+										}
 									}
 								},time);
 							}
@@ -13856,6 +13867,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						global:["phaseBegin","loseAfter","phaseJieshuAfter"],
 					},
 					filter:(event,player)=>{
+						if(event.name=='phaseJieshu'&&!player.ykCheckConsume('Mp',15)){
+							event.player.yk_mingyun_cardRecord=[];
+							return ;
+						}
 						if(event.name=='lose') return event.player!=player&&_status.currentPhase==event.player;
 						else{
 							if(!event.player.yk_mingyun_cardRecord) return ;
@@ -13873,6 +13888,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							for(var i of trigger.cards) trigger.player.yk_mingyun_cardRecord.push(i);
 						}
 						if(trigger.name=='phaseJieshu'&&trigger.player.yk_mingyun_cardRecord.length){
+							player.ykConsume('Mp',15);
 							event.list=[];
 							for(var i of trigger.player.yk_mingyun_cardRecord) if(get.position(i)=='d') event.list.push(i);
 							game.cardsGotoOrdering(event.list);
@@ -14103,7 +14119,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	
 	//命运
 	lib.translate['ykshenming']='神命';
-	lib.translate['ykshenming_info']='牌堆顶的x张牌始终对你可见（x为“命”的数量，“命”上限为7个），其他角色的回合开始/回合结束后，你可以猜测一种牌名，若目标在直到其回合结束/回合开始前期间使用此牌，则你可执行以下一项：1、基本牌：令此牌失效，你弃置一张牌并摸一张牌，或令此牌继续生效，你摸一张牌；2、非基本牌：令此牌失效，你摸一张牌，或令此牌继续生效，你回复一点体力；若期间目标未使用此牌，则你失去一个“命”；猜中非基本牌名时，若该角色此前未被猜中过任何非基本牌型且未被【天算】猜中过任何牌，则你获得一个“命”。';
+	lib.translate['ykshenming_info']='牌堆顶的x张牌始终对你可见（x为“命”的数量，“命”上限为7个），其他角色的回合开始/回合结束后，你可以消耗25术法值，猜测一种牌名，若目标在直到其回合结束/回合开始前期间使用此牌，则你可执行以下一项：1、基本牌：令此牌失效，你弃置一张牌并摸一张牌，或令此牌继续生效，你摸一张牌；2、非基本牌：令此牌失效，你摸一张牌，或令此牌继续生效，你回复一点体力；若期间目标未使用此牌，则你失去一个“命”；猜中非基本牌名时，若该角色此前未被猜中过任何非基本牌型且未被【天算】猜中过任何牌，则你获得一个“命”。';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']=((lib.config['yk_ykshenming_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'神命</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykshenming_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'神命Lv1.游戏开始时增加100点术法值上限</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykshenming_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'神命Lv2.游戏开始时增加100点真气值上限</font>';
@@ -14111,7 +14127,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykshenming_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'神命Lv4.游戏开始时获得两点护甲</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykshenming_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'神命Lv5.猜测目标用牌成功时可再次猜测</font>';
 	lib.translate['yktiansuan']='天算';
-	lib.translate['yktiansuan_info']='其他角色的摸牌阶段开始时，你可以选择猜测其即将获得的牌名，若其中有与你猜测相同牌名的牌，你可以弃置等量牌，立即获得这些牌，或选择用任意一张手牌代替其中一张牌并对其造成一点伤害；若该角色此前未被【神命】猜中过任何非基本牌型且未被【天算】猜中过任何牌，则你获得一个“命”。';
+	lib.translate['yktiansuan_info']='其他角色的摸牌阶段开始时，你可以消耗40术法值，选择猜测其即将获得的牌名，若其中有与你猜测相同牌名的牌，你可以弃置等量牌，立即获得这些牌，或选择用任意一张手牌代替其中一张牌并对其造成一点伤害；若该角色此前未被【神命】猜中过任何非基本牌型且未被【天算】猜中过任何牌，则你获得一个“命”。';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br><br>'+((lib.config['yk_yktiansuan_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'天算</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv1.选择获得牌时，额外回复术法值20点</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv2.选择获得牌时，额外回复真气值50点</font>';
@@ -14119,7 +14135,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv4.选择替换牌时，额外摸一张牌</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_yktiansuan_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天算Lv5.选择替换牌时，50%概率回复一点体力</font>';
 	lib.translate['ykmingyunInterweave']='命运';
-	lib.translate['ykmingyunInterweave_info']='使命技，当你首次进入濒死状态时失去此技能并减一点体力上限，若此时你的“命”数量超过5，则你增加一点体力上限并回复至满体力，获得技能「交织」，否则你回复体力值至1。「交织」：即时技，一名其他角色回合结束后，你从因其打出或丢弃进入弃牌堆的牌中获得一张牌，然后将剩余牌以任意顺序置于牌堆顶或牌堆底或置入弃牌堆，即时效果：无法对同一角色连续使用此技能，你可以于一名其他角色回合内的任意时刻发动，令其弃置身上所有牌并摸等量牌，若其因此而弃置的装备牌数不少于两张，你流失一点体力并摸两张牌，否则你弃置两张牌并回复一点体力。';
+	lib.translate['ykmingyunInterweave_info']='使命技，当你首次进入濒死状态时失去此技能并减一点体力上限，若此时你的“命”数量超过5，则你增加一点体力上限并回复至满体力，获得技能「交织」，否则你回复体力值至1。「交织」：即时技，一名其他角色回合结束后，你可以消耗15术法值，从因其打出或丢弃进入弃牌堆的牌中获得一张牌，然后将剩余牌以任意顺序置于牌堆顶或牌堆底或置入弃牌堆，即时效果：无法对同一角色连续使用此技能，你可以消耗75术法值，于一名其他角色回合内的任意时刻发动，令其弃置身上所有牌并摸等量牌，若其因此而弃置的装备牌数不少于两张，你流失一点体力并摸两张牌，否则你弃置两张牌并回复一点体力。';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br><br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'命运</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv1.触发使命技时，摸一张牌</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv2.触发使命技时，回复400点真气值</font>';
