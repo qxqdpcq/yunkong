@@ -24,6 +24,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_kongshanlingxue:["female",3,["ykfuji"]],
 		qxq_yk_fuling:["female",3,["yktianyi","ykwuji"]],
 		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
+		qxq_yk_mingyun:["female",3,["ykshenming","yktiansuan","ykmingyunInterweave"]],
 	}
 	//升级技能upGradeSkill--------------技能格式：skillname_rank---------例：法则天定0级------------fazetianding_0-----用法：game.upGradeSkill('qxq_yk_yanmengyuejian','fazetianding');
 	game.upGradeSkill=function(skillname,upnum){
