@@ -13721,7 +13721,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			if(result.control==event.choose1){
 				player.chooseToDiscard('he',event.list.length,true);
-				player.gain(event.list)._triggered=null;
+				var listx=[];
+				for(var m of event.list) listx.push(game.createCard(m[2],m[0],m[1],m[3]));
+				player.gain(listx)._triggered=null;
 				if((lib.config['yk_yktiansuan_rank']||0)>=1) player.ykRecover('Mp',20);
 				if((lib.config['yk_yktiansuan_rank']||0)>=2) player.ykRecover('Defend',50);
 				if((lib.config['yk_yktiansuan_rank']||0)>=3) player.draw();
