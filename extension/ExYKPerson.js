@@ -13447,7 +13447,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						}
 						return ;
 					}
-					if(trigger.name!='useCard'){event.finish();return ;}
+					if(!event.choose1){event.finish();return ;}
 					'step 1'
 					if(result.control==event.choose1){
 						trigger.cancel();
