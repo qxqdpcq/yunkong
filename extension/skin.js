@@ -316,7 +316,15 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				info:"",
 				order:1,//显示顺序，号越小越前面。
 				skill:{
-					'skillname':{
+					'ykshenming':{
+						order:1,
+						content:'',
+					},
+					'yktiansuan':{
+						order:1,
+						content:'',
+					},
+					'ykinterweave':{
 						order:1,
 						content:'',
 					},
