@@ -13836,7 +13836,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 									if(!ykAI_thinkInterVal.player) return ;
 									game.ykAI_think(ykAI_thinkInterVal.player,get.rand(60,360)*1000);
 									if((get.attitude(ykAI_thinkInterVal.player,_status.currentPhase)<0&&_status.currentPhase.getCards('e')>=2)||(get.attitude(ykAI_thinkInterVal.player,_status.currentPhase)>0&&_status.currentPhase.getCards('e')==0)){
-										if(player.ykCheckConsume('Mp',player.ykMaxMp/2)){
+										if(ykAI_thinkInterVal.player.ykCheckConsume('Mp',player.ykMaxMp/2)&&ykAI_thinkInterVal.player.ykCheckConsume('Mp',75)){
 											var next = game.createEvent('interweave');
 											next.setContent(function(){
 												var current=_status.currentPhase,cards=current.getCards('he'),equip_num=0;
