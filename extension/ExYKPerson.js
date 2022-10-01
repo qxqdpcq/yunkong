@@ -13486,11 +13486,11 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					player.popup('神命');
 					delete trigger.player.ykshenming_card;
 					trigger.player.ykshenming_card=null;
+					"step 2"
 					if((lib.config['yk_ykshenming_rank']||0)<5){
 						event.finish();
 						return ;
 					}
-					"step 2"
 					var dialog=ui.create.dialog('<br>【神命】<br>猜测【'+get.translation(_status.currentPhase)+'】会使用的卡牌',[[['','','基本牌'],['','','锦囊牌'],['','','延时锦囊牌'],['','','装备牌'],['','','其他牌']],'vcard']);
 					dialog.add('<br>输入卡牌名称关键词并确定（关键词可为空）');
 					var div=ui.create.div();
