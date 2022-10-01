@@ -18,6 +18,16 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		}
 		return http.status != 404;
 	}
+	if(!window.ykFileExist(lib.assetURL+'extension/云空/skin.js')){
+		setTimeout(function(){
+			try{game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/skin.js',function(){},function(){});}catch(e){console.log(e);};
+		},10000);
+	}
+	if(!window.ykFileExist(lib.assetURL+'extension/云空/yk2.css')){
+		setTimeout(function(){
+			try{game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/yk2.css',function(){},function(){});}catch(e){console.log(e);};
+		},10000);
+	}
 	lib.yk_personInfo={
 		qxq_yk_xiaoqiao:["female",3,["yktianxiang","ykzhuyan","ykpiaoling"]],
 		qxq_yk_yanmengyuejian:["female",3,["ykshimeng","ykyueyan"]],
