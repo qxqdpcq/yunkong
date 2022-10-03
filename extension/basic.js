@@ -741,7 +741,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			window.yk_clickFK(div);
 		}
 		lib.setPopped(ui.ykSpecialCode,function(){
-			var uiintro=ui.create.div('.menu');
+			var uiintro=ui.create.dialog('');
 			uiintro.innerHTML='点击按钮打开兑换界面';
 			return uiintro;
 		});
