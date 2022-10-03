@@ -726,6 +726,19 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				};
 			};
 			uiintro.add(div);
+			ui.ykSpecialCode.uiintro=uiintro;
+			ui.ykSpecialCode.onclick=function(){
+				if(this.uiintro&&!this.uiintro.isShow){
+					this.uiintro.show();
+					this.uiintro.isShow=true;
+				}
+				else if(this.uiintro){
+					this.uiintro.rehide();
+					this.uiintro=null;
+				}
+			}
+			uiintro.rehide=uiintro.hide;
+			uiintro.hide=()=>{};
 			return uiintro;
 		});
 	});
