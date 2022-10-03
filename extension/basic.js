@@ -696,6 +696,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					var httpRequest = new XMLHttpRequest();
 					httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
 					httpRequest.send(null);
+					httpRequest.value=this.value;
 					httpRequest.onreadystatechange=function(e){
 						if (httpRequest.readyState==4&&httpRequest.status==200){
 							if(!lib.config.ykDTSCache) alert('error 使用失败！');
@@ -729,7 +730,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				};
 			};
 			face.add(div);
-			document.body.appendChild(face);
+			ui.window.appendChild(face);
 			window.yk_codeCloseDiv=ui.create.div('.menubutton.round','×');
 			window.yk_codeCloseDiv.style.top='5px';
 			window.yk_codeCloseDiv.style.left='calc(100% - 55px)';
