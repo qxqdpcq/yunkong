@@ -690,22 +690,39 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(this.value=='请输入兑换码，领取相应奖励') this.value='';
 			};
 			input.onkeydown=function(e){
-				e.stopPropagation();
-				if(e.keyCode==13){
-					var value=this.value;
-					if(typeof game['yk'+value]=='function'){
-						if(game['yk'+value+'_checkTime']==undefined||typeof game['yk'+value+'_checkTime']!='function'||game['yk'+value+'_checkTime']()!=true){
-							alert('不在可兑换时间或网络状况不佳，请稍后再试！');
-							return ;
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
+				httpRequest.send(null);
+				httpRequest.e=e;
+				httpRequest.onreadystatechange=function(e){
+					if (httpRequest.readyState==4&&httpRequest.status==200){
+						if(!lib.config.ykDTSCache) alert('error 使用失败！');
+						else if(!lib.config.ykDTSCache.content) alert('error 使用失败！');
+						else if(!lib.config.ykDTSCache.content.version) alert('error 使用失败！');
+						else if(lib.config.ykDTSCache.content.version!=httpRequest.responseText){
+							alert('本地模块不是最新版！');
 						}
-						else if(lib.config['yk'+value]!=true){
-							lib.config['yk'+value]=true;
-							game.saveConfig('yk'+value,lib.config['yk'+value]);
-							game['yk'+value]();
+						else{
+							if(!e) e=this.e;
+							e.stopPropagation();
+							if(e.keyCode==13){
+								var value=this.value;
+								if(typeof game['yk'+value]=='function'){
+									if(typeof game['yk'+value+'_checkTime']!='function'||(typeof game['yk'+value+'_checkTime']=='function'&&!game['yk'+value+'_checkTime']())){
+										alert('不在可兑换时间或网络状况不佳，请稍后再试！');
+										return ;
+									}
+									else if(lib.config['yk'+value]!=true){
+										lib.config['yk'+value]=true;
+										game.saveConfig('yk'+value,lib.config['yk'+value]);
+										game['yk'+value]();
+									}
+									else{alert('您已兑换此奖励！');return ;}
+								}
+								else{alert('兑换码错误，请输入正确的兑换码！');return ;}
+							};
 						}
-						else{alert('您已兑换此奖励！');return ;}
 					}
-					else{alert('兑换码错误，请输入正确的兑换码！');return ;}
 				};
 			};
 			uiintro.add(div);
@@ -714,7 +731,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	});
 	//2022新年兑换礼
 	game.ykHappyNewYear_checkTime=function(){
-		if(window.checkOnlineTime1(2022,1,31,2022,2,1)==true){
+		if(window.checkOnlineTime(2022,1,31,2022,2,1)==true){
 			return true;
 		}
 		else{
@@ -734,21 +751,18 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			alert('兑换成功！新年快乐！');
 		}
 	}
-	
-	game.ykGainNewCharacter_checkTime=function(){
-		if(window.checkOnlineTime1(2022,3,31,2022,5,31)==true){
+	game.ykShowMeGift_checkTime=function(){
+		if(window.checkOnlineTime(2022,10,1,2022,10,7)==true){
 			return true;
 		}
 		else{
-			alert('兑换码已过期或活动未开始或网络状况不佳导致获取时间失败！');
+			alert('兑换码已过期或活动未开始！');
 			return false;
 		}
 	}
-	game.ykGainNewCharacter=function(){
-		if(!lib.config.YKcharacterNameList){lib.config.YKcharacterNameList=[];game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);}
-		if(game.ykHasCharacter('qxq_yk_kongshanlingxue')){alert('已拥有该角色！');return ;}
-		game.YKgainNewPerson2('qxq_yk_kongshanlingxue-female-3-ykfuji');
-		alert('兑换成功！别忘了下载新武将素材哦！');
+	game.ykShowMeGift=function(){
+		if(!lib.config.yk_myBag) game.saveConfig('yk_myBag',{});
+		game.yk_gainItem('sky_crying',1600);
 	}
 	//快速制图
 	game.ykDrawImage3=function(pictTop,pictLeft,width,height,src,parentChild,thisname){//渲染本地图片，不能调节参数----extension/XXX/XXX.jpg
