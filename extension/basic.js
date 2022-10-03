@@ -743,7 +743,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		lib.setPopped(ui.ykSpecialCode,function(){
 			var uiintro=ui.create.dialog('hidden');
 			uiintro.style.backgroundColor='black';
-			uiintro.style.opacity:0.7;
+			uiintro.style.opacity=0.7;
 			uiintro.innerHTML='<font color=white>点击按钮打开兑换界面</font>';
 			return uiintro;
 		});
