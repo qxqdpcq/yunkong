@@ -693,40 +693,39 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			input.onkeydown=function(e){
 				e.stopPropagation();
 				if(e.keyCode==13){
-					window.yk_checkSpecialCodeBool=true;
-				};
-				var httpRequest = new XMLHttpRequest();
-				httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
-				httpRequest.send(null);
-				httpRequest.onreadystatechange=function(e){
-					if (httpRequest.readyState==4&&httpRequest.status==200){
-						if(!lib.config.ykDTSCache) alert('error 使用失败！');
-						else if(!lib.config.ykDTSCache.content) alert('error 使用失败！');
-						else if(!lib.config.ykDTSCache.content.version) alert('error 使用失败！');
-						else if(lib.config.ykDTSCache.content.version!=httpRequest.responseText){
-							alert('本地模块不是最新版！');
-						}
-						else if(window.yk_checkSpecialCodeBool==true){
-							var value=this.value;
-							if(typeof game['yk'+value]=='function'){
-								if(typeof game['yk'+value+'_checkTime']!='function'||(typeof game['yk'+value+'_checkTime']=='function'&&!game['yk'+value+'_checkTime']())){
-									alert('不在可兑换时间或网络状况不佳，请稍后再试！');
-									return ;
-								}
-								else if(lib.config['yk'+value]!=true){
-									lib.config['yk'+value]=true;
-									game.saveConfig('yk'+value,lib.config['yk'+value]);
-									game['yk'+value]();
-								}
-								else{alert('您已兑换此奖励！');return ;}
-								if(window.yk_codeCloseDiv){
-									window.yk_codeCloseDiv.onclick();
-									window.yk_codeCloseDiv=null;
-								}
+					var httpRequest = new XMLHttpRequest();
+					httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
+					httpRequest.send(null);
+					httpRequest.onreadystatechange=function(e){
+						if (httpRequest.readyState==4&&httpRequest.status==200){
+							if(!lib.config.ykDTSCache) alert('error 使用失败！');
+							else if(!lib.config.ykDTSCache.content) alert('error 使用失败！');
+							else if(!lib.config.ykDTSCache.content.version) alert('error 使用失败！');
+							else if(lib.config.ykDTSCache.content.version!=httpRequest.responseText){
+								alert('本地模块不是最新版！');
 							}
-							else{alert('兑换码错误，请输入正确的兑换码！');return ;}
+							else {
+								var value=this.value;
+								if(typeof game['yk'+value]=='function'){
+									if(typeof game['yk'+value+'_checkTime']!='function'||(typeof game['yk'+value+'_checkTime']=='function'&&!game['yk'+value+'_checkTime']())){
+										alert('不在可兑换时间或网络状况不佳，请稍后再试！');
+										return ;
+									}
+									else if(lib.config['yk'+value]!=true){
+										lib.config['yk'+value]=true;
+										game.saveConfig('yk'+value,lib.config['yk'+value]);
+										game['yk'+value]();
+									}
+									else{alert('您已兑换此奖励！');return ;}
+									if(window.yk_codeCloseDiv){
+										window.yk_codeCloseDiv.onclick();
+										window.yk_codeCloseDiv=null;
+									}
+								}
+								else{alert('兑换码错误，请输入正确的兑换码！');return ;}
+							}
 						}
-					}
+					};
 				};
 			};
 			face.add(div);
