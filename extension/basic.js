@@ -672,7 +672,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		ui.ykSpecialCode.innerHTML="<body><samp id='兑换码'>兑换码</samp></body><style>#兑换码{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
 		ui.ykSpecialCode.onclick=function(){
 			var face=ui.create.dialog('hidden');
-			face.style.cssText='height:100px,width:150px;left:calc(100% - 75px);top:calc(100% - 50px);z-index:9999;border-radius:8px;background-color:black;opacity:0.7;';
+			face.style.cssText='height:100px;width:150px;left:calc( 100% - 75px );top:calc( 100% - 50px );z-index:9999;border-radius:8px;background-color:black;opacity:0.7;';
 			face.add('<font color=white>兑换码</font>');
 			var div=ui.create.div();
 			div.style.height='22px';
@@ -692,6 +692,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			};
 			input.onkeydown=function(e){
 				e.stopPropagation();
+				if(e.keyCode==13){
+					window.yk_checkSpecialCodeBool=true;
+				};
 				var httpRequest = new XMLHttpRequest();
 				httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
 				httpRequest.send(null);
@@ -703,27 +706,25 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						else if(lib.config.ykDTSCache.content.version!=httpRequest.responseText){
 							alert('本地模块不是最新版！');
 						}
-						else{
-							if(e.keyCode==13){
-								var value=this.value;
-								if(typeof game['yk'+value]=='function'){
-									if(typeof game['yk'+value+'_checkTime']!='function'||(typeof game['yk'+value+'_checkTime']=='function'&&!game['yk'+value+'_checkTime']())){
-										alert('不在可兑换时间或网络状况不佳，请稍后再试！');
-										return ;
-									}
-									else if(lib.config['yk'+value]!=true){
-										lib.config['yk'+value]=true;
-										game.saveConfig('yk'+value,lib.config['yk'+value]);
-										game['yk'+value]();
-									}
-									else{alert('您已兑换此奖励！');return ;}
-									if(window.yk_codeCloseDiv){
-										window.yk_codeCloseDiv.onclick();
-										window.yk_codeCloseDiv=null;
-									}
+						else if(window.yk_checkSpecialCodeBool==true){
+							var value=this.value;
+							if(typeof game['yk'+value]=='function'){
+								if(typeof game['yk'+value+'_checkTime']!='function'||(typeof game['yk'+value+'_checkTime']=='function'&&!game['yk'+value+'_checkTime']())){
+									alert('不在可兑换时间或网络状况不佳，请稍后再试！');
+									return ;
 								}
-								else{alert('兑换码错误，请输入正确的兑换码！');return ;}
-							};
+								else if(lib.config['yk'+value]!=true){
+									lib.config['yk'+value]=true;
+									game.saveConfig('yk'+value,lib.config['yk'+value]);
+									game['yk'+value]();
+								}
+								else{alert('您已兑换此奖励！');return ;}
+								if(window.yk_codeCloseDiv){
+									window.yk_codeCloseDiv.onclick();
+									window.yk_codeCloseDiv=null;
+								}
+							}
+							else{alert('兑换码错误，请输入正确的兑换码！');return ;}
 						}
 					}
 				};
