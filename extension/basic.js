@@ -691,10 +691,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(this.value=='请输入兑换码，领取相应奖励') this.value='';
 			};
 			input.onkeydown=function(e){
+				e.stopPropagation();
 				var httpRequest = new XMLHttpRequest();
 				httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/version.js',true);
 				httpRequest.send(null);
-				httpRequest.e=e;
 				httpRequest.onreadystatechange=function(e){
 					if (httpRequest.readyState==4&&httpRequest.status==200){
 						if(!lib.config.ykDTSCache) alert('error 使用失败！');
@@ -704,8 +704,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							alert('本地模块不是最新版！');
 						}
 						else{
-							if(!e) e=this.e;
-							e.stopPropagation();
 							if(e.keyCode==13){
 								var value=this.value;
 								if(typeof game['yk'+value]=='function'){
@@ -719,6 +717,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 										game['yk'+value]();
 									}
 									else{alert('您已兑换此奖励！');return ;}
+									if(window.yk_codeCloseDiv){
+										window.yk_codeCloseDiv.onclick();
+										window.yk_codeCloseDiv=null;
+									}
 								}
 								else{alert('兑换码错误，请输入正确的兑换码！');return ;}
 							};
@@ -728,17 +730,18 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			};
 			face.add(div);
 			document.body.appendChild(face);
-			var div=ui.create.div('.menubutton.round','×',function(){
+			window.yk_codeCloseDiv=ui.create.div('.menubutton.round','×');
+			window.yk_codeCloseDiv.style.top='5px';
+			window.yk_codeCloseDiv.style.left='calc(100% - 55px)';
+			window.yk_codeCloseDiv.style['zIndex']=1000;
+			window.yk_codeCloseDiv.face=face;
+			window.yk_codeCloseDiv.onclick=function(){
 				this.face.delete();
 				delete this.face;
 				this.face=null;
-			});
-			div.style.top='5px';
-			div.style.left='calc(100% - 55px)';
-			div.style['zIndex']=1000;
-			div.face=face;
-			face.appendChild(div);
-			window.yk_clickFK(div);
+			}
+			face.appendChild(window.yk_codeCloseDiv);
+			window.yk_clickFK(window.yk_codeCloseDiv);
 		}
 		lib.setPopped(ui.ykSpecialCode,function(){
 			var uiintro=ui.create.dialog('hidden');
@@ -782,6 +785,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	game.ykShowMeGift=function(){
 		if(!lib.config.yk_myBag) game.saveConfig('yk_myBag',{});
 		game.yk_gainItem('sky_crying',1600);
+		alert('兑换成功，获得【虚空之泪】x1600！');
 	}
 	//快速制图
 	game.ykDrawImage3=function(pictTop,pictLeft,width,height,src,parentChild,thisname){//渲染本地图片，不能调节参数----extension/XXX/XXX.jpg
