@@ -671,8 +671,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		ui.ykSpecialCode.style.display='';
 		ui.ykSpecialCode.innerHTML="<body><samp id='兑换码'>兑换码</samp></body><style>#兑换码{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
 		ui.ykSpecialCode.onclick=function(){
-			var face=ui.create.dialog('.menu');
-			face.cssText='height:100px,width:150px;left:calc(100% - 75px);top:calc(100% - 50px);z-index:9999;';
+			var face=ui.create.div('.menu');
+			face.cssText='height:100px,width:150px;left:calc(100% - 75px);top:calc(100% - 50px);z-index:9999;border-radius:8px;';
 			face.add('兑换码');
 			var div=ui.create.div();
 			div.style.height='22px';
@@ -741,7 +741,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			window.yk_clickFK(div);
 		}
 		lib.setPopped(ui.ykSpecialCode,function(){
-			var uiintro=ui.create.dialog('.menu');
+			var uiintro=ui.create.div('.menu');
 			uiintro.innerHTML='点击按钮打开兑换界面';
 			return uiintro;
 		});
