@@ -36,24 +36,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
 		qxq_yk_mingyun:["female",3,["ykshenming","yktiansuan","ykmingyunInterweave"]],
 	}
-	//升级技能upGradeSkill--------------技能格式：skillname_rank---------例：法则天定0级------------fazetianding_0-----用法：game.upGradeSkill('qxq_yk_yanmengyuejian','fazetianding');
-	game.upGradeSkill=function(skillname,upnum){
-		if(!skillname) return ;
-		if(!upnum) upnum=1;
-		if(lib.config['yk_'+skillname+'_rank']==undefined) game.saveConfig('yk_'+skillname+'_rank',upnum);
-		else{
-			var rank=parseInt(lib.config['yk_'+skillname+'_rank']);
-			if(rank==5){alert('该技能已达到最大等级！');return ;}
-			if(isNaN(rank)) game.saveConfig('yk_'+skillname+'_rank',upnum);
-			else game.saveConfig('yk_'+skillname+'_rank',rank+upnum);
-		}
-		alert('技能【'+get.translation(skillname)+'】升级成功！当前等级为：Lv'+lib.config['yk_'+skillname+'_rank']+'。即将重启以保存。');
-		if(game.saydpcq&&game.saydpcq!=undefined&&typeof game.saydpcq=='function'){game.saydpcq('技能【'+get.translation(skillname)+'】升级成功！当前等级为：Lv'+lib.config['yk_'+skillname+'_rank']);}
-		if(game.saydpcq&&game.saydpcq!=undefined&&typeof game.saydpcq=='function'){game.saydpcq('即将自动重启以保存！');}
-		setTimeout(function(){
-			game.reload();
-		},3000);
-	}
 	//-----------------------------------提示-----------------------------//
 	/*if(!lib.config['yktips_2022/3/22']){
 		alert('增加【更新日志】和【文件下载】功能啦！详见云空菜单栏。（此提示显示一次后自动不再显示）');
