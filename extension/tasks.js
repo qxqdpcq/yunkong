@@ -9,8 +9,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(!window.playTime) return false;
 					if(window.playTime.days==undefined||window.playTime.months==undefined||window.playTime.years==undefined) return false;
 					if(!lib.config.yk_signIn_date) lib.config.yk_signIn_date={days:[],};
-					if(lib.config.yk_signIn_date.days.indexOf(window.playTime.days)!=-1&&lib.config.yk_signIn_date.months==window.playTime.months&&lib.config.yk_signIn_date.years==window.playTime.years) return false;
-					else return true;
+					if(lib.config.yk_signIn_date.days.indexOf(window.playTime.days)!=-1&&lib.config.yk_signIn_date.months==window.playTime.months&&lib.config.yk_signIn_date.years==window.playTime.years) return true;
+					else return false;
 				},
 				content:()=>{
 					var div=ui.create.div('.menu');
@@ -201,7 +201,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(this.innerHTML.indexOf('活动任务')!=-1) s='others';
 				for(var t in lib.ykTask[s]){
 					var divt=ui.create.div(),t=lib.ykTask[s][t];
-					divt.style.cssText='height:75px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:'+(t.filter()?'yellow':'cyan')+';';
+					divt.style.cssText='height:75px;left:0px;width:100%;top:0px;position:relative;border-radius:8px;background-color:'+(!t.filter()?'yellow':'cyan')+';';
 					window.yktaskList.appendChild(divt);
 					var divt_title=ui.create.div();
 					divt_title.style.cssText='height:30px;left:0px;width:calc(100% - 60px);top:0px;text-align:center;';
@@ -209,9 +209,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					divt.appendChild(divt_title);
 					var divt_content=ui.create.div();
 					divt_content.style.cssText='height:45px;left:0px;width:calc(100% - 60px);top:30px;';
-					divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(t.filter()?'未完成':'已完成')+'）';
+					divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(!t.filter()?'未完成':'已完成')+'）';
 					divt.appendChild(divt_content);
-					if(t.filter()) divt.onclick=t.content;
+					if(!t.filter()) divt.onclick=t.content;
 				}
 			};
 			taskChoose.appendChild(window['choose_'+x]);
