@@ -5391,7 +5391,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					ui.window.appendChild(chooseSkillList);
 					for(var skill of skillList){
 						var divx=ui.create.div('','',function(){
-							var choose=true;
+							var choose=true,character=this.character;
 							if(this.name!='返回'){
 								if(!lib.config.yk_myBag) lib.config.yk_myBag={};
 								if(!lib.config.yk_myBag[character+'_upGradeSkill_stone']||(lib.config.yk_myBag[character+'_upGradeSkill_stone']&&(lib.config.yk_myBag[character+'_upGradeSkill_stone'].num<=0||typeof lib.config.yk_myBag[character+'_upGradeSkill_stone'].num!='number'))){
@@ -5415,6 +5415,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							}
 						});
 						divx.name=skill;
+						divx.character=character;
 						divx.innerHTML='<b>'+get.translation(skill)+(skill=='返回'?'':'&nbspLv'+(lib.config['yk_'+skill+'_rank']||0))+'</b>';
 						divx.style.cssText='height:25px;width:80px;top:20px;left:15px;border-radius:8px;position:relative;text-align:center;';
 						chooseSkillList.appendChild(divx);
