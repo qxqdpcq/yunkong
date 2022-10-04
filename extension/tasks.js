@@ -5,14 +5,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			signIn:{
 				name:'签到',
 				info:'完成每日签到',
-				filter:function(){
+				filter:()=>{
 					if(!window.playTime) return false;
 					if(window.playTime.days==undefined||window.playTime.months==undefined||window.playTime.years==undefined) return false;
 					if(!lib.config.yk_signIn_date) lib.config.yk_signIn_date={days:[],};
 					if(lib.config.yk_signIn_date.days.indexOf(window.playTime.days)!=-1&&lib.config.yk_signIn_date.months==window.playTime.months&&lib.config.yk_signIn_date.years==window.playTime.years) return false;
 					else return true;
 				},
-				content:function(){
+				content:()=>{
 					var div=ui.create.div('.menu');
 					div.style.cssText='height:400px;width:700px;left:calc(50% - 350px);top:calc(50% - 200px);z-index:999999;overflow-y:scroll;';
 					lib.setScroll(div);
@@ -51,7 +51,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								lib.config.yk_signIn_date.years=window.playTime.years;
 								game.saveConfig('yk_signIn_date',lib.config.yk_signIn_date);
 								this.source.delete();
-								alert('签到成功，测试期间暂无奖励哦！');
+								game.yk_gainItem('sky_crying',30);
+								alert('签到成功，获得【虚空之泪】x30！');
 								window['choose_每日任务'].onclick();
 							}
 							divx.style.border='1px solid red';
@@ -63,6 +64,60 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						div.appendChild(divx);
 					}
 				},
+				onover_func:result=>{
+				},
+			},
+			play:{
+				name:'对局',
+				info:'参与一场对局',
+				filter:()=>{
+					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
+					return lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
+				},
+				content:()=>{
+					game.yk_gainItem('sky_crying',30);
+					alert('领取成功，获得【虚空之泪】x30！');
+					window['choose_每日任务'].onclick();
+				},
+				onover_func:result=>{
+					if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
+						if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
+						return ;
+					}
+					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
+					if(!lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+					}
+					if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
+					game.saveConfig('ykDaily_success',lib.config.ykDaily_success);
+				},
+			},
+			success:{
+				name:'对局胜利',
+				info:'取得一场对局胜利',
+				filter:()=>{
+					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
+					return lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
+				},
+				content:()=>{
+					game.yk_gainItem('sky_crying',40);
+					alert('领取成功，获得【虚空之泪】x40！');
+					window['choose_每日任务'].onclick();
+				},
+				onover_func:result=>{
+					if(result){
+						if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
+							if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
+							return ;
+						}
+						if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
+						if(!lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+							lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+						}
+						if(typeof game.sayyk=='function') game.sayyk('已完成今日对局胜利任务，前往任务可获取奖励！');
+						game.saveConfig('ykDaily_success',lib.config.ykDaily_success);
+					}
+				},
 			},
 		},
 		weekly:{
@@ -72,9 +127,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		others:{
 		},
 	}
+	for(var type in lib.ykTask){
+		for(var t in lib.ykTask[type]){
+			if(typeof lib.ykTask[type][t].onover=='function') lib.onover.push(lib.ykTask[type][t].onover);
+		}
+	}
 	window.ykOpenTask=function(){
 		var div=ui.create.div('.menu');
-		div.style.cssText='height:400px;width:500px;top:calc( 50% - 200px );left:calc( 50% - 250px );z-index:9999;';
+		div.style.cssText='height:400px;width:500px;top:calc( 50% - 200px );left:calc( 50% - 250px );z-index:9999;border-radius:8px;';
 		ui.window.appendChild(div);
 		var close=function(){
 			div.delete();
