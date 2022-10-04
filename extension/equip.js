@@ -4525,6 +4525,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			subtype:'抽卡道具',
 			countable:true,//是否可叠加
 			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
+			func:function(){
+				if(typeof window.ykOpenDrawCardPool!='function') alert('模块丢失！');
+				else window.ykOpenDrawCardPool();
+			},
 		},
 		'sky_crying':{
 			grade:'digrade',
@@ -4535,6 +4539,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			subtype:'抽卡道具',
 			countable:true,//是否可叠加
 			destroyable:false,//任务道具此处为fasle，不为false均可丢弃
+			func:function(){
+				if(typeof window.ykOpenDrawCardPool!='function') alert('模块丢失！');
+				else window.ykOpenDrawCardPool();
+			},
 		},
 		'god_crystal':{
 			grade:'godgrade',
