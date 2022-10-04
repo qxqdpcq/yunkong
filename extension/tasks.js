@@ -71,54 +71,70 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				name:'对局',
 				info:'参与一场对局',
 				filter:()=>{
-					if(!lib.config.ykDaily_play) lib.config.ykDaily_play={};
+					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
-					return lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
+					return lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
 				},
 				content:()=>{
-					game.yk_gainItem('sky_crying',30);
-					alert('领取成功，获得【虚空之泪】x30！');
-					window['choose_每日任务'].onclick();
+					if(!lib.config.ykDaily_play) lib.config.ykDaily_play={};
+					if(!lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						game.yk_gainItem('sky_crying',30);
+						alert('领取成功，获得【虚空之泪】x30！');
+						window['choose_每日任务'].onclick();
+						lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+						game.saveConfig('ykDaily_play',lib.config.ykDaily_play);
+					}
+					else{
+						if(typeof game.sayyk=='function') game.sayyk('今日已领取');
+						else alert('今日已领取');
+					}
 				},
 				onover_func:result=>{
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
 						if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
 						return ;
 					}
-					if(!lib.config.ykDaily_play) lib.config.ykDaily_play={};
-					if(!lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
-						lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
+					if(!lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
 					}
 					if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
-					game.saveConfig('ykDaily_play',lib.config.ykDaily_play);
+					game.saveConfig('ykDaily_pre_play',lib.config.ykDaily_pre_play);
 				},
 			},
 			success:{
 				name:'对局胜利',
 				info:'取得一场对局胜利',
 				filter:()=>{
-					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
+					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
-					return lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
+					return lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
 				},
 				content:()=>{
-					game.yk_gainItem('sky_crying',40);
-					alert('领取成功，获得【虚空之泪】x40！');
-					window['choose_每日任务'].onclick();
-				},
-				onover_func:result=>{
-					if(result){
-						if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
-							if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
-							return ;
-						}
-						if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
-						if(!lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
-							lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
-						}
-						if(typeof game.sayyk=='function') game.sayyk('已完成今日对局胜利任务，前往任务可获取奖励！');
+					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
+					if(!lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						game.yk_gainItem('sky_crying',30);
+						alert('领取成功，获得【虚空之泪】x30！');
+						window['choose_每日任务'].onclick();
+						lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
 						game.saveConfig('ykDaily_success',lib.config.ykDaily_success);
 					}
+					else{
+						if(typeof game.sayyk=='function') game.sayyk('今日已领取');
+						else alert('今日已领取');
+					}
+				},
+				onover_func:result=>{
+					if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
+						if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
+						return ;
+					}
+					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
+					if(!lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+					}
+					if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
+					game.saveConfig('ykDaily_pre_success',lib.config.ykDaily_pre_success);
 				},
 			},
 		},
