@@ -1234,7 +1234,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			}
 			else{//切换限定池
 				window.ykDrawCardPool_Switch='special';
-				closeODCP();
+				window.yk_closeODCP();
 				setTimeout(window.ykOpenDrawCardPool,500);
 				
 			}
