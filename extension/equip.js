@@ -5354,7 +5354,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		var chooseList=ui.create.dialog('hidden');
 		chooseList.classList.add('popped');
 		chooseList.classList.add('static');
-		chooseList.style.cssText='height:50%;width:50%;left:25%;top:25%;transition:all 0.5s;text-align:left;overflow-x:hidden;overflow-y:scroll;';
+		chooseList.style.cssText='height:50%;width:50%;left:25%;top:25%;transition:all 0.5s;text-align:left;overflow-x:hidden;overflow-y:scroll;z-index:999999999;';
 		lib.setScroll(chooseList);
 		var info='<b>选择要升级的武将</b><br>';
 		chooseList.innerHTML='<span style="font-size:20px;font-weight:400;font-family:shousha"><b>'+info+'</b></span>';
