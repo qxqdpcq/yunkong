@@ -76,6 +76,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					return lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
 				},
 				content:()=>{
+					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
+					if(!lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						if(typeof game.sayyk=='function') game.sayyk('未完成任务，不能领取奖励！');
+						else alert('未完成任务，不能领取奖励！');
+						return ;
+					}
 					if(!lib.config.ykDaily_play) lib.config.ykDaily_play={};
 					if(!lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
 						game.yk_gainItem('sky_crying',30);
@@ -111,6 +117,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					return lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
 				},
 				content:()=>{
+					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
+					if(!lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
+						if(typeof game.sayyk=='function') game.sayyk('未完成任务，不能领取奖励！');
+						else alert('未完成任务，不能领取奖励！');
+						return ;
+					}
 					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
 					if(!lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
 						game.yk_gainItem('sky_crying',30);
@@ -209,7 +221,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					divt.appendChild(divt_title);
 					var divt_content=ui.create.div();
 					divt_content.style.cssText='height:45px;left:0px;width:calc(100% - 60px);top:30px;';
-					divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(!t.filter()?'未完成':'已完成')+'）';
+					divt_content.innerHTML='<span style="color:black;font-size:18px;font-weight:400;font-family:shousha">'+t.info+'</span>（'+(!t.filter()?'未领取奖励':'已领取奖励')+'）';
 					divt.appendChild(divt_content);
 					if(!t.filter()) divt.onclick=t.content;
 				}
