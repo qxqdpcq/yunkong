@@ -5323,6 +5323,157 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			showupRate4:65.86,
 		},
 	};
+	//升级技能upGradeSkill--------------技能格式：skillname_rank---------例：法则天定0级------------fazetianding_0-----用法：game.upGradeSkill('qxq_yk_yanmengyuejian','fazetianding');
+	game.upGradeSkill=function(skillname,upnum){
+		if(!skillname) return ;
+		if(!upnum) upnum=1;
+		if(lib.config['yk_'+skillname+'_rank']==undefined) game.saveConfig('yk_'+skillname+'_rank',upnum);
+		else{
+			var rank=parseInt(lib.config['yk_'+skillname+'_rank']);
+			if(rank==5){alert('该技能已达到最大等级！');return ;}
+			if(isNaN(rank)) game.saveConfig('yk_'+skillname+'_rank',upnum);
+			else game.saveConfig('yk_'+skillname+'_rank',rank+upnum);
+		}
+		alert('技能【'+get.translation(skillname)+'】升级成功！当前等级为：Lv'+lib.config['yk_'+skillname+'_rank']+'。即将重启以保存。');
+		if(game.saydpcq&&game.saydpcq!=undefined&&typeof game.saydpcq=='function'){game.saydpcq('技能【'+get.translation(skillname)+'】升级成功！当前等级为：Lv'+lib.config['yk_'+skillname+'_rank']);}
+		if(game.saydpcq&&game.saydpcq!=undefined&&typeof game.saydpcq=='function'){game.saydpcq('即将自动重启以保存！');}
+		setTimeout(function(){
+			game.reload();
+		},3000);
+	}
+	//奖励：选择技能升级
+	game.ykUpGradeSkill=function(){
+		var chooseList=ui.create.dialog('hidden');
+		chooseList.classList.add('popped');
+		chooseList.classList.add('static');
+		chooseList.style.cssText='height:50%;width:50%;left:25%;top:25%;transition:all 0.5s;text-align:left;overflow-x:hidden;overflow-y:scroll;';
+		lib.setScroll(chooseList);
+		var info='<b>选择要升级的武将</b><br>';
+		chooseList.innerHTML='<span style="font-size:20px;font-weight:400;font-family:shousha"><b>'+info+'</b></span>';
+		ui.window.appendChild(chooseList);
+		
+		var nameList=[];
+		var bossList=lib.qxq_yk_bossList;
+		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
+			for(var name in lib.character){
+				if(lib.config.YKcharacterNameList[i].indexOf(name)!=-1&&bossList.indexOf(name)==-1){
+					nameList.push(name);
+				}
+			}
+		}
+		for(var i=0;i<nameList.length;i++){
+			var width=200;
+			var height=250;
+			var div=ui.create.div('.menubutton.round','',function(){
+				chooseList.hide();
+				if(window.yunkong_Character.character==undefined){alert('未知错误！');return ;}
+				if(window.yunkong_Character.character[this.name]==undefined){alert('未知错误'+this.name+'！');return ;}
+				var skillList=window.yunkong_Character.character[this.name][3];
+				if(!skillList){alert('该角色暂无技能！');return ;}
+				var selectSkills=function(skillList){
+					if(!Array.isArray(skillList)) skillList=[skillList];
+					if(skillList.indexOf('返回')==-1) skillList.push('返回');
+					var chooseSkillList=ui.create.dialog('hidden');
+					chooseSkillList.classList.add('popped');
+					chooseSkillList.classList.add('static');
+					chooseSkillList.style.cssText='height:50%;width:50%;left:25%;top:25%;transition:all 0.5s;text-align:left;overflow-x:hidden;overflow-y:scroll;';
+					lib.setScroll(chooseSkillList);
+					var info='选择要升级的技能，若要重新选择武将请点击“返回”选项（<b>技能通常上限为5级（Lv5），满级则不会增加！</b>）<br>';
+					chooseSkillList.innerHTML='<span style="font-family:shousha"><b>'+info+'</b></span>';
+					ui.window.appendChild(chooseSkillList);
+					for(var skill of skillList){
+						var divx=ui.create.div('','',function(){
+							var choose=true;
+							if(this.name!='返回'){
+								if(!lib.config.yk_myBag) lib.config.yk_myBag={};
+								if(!lib.config.yk_myBag[i+'_upGradeSkill_stone']||(lib.config.yk_myBag[i+'_upGradeSkill_stone']&&(lib.config.yk_myBag[i+'_upGradeSkill_stone'].num<=0||typeof lib.config.yk_myBag[i+'_upGradeSkill_stone'].num!='number'))){
+									alert('你没有该角色的技能石！（获取：重复获取该角色时自动转化为该角色的技能石）');
+								}
+								else game.upGradeSkill(this.name,1);
+							}
+							else{choose=false;}
+							if(choose==false){
+								chooseSkillList.hide();
+								setTimeout(function(){chooseList.show();},500);
+							}
+							else{
+								chooseList.delete();
+								chooseList=undefined;
+								chooseSkillList.delete();
+								chooseSkillList=undefined;
+							}
+						});
+						divx.name=skill;
+						divx.innerHTML='<b>'+get.translation(skill)+(skill=='返回'?'':'&nbspLv'+(lib.config['yk_'+skill+'_rank']||0))+'</b>';
+						divx.style.cssText='height:25px;width:80px;top:20px;left:15px;border-radius:8px;position:relative;text-align:center;';
+						chooseSkillList.appendChild(divx);
+					}
+				}
+				selectSkills(skillList);
+			});
+			div.style.cssText='height:'+height+'px;width:'+width+'px;top:20px;left:15px;border-radius:8px;position:relative;text-align:center;background-position:center center;';
+			div.setBackground(nameList[i],'character');
+			div.style.backgroundSize='cover';
+			div.name=nameList[i];
+			chooseList.appendChild(div);
+		}
+		var funcOut=function(){
+			chooseList.hide();
+		};
+		var divOut=ui.create.div('.menubutton.round','×',function(){
+			funcOut();
+		});
+		divOut.style.top='5px';
+		divOut.style.left='calc(100% - 55px)';
+		divOut.style['zIndex']=1000;
+		chooseList.appendChild(divOut);
+	};
+	for(var i in window.yunkong_Character.character){
+		var grade,value,translation,introduce,inscription;
+		if(!lib.config.qxq_YK_person.rank[i]){
+			grade='fangrade';
+			value=999;
+		}
+		else if(lib.config.qxq_YK_person.rank[i].indexOf('超稀-限定')!=-1){
+			grade='godgrade';
+			value=48999;
+		}
+		else if(lib.config.qxq_YK_person.rank[i].indexOf('天级')!=-1){
+			grade='tiangrade';
+			value=24999;
+		}
+		else if(lib.config.qxq_YK_person.rank[i].indexOf('地级')!=-1){
+			grade='digrade';
+			value=12999;
+		}
+		else if(lib.config.qxq_YK_person.rank[i].indexOf('玄级')!=-1){
+			grade='xuangrade';
+			value=6999;
+		}
+		else if(lib.config.qxq_YK_person.rank[i].indexOf('黄级')!=-1){
+			grade='huanggrade';
+			value=2999;
+		}
+		else{
+			grade='fangrade';
+			value=999;
+		}
+		translation='【'+get.translation(i)+'】的技能升级石';
+		introduce='蕴含有奇特力量的石头，可将【'+get.translation(i)+'】的技能等级提升一级，使用时将打开技能升级界面。';
+		inscription='';
+		lib.yk_otherItemLibrary[i+'_upGradeSkill_stone']={
+			grade:grade,
+			value:value,
+			translation:translation,
+			introduce:introduce,
+			inscription:inscription,
+			subtype:'强化材料',
+			countable:true,//是否可叠加
+			destroyable:true,//任务道具此处为fasle，不为false均可丢弃
+			func:game.ykUpGradeSkill,
+			image:'upGradeSkill_stone.jpg',
+		};
+	}
 	for(var i in lib.yk_otherItemLibrary){
 		lib.translate[i]=lib.yk_otherItemLibrary[i].translation;
 		lib.translate[i+'_info']=lib.yk_otherItemLibrary.introduce+(lib.yk_otherItemLibrary[i].inscription.length>0?('<br><i><font color=grey>————“'+lib.yk_otherItemLibrary.inscription+'”</font></i>'):'')
