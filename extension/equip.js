@@ -5466,8 +5466,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			grade='fangrade';
 			value=999;
 		}
-		translation='【'+get.translation(i)+'】的技能升级石';
-		introduce='蕴含有奇特力量的石头，可将【'+get.translation(i)+'】的技能等级提升一级，使用时将打开技能升级界面。';
+		translation='<b>'+window.yunkong_Character.translate[i]+'</b>的技能升级石';
+		introduce='蕴含有奇特力量的石头，可将【'+window.yunkong_Character.translate[i]+'】的技能等级提升一级，使用时将打开技能升级界面。';
 		inscription='';
 		lib.yk_otherItemLibrary[i+'_upGradeSkill_stone']={
 			grade:grade,
