@@ -1130,7 +1130,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		if(lib.config.YKcharacterNameList.indexOf(character)!=-1){
 			if(game.sayyk&&typeof game.sayyk=='function'){
 				game.sayyk('您已获得该角色，将自动为您转化为该角色技能升级石！');
-				//game.yk_gainItem(name+'UpSkillStone',1);
+				game.yk_gainItem(character.slice(0,character.indexOf('-'))+'_upGradeSkill_stone',1);
 			}
 			return ;
 		}
