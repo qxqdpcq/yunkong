@@ -5378,7 +5378,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(window.yunkong_Character.character[this.name]==undefined){alert('未知错误'+this.name+'！');return ;}
 				var skillList=window.yunkong_Character.character[this.name][3];
 				if(!skillList){alert('该角色暂无技能！');return ;}
-				var selectSkills=function(skillList){
+				var selectSkills=function(skillList,character){
 					if(!Array.isArray(skillList)) skillList=[skillList];
 					if(skillList.indexOf('返回')==-1) skillList.push('返回');
 					var chooseSkillList=ui.create.dialog('hidden');
@@ -5394,10 +5394,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							var choose=true;
 							if(this.name!='返回'){
 								if(!lib.config.yk_myBag) lib.config.yk_myBag={};
-								if(!lib.config.yk_myBag[i+'_upGradeSkill_stone']||(lib.config.yk_myBag[i+'_upGradeSkill_stone']&&(lib.config.yk_myBag[i+'_upGradeSkill_stone'].num<=0||typeof lib.config.yk_myBag[i+'_upGradeSkill_stone'].num!='number'))){
+								if(!lib.config.yk_myBag[character+'_upGradeSkill_stone']||(lib.config.yk_myBag[character+'_upGradeSkill_stone']&&(lib.config.yk_myBag[character+'_upGradeSkill_stone'].num<=0||typeof lib.config.yk_myBag[character+'_upGradeSkill_stone'].num!='number'))){
 									alert('你没有该角色的技能石！（获取：重复获取该角色时自动转化为该角色的技能石）');
 								}
-								else game.upGradeSkill(this.name,1);
+								else{
+									game.yk_loseItem(character+'_upGradeSkill_stone',1);
+									game.upGradeSkill(this.name,1);
+								}
 							}
 							else{choose=false;}
 							if(choose==false){
@@ -5417,7 +5420,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						chooseSkillList.appendChild(divx);
 					}
 				}
-				selectSkills(skillList);
+				selectSkills(skillList,this.name);
 			});
 			div.style.cssText='height:'+height+'px;width:'+width+'px;top:20px;left:15px;border-radius:8px;position:relative;text-align:center;background-position:center center;';
 			div.setBackground(nameList[i],'character');
