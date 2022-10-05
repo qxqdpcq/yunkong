@@ -202,7 +202,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	for(var type in lib.ykTask){
 		for(var t in lib.ykTask[type]){
-			if(typeof lib.ykTask[type][t].onover=='function') lib.onover.push(lib.ykTask[type][t].onover);
+			if(typeof lib.ykTask[type][t].onover_func=='function') lib.onover.push(lib.ykTask[type][t].onover_func);
 		}
 	}
 	window.ykOpenTask=function(){
