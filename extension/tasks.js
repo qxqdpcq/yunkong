@@ -168,6 +168,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					var last=new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),oneDayTime = 1000*60*60*24,last_other =parseInt(last.getTime()/oneDayTime);
 					var order=parseInt((last_other+4)/7);
 					if(!lib.config.weeklyChallenge_gainReward) lib.config.weeklyChallenge_gainReward={};
+					if(!lib.config.weeklyChallenge_Bool) lib.config.weeklyChallenge_Bool={};
 					if(!lib.config.weeklyChallenge_gainReward[order]&&lib.config.weeklyChallenge_Bool[order]){
 						lib.config.weeklyChallenge_gainReward[order]=true;
 						game.saveConfig('weeklyChallenge_gainReward',lib.config.weeklyChallenge_gainReward);
