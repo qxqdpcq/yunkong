@@ -73,7 +73,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				filter:()=>{
 					if(!lib.config.ykDaily_play) lib.config.ykDaily_play={};
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
-					return !lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
+					return lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
 				},
 				content:()=>{
 					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
@@ -114,7 +114,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				filter:()=>{
 					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
-					return !lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
+					return lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
 				},
 				content:()=>{
 					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
