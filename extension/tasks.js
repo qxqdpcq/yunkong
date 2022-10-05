@@ -238,6 +238,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if(window.yktaskList){
 					window.yktaskList.delete();
 					delete window.yktaskList;
+					window.yktaskList=null;
 				}
 				window.yktaskList=ui.create.div();
 				window.yktaskList.style.cssText='top:0px;height:100%;left:80px;width:calc(100% - 80px);z-index:99999;overflow-y:scroll;';
