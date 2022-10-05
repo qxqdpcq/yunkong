@@ -644,6 +644,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		if(isDuringDate(yearx1+'/'+monthx1+'/'+dayx1,yearx2+'/'+monthx2+'/'+dayx2)) return true;
 		else return false;
 	}
+	window.ykisSameWeek=(first,last)=>{//"year/month/day"
+		var first=new Date(first),last=new Date(last),oneDayTime = 1000*60*60*24,first_count =parseInt(first.getTime()/oneDayTime),last_other =parseInt(last.getTime()/oneDayTime);
+		return parseInt((first_count+4)/7) == parseInt((last_other+4)/7);
+	}
 	//兑换系统
 	if(lib.arenaReady) lib.arenaReady.push(function(){
 		if(window.ykshow_duihuanma) return ;
