@@ -71,9 +71,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				name:'对局',
 				info:'参与一场对局',
 				filter:()=>{
-					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
+					if(!lib.config.ykDaily_play) lib.config.ykDaily_play={};
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
-					return lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
+					return !lib.config.ykDaily_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
 				},
 				content:()=>{
 					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
@@ -112,9 +112,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				name:'对局胜利',
 				info:'取得一场对局胜利',
 				filter:()=>{
-					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
+					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years) return false;
-					return lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]==true;
+					return !lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days];
 				},
 				content:()=>{
 					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
