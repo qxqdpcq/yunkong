@@ -151,6 +151,48 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			},
 		},
 		weekly:{
+			challenge:{
+				name:'挑战胜利',
+				info:'取得一场BOSS挑战胜利',
+				filter:()=>{
+					if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
+						if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
+						return false;
+					}
+					var last=new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),oneDayTime = 1000*60*60*24,last_other =parseInt(last.getTime()/oneDayTime);
+					var order=parseInt((last_other+4)/7);
+					if(!lib.config.weeklyChallenge_gainReward) lib.config.weeklyChallenge_gainReward={};
+					return lib.config.weeklyChallenge_gainReward[order];
+				},
+				content:()=>{
+					var last=new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),oneDayTime = 1000*60*60*24,last_other =parseInt(last.getTime()/oneDayTime);
+					var order=parseInt((last_other+4)/7);
+					if(!lib.config.weeklyChallenge_gainReward) lib.config.weeklyChallenge_gainReward={};
+					if(!lib.config.weeklyChallenge_gainReward[order]&&lib.config.weeklyChallenge_Bool[order]){
+						lib.config.weeklyChallenge_gainReward[order]=true;
+						game.saveConfig('weeklyChallenge_gainReward',lib.config.weeklyChallenge_gainReward);
+						game.yk_gainItem('sky_crying',150);
+						alert('领取成功，获得【虚空之泪】x150！');
+						window['choose_每日任务'].onclick();
+					}
+					else if(typeof game.sayyk=='function') game.sayyk('您未完成任务！');
+				},
+				onover_func:result=>{
+					if(lib.config.mode!='boss') return ;
+					if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
+						if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
+						return ;
+					}
+					if(!lib.config.weeklyChallenge_Bool) lib.config.weeklyChallenge_Bool={};
+					var last=new Date(window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days),oneDayTime = 1000*60*60*24,last_other =parseInt(last.getTime()/oneDayTime);
+					var order=parseInt((last_other+4)/7);
+					if(!lib.config.weeklyChallenge_Bool[order]){
+						lib.config.weeklyChallenge_Bool[order]=true;
+					}
+					if(typeof game.sayyk=='function') game.sayyk('已完成每周挑战任务，前往任务可获取奖励！');
+					game.saveConfig('weeklyChallenge_Bool',lib.config.weeklyChallenge_Bool);
+				},
+			},
 		},
 		monthly:{
 		},
