@@ -36,11 +36,16 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
 		qxq_yk_mingyun:["female",3,["ykshenming","yktiansuan","ykmingyunInterweave"]],
 	}
-	//-----------------------------------提示-----------------------------//
-	/*if(!lib.config['yktips_2022/3/22']){
-		alert('增加【更新日志】和【文件下载】功能啦！详见云空菜单栏。（此提示显示一次后自动不再显示）');
-		game.saveConfig('yktips_2022/3/22',true);
-	}*/
+	//-----------------------------------任务-----------------------------//
+	if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/tasks.js",true);
+	httpRequest.send(null);
+	httpRequest.onreadystatechange=function(){
+		if(httpRequest.readyState==4&&httpRequest.status==200){
+			eval(httpRequest.responseText);
+		}
+	};
 // ---------------------------------------适配十周年用------------------------------------------//
 	game.dpcqHasExtension = function(str){
 		return lib.config.extensions && lib.config.extensions.contains(str) && lib.config['extension_'+str+'_enable'];
