@@ -103,8 +103,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(!lib.config.ykDaily_pre_play) lib.config.ykDaily_pre_play={};
 					if(!lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
 						lib.config.ykDaily_pre_play[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+						if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
 					}
-					if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
 					game.saveConfig('ykDaily_pre_play',lib.config.ykDaily_pre_play);
 				},
 			},
@@ -144,8 +144,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(!lib.config.ykDaily_pre_success) lib.config.ykDaily_pre_success={};
 					if(!lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
 						lib.config.ykDaily_pre_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
+						if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
 					}
-					if(typeof game.sayyk=='function') game.sayyk('已完成今日对局任务，前往任务可获取奖励！');
 					game.saveConfig('ykDaily_pre_success',lib.config.ykDaily_pre_success);
 				},
 			},
@@ -179,7 +179,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else if(typeof game.sayyk=='function') game.sayyk('您未完成任务！');
 				},
 				onover_func:result=>{
-					if(lib.config.mode!='boss') return ;
+					if(lib.config.mode!='boss'||game.boss==game.me) return ;
 					if(!window.playTime.days||!window.playTime.months||!window.playTime.years){
 						if(typeof game.sayyk=='function') game.sayyk('请检查网络！');
 						return ;
@@ -189,8 +189,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					var order=parseInt((last_other+4)/7);
 					if(!lib.config.weeklyChallenge_Bool[order]){
 						lib.config.weeklyChallenge_Bool[order]=true;
+						if(typeof game.sayyk=='function') game.sayyk('已完成每周挑战任务，前往任务可获取奖励！');
 					}
-					if(typeof game.sayyk=='function') game.sayyk('已完成每周挑战任务，前往任务可获取奖励！');
 					game.saveConfig('weeklyChallenge_Bool',lib.config.weeklyChallenge_Bool);
 				},
 			},
