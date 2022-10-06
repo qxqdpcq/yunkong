@@ -14144,6 +14144,24 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv4.触发使命技成功时，回复体力值至上限</font>';
 	lib.translate['qxq_yk_mingyun_ykIntroduce']+='<br>'+((lib.config['yk_ykmingyunInterweave_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'命运Lv5.触发使命技成功时，增加一点体力上限</font>';
 	
+	//阿卡莱
+	lib.translate['ykchashi']='察识';
+	lib.translate['ykchashi_info']='当你未装备武器时，你视为装备【苍空之明】，出牌阶段限一次，消耗175术法值，令一名其他角色展示其手牌并弃置一张与其手牌花色或类型各不同的牌使其受到一点伤害，若如此做，你与其各摸一张牌，然后若你有【苍空之明】，你的攻击范围+1。<br><br><li>「<font color=yellow>苍空之明</font>」：<br>初始攻击范围：1<br>锁定技，你造成的伤害有10%概率给目标附加光元素，你装备该武器时，每次造成伤害，均有50%概率增加1攻击范围，失去武器时，此效果不生效。';
+	lib.translate['qxq_yk_akalai_ykIntroduce']=((lib.config['yk_ykchashi_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'察识</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykchashi_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'察识Lv1.发动此技能的主动效果时，回复50点真气值</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykchashi_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'察识Lv2.发动此技能的主动效果时，回复30点术法值</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykchashi_rank']||0)>=3?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'察识Lv3.发动此技能的主动效果时，25%概率额外摸一张牌</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykchashi_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'察识Lv4.发动此技能的主动效果时，25%概率使增加的攻击范围效果额外+1</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykchashi_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'察识Lv5.取消此技能的主动效果的术法值消耗</font>';
+	lib.translate['ykzhiyi']='直义';
+	lib.translate['ykzhiyi_info']='场上任意一名其他体力值或手牌数小于等于你的角色受到伤害时，你可以消耗100术法值，将一张牌当作“决斗”对伤害来源使用或打出，你使用此“决斗”胜利后，你摸两张牌并使该角色回复一点体力并摸一张牌，若该角色为女性，其弃置一张红桃/方块/梅花/黑桃牌，令其回复一点体力/令其摸两张牌/令原伤害来源弃置两张牌/令原伤害来源翻面；若决斗未胜利，该角色摸一张牌。';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br><br>'+((lib.config['yk_ykzhiyi_rank']||0)>=1?'<font color=orange>':'<font color=grey>')+'直义</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykzhiyi_rank']||0)>=1?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'直义Lv1.发动此技能时，回复50点真气值</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykzhiyi_rank']||0)>=2?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'直义Lv2.发动此技能时，回复50点术法值</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykzhiyi_rank']||0)>=3?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'直义Lv3.发动此技能时，25%概率额外摸一张牌</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykzhiyi_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'直义Lv4.此“决斗”失败时，你摸两张牌</font>';
+	lib.translate['qxq_yk_akalai_ykIntroduce']+='<br>'+((lib.config['yk_ykzhiyi_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'直义Lv5.此“决斗”失败时，你回复一点体力</font>';
+	
 	//没有获得武将时，清空武将对应技能
 	if(!game.ykHasCharacter('qxq_yk_yanmengyuejian')){
 		lib.skill.ykshimeng={};
