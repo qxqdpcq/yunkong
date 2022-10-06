@@ -1456,9 +1456,255 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				},
 			},
 			skill:{
-				'yk_ssym':{},
+				'yk_mdhk':{
+					init:player=>{
+						player.ykChange('MaxMp',Math.round(player.ykMaxSoul*0.3));
+						player.ykChange('MaxDefend',Math.round(player.ykMaxSoul*0.3));
+						if(Math.floor(player.ykMaxSoul/300)) player.gainMaxHp(Math.floor(player.ykMaxSoul/300));
+					},
+					trigger:{
+						player:["consumeMpAfter","consumeSoulAfter","loseDefendAfter"],
+					},
+					filter:function(event,player){
+						return event.num>0;
+					},
+					forced:true,
+					content:function(){
+						if(trigger.name=='consumeMp'){
+							if(isNaN(player.yk_mdhk_mp)) player.yk_mdhk_mp=0;
+							player.yk_mdhk_mp+=trigger.num;
+							if(player.yk_mdhk_mp>=150){
+								var rank=lib.ykBag['yk_xinglujue'].rank2+lib.ykBag['yk_xinglujue'].rank1;
+								if(isNaN(rank)) rank=0;
+								player.yk_mdhk_mp-=150;
+								player.ykRecover('Soul',15*rank);
+							}
+						}
+						else if(trigger.name=='consumeSoul'){
+							if(isNaN(player.yk_mdhk_soul)) player.yk_mdhk_soul=0;
+							player.yk_mdhk_soul+=trigger.num;
+							if(player.yk_mdhk_soul>=100){
+								var rank=lib.ykBag['yk_xinglujue'].rank2+lib.ykBag['yk_xinglujue'].rank1;
+								if(isNaN(rank)) rank=0;
+								player.yk_mdhk_soul-=100;
+								if(Math.random()<0.2+0.03*rank) player.draw();
+							}
+						}
+						else if(trigger.name=='loseDefend'){
+							if(isNaN(player.yk_mdhk_soul)) player.yk_mdhk_defend=0;
+							player.yk_mdhk_defend+=trigger.num;
+							if(player.yk_mdhk_defend>=500){
+								var rank=lib.ykBag['yk_xinglujue'].rank2+lib.ykBag['yk_xinglujue'].rank1;
+								if(isNaN(rank)) rank=0;
+								player.yk_mdhk_defend-=500;
+								if(Math.random()<0.2+0.03*rank) player.recover();
+							}
+						}
+					},
+					group:["yk_mdhk_dying"],
+					subSkill:{
+						dying:{
+							trigger:{
+								player:"dying",
+							},
+							forced:true,
+							lastDo:true,
+							content:function(){
+								var cards=player.getCards('he'),num=0,numx=0;
+								for(var c of cards) num+=get.number(c);
+								player.discard(cards);
+								numx=Math.round((num/5+player.hp-player.maxHp)/3);
+								if(Math.round(c/5)) player.recover(Math.round(c/5));
+								if(numx>0) player.changeHujia(numx);
+								player.draw(3);
+								player.removeSkill("yk_mdhk_dying");
+							},
+						},
+					},
+				},
+				'yk_ssym':{
+					init:player=>{
+						if(player==game.me){
+							window['yk_equip_button_'+player.name]=ui.create.div('.menubutton.round','无');
+							window['yk_equip_button_'+player.name].style.cssText='bottom:5px;left:calc(100% - 55px);z-index:999;background-color:white;';
+							window['yk_equip_button_'+player.name].style.backgroundSize='cover';
+							window['yk_equip_button_'+player.name].owner=player.name;
+							window['yk_equip_button_'+player.name].owner_pl=player;
+							window['yk_equip_button_'+player.name].onclick=function(){
+								if(!_status.event) return ;
+								var target=_status.event.player;
+								if(window['yk_equip_button_'+this.owner].target){
+									var cards=get.cards(1);
+									this.owner_pl.showCards(cards);
+									if(cards[0].suit=='heart') this.owner_pl.recover();
+									else if(cards[0].suit=='diamond') this.owner_pl.draw(2);
+									else if(cards[0].suit=='club') window['yk_equip_button_'+this.owner].target.chooseToDiscard('h',2,true);
+									else if(cards[0].suit=='spade') window['yk_equip_button_'+this.owner].target.turnOver(true);
+									if(cards[0].type=='basic') this.owner_pl.recover();
+									else if(cards[0].type=='trick') this.owner_pl.draw(2);
+									else if(cards[0].type=='delay') window['yk_equip_button_'+this.owner].target.chooseToDiscard('e',2,true);
+									else if(cards[0].type=='equip') window['yk_equip_button_'+this.owner].target.loseHp();
+									window['yk_equip_button_'+this.owner].target=null;
+									window['yk_equip_button_'+this.owner].innerHTML='无';
+									return ;
+								}
+								var next = game.createEvent('yk_ssym');
+								next.setContent(function(){
+									'step 0'
+									var cardsList=[],cards_all=get.cards(3*(game.players.length-1));
+									if(!cards_all.length) return ;
+									cardsList.push(get.cards(2*(game.players.length-1)));
+									for(var pl of game.players) if(pl!=player){
+										if(pl!=player) cardsList.push(cards_all.slice(0,3));
+										cards_all=cards_all.slice(3,cards_all.length);
+									}
+									game.cardsGotoOrdering(cards_all);
+									var nextEvt=player.chooseToMove('死生一梦：请分配'+(game.players.length-1)+'组牌，每组至多五张，至少三张'),list=[],list_pl=['牌堆顶'];
+									for(var pl of game.players) if(pl!=player) list_pl.push(get.translation(pl.name));
+									for(var n=0;n<list_pl.length;n++) list.push([list_pl[n],cardsList[n]]);
+									nextEvt.set('list',list)
+									nextEvt.set('filterMove',function(from,to,moved){
+										for(var i=0;i<game.players.length;i++){
+											if(moved[i].contains(from.link)){
+												var pos=moved[i];
+												if(i!=0&&(moved[i].length>=5||moved[i].length<=3)) return false;
+												if(typeof to=='number'){
+													return true;
+												}
+											}
+										}
+									});
+									nextEvt.set('processAI',function(list){
+										return list;
+									});
+									'step 1'
+									if(result.bool){
+										var list=result.moved,list_p=[],x=0;
+										for(var plx of game.players) if(plx!=player) list_p.push(plx);
+										list_p.sortBySeat();
+										list0=list[0];
+										list=list.slice(1,list.length);
+										while(x<list_p.length){
+											list_p[x].gain(list[x],'bySelf').gaintag.add('梦')._triggered=null;
+											x++;
+										}
+										while(list0.length){
+											ui.cardPile.insertBefore(list0.pop(),ui.cardPile.firstChild);
+										}
+										game.updateRoundNumber();
+										event.list_pl=list_p;
+									}
+									'step 2'
+									if(!event.list_pl||(event.list_pl&&!event.list_pl.length)){
+										event.finish();
+										return ;
+									}
+									'step 3'
+									event.pl_current=event.list_pl[0];
+									event.list_pl=event.list_pl.slice(1,event.list_pl.length);
+									event.pl_current.chooseControl('再抓一张牌','再抓两张牌','再抓三张牌','放弃抓牌',function(event,player){
+										var cardx=event.pl_current.getCards('h'),num=0,add1=0,add2=0;
+										for(var card of cardx) if(card.hasGaintag('梦')){
+											if(card.suit=='heart') add1=4;
+											else if(card.suit=='spade') add1=3;
+											else if(card.suit=='diamond') add1=2;
+											else if(card.suit=='club') add1=1;
+											if(card.type=='equip') add2=4;
+											else if(card.type=='trick') add2=3;
+											else if(card.type=='delay') add2=2;
+											else if(card.type=='basic') add2=1;
+											num+=(card.number+add1+add2);
+										}
+										while(num>=24) num-=24;
+										if(num<18&&num>15) return '再抓一张牌';
+										else if(num<=15&&num>=10) return '再抓两张牌';
+										else if(num<=10) return '再抓三张牌';
+										else return '放弃抓牌';
+									});
+									'step 4'
+									if(result.control=='再抓一张牌') event.pl_current.gain(get.cards(1),'bySelf').gaintag.add('梦')._triggered=null;
+									else if(result.control=='再抓两张牌') event.pl_current.gain(get.cards(2),'bySelf').gaintag.add('梦')._triggered=null;
+									else if(result.control=='再抓三张牌') event.pl_current.gain(get.cards(3),'bySelf').gaintag.add('梦')._triggered=null;
+									if(event.list_pl.length) event.goto(3);
+									else{
+										for(var n of game.players){
+											var listn=[];
+											for(var card of n.getCards('he')) if(card.hasGaintag('梦')) listn.push(card);
+											n.lose(listn)._triggered=null;
+										}
+										var result='',targetx;
+										for(var c of game.players) if(c!=player){
+											var cardLast=[],numi=0,addi1=0,addi2=0,result_list=[];
+											for(var cardi of c.getCards('h')) if(cardi.hasGaintag('梦')){
+												if(cardi.suit=='heart') addi1=4;
+												else if(cardi.suit=='spade') addi1=3;
+												else if(cardi.suit=='diamond') addi1=2;
+												else if(cardi.suit=='club') addi1=1;
+												if(cardi.type=='equip') addi2=4;
+												else if(cardi.type=='trick') addi2=3;
+												else if(cardi.type=='delay') addi2=2;
+												else if(cardi.type=='basic') addi2=1;
+												numi+=(cardi.number+addi1+addi2);
+												cardLast.push(cardi);
+											}
+											while(numi>=24) numi-=24;
+											result+='<br>'+get.translation(c.name)+'的最终结果：'+get.translation(cardLast)+'<br>得分：'+numi;
+											result_list.push({
+												name:c.name,
+												player:c,
+												score:numi,
+											});
+											result_list.sort(function (x, y) {
+												var a = x.score;
+												var b = y.score;
+												if(a<b) return -1;
+												if(a>b) return 1;
+												return 0;
+											});
+											targetx=result_list[0];
+										}
+										if(!targetx) return ;
+										var dialog=ui.create.dialog('【死生一梦】已锁定目标：'+get.translation(targetx.name)+'<br>最终得分：'+targetx.score);
+										if(window['yk_equip_button_'+player.name].old_target==targetx.player){
+											game.log('无法连续对',targetx.player,'发动！本次发动无效！');
+											return ;
+										}
+										if(targetx.player==player){
+											game.log('不能选择自己为目标！本次发动无效！');
+											return ;
+										}
+										else window['yk_equip_button_'+player.name].old_target=targetx.player;
+										window['yk_equip_button_'+player.name].target=targetx.player;
+										window['yk_equip_button_'+player.name].setBackground(targetx.name,'character');
+										window['yk_equip_button_'+player.name].innerHTML='梦';
+										dialog.add(result);
+										dialog.result_player=targetx.player;
+										dialog.evt=event;
+										dialog.hide=()=>{};
+										dialog.onclick=function(){
+											this.delete();
+											this.evt.finish();
+										}
+									}
+								});
+								next.set('player',this.owner_pl);
+								if(game.players.length<=1){
+									game.log('场上角色数过少！发动失败！');
+									return ;
+								}
+								return next;
+							};
+							player.appendChild(window['yk_equip_button_'+player.name]);
+						}
+						delete lib.skill.yk_ssym.init;
+						lib.skill.yk_ssym.init=null;
+					},
+				},
 				translate:{
+					'yk_mdhk':'梦诞花开',
+					'yk_mdhk_info':'基于佩戴角色元力值的30%，增加真气值上限和术法值上限；基于佩戴角色元力值的1/300（向下取整），增加角色体力上限；佩戴角色每消耗150术法值，回复15*(武器强化等级+武器进阶等级)元力值，每消耗100元力值，有(20%+3%*(武器强化等级+武器进阶等级))概率摸一张牌，每损失500点真气值，有(35%+3%*(武器强化等级+武器进阶等级))概率回复一点体力；佩戴角色首次进入濒死状态时，弃置所有手牌和装备牌，回复x/5体力值（x为此次弃置牌的总点数），本次回复体力值溢出部分的1/3将转化为护甲，最多以此获得5点护甲，然后摸三张牌。',
 					'yk_ssym':'死生一梦',
+					'yk_ssym_info':'即时技，消耗200元力值，若当前未选定目标，则你从牌堆中抽取5x张牌，然后将其分为x组并随机发放给场上其他角色（每组至多五张，至少三张），之后计算这些牌的点数，每超过24，点数减24，所有角色可选择加牌，每名角色最多加三张牌，所有角色加牌完毕并亮牌后结算，所有角色弃置以此法获得的牌，由点数最少的玩家成为下一次发动效果的目标（x为除你外其他角色数，多人最少则随机选取，每张红桃/黑桃/方块/梅花牌增加点数4/3/2/1，每张装备/锦囊/延时锦囊/基本牌增加点数4/3/2/1）。再次发动：展示牌堆顶的一张牌，若该牌为红桃/方块/梅花/黑桃牌，你回复一点体力/你摸两张牌/目标弃置两张手牌/目标将武将牌翻面，若该牌为基本/锦囊/延时锦囊/装备牌，你回复一点体力/你摸两张牌/目标弃置两张装备/目标流失一点体力，然后本次清空目标。',
 				},
 			},
 			onEquip:function(player){
