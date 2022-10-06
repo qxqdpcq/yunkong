@@ -297,18 +297,18 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		"qxq_yk_zhixu":["yk_thunder","yk_dark"],
 	}
 	window.qxq_YK_gainPath={//获取方式
-		"qxq_yk_akalai":"",
+		"qxq_yk_akalai":"①抽卡获得",
 		"qxq_yk_dijunxuanpin":"",
-		"qxq_yk_fuling":"2022/01/31-2022/04/15，通关【宗师】或【绝境】难度的副本【缇傀】获得。",
-		"qxq_yk_xiaoqiao":"①、2022/01/31-2022/02/01，限时兑换。<br>②、2022/01/31-2022/02/07，通关【梦魇】或【神话】难度的副本【缇傀】获得。",
+		"qxq_yk_fuling":"①2022/01/31-2022/04/15，通关【宗师】或【绝境】难度的副本【缇傀】获得。<br>②抽卡获得",
+		"qxq_yk_xiaoqiao":"①2022/01/31-2022/02/01，限时兑换。<br>②2022/01/31-2022/02/07，通关【梦魇】或【神话】难度的副本【缇傀】获得。<br>③抽卡获得",
 		"qxq_yk_kongshanyaoyun":"",
-		"qxq_yk_kongshanlingxue":"2022/03/31-2022/05/31，限时兑换。",
-		"qxq_yk_wuwangxuanyue":"2022/04/17-2022/05/31，通关【梦魇】或【神话】难度的副本【破坏神】获得。",
+		"qxq_yk_kongshanlingxue":"①2022/03/31-2022/05/31，限时兑换。<br>②抽卡获得",
+		"qxq_yk_wuwangxuanyue":"①2022/04/17-2022/05/31，通关【梦魇】或【神话】难度的副本【破坏神】获得。<br>②抽卡获得",
 		"qxq_yk_tiandaozhiying":"",
-		"qxq_yk_yanmengyuejian":"①、2022/01/31-2022/02/01，限时兑换。<br>②、2022/01/31-2022/02/07，通关【梦魇】或【神话】难度的副本【缇傀】获得。",
+		"qxq_yk_yanmengyuejian":"①2022/01/31-2022/02/01，限时兑换。<br>②2022/01/31-2022/02/07，通关【梦魇】或【神话】难度的副本【缇傀】获得。<br>③抽卡获得",
 		"qxq_yk_yunling":"",
 		"qxq_yk_yunying":"",
-		"qxq_yk_mingyun":"抽卡获得",
+		"qxq_yk_mingyun":"①抽卡获得",
 		"qxq_yk_zhixu":"",
 	}
 	//人物基础属性显示
