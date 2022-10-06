@@ -1437,9 +1437,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						var add=0;
 						if(lib.config.yk_limit_drawCardTime.time>60&&typeof lib.config.yk_limit_drawCardTime.time=='number') add=(lib.config.yk_limit_drawCardTime.time-60)*2.4875;
 						if(r>0&&r<(0.0005+0.5*add)) resultCharacterItem='others';//0.05+0.5*add
-						else if(r>(0.0005+0.5*add)&&r<(0.005+add)) resultCharacterItem='tian';//0.45+0.5*add
-						else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di';//1.5-0.25*add
-						else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan';//18-0.25*add
+						else if(r>(0.0005+0.5*add)&&r<(0.005+add)) resultCharacterItem='tian2';//0.45+0.5*add
+						else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di2';//1.5-0.25*add
+						else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan2';//18-0.25*add
 						else if(r>(0.2+0.5*add)&&r<=(0.5+0.25*add)) resultCharacterItem='huang';//30-0.25*add
 						else resultCharacterItem='fan';//50-0.25*add
 					}
@@ -1635,9 +1635,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							var add=0;
 							if(lib.config.yk_limit_drawCardTime.time>60&&typeof lib.config.yk_limit_drawCardTime.time=='number') add=(lib.config.yk_limit_drawCardTime.time-60)*2.4875;
 							if(r>0&&r<(0.0005+0.5*add)) resultCharacterItem='others';//0.05+0.5*add
-							else if(r>(0.0005+0.5*add)&&r<(0.005+add)) resultCharacterItem='tian';//0.45+0.5*add
-							else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di';//1.5-0.25*add
-							else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan';//18-0.25*add
+							else if(r>(0.0005+0.5*add)&&r<(0.005+add)) resultCharacterItem='tian2';//0.45+0.5*add
+							else if(r>=(0.005+add)&&r<=(0.02+0.75*add)) resultCharacterItem='di2';//1.5-0.25*add
+							else if(r>(0.02+0.75*add)&&r<=(0.2+0.5*add)) resultCharacterItem='xuan2';//18-0.25*add
 							else if(r>(0.2+0.5*add)&&r<=(0.5+0.25*add)) resultCharacterItem='huang';//30-0.25*add
 							else resultCharacterItem='fan';//50-0.25*add
 						}
