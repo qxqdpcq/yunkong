@@ -1135,8 +1135,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		if(!character){alert('角色名错误！');return ;}
 		if(typeof game.ykHasCharacter=='function'&&game.ykHasCharacter(character)){
 			if(game.sayyk&&typeof game.sayyk=='function'){
-				game.sayyk('您已拥有角色【'+window.yunkong_Character.translate[characterx]+'】，将自动为您转化为该角色技能升级石！');
-				game.yk_gainItem(characterx+'_upGradeSkill_stone',1);
+				game.sayyk('您已拥有角色【'+window.yunkong_Character.translate[character]+'】，将自动为您转化为该角色技能升级石！');
+				game.yk_gainItem(character+'_upGradeSkill_stone',1);
 			}
 			return ;
 		}
