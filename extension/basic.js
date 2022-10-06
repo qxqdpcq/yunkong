@@ -1119,7 +1119,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		else character=characterx;
 		if(characterx.length<=1) bool=true;
 		if(!character){alert('角色名错误！');return ;}
-		if(typeof game.ykHasCharacter=='function'&&game.ykHasCharacter(character)){alert('您已拥角色【'+get.translation(character.slice(0,character.indexOf('-')))+'】！');return ;}
+		if(typeof game.ykHasCharacter=='function'&&game.ykHasCharacter(character)){
+			if(game.sayyk&&typeof game.sayyk=='function'){
+				game.sayyk('您已拥有角色【'+window.yunkong_Character.translate[character.slice(0,character.indexOf('-'))]+'】，将自动为您转化为该角色技能升级石！');
+				game.yk_gainItem(character.slice(0,character.indexOf('-'))+'_upGradeSkill_stone',1);
+			}
+			return ;
+		}
 		if(typeof character!='string') var character=''+character;
 		if(character.indexOf('qxq_yk')==-1||character.indexOf('-')==-1){
 			var skillList='';
@@ -1136,13 +1142,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				alert('error 错误的角色名！读取失败！');
 				return ;
 			}
-		}
-		if(lib.config.YKcharacterNameList.indexOf(character)!=-1){
-			if(game.sayyk&&typeof game.sayyk=='function'){
-				game.sayyk('您已获得该角色，将自动为您转化为该角色技能升级石！');
-				game.yk_gainItem(character.slice(0,character.indexOf('-'))+'_upGradeSkill_stone',1);
-			}
-			return ;
 		}
 		if(!lib.config.qxq_YK_person.score[name]||lib.config.qxq_YK_person.score[name]==undefined){//添加基础评分
 			if(lib.config.qxq_YK_person.rank&&lib.config.qxq_YK_person.rank[name]&&lib.config.qxq_YK_person.rank[name].indexOf('超稀-限定')!=-1) lib.config.qxq_YK_person.score[name]=1000;
