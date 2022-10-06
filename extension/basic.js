@@ -1490,12 +1490,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				else if(resultCharacterItem=='tian2'){
 					var a=Math.random();
 					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
-					else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
+					else resultCharacterItem=lib.ykSpecialDrawCardPool.tian.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 				}
 				else if(resultCharacterItem=='others'){
 					var a=Math.random();
 					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
-					else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
+					else resultCharacterItem=lib.ykSpecialDrawCardPool.tian.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 				}
 				window.ykDraw(resultCharacterItem);
 				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
@@ -1688,12 +1688,12 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else if(resultCharacterItem=='tian2'){
 						var a=Math.random();
 						if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
-						else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
+						else resultCharacterItem=lib.ykSpecialDrawCardPool.tian.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 					}
 					else if(resultCharacterItem=='others'){
 						var a=Math.random();
 						if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
-						else resultCharacterItem=lib.ykSpecialDrawCardPool.concat(lib.ykUsualDrawCardPool.tian).randomGet();
+						else resultCharacterItem=lib.ykSpecialDrawCardPool.tian.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 					}
 					return resultCharacterItem;
 				}
