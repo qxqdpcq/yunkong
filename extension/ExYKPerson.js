@@ -10288,6 +10288,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				if((lib.config['yk_ykzhuyan_rank']||0)>=3){
 					trigger._triggered=null;
+					trigger.untrigger(true);
 					trigger.finish();
 				}
 				game.delay(2);
