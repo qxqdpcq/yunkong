@@ -5597,6 +5597,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	//奖励：选择技能升级
 	game.ykUpGradeSkill=function(){
+		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		var chooseList=ui.create.dialog('hidden');
 		chooseList.classList.add('popped');
 		chooseList.classList.add('static');
