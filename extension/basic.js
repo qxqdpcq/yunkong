@@ -780,6 +780,20 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		game.yk_gainItem('sky_crying',1500);
 		alert('兑换成功，获得【虚空之泪】x1500！');
 	}
+	game.ykShowMeGift20221006_checkTime=function(){
+		if(window.checkOnlineTime(2022,10,1,2022,10,7)==true){
+			return true;
+		}
+		else{
+			alert('兑换码已过期或活动未开始！');
+			return false;
+		}
+	}
+	game.ykShowMeGift20221006=function(){
+		if(!lib.config.yk_myBag) game.saveConfig('yk_myBag',{});
+		game.yk_gainItem('sky_crying',1500);
+		alert('兑换成功，获得【虚空之泪】x1500！');
+	}
 	//快速制图
 	game.ykDrawImage3=function(pictTop,pictLeft,width,height,src,parentChild,thisname){//渲染本地图片，不能调节参数----extension/XXX/XXX.jpg
 		if(!width) width=0;
