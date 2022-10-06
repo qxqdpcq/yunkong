@@ -13951,6 +13951,174 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		}
 	}
 	
+	//阿卡莱
+	lib.skill.ykchashi={
+		enable:"phaseUse",
+		usable:1,
+		selectTarget:1,
+		filterTarget:(event,player,target)=>{
+			return player!=target&&target.countCards('h');
+		},
+		filter:(event,player)=>{
+			if((lib.config['yk_ykchashi_rank']||0)>=5) return true;
+			else return player.ykCheckConsume('Mp',175);
+		},
+		content:()=>{
+			'step 0'
+			if((lib.config['yk_ykchashi_rank']||0)<5) player.ykConsume('Mp',175);
+			if((lib.config['yk_ykchashi_rank']||0)>=1) player.ykRecover('Defend',50);
+			if((lib.config['yk_ykchashi_rank']||0)>=2) player.ykRecover('Mp',30);
+			if((lib.config['yk_ykchashi_rank']||0)>=3&&Math.random()<0.25) player.draw();
+			event.target=target;
+			var cards=target.getCards('h');
+			target.showCards(cards);
+			var list=[],list1=[],list2=[];
+			for(var cardx of cards){
+				list1.push(cardx.type);
+				list2.push(cardx.suit);
+			}
+			for(var card of player.getCards('h')){
+				if(list1.indexOf(card.type)==-1||list2.indexOf(card.suit)==-1) list.push(card);
+			}
+			if(list.length) player.chooseButton(['请选择弃置一张牌',list]).set('ai',button=>{
+				return -get.value(button);
+			});
+			'step 1'
+			if(result.bool){
+				player.discard(result.links[0]);
+				if(player.hasSkill('ykchashi_check')) player.storage.ykchashi_ckzm++;
+				if((lib.config['yk_ykchashi_rank']||0)>=4&&Math.random()<0.25) player.storage.ykchashi_ckzm++;
+				event.target.damage();
+				player.draw();
+				event.target.draw();
+			}
+		},
+		ai:{
+			order:1,
+			result:{
+				draw:1,
+				damage:1,
+				target:function(player,target){
+					return -1;
+				},
+			},
+		},
+		group:['ykchashi_ckzm','ykchashi_check'],
+		subSkill:{
+			ckzm:{
+				init:player=>{
+					if(typeof player.storage.ykchashi_ckzm!='number') player.storage.ykchashi_ckzm=0;
+				},
+				mod:{
+					attackRange:function(player,num){
+						return num+player.countMark('ykchashi_ckzm');
+					},
+				},
+				intro:{
+					content:"【苍空之明】：攻击范围+#",
+				},
+				mark:true,
+				marktext:'明',
+				equipSkill:true,
+				trigger:{
+					source:"damageBegin",
+					player:"useCard",
+				},
+				filter:(event,player)=>{
+					if(event.name=='damage') return event.source==player&&event.player!=event.source&&event.source.isEmpty(1)&&!event.source.isDisabled(1);
+					else{
+						var card=event.card;
+						if(!card&&event.cards) card=event.cards[0];
+						if(!card) return false;
+						if(card.subtype=='equip1') return true;
+						return false;
+					}
+				},
+				forced:true,
+				silent:true,
+				popup:false,
+				content:()=>{
+					if(trigger.name=='damage'){
+						if(Math.random()<0.1) trigger.player.yk_addElement('yk_light');
+						if(Math.random()<0.5) trigger.source.storage.ykchashi_ckzm++;
+						trigger.source.popup('苍空之明');
+					}
+					else{
+						player.removeSkill('ykchashi_ckzm');
+					}
+				},
+			},
+			check:{
+				trigger:{
+					player:"phaseBegin",
+				},
+				filter:(event,player)=>{
+					return player.isEmpty(1)&&!player.isDisabled(1);
+				},
+				forced:true,
+				silent:true,
+				popup:false,
+				content:()=>{
+					if(player.isEmpty(1)&&!player.isDisabled(1)) player.addSkill('ykchashi_ckzm');
+					else player.removeSkill('ykchashi_ckzm');
+				},
+			},
+		},
+	}
+	lib.skill.ykzhiyi={
+		trigger:{
+			global:["damageAfter","juedouAfter"],
+		},
+		filter:(event,player)=>{
+			if(event.name=='damage'&&!player.ykCheckConsume('Mp',100)) return false;
+			if(event.name=='damage') return event.player!=player&&(event.player.hp<=player.hp||event.player.countCards('h')<player.countCards('h'))&&event.source&&event.source!=player;
+			else return true;
+		},
+		forced:true,
+		content:()=>{
+			'step 0'
+			player.ykConsume('Mp',100);
+			if(trigger.name=='damage') player.chooseToDiscard('将一张牌当作【决斗】，对'+get.translation(trigger.source.name)+'使用');
+			else{
+				var evt=_status.event,bool;
+				while(evt.name!='game'){
+					evt=evt.getParent();
+					if(evt.skill=='ykzhiyi') bool=true;
+				}
+				if(bool){
+					if(trigger.turn!=player){
+						player.draw(2);
+						if(player.ykzhiyi_target){
+							player.ykzhiyi_target.recover();
+							player.ykzhiyi_target.draw();
+							if(player.ykzhiyi_target.sex=='female') player.ykzhiyi_target.chooseToDiscard('是否弃置一张红桃/方块/梅花/黑桃牌，令其回复一点体力/令其摸两张牌/令原伤害来源弃置两张牌/令原伤害来源翻面？');
+						}
+					}
+					else{
+						player.ykzhiyi_target.draw();
+						if((lib.config['yk_ykzhiyi_rank']||0)>=4) player.draw(2);
+						if((lib.config['yk_ykzhiyi_rank']||0)>=5) player.recover();
+					}
+				}
+			}
+			'step 1'
+			if(trigger.name=='damage'&&result.bool){
+				if((lib.config['yk_ykzhiyi_rank']||0)>=1) player.ykRecover('Defend',50);
+				if((lib.config['yk_ykzhiyi_rank']||0)>=2) player.ykRecover('Mp',50);
+				if((lib.config['yk_ykzhiyi_rank']||0)>=3&&Math.random()<0.25) player.draw();
+				player.useCard(false,{name:'juedou',isCard:true},trigger.source);
+				_status.event.skill='ykzhiyi';
+				player.ykzhiyi_target=trigger.player;
+				player.ykzhiyi_source=trigger.source;
+			}
+			else if(trigger.name=='juedou'&&result.bool&&result.cards.length){
+				if(result.cards[0].suit=='heart') player.ykzhiyi_target.recover();
+				else if(result.cards[0].suit=='diamond') player.ykzhiyi_target.draw(2);
+				else if(result.cards[0].suit=='club') player.ykzhiyi_source.chooseToDiscard('he',2,true);
+				else if(result.cards[0].suit=='spade') player.ykzhiyi_source.turnOver(true);
+			}
+		},
+	}
 	//SkillTranslate
 	if(!window.YK_getNodeIntro) window.YK_getNodeIntro=get.nodeintro;
 	get.nodeintro=function(node,simple,evt){
