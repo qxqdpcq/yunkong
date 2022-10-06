@@ -42,6 +42,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		if(element=='yk_wood') color='#00FF00';
 		if(lib.config.extensions && lib.config.extensions.contains('十周年UI') && lib.config['extension_十周年UI_enable']) player.popup(get.translation(element));
 		else player.popup('<span style=\"color: '+color+';\">'+get.translation(element)+'</span>');
+		game.log(player,'被附着上了<span class="yellowtext">'+get.translation(element)+'元素</span>');
 		if(player[element]) return ;
 		player[element]=true;
 		player.yk_elementReact();
