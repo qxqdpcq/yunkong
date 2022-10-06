@@ -35,6 +35,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		qxq_yk_fuling:["female",3,["yktianyi","ykwuji"]],
 		qxq_yk_wuwangxuanyue:["male",4,["ykwujian","ykjuejian","ykshilie"]],
 		qxq_yk_mingyun:["female",3,["ykshenming","yktiansuan","ykmingyunInterweave"]],
+		qxq_yk_akalai:["male",4,["ykchashi","ykzhiyi"]],
 	}
 	//-----------------------------------任务-----------------------------//
 	if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
