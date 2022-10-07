@@ -794,6 +794,20 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		game.yk_gainItem('sky_crying',1500);
 		alert('兑换成功，获得【虚空之泪】x1500！');
 	}
+	game.ykShowMeGift20221007_checkTime=function(){
+		if(window.checkOnlineTime(2022,10,1,2022,10,7)==true){
+			return true;
+		}
+		else{
+			alert('兑换码已过期或活动未开始！');
+			return false;
+		}
+	}
+	game.ykShowMeGift20221007=function(){
+		if(!lib.config.yk_myBag) game.saveConfig('yk_myBag',{});
+		game.yk_gainItem('sky_crying',15000);
+		alert('兑换成功，获得【虚空之泪】x15000！');
+	}
 	//快速制图
 	game.ykDrawImage3=function(pictTop,pictLeft,width,height,src,parentChild,thisname){//渲染本地图片，不能调节参数----extension/XXX/XXX.jpg
 		if(!width) width=0;
@@ -1035,7 +1049,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						window.div_resultShow.delete();
 						delete window.div_resultShow;
 						window.div_resultShow=null;
-						window.ykOpenDrawCardPool();
+						if(window.ykDrawCardPool_div) window.ykDrawCardPool_div.show();
+						else{
+							window.ykOpenDrawCardPool();
+							window.ykUpdateDrawCardPool();
+						}
 					}
 				}
 			},10000);
@@ -1122,7 +1140,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							delete window.background_callMyCharacterBackground;
 							window.background_callMyCharacterBackground=null;
 						}
-						window.ykOpenDrawCardPool();
+						if(window.ykDrawCardPool_div) window.ykDrawCardPool_div.show();
+						else{
+							window.ykOpenDrawCardPool();
+							window.ykUpdateDrawCardPool();
+						}
 					}
 				},50);
 			},12000);
@@ -1261,13 +1283,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			alert('使用【命定之石】许愿时必得玄级及以上角色/物品，【命定之石】不能用于【缘常之愿】卡池！许愿概率：玄级 60%、地级 35%、天级 4%、其他 1%。');
 		}
 		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/predestined_fate.jpg',divPict,true,"cover");
-		var num;
-		if(lib.config.yk_myBag&&lib.config.yk_myBag.predestined_fate&&typeof lib.config.yk_myBag.predestined_fate.num=='number') num=lib.config.yk_myBag.predestined_fate.num;
-		else num=0;
 		var divx=ui.create.div();
 		divx.style.cssText='height:25px;width:150px;top:90px;left:calc(100% - 235px);border-radius:8px;text-align:center;';
-		divx.innerHTML='<b>'+num+'</b>';
 		window.ykDrawCardPool_div.appendChild(divx);
+		window.ykDrawCardPool_div.divx=divx;
 		var div_add=ui.create.div();
 		div_add.style.cssText='height:25px;width:25px;top:90px;left:calc(100% - 85px);border-radius:100px;background-color:white;text-align:center;';
 		div_add.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b>+</b></span>';
@@ -1290,20 +1309,29 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			alert('每使用【虚空之泪】许愿十次时必得玄级及以上角色/物品！此保底许愿概率：【命定之愿】：玄级 65%、地级 32%、天级 2%、其他 1%；【缘常之愿】：玄级 65%、地级 32%、天级 3%。');
 		}
 		window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/sky_crying.jpg',divPict2,true,"cover");
-		var num2;
-		if(lib.config.yk_myBag&&lib.config.yk_myBag.sky_crying&&typeof lib.config.yk_myBag.sky_crying.num=='number') num2=lib.config.yk_myBag.sky_crying.num;
-		else num2=0;
 		var divx2=ui.create.div();
 		divx2.style.cssText='height:25px;width:150px;top:90px;left:calc(100% - 485px);border-radius:8px;text-align:center;';
-		divx2.innerHTML='<b>'+num2+'</b>';
 		window.ykDrawCardPool_div.appendChild(divx2);
+		window.ykDrawCardPool_div.divx2=divx2;
 		var div_add2=ui.create.div();
 		div_add2.style.cssText='height:25px;width:25px;top:90px;left:calc(100% - 335px);border-radius:100px;background-color:white;text-align:center;';
 		div_add2.innerHTML='<span style="color:black;font-size:25px;font-weight:400;"><b>+</b></span>';
 		div_add2.onclick=function(){alert('【虚空之泪】获取途径：任务获得、活动获得。');};
 		window.ykDrawCardPool_div.appendChild(div_add2);
 		window.yk_clickFK(div_add2);
-		
+		window.ykUpdateDrawCardPool=()=>{
+			if(!window.ykDrawCardPool_div) return ;
+			if(!window.ykDrawCardPool_div.divx||!window.ykDrawCardPool_div.divx2) return ;
+			var num;
+			if(lib.config.yk_myBag&&lib.config.yk_myBag.predestined_fate&&typeof lib.config.yk_myBag.predestined_fate.num=='number') num=lib.config.yk_myBag.predestined_fate.num;
+			else num=0;
+			window.ykDrawCardPool_div.divx.innerHTML='<b>'+num+'</b>';
+			var num2;
+			if(lib.config.yk_myBag&&lib.config.yk_myBag.sky_crying&&typeof lib.config.yk_myBag.sky_crying.num=='number') num2=lib.config.yk_myBag.sky_crying.num;
+			else num2=0;
+			window.ykDrawCardPool_div.divx2.innerHTML='<b>'+num2+'</b>';
+		}
+		window.ykUpdateDrawCardPool();
 		//卡池
 		var characterx,tagx,str;
 		if(window.ykDrawCardPool_Switch=='usual'){
@@ -1511,7 +1539,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					else resultCharacterItem=lib.ykSpecialDrawCardPool.tian.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 				}
 				window.ykDraw(resultCharacterItem);
-				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
+				window.ykDrawCardPool_div.hide();
 			}
 		}
 		window.ykDrawCardPool_div.appendChild(div_chooce1);
@@ -1713,7 +1741,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				var resultCharacterItemList=[];
 				for(var i=0;i<10;i++) resultCharacterItemList.push(drawx(this.character,this.result));
 				window.ykDraw(resultCharacterItemList);
-				if(typeof window.yk_closeODCP=='function') window.yk_closeODCP();
+				window.ykDrawCardPool_div.hide();
 			}
 		}
 		var div_chooce2Pict=ui.create.div();
