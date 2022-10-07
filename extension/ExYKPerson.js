@@ -10289,6 +10289,14 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if((lib.config['yk_ykzhuyan_rank']||0)>=3){
 					trigger.cancel();
 					trigger._triggered=null;
+					var node;
+					if(game.chess){
+						node=event.card.copy('thrown','center',ui.arena).animate('start');
+					}
+					else{
+						node=player.$throwordered(event.card.copy(),true);
+					}
+					node.classList.add('thrownhighlight');
 					trigger.result={
 						card:event.card,
 						judge:trigger.judge(event.card),
