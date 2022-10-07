@@ -3179,17 +3179,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		var MenuList=['星空之愿','任务列表','角色换肤','社交访问','配置角色','导出存档','载入存档','角色图鉴','云空地图','元素法则','设置主题',(lib.config.only_yk==true?'退出模式':'云空模式'),'清空技能','更新日志','素材下载'];
 		var MenuFunctionList=['ykOpenDrawCardPool','ykOpenTaskList','ykChangeSkin','ykVisit','ykEquip','saveConfig','readConfig','ykShowCharacterBook','ykOpenMap','ykElementIntroduce','ykSetTheme','ykMode','ykClearSkillPoints','ykUpdateInformation','ykDownload'];
 		window.background=ui.create.div();
-		window.background.style.height='calc(60%)';
-		window.background.style.width='calc(40%)';
-		window.background.style.left='30%';
-		window.background.style.top='20%';
-		window.background.style.backgroundColor='black';
-		window.background.style.opacity=0.8;
+		window.background.style.cssText='height:60%;width:40%;left:30%;top:20%;background-color:black;opacity:0.8;text-align:center;overflow-y:scroll;z-index:99999999;border-radius:8px;';
 		window.background.setBackgroundImage('extension/云空/background.gif');
 		window.background.style.backgroundSize="100% 100%";
-		window.background.style['text-align']='center';
-		window.background.style['overflow-y']='scroll';
-		window.background.style['z-index']=99999999;
 		lib.setScroll(window.background);
 		ui.window.appendChild(window.background);
 		dialogM.background=window.background;
@@ -3197,11 +3189,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		var MenuTitle=ui.create.div('');
 		MenuTitle.style.backgroundColor='black';
 		MenuTitle.innerHTML='<font color=white>云空-菜单</font>';
-		MenuTitle.style.height='20px';
-		MenuTitle.style.width='calc(100%)';
-		MenuTitle.style.left='calc(0%)';
-		MenuTitle.style.top='calc(0%)';
-		MenuTitle.style['text-align']='center';
+		MenuTitle.style.cssText='height:20px;width:100%;left:0%;top:0%;text-align:center;';
 		background.appendChild(MenuTitle);
 		
 		for(var i=0;i<MenuList.length;i++){
@@ -3211,13 +3199,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				try{window[this.functionName]();}catch(e){alert('模块加载失败！');}
 				ui.click.configMenu=window.clickMenu;
 			});
-			window['Menu_'+i].style.height='8%';
-			window['Menu_'+i].style.width='50%';
-			window['Menu_'+i].style.left='0%';
-			window['Menu_'+i].style.top='20px';
-			window['Menu_'+i].style.position='relative';
-			window['Menu_'+i].style['text-align']='center';
-			window['Menu_'+i].style.borderRadius='0px';
+			window['Menu_'+i].style.cssText='height:8%;width:50%;left:0%top:20px;position:relative;border-radius:8px;';
 			window['Menu_'+i].functionName=MenuFunctionList[i];
 			window['Menu_'+i].innerHTML=MenuList[i];
 			background.appendChild(window['Menu_'+i]);
