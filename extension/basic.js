@@ -1149,9 +1149,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		}
 	}
 	game.YKgainNewPerson=function(characterx,bool){
-		if(Array.isArray(characterx)){character=characterx[0];characterx=characterx.slice(1,characterx.length);}
+		if(Array.isArray(characterx)){
+			for(var i of characterx){
+				if(i.indexOf('-')!=-1) i=i.slice(0,i.indexOf('-'));
+				game.YKgainNewPerson(i);
+			}
+			return ;
+		}
 		else character=characterx;
-		if(characterx.length<=1) bool=true;
 		if(!character){alert('角色名错误！');return ;}
 		if(typeof game.ykHasCharacter=='function'&&game.ykHasCharacter(character)){
 			if(game.sayyk&&typeof game.sayyk=='function'){
@@ -1193,10 +1198,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			setTimeout(function(){game.reload();},3000);
 		}
 		else if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('恭喜获得角色：【'+get.translation(name)+'】！');
-		if(Array.isArray(characterx)&&characterx.length>0){
-			game.YKgainNewPerson(characterx,(characterx.length==1?true:false));
-			return ;
-		}
 	}
 	window.ykDraw=function(character){
 		if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('按住并拖动鼠标或划动屏幕画出你喜欢的符号，召唤武将');
