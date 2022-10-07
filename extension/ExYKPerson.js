@@ -10287,16 +10287,15 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					event.getSkillBool=true;
 				}
 				if((lib.config['yk_ykzhuyan_rank']||0)>=3){
-					trigger._triggered=null;
 					trigger.cancel();
+					trigger._triggered=null;
 					trigger.result={
-						card:card,
-						cards:[card],
-						judge:trigger.judge(card),
+						card:event.card,
+						judge:trigger.judge(event.card),
 						node:node,
-						number:get.number(card),
-						suit:get.suit(card),
-						color:get.color(card),
+						number:get.number(event.card),
+						suit:get.suit(event.card),
+						color:get.color(event.card),
 					};
 					if(trigger.result.judge>0){
 						trigger.result.bool=true;
@@ -10306,7 +10305,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						trigger.result.bool=false;
 						trigger.player.popup('杯具');
 					}
-					game.log(trigger.player,'的判定结果为',card);
+					game.log(trigger.player,'的判定结果为',event.card);
 				}
 				game.delay(2);
 			}
