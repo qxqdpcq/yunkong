@@ -2871,248 +2871,248 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		return player.player2;
 	}
 	if(!lib.config.forbidai) lib.config.forbidai=[];
-		window.yunkong_Character={
-			name:"yunkong_Character",
-			init:true,
-			connect:true,
-			character:{
-				"qxq_yk_tian":["female","qxq_yk",3,["fazetiandingx","tiandaowuchang","shengmieshenyu"],[(lib.config.forbidai.indexOf('qxq_yk_tian')==-1?'':'forbidai'),'boss','bossallowed','qyboss']],
+	window.yunkong_Character={
+		name:"yunkong_Character",
+		init:true,
+		connect:true,
+		character:{
+			"qxq_yk_tian":["female","qxq_yk",3,["fazetiandingx","tiandaowuchang","shengmieshenyu"],[(lib.config.forbidai.indexOf('qxq_yk_tian')==-1?'':'forbidai'),'boss','bossallowed','qyboss']],
+		},
+		characterIntro:{
+			"qxq_yk_tian":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;云空世界传说中至高无上的存在，也曾是自云空诞生起无尽岁月以来触摸到那个门槛的顶尖修道者心中噩梦般的存在，但随着岁月的流逝，即便是这个传说般的存在如今也被生活在云空上的人们逐渐淡忘了，仅有曾经的天曌贵胄以及一些年老的漓人族长老可以通过翻开古老的历史典籍而窥探到关于祂的一星半点<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女（天道本身不分性别）<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;无可揣测<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;天道意识<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“你很强……但是妄逆天道者，终将葬身于此。”</i></font>",
+			"qxq_yk_yanmengyuejian":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;不知其过去，不晓其未来；最喜欢在晴天的夜晚仰望星空而出神，直至黎明。性冷而不近人情，通晓古老的占卜之术，拥有未知的力量。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“每一颗星星，都是一个命运。”</i></font>",
+			"qxq_yk_xiaoqiao":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;【魇梦月见】的徒弟，和她师父一样神秘，几乎没有人知道她的来历，从偶尔谈及的只言片语方才得悉，她来自遥远的东荒大泽。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;世外人（世代生活在云空的人对来自云空世界之外的人的统称）<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“最是人间留不住，朱颜辞镜花辞树。（王国维《蝶恋花》）”</i></font>",
+			"qxq_yk_fuling":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;医圣的传人，被师门派下山历练。记性似乎不好，经常把药方搞混，为此曾几次差点出了事故。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;医圣传人<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“修行悟道我不懂，但是治病救人我可会……你是不相信我吗？哼！但愿你不要落到我手上！”</i></font>",
+			"qxq_yk_wuwangxuanyue":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;——“说起巫王玄月，那可是三千年前的传奇般的人物了”<br>&nbsp;&nbsp;&nbsp;&nbsp;——“啊，三千年？！这么久？！想来整部东荒古史也不过五千载……三千年，真是好漫长的岁月……”<br>&nbsp;&nbsp;&nbsp;&nbsp;——“是的，他就是那时候的人，那个很久远的年代。嗯……凭借一人，震慑帝国十大高手，诸君面前犹如闲庭信步，可惜最终……”<br>&nbsp;&nbsp;&nbsp;&nbsp;她掸去厚厚的灰尘，眼中的遥思一闪而没，合上那陈旧而又脆弱的黄色书页，将其随意地丢了过来，“上面记载了些巫术，或许对你有用，你若有兴趣便看看吧。”<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;出场：巫术·大成-半步道玄（道玄：道之玄境）<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;巫山-巫王<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;巫山-天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“万古修行长生梦，难住古今多少人。”</i></font>",
+			"qxq_yk_kongshanlingxue":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;大雪山，即巫山，第三百六十五代巫女，亦是第三百二十任大雪山执剑人，师从巫山时前任大祭司【空山百闻】，习有扶乩之术，入道境之前资质超绝；亦是时任巫王玄月之徒，因变故被废黜巫女之位，流放四海。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;巫术·小成-入道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;原巫山巫女、原大雪山执剑人<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;巫山&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“易知天意，难测人心。”</i></font>",
+			"qxq_yk_dijunxuanpin":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;昔日的天曌帝君，其名玄牝，统御四海，君临八荒。<br>&nbsp;&nbsp;&nbsp;&nbsp;在他统治的年代，四海八荒无不慑服。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;末道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;天曌帝君<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“仙凡有别，神明虽惧，朕愿尽毕生之力，护佑苍生一隅…但愿黎民安生，天曌昌盛。”</i></font>",
+			"qxq_yk_akalai":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;来自未知之境，异族弃儿，因天生辉光而被监国司御史狄青收留，授以察罪断案之任。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;绘道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;督察使<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“黑暗，是光的敌人，我愿以此刃，涤净罪恶。”</i></font>",
+			"qxq_yk_mingyun":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;居住于九天之上，世人不知的神明。<br>&nbsp;&nbsp;&nbsp;&nbsp;在那一代一代相传的神话故事里，克罗托纺织生命之线，拉克西斯决定生命之线的长度，阿特洛波斯切断生命之线。如今命运之神的名讳早已无人记起，或许祂根本就不存世间。如果这时间真有编织众生命运的神明，那么祂一定在高天之上注视众生吧。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;命运之神<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“你窥见的那一角，真的是你的未来吗？”</i></font>",
+		},
+		characterSort:{
+			'yunkong_Character':{
+				ykws:["qxq_yk_wuwangxuanyue","qxq_yk_kongshanlingxue","qxq_yk_kongshanyaoyun"],
+				ykyl:["qxq_yk_yunling","qxq_yk_yunying"],
+				yktz:["qxq_yk_fuling","qxq_yk_dijunxuanpin","qxq_yk_akalai"],
+				ykelse:["qxq_yk_tian","qxq_yk_xiaoqiao","qxq_yk_tiandaozhiying","qxq_yk_yanmengyuejian","qxq_yk_mingyun","qxq_yk_zhixu"],
 			},
-			characterIntro:{
-				"qxq_yk_tian":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;云空世界传说中至高无上的存在，也曾是自云空诞生起无尽岁月以来触摸到那个门槛的顶尖修道者心中噩梦般的存在，但随着岁月的流逝，即便是这个传说般的存在如今也被生活在云空上的人们逐渐淡忘了，仅有曾经的天曌贵胄以及一些年老的漓人族长老可以通过翻开古老的历史典籍而窥探到关于祂的一星半点<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女（天道本身不分性别）<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;无可揣测<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;天道意识<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“你很强……但是妄逆天道者，终将葬身于此。”</i></font>",
-				"qxq_yk_yanmengyuejian":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;不知其过去，不晓其未来；最喜欢在晴天的夜晚仰望星空而出神，直至黎明。性冷而不近人情，通晓古老的占卜之术，拥有未知的力量。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“每一颗星星，都是一个命运。”</i></font>",
-				"qxq_yk_xiaoqiao":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;【魇梦月见】的徒弟，和她师父一样神秘，几乎没有人知道她的来历，从偶尔谈及的只言片语方才得悉，她来自遥远的东荒大泽。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;世外人（世代生活在云空的人对来自云空世界之外的人的统称）<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“最是人间留不住，朱颜辞镜花辞树。（王国维《蝶恋花》）”</i></font>",
-				"qxq_yk_fuling":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;医圣的传人，被师门派下山历练。记性似乎不好，经常把药方搞混，为此曾几次差点出了事故。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;医圣传人<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“修行悟道我不懂，但是治病救人我可会……你是不相信我吗？哼！但愿你不要落到我手上！”</i></font>",
-				"qxq_yk_wuwangxuanyue":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;——“说起巫王玄月，那可是三千年前的传奇般的人物了”<br>&nbsp;&nbsp;&nbsp;&nbsp;——“啊，三千年？！这么久？！想来整部东荒古史也不过五千载……三千年，真是好漫长的岁月……”<br>&nbsp;&nbsp;&nbsp;&nbsp;——“是的，他就是那时候的人，那个很久远的年代。嗯……凭借一人，震慑帝国十大高手，诸君面前犹如闲庭信步，可惜最终……”<br>&nbsp;&nbsp;&nbsp;&nbsp;她掸去厚厚的灰尘，眼中的遥思一闪而没，合上那陈旧而又脆弱的黄色书页，将其随意地丢了过来，“上面记载了些巫术，或许对你有用，你若有兴趣便看看吧。”<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;出场：巫术·大成-半步道玄（道玄：道之玄境）<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;巫山-巫王<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;巫山-天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“万古修行长生梦，难住古今多少人。”</i></font>",
-				"qxq_yk_kongshanlingxue":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;大雪山，即巫山，第三百六十五代巫女，亦是第三百二十任大雪山执剑人，师从巫山时前任大祭司【空山百闻】，习有扶乩之术，入道境之前资质超绝；亦是时任巫王玄月之徒，因变故被废黜巫女之位，流放四海。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;巫术·小成-入道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;原巫山巫女、原大雪山执剑人<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;巫山&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“易知天意，难测人心。”</i></font>",
-				"qxq_yk_dijunxuanpin":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;昔日的天曌帝君，其名玄牝，统御四海，君临八荒。<br>&nbsp;&nbsp;&nbsp;&nbsp;在他统治的年代，四海八荒无不慑服。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;末道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;天曌帝君<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“仙凡有别，神明虽惧，朕愿尽毕生之力，护佑苍生一隅…但愿黎民安生，天曌昌盛。”</i></font>",
-				"qxq_yk_akalai":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;来自未知之境，异族弃儿，因天生辉光而被监国司御史狄青收留，授以察罪断案之任。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;男<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;绘道境<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;督察使<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;天曌&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“黑暗，是光的敌人，我愿以此刃，涤净罪恶。”</i></font>",
-				"qxq_yk_mingyun":"【人物简介】<br>&nbsp;&nbsp;&nbsp;&nbsp;居住于九天之上，世人不知的神明。<br>&nbsp;&nbsp;&nbsp;&nbsp;在那一代一代相传的神话故事里，克罗托纺织生命之线，拉克西斯决定生命之线的长度，阿特洛波斯切断生命之线。如今命运之神的名讳早已无人记起，或许祂根本就不存世间。如果这时间真有编织众生命运的神明，那么祂一定在高天之上注视众生吧。<br></font><br><li>角色信息：</li>&nbsp;&nbsp;&nbsp;&nbsp;【性别】&nbsp;&nbsp;女<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色境界】&nbsp;&nbsp;未知<br>&nbsp;&nbsp;&nbsp;&nbsp;【角色身份】&nbsp;&nbsp;命运之神<br>&nbsp;&nbsp;&nbsp;&nbsp;【所属势力】&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;<br><font color=gray><i>————“你窥见的那一角，真的是你的未来吗？”</i></font>",
-			},
-			characterSort:{
-				'yunkong_Character':{
-					ykws:["qxq_yk_wuwangxuanyue","qxq_yk_kongshanlingxue","qxq_yk_kongshanyaoyun"],
-					ykyl:["qxq_yk_yunling","qxq_yk_yunying"],
-					yktz:["qxq_yk_fuling","qxq_yk_dijunxuanpin","qxq_yk_akalai"],
-					ykelse:["qxq_yk_tian","qxq_yk_xiaoqiao","qxq_yk_tiandaozhiying","qxq_yk_yanmengyuejian","qxq_yk_mingyun","qxq_yk_zhixu"],
-				},
-			},
-			characterTitle:{
-				"qxq_yk_tian":"<body><samp id='天道传说'>天道传说</samp></body><style>#天道传说{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-				"qxq_yk_xiaoqiao":"<body><samp id='浮世飘零'>浮世飘零</samp></body><style>#浮世飘零{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-				"qxq_yk_kongshanlingxue":"<body><samp id='既知天命'>既知天命</samp></body><style>#既知天命{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-				"qxq_yk_wuwangxuanyue":"<body><samp id='千古一念'>千古一念</samp></body><style>#千古一念{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-				"qxq_yk_yanmengyuejian":"<body><samp id='梦与君同'>梦与君同</samp></body><style>#梦与君同{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-				"qxq_yk_mingyun":"<body><samp id='云端遥想'>云端遥想</samp></body><style>#云端遥想{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-				"qxq_yk_dijunxuanpin":"<body><samp id='天地大同'>天地大同</samp></body><style>#天地大同{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
-			},
-			perfectPair:{
-			},
-			skill:{
-			},
-			translate:{
-				"qxq_yk_tian":"“天”",
-				"qxq_yk_akalai":"阿卡莱",
-				"qxq_yk_dijunxuanpin":"帝君玄牝",
-				"qxq_yk_fuling":"茯苓",
-				"qxq_yk_xiaoqiao":"小乔",
-				"qxq_yk_kongshanyaoyun":"空山瑶云",
-				"qxq_yk_kongshanlingxue":"空山泠雪",
-				"qxq_yk_wuwangxuanyue":"巫王玄月",
-				"qxq_yk_tiandaozhiying":"天道织缨",
-				"qxq_yk_yanmengyuejian":"魇梦月见",
-				"qxq_yk_mingyun":"命运",
-				"qxq_yk_zhixu":"秩序",
-				"qxq_yk_yunling":"云翎",
-				"qxq_yk_yunying":"云樱",
-			},
-		};
-		var numws=0;
-		var numyl=0;
-		var numtz=0;
-		var numelse=0;
-		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
-			var character=lib.config.YKcharacterNameList[i];
-			var name=character.slice(0,character.indexOf('-'));
-			if(yunkong_Character.characterSort.yunkong_Character.ykws.indexOf(name)!=-1) numws++;
-			if(yunkong_Character.characterSort.yunkong_Character.ykyl.indexOf(name)!=-1) numyl++;
-			if(yunkong_Character.characterSort.yunkong_Character.yktz.indexOf(name)!=-1) numtz++;
-			if(yunkong_Character.characterSort.yunkong_Character.ykelse.indexOf(name)!=-1) numelse++;
-			character=character.slice(character.indexOf('-')+1,character.length);
-			var sex=character.slice(0,character.indexOf('-'));
-			character=character.slice(character.indexOf('-')+1,character.length);
-			var hp=character.slice(0,(character.indexOf('-')==-1?character.length:character.indexOf('-')));
-			var skills=[];
-			if(character.indexOf('-')!=-1){
-				while(character.indexOf('-')!=-1){
-					character=character.slice(character.indexOf('-')+1,character.length);
-					var skill=character.slice(0,(character.indexOf('-')==-1?character.length:character.indexOf('-')));
-					skills.push(skill);
-				}
-				lib.config[name+'_skills']=skills;
-				game.saveConfig(name+'_skills',lib.config[name+'_skills']);
+		},
+		characterTitle:{
+			"qxq_yk_tian":"<body><samp id='天道传说'>天道传说</samp></body><style>#天道传说{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+			"qxq_yk_xiaoqiao":"<body><samp id='浮世飘零'>浮世飘零</samp></body><style>#浮世飘零{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+			"qxq_yk_kongshanlingxue":"<body><samp id='既知天命'>既知天命</samp></body><style>#既知天命{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+			"qxq_yk_wuwangxuanyue":"<body><samp id='千古一念'>千古一念</samp></body><style>#千古一念{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+			"qxq_yk_yanmengyuejian":"<body><samp id='梦与君同'>梦与君同</samp></body><style>#梦与君同{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+			"qxq_yk_mingyun":"<body><samp id='云端遥想'>云端遥想</samp></body><style>#云端遥想{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+			"qxq_yk_dijunxuanpin":"<body><samp id='天地大同'>天地大同</samp></body><style>#天地大同{animation:change 7s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>",
+		},
+		perfectPair:{
+		},
+		skill:{
+		},
+		translate:{
+			"qxq_yk_tian":"“天”",
+			"qxq_yk_akalai":"阿卡莱",
+			"qxq_yk_dijunxuanpin":"帝君玄牝",
+			"qxq_yk_fuling":"茯苓",
+			"qxq_yk_xiaoqiao":"小乔",
+			"qxq_yk_kongshanyaoyun":"空山瑶云",
+			"qxq_yk_kongshanlingxue":"空山泠雪",
+			"qxq_yk_wuwangxuanyue":"巫王玄月",
+			"qxq_yk_tiandaozhiying":"天道织缨",
+			"qxq_yk_yanmengyuejian":"魇梦月见",
+			"qxq_yk_mingyun":"命运",
+			"qxq_yk_zhixu":"秩序",
+			"qxq_yk_yunling":"云翎",
+			"qxq_yk_yunying":"云樱",
+		},
+	};
+	var numws=0;
+	var numyl=0;
+	var numtz=0;
+	var numelse=0;
+	for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
+		var character=lib.config.YKcharacterNameList[i];
+		var name=character.slice(0,character.indexOf('-'));
+		if(yunkong_Character.characterSort.yunkong_Character.ykws.indexOf(name)!=-1) numws++;
+		if(yunkong_Character.characterSort.yunkong_Character.ykyl.indexOf(name)!=-1) numyl++;
+		if(yunkong_Character.characterSort.yunkong_Character.yktz.indexOf(name)!=-1) numtz++;
+		if(yunkong_Character.characterSort.yunkong_Character.ykelse.indexOf(name)!=-1) numelse++;
+		character=character.slice(character.indexOf('-')+1,character.length);
+		var sex=character.slice(0,character.indexOf('-'));
+		character=character.slice(character.indexOf('-')+1,character.length);
+		var hp=character.slice(0,(character.indexOf('-')==-1?character.length:character.indexOf('-')));
+		var skills=[];
+		if(character.indexOf('-')!=-1){
+			while(character.indexOf('-')!=-1){
+				character=character.slice(character.indexOf('-')+1,character.length);
+				var skill=character.slice(0,(character.indexOf('-')==-1?character.length:character.indexOf('-')));
+				skills.push(skill);
 			}
-			if(hp.indexOf('/')==-1) hp=parseInt(hp);
-			yunkong_Character.character[name]=[sex,"qxq_yk",hp,skills,[(lib.config.forbidai.indexOf(name)==-1?'':'forbidai')]];
-			var info='';
-			if(!lib.config.qxq_YK_person.friendness[name]){
-				lib.config.qxq_YK_person.friendness[name]=0;
-				game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
-			}
-			var rank=(lib.config.qxq_YK_person.rank[name]||0);
-			var score=(lib.config.qxq_YK_person.score[name]||0);
-			var friendness='';
-			var friendnessnum=0;
-			if(typeof lib.config.qxq_YK_person.friendness[name]=='string'){
-				friendnessnum=parseFloat(lib.config.qxq_YK_person.friendness[name]);
-				if(isNaN(friendness)) friendnessnum=0;
-			}
-			else{
-				if(typeof lib.config.qxq_YK_person.friendness[name]=='number'){
-					friendnessnum=lib.config.qxq_YK_person.friendness[name];
-				}
-			}
-			if(friendnessnum>100){
-				lib.config.qxq_YK_person.friendness[name]=friendnessnum=100;
-				game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
-			}
-			if(friendnessnum<-100){
-				lib.config.qxq_YK_person.friendness[name]=friendnessnum=-100;
-				game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
-			}
-			if(friendnessnum>0){
-				var numx=friendnessnum;
-				while(friendnessnum>=10){
-					if(friendnessnum>=20){
-						friendness+='<font color=red>❤</font>';
-						friendnessnum-=20;
-					}
-					else{
-						friendness+='<font color=red>♡</font>';
-						friendnessnum-=10;
-					}
-				}
-				if(numx>=70){var color='red';}
-				if(numx>=45&&numx<70){var color='orange';}
-				if(numx>=20&&numx<45){var color='yellow';}
-				if(numx>0&&numx<20){var color='white';}
-				friendness+='&nbsp&nbsp<font color='+(color||'white')+'>'+numx+'%</font>';
-			}
-			else{
-				var numx=friendnessnum;
-				while(friendnessnum<0){
-					friendness+='<font color=grey>💔</font>';
-					friendnessnum+=20;
-				}
-				if(numx<=-70){var color='blue';}
-				if(numx<=-45&&numx>-70){var color='cyan';}
-				if(numx<=-20&&numx>-45){var color='grey';}
-				if(numx<=0&&numx>-20){var color='white';}
-				friendness+='&nbsp&nbsp<font color='+(color||'white')+'>'+numx+'%</font>';
-			}
-			if(['qxq_yk_xiaoqiao'].indexOf(name)!=-1) yunkong_Character.characterTitle[name]+='<br>角色评级：'+rank+'<br>角色评分：'+score+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
-			else if(lib.qxq_yk_bossList.indexOf(name)==-1) yunkong_Character.characterTitle[name]='角色评级：'+rank+'<br>角色评分：'+score+'<br>好感度：'+friendness+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+name)+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
+			lib.config[name+'_skills']=skills;
+			game.saveConfig(name+'_skills',lib.config[name+'_skills']);
 		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
-			yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+		if(hp.indexOf('/')==-1) hp=parseInt(hp);
+		yunkong_Character.character[name]=[sex,"qxq_yk",hp,skills,[(lib.config.forbidai.indexOf(name)==-1?'':'forbidai')]];
+		var info='';
+		if(!lib.config.qxq_YK_person.friendness[name]){
+			lib.config.qxq_YK_person.friendness[name]=0;
+			game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
 		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykyl.length;i++){
-			yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.yktz.length;i++){
-			yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykelse.length;i++){
-			yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		for(var i=0;i<lib.qxq_yk_bossList.length;i++){
-			if(yunkong_Character.characterSort.yunkong_Character.ykws.indexOf(lib.qxq_yk_bossList[i])!=-1) numws++;
-			if(yunkong_Character.characterSort.yunkong_Character.ykyl.indexOf(lib.qxq_yk_bossList[i])!=-1) numyl++;
-			if(yunkong_Character.characterSort.yunkong_Character.yktz.indexOf(lib.qxq_yk_bossList[i])!=-1) numtz++;
-			if(yunkong_Character.characterSort.yunkong_Character.ykelse.indexOf(lib.qxq_yk_bossList[i])!=-1) numelse++;
-		}
-		if(yunkong_Character.characterSort.yunkong_Character.ykws) var ykwsCharacterNum=yunkong_Character.characterSort.yunkong_Character.ykws.length;
-		else var ykwsCharacterNum=0;
-		if(yunkong_Character.characterSort.yunkong_Character.ykyl) var ykylCharacterNum=yunkong_Character.characterSort.yunkong_Character.ykyl.length;
-		else var ykylCharacterNum=0;
-		if(yunkong_Character.characterSort.yunkong_Character.yktz) var yktzCharacterNum=yunkong_Character.characterSort.yunkong_Character.yktz.length;
-		else var yktzCharacterNum=0;
-		if(yunkong_Character.characterSort.yunkong_Character.ykelse) var ykelseCharacterNum=yunkong_Character.characterSort.yunkong_Character.ykelse.length;
-		else var ykelseCharacterNum=0;
-		lib.translate['ykws']="<body><samp id='云空-巫山'><strong>云空-巫山<br>已收集"+numws+'/'+ykwsCharacterNum+"</strong></samp></body><style>#云空-巫山{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
-		lib.translate['ykyl']="<body><samp id='云空-漓人-云澜'><strong>云空-漓人-云澜<br>已收集"+numyl+'/'+ykylCharacterNum+"</strong></samp></body><style>#云空-漓人-云澜{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
-		lib.translate['yktz']="<body><samp id='云空-天曌'><strong>云空-天曌<br>已收集"+numtz+'/'+yktzCharacterNum+"</strong></samp></body><style>#云空-天曌{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
-		lib.translate['ykelse']="<body><samp id='云空-其他'><strong>云空-其他<br>已收集"+numelse+'/'+ykelseCharacterNum+"</strong></samp></body><style>#云空-其他{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
-			if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.ykws[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.ykws[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.ykws[i])+"');\">点击配置角色</a>";
-			else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]||'暂无武将介绍');
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykyl.length;i++){
-			if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.ykyl[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.ykyl[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.ykyl[i])+"');\">点击配置角色</a>";
-			else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]||'暂无武将介绍');
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.yktz.length;i++){
-			if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.yktz[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.yktz[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.yktz[i])+"');\">点击配置角色</a>";
-			else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]||'暂无武将介绍');
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykelse.length;i++){
-			if(yunkong_Character.characterSort.yunkong_Character.ykelse[i]=='qxq_yk_xiaoqiao') continue;
-			if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.ykelse[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.ykelse[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.ykelse[i])+"');\">点击配置角色</a>";
-			else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]||'暂无武将介绍');
-		}
-		
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
-			yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykyl.length;i++){
-			yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.yktz.length;i++){
-			yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykelse.length;i++){
-			yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
-			if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
-			if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
-			if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
-		}
-		if(lib.device||lib.node){
-			for(var i in yunkong_Character.character){
-				if(!lib.config.ykCharacterSkin.myChoose){lib.config.ykCharacterSkin.myChoose={};game.saveConfig('ykCharacterSkin',lib.config.ykCharacterSkin);}
-				var skinname=lib.config.ykCharacterSkin.myChoose[i];
-				if(!skinname) yunkong_Character.character[i][4].push('ext:云空/'+i+'.jpg');
-				else yunkong_Character.character[i][4].push('ext:云空/'+i+'/'+i+'_'+skinname+'.jpg');
-			}
+		var rank=(lib.config.qxq_YK_person.rank[name]||0);
+		var score=(lib.config.qxq_YK_person.score[name]||0);
+		var friendness='';
+		var friendnessnum=0;
+		if(typeof lib.config.qxq_YK_person.friendness[name]=='string'){
+			friendnessnum=parseFloat(lib.config.qxq_YK_person.friendness[name]);
+			if(isNaN(friendness)) friendnessnum=0;
 		}
 		else{
-			for(var i in yunkong_character.character){
-				if(!lib.config.ykCharacterSkin.myChoose){lib.config.ykCharacterSkin.myChoose={};game.saveConfig('ykCharacterSkin',lib.config.ykCharacterSkin);}
-				var skinname=lib.config.ykCharacterSkin.myChoose[i];
-				if(!skinname) yunkong_Character.character[i][4].push('ext:云空/'+i+'.jpg');
-				else yunkong_Character.character[i][4].push('ext:云空/'+i+'/'+i+'_'+skinname+'.jpg');
+			if(typeof lib.config.qxq_YK_person.friendness[name]=='number'){
+				friendnessnum=lib.config.qxq_YK_person.friendness[name];
 			}
 		}
+		if(friendnessnum>100){
+			lib.config.qxq_YK_person.friendness[name]=friendnessnum=100;
+			game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
+		}
+		if(friendnessnum<-100){
+			lib.config.qxq_YK_person.friendness[name]=friendnessnum=-100;
+			game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
+		}
+		if(friendnessnum>0){
+			var numx=friendnessnum;
+			while(friendnessnum>=10){
+				if(friendnessnum>=20){
+					friendness+='<font color=red>❤</font>';
+					friendnessnum-=20;
+				}
+				else{
+					friendness+='<font color=red>♡</font>';
+					friendnessnum-=10;
+				}
+			}
+			if(numx>=70){var color='red';}
+			if(numx>=45&&numx<70){var color='orange';}
+			if(numx>=20&&numx<45){var color='yellow';}
+			if(numx>0&&numx<20){var color='white';}
+			friendness+='&nbsp&nbsp<font color='+(color||'white')+'>'+numx+'%</font>';
+		}
+		else{
+			var numx=friendnessnum;
+			while(friendnessnum<0){
+				friendness+='<font color=grey>💔</font>';
+				friendnessnum+=20;
+			}
+			if(numx<=-70){var color='blue';}
+			if(numx<=-45&&numx>-70){var color='cyan';}
+			if(numx<=-20&&numx>-45){var color='grey';}
+			if(numx<=0&&numx>-20){var color='white';}
+			friendness+='&nbsp&nbsp<font color='+(color||'white')+'>'+numx+'%</font>';
+		}
+		if(['qxq_yk_xiaoqiao'].indexOf(name)!=-1) yunkong_Character.characterTitle[name]+='<br>角色评级：'+rank+'<br>角色评分：'+score+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
+		else if(lib.qxq_yk_bossList.indexOf(name)==-1) yunkong_Character.characterTitle[name]='角色评级：'+rank+'<br>角色评分：'+score+'<br>好感度：'+friendness+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+name)+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
+		yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykyl.length;i++){
+		yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.yktz.length;i++){
+		yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykelse.length;i++){
+		yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<lib.qxq_yk_bossList.length;i++){
+		if(yunkong_Character.characterSort.yunkong_Character.ykws.indexOf(lib.qxq_yk_bossList[i])!=-1) numws++;
+		if(yunkong_Character.characterSort.yunkong_Character.ykyl.indexOf(lib.qxq_yk_bossList[i])!=-1) numyl++;
+		if(yunkong_Character.characterSort.yunkong_Character.yktz.indexOf(lib.qxq_yk_bossList[i])!=-1) numtz++;
+		if(yunkong_Character.characterSort.yunkong_Character.ykelse.indexOf(lib.qxq_yk_bossList[i])!=-1) numelse++;
+	}
+	if(yunkong_Character.characterSort.yunkong_Character.ykws) var ykwsCharacterNum=yunkong_Character.characterSort.yunkong_Character.ykws.length;
+	else var ykwsCharacterNum=0;
+	if(yunkong_Character.characterSort.yunkong_Character.ykyl) var ykylCharacterNum=yunkong_Character.characterSort.yunkong_Character.ykyl.length;
+	else var ykylCharacterNum=0;
+	if(yunkong_Character.characterSort.yunkong_Character.yktz) var yktzCharacterNum=yunkong_Character.characterSort.yunkong_Character.yktz.length;
+	else var yktzCharacterNum=0;
+	if(yunkong_Character.characterSort.yunkong_Character.ykelse) var ykelseCharacterNum=yunkong_Character.characterSort.yunkong_Character.ykelse.length;
+	else var ykelseCharacterNum=0;
+	lib.translate['ykws']="<body><samp id='云空-巫山'><strong>云空-巫山<br>已收集"+numws+'/'+ykwsCharacterNum+"</strong></samp></body><style>#云空-巫山{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
+	lib.translate['ykyl']="<body><samp id='云空-漓人-云澜'><strong>云空-漓人-云澜<br>已收集"+numyl+'/'+ykylCharacterNum+"</strong></samp></body><style>#云空-漓人-云澜{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
+	lib.translate['yktz']="<body><samp id='云空-天曌'><strong>云空-天曌<br>已收集"+numtz+'/'+yktzCharacterNum+"</strong></samp></body><style>#云空-天曌{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
+	lib.translate['ykelse']="<body><samp id='云空-其他'><strong>云空-其他<br>已收集"+numelse+'/'+ykelseCharacterNum+"</strong></samp></body><style>#云空-其他{animation:change 15s linear 0s infinite;}@keyframes change{0% {color:#FF0000;}10%{color:#FF7F00;}20%{color: #FFFF00;}30%{color:#00FF00;}40% {color:#00FFFF;}50%{color: #0000FF;}60%{color: #8B00FF;}70%{color: #0000FF;}75%{color: #00FFFF ;}80%{color:#00FF00;}85%{color:#FFFF00 ;}90%{color:  #FF7F00;}100%{color: #FF0000;}}</style>";
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
+		if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.ykws[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.ykws[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.ykws[i])+"');\">点击配置角色</a>";
+		else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]||'暂无武将介绍');
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykyl.length;i++){
+		if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.ykyl[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.ykyl[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.ykyl[i])+"');\">点击配置角色</a>";
+		else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]||'暂无武将介绍');
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.yktz.length;i++){
+		if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.yktz[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.yktz[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.yktz[i])+"');\">点击配置角色</a>";
+		else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]||'暂无武将介绍');
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykelse.length;i++){
+		if(yunkong_Character.characterSort.yunkong_Character.ykelse[i]=='qxq_yk_xiaoqiao') continue;
+		if(lib.qxq_yk_bossList.indexOf(yunkong_Character.characterSort.yunkong_Character.ykelse[i])==-1) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]||'暂无武将介绍')+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+yunkong_Character.characterSort.yunkong_Character.ykelse[i])+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+yunkong_Character.characterSort.yunkong_Character.ykelse[i])+"');\">点击配置角色</a>";
+		else yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=(yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]||'暂无武将介绍');
+	}
+	
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
+		yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykws[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykyl.length;i++){
+		yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykyl[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.yktz.length;i++){
+		yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.yktz[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.yktz[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykelse.length;i++){
+		yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
+		if(lib.config.qxq_YK_person.nature.Mp[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:cyan' href=\"javascript:window.ykNatureIntroduction('Mp');\">【术法值】</a>";
+		if(lib.config.qxq_YK_person.nature.Strength[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:yellow' href=\"javascript:window.ykNatureIntroduction('Strength');\">【气力值】</a>";
+		if(lib.config.qxq_YK_person.nature.Soul[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]!=undefined) yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]=yunkong_Character.characterIntro[yunkong_Character.characterSort.yunkong_Character.ykelse[i]]+"<br><a style='color:purple' href=\"javascript:window.ykNatureIntroduction('Soul');\">【元力值】</a>";
+	}
+	if(lib.device||lib.node){
+		for(var i in yunkong_Character.character){
+			if(!lib.config.ykCharacterSkin.myChoose){lib.config.ykCharacterSkin.myChoose={};game.saveConfig('ykCharacterSkin',lib.config.ykCharacterSkin);}
+			var skinname=lib.config.ykCharacterSkin.myChoose[i];
+			if(!skinname) yunkong_Character.character[i][4].push('ext:云空/'+i+'.jpg');
+			else yunkong_Character.character[i][4].push('ext:云空/'+i+'/'+i+'_'+skinname+'.jpg');
+		}
+	}
+	else{
+		for(var i in yunkong_character.character){
+			if(!lib.config.ykCharacterSkin.myChoose){lib.config.ykCharacterSkin.myChoose={};game.saveConfig('ykCharacterSkin',lib.config.ykCharacterSkin);}
+			var skinname=lib.config.ykCharacterSkin.myChoose[i];
+			if(!skinname) yunkong_Character.character[i][4].push('ext:云空/'+i+'.jpg');
+			else yunkong_Character.character[i][4].push('ext:云空/'+i+'/'+i+'_'+skinname+'.jpg');
+		}
+	}
 	game.import('character',function(){
 		return window.yunkong_Character;
 	});
