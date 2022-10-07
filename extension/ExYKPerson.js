@@ -2025,9 +2025,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					}
 				}
 			});
-			div.setBackground(nameList[i],'character');
 			div.name=nameList[i];
 			div.style.cssText='text-align:center;height:'+height+'px;width:'+width+'px;top:20px;left:15px;border-radius:8px;position:relative;background-position:center center;';
+			div.setBackground(nameList[i],'character');
+			div.style.backgroundSize='cover';
 			characterBag.appendChild(div);
 			window.yk_clickFK(div);
 		}
