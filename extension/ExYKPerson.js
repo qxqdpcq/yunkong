@@ -3082,8 +3082,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(numx<=0&&numx>-20){var color='white';}
 				friendness+='&nbsp&nbsp<font color='+(color||'white')+'>'+numx+'%</font>';
 			}
-			if(name=='qxq_yk_xiaoqiao') yunkong_Character.characterTitle[name]+='<br>角色评级：'+rank+'<br>角色评分：'+score+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
-			else if(!yunkong_Character.characterTitle[name]||yunkong_Character.characterTitle[name]==undefined) yunkong_Character.characterTitle[name]='角色评级：'+rank+'<br>角色评分：'+score+'<br>好感度：'+friendness+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+name)+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
+			if(['qxq_yk_xiaoqiao'].indexOf(name)!=-1) yunkong_Character.characterTitle[name]+='<br>角色评级：'+rank+'<br>角色评分：'+score+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
+			else if(lib.qxq_yk_bossList.indexOf(name)==-1) yunkong_Character.characterTitle[name]='角色评级：'+rank+'<br>角色评分：'+score+'<br>好感度：'+friendness+"<br><a style='color:orange' href=\"javascript:window.ykVisit('"+(''+name)+"');\">点击访问TA</a>"+"<br><a style='color:cyan' href=\"javascript:window.ykEquip('"+(''+name)+"');\">点击配置角色</a>";
 		}
 		for(var i=0;i<yunkong_Character.characterSort.yunkong_Character.ykws.length;i++){
 			yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]=yunkong_Character.characterTitle[yunkong_Character.characterSort.yunkong_Character.ykws[i]]+"<br><a style='color:grey' href=\"javascript:window.ykNatureIntroduction('Defend');\">【真气值】</a>";
