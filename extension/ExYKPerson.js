@@ -1601,7 +1601,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		background.style.backgroundSize="100% 100%";
 		if(lib.qxq_dialogClose&&lib.qxq_dialogClose==true) return ;
 		if(window.ykcloseBg&&window.ykcloseBg!=null&&typeof window.ykcloseBg=='function') window.background.appendChild(background);
-		else ui.window.appendChild(background);
+		else document.body.appendChild(background);
 		dialog2.background=background;
 		
 		var choose1=ui.create.div('.menubutton.round','',function(){
