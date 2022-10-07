@@ -1596,7 +1596,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		background.setBackgroundImage('extension/云空/Choose_Bg.jpg');
 		background.classList.add('popped');
 		background.classList.add('static');
-		background.style.cssText='height:40%;width:30%;left:30%;top:30%;z-index:99999999999999;text-align:center;background-color:black;opacity:0.8;';
+		background.style.cssText='height:40%;width:30%;left:30%;top:30%;z-index:99999999999999;text-align:center;background-color:black;opacity:0.8;border-radius:8px;';
 		background.setBackgroundImage('extension/云空/background.gif');
 		background.style.backgroundSize="100% 100%";
 		if(lib.qxq_dialogClose&&lib.qxq_dialogClose==true) return ;
