@@ -1596,14 +1596,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		background.setBackgroundImage('extension/云空/Choose_Bg.jpg');
 		background.classList.add('popped');
 		background.classList.add('static');
-		background.style['text-align']='center';
-		background.style.height='calc(40%)';
-		background.style.width='calc(30%)';
-		background.style.left='calc(30%)';
-		background.style.top='calc(30%)';
-		background.style['z-index']=99999999999999;
-		background.style.backgroundColor='black';
-		background.style.opacity=0.8;
+		background.style.cssText='height:40%;width:30%;left:30%;top:30%;z-index:99999999999999;text-align:center;background-color:black;opacity:0.8;';
 		background.setBackgroundImage('extension/云空/background.gif');
 		background.style.backgroundSize="100% 100%";
 		if(lib.qxq_dialogClose&&lib.qxq_dialogClose==true) return ;
@@ -1617,12 +1610,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			window.sendGift(this.name);
 		});
-		choose1.style.height='calc(20%)';
-		choose1.style.width='calc(70%)';
-		choose1.style.left='calc(15%)';
-		choose1.style.top='calc(4%)';
-		choose1.style['text-align']='center';
-		choose1.style.borderRadius='0px';
+		choose1.style.cssText='height:20%;width:70%;left:15%;top:4%;text-align:center;border-radius:8px;';
 		choose1.name=name;
 		choose1.innerHTML='送礼-'+'<font color=red>'+get.translation(name)+'</font>';
 		background.appendChild(choose1);
@@ -1635,31 +1623,17 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				window.visitHimHer(this.name);
 			});
-			choose2.style.height='calc(20%)';
-			choose2.style.width='calc(70%)';
-			choose2.style.left='calc(15%)';
-			choose2.style.top='calc(28%)';
-			choose2.style['text-align']='center';
-			choose2.style.borderRadius='0px';
-			choose2.name=name;
 			choose2.innerHTML='拜访-'+'<font color=red>'+get.translation(name)+'</font>';
-			background.appendChild(choose2);
-			window.yk_clickFK(choose2);
 		}
 		else{
 			var choose2=ui.create.div('.menubutton.round','<font color=red>🔒</font>',function(){
 				if(game.sayyk&&typeof game.sayyk=='function'){game.sayyk('该角色好感度未达到要求，此选项未解锁！');}
 			});
-			choose2.style.height='calc(20%)';
-			choose2.style.width='calc(70%)';
-			choose2.style.left='calc(15%)';
-			choose2.style.top='calc(28%)';
-			choose2.style['text-align']='center';
-			choose2.style.borderRadius='0px';
-			choose2.name=name;
-			background.appendChild(choose2);
-			window.yk_clickFK(choose2);
 		}
+		choose2.style.cssText='height:20%;width:70%;left:15%;top:28%;text-align:center;border-radius:8px;';
+		choose2.name=name;
+		background.appendChild(choose2);
+		window.yk_clickFK(choose2);
 		
 		if(lib.config.qxq_YK_person.friendness[name]>=60){
 			var choose3=ui.create.div('.menubutton.round','',function(){
@@ -1668,31 +1642,17 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				window.appointment(this.name);
 			});
-			choose3.style.height='calc(20%)';
-			choose3.style.width='calc(70%)';
-			choose3.style.left='calc(15%)';
-			choose3.style.top='calc(52%)';
-			choose3.style['text-align']='center';
-			choose3.style.borderRadius='0px';
-			choose3.name=name;
 			choose3.innerHTML='邀约-'+'<font color=red>'+get.translation(name)+'</font>';
-			background.appendChild(choose3);
-			window.yk_clickFK(choose3);
 		}
 		else{
 			var choose3=ui.create.div('.menubutton.round','<font color=red>🔒</font>',function(){
 				if(game.sayyk&&typeof game.sayyk=='function'){game.sayyk('该角色好感度未达到要求，此选项未解锁！');}
 			});
-			choose3.style.height='calc(20%)';
-			choose3.style.width='calc(70%)';
-			choose3.style.left='calc(15%)';
-			choose3.style.top='calc(52%)';
-			choose3.style['text-align']='center';
-			choose3.style.borderRadius='0px';
-			choose3.name=name;
-			background.appendChild(choose3);
-			window.yk_clickFK(choose3);
 		}
+		choose3.style.cssText='height:20%;width:70%;left:15%;top:52%;text-align:center;border-radius:8px;';
+		choose3.name=name;
+		background.appendChild(choose3);
+		window.yk_clickFK(choose3);
 		
 		if(lib.config.qxq_YK_person.friendness[name]>=80){
 			var choose4=ui.create.div('.menubutton.round','',function(){
@@ -1701,31 +1661,17 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				window.express(this.name);
 			});
-			choose4.style.height='calc(20%)';
-			choose4.style.width='calc(70%)';
-			choose4.style.left='calc(15%)';
-			choose4.style.top='calc(76%)';
-			choose4.style['text-align']='center';
-			choose4.style.borderRadius='0px';
-			choose4.name=name;
 			choose4.innerHTML='表白-'+'<font color=red>'+get.translation(name)+'</font>';
-			background.appendChild(choose4);
-			window.yk_clickFK(choose4);
 		}
 		else{
 			var choose4=ui.create.div('.menubutton.round','<font color=red>🔒</font>',function(){
 				if(game.sayyk&&typeof game.sayyk=='function'){game.sayyk('该角色好感度未达到要求，此选项未解锁！');}
 			});
-			choose4.style.height='calc(20%)';
-			choose4.style.width='calc(70%)';
-			choose4.style.left='calc(15%)';
-			choose4.style.top='calc(76%)';
-			choose4.style['text-align']='center';
-			choose4.style.borderRadius='0px';
-			choose4.name=name;
-			background.appendChild(choose4);
-			window.yk_clickFK(choose4);
 		}
+		choose4.style.cssText='height:20%;width:70%;left:15%;top:76%;text-align:center;border-radius:8px;';
+		choose4.name=name;
+		background.appendChild(choose4);
+		window.yk_clickFK(choose4);
 		
 		var func2=function(){
 			if(lib.config['extension_云空_ykbag_stop']!=false&&_status.yk_intro_showDialogs==undefined) game.resume2();
