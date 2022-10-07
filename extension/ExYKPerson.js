@@ -2871,8 +2871,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		return player.player2;
 	}
 	if(!lib.config.forbidai) lib.config.forbidai=[];
-	if(!window.yunkong_Character) game.import('character',function(){
-		var yunkong_Character={
+		window.yunkong_Character={
 			name:"yunkong_Character",
 			init:true,
 			connect:true,
@@ -3114,8 +3113,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				else yunkong_Character.character[i][4].push('ext:云空/'+i+'/'+i+'_'+skinname+'.jpg');
 			}
 		}
-		window.yunkong_Character=yunkong_Character;
-		return yunkong_Character;
+	if(!window.yunkong_Character) game.import('character',function(){
+		return window.yunkong_Character;
 	});
 	for(var i in window.yunkong_Character.translate) lib.translate[i]=window.yunkong_Character.translate[i];
 	if(lib.config.all.characters.indexOf('yunkong_Character')==-1) lib.config.all.characters.push('yunkong_Character');
