@@ -13325,7 +13325,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			global:["phaseZhunbeiBegin","phaseAfter"],
 		},
 		filter:(event,player)=>{
-			if(player.ykConsume('Mp',25)) return event.player!=player;
+			if(player.ykCheckConsume('Mp',25)) return event.player!=player;
 		},
 		forced:true,
 		content:()=>{
@@ -13609,7 +13609,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			global:["gainBegin","phaseDrawBefore"],
 		},
 		filter:(event,player)=>{
-			if(!player.ykConsume('Mp',40)) return ;
+			if(!player.ykCheckConsume('Mp',40)) return ;
 			if(event.name=='gain'){
 				return event.getParent().getParent().name=='phaseDraw'&&event.player!=player;
 			}
