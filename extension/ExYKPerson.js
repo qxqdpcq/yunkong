@@ -2966,16 +2966,12 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			var friendness='';
 			var friendnessnum=0;
 			if(typeof lib.config.qxq_YK_person.friendness[name]=='string'){
-				var friendnessnum=parseFloat(lib.config.qxq_YK_person.friendness[name]);
-				if(isNaN(friendness)){
-					friendnessnum=0;
-					lib.config.qxq_YK_person.friendness[name]=0;
-					game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
-				}
+				friendnessnum=parseFloat(lib.config.qxq_YK_person.friendness[name]);
+				if(isNaN(friendness)) friendnessnum=0;
 			}
 			else{
 				if(typeof lib.config.qxq_YK_person.friendness[name]=='number'){
-					var friendnessnum=lib.config.qxq_YK_person.friendness[name];
+					friendnessnum=lib.config.qxq_YK_person.friendness[name];
 				}
 			}
 			if(friendnessnum>100){
