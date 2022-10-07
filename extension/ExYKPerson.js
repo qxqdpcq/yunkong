@@ -3031,13 +3031,21 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(hp.indexOf('/')==-1) hp=parseInt(hp);
 			yunkong_Character.character[name]=[sex,"qxq_yk",hp,skills,[(lib.config.forbidai.indexOf(name)==-1?'':'forbidai')]];
 			var info='';
-			var rank=(lib.config.qxq_YK_person.rank[name]||'数据异常或非正常解锁！');
-			var score=(lib.config.qxq_YK_person.score[name]||'数据异常或非正常解锁！');
+			if(!lib.config.qxq_YK_person.friendness[name]){
+				lib.config.qxq_YK_person.friendness[name]=0;
+				game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
+			}
+			var rank=(lib.config.qxq_YK_person.rank[name]||0);
+			var score=(lib.config.qxq_YK_person.score[name]||0);
 			var friendness='';
 			var friendnessnum=0;
 			if(typeof lib.config.qxq_YK_person.friendness[name]=='string'){
 				var friendnessnum=parseFloat(lib.config.qxq_YK_person.friendness[name]);
-				if(isNaN(friendness)) friendnessnum=0;
+				if(isNaN(friendness)){
+					friendnessnum=0;
+					lib.config.qxq_YK_person.friendness[name]=0;
+					game.saveConfig('qxq_YK_person',lib.config.qxq_YK_person);
+				}
 			}
 			else{
 				if(typeof lib.config.qxq_YK_person.friendness[name]=='number'){
