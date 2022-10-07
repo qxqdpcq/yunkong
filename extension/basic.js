@@ -1052,7 +1052,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						if(window.ykDrawCardPool_div) window.ykDrawCardPool_div.show();
 						else{
 							window.ykOpenDrawCardPool();
-							window.ykUpdateDrawCardPool();
 						}
 					}
 				}
@@ -1143,7 +1142,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						if(window.ykDrawCardPool_div) window.ykDrawCardPool_div.show();
 						else{
 							window.ykOpenDrawCardPool();
-							window.ykUpdateDrawCardPool();
 						}
 					}
 				},50);
@@ -1319,26 +1317,16 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		div_add2.onclick=function(){alert('【虚空之泪】获取途径：任务获得、活动获得。');};
 		window.ykDrawCardPool_div.appendChild(div_add2);
 		window.yk_clickFK(div_add2);
+		if(!window.ykDrawCardPool_div) return ;
+		if(!window.ykDrawCardPool_div.divx||!window.ykDrawCardPool_div.divx2) return ;
 		var num;
 		if(lib.config.yk_myBag&&lib.config.yk_myBag.predestined_fate&&typeof lib.config.yk_myBag.predestined_fate.num=='number') num=lib.config.yk_myBag.predestined_fate.num;
 		else num=0;
-		window.ykDrawCardPool_div.divx.innerHTML='<b>'+num+'</b>';
 		var num2;
 		if(lib.config.yk_myBag&&lib.config.yk_myBag.sky_crying&&typeof lib.config.yk_myBag.sky_crying.num=='number') num2=lib.config.yk_myBag.sky_crying.num;
 		else num2=0;
+		window.ykDrawCardPool_div.divx.innerHTML='<b>'+num+'</b>';
 		window.ykDrawCardPool_div.divx2.innerHTML='<b>'+num2+'</b>';
-		window.ykUpdateDrawCardPool=()=>{
-			if(!window.ykDrawCardPool_div) return ;
-			if(!window.ykDrawCardPool_div.divx||!window.ykDrawCardPool_div.divx2) return ;
-			var num;
-			if(lib.config.yk_myBag&&lib.config.yk_myBag.predestined_fate&&typeof lib.config.yk_myBag.predestined_fate.num=='number') num=lib.config.yk_myBag.predestined_fate.num;
-			else num=0;
-			window.ykDrawCardPool_div.divx.innerHTML='<b>'+num+'</b>';
-			var num2;
-			if(lib.config.yk_myBag&&lib.config.yk_myBag.sky_crying&&typeof lib.config.yk_myBag.sky_crying.num=='number') num2=lib.config.yk_myBag.sky_crying.num;
-			else num2=0;
-			window.ykDrawCardPool_div.divx2.innerHTML='<b>'+num2+'</b>';
-		}
 		//卡池
 		var characterx,tagx,str;
 		if(window.ykDrawCardPool_Switch=='usual'){
@@ -1545,6 +1533,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(a<0.25||a>0.75) resultCharacterItem=lib.ykSpecialDrawCardPool.upItem;
 					else resultCharacterItem=lib.ykSpecialDrawCardPool.tian.concat(lib.ykUsualDrawCardPool.tian).randomGet();
 				}
+				var num;
+				if(lib.config.yk_myBag&&lib.config.yk_myBag.predestined_fate&&typeof lib.config.yk_myBag.predestined_fate.num=='number') num=lib.config.yk_myBag.predestined_fate.num;
+				else num=0;
+				var num2;
+				if(lib.config.yk_myBag&&lib.config.yk_myBag.sky_crying&&typeof lib.config.yk_myBag.sky_crying.num=='number') num2=lib.config.yk_myBag.sky_crying.num;
+				else num2=0;
+				window.ykDrawCardPool_div.divx.innerHTML='<b>'+num+'</b>';
+				window.ykDrawCardPool_div.divx2.innerHTML='<b>'+num2+'</b>';
 				window.ykDraw(resultCharacterItem);
 				window.ykDrawCardPool_div.hide();
 			}
@@ -1745,6 +1741,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					return resultCharacterItem;
 				}
+				var num;
+				if(lib.config.yk_myBag&&lib.config.yk_myBag.predestined_fate&&typeof lib.config.yk_myBag.predestined_fate.num=='number') num=lib.config.yk_myBag.predestined_fate.num;
+				else num=0;
+				var num2;
+				if(lib.config.yk_myBag&&lib.config.yk_myBag.sky_crying&&typeof lib.config.yk_myBag.sky_crying.num=='number') num2=lib.config.yk_myBag.sky_crying.num;
+				else num2=0;
+				window.ykDrawCardPool_div.divx.innerHTML='<b>'+num+'</b>';
+				window.ykDrawCardPool_div.divx2.innerHTML='<b>'+num2+'</b>';
 				var resultCharacterItemList=[];
 				for(var i=0;i<10;i++) resultCharacterItemList.push(drawx(this.character,this.result));
 				window.ykDraw(resultCharacterItemList);
