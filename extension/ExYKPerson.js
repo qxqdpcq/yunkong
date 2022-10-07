@@ -10288,7 +10288,24 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				if((lib.config['yk_ykzhuyan_rank']||0)>=3){
 					trigger._triggered=null;
-					trigger.finish();
+					trigger.cancel();
+					trigger.result={
+						card:card,
+						judge:trigger.judge(card),
+						node:node,
+						number:get.number(card),
+						suit:get.suit(card),
+						color:get.color(card),
+					};
+					if(trigger.result.judge>0){
+						trigger.result.bool=true;
+						trigger.player.popup('洗具');
+					}
+					if(trigger.result.judge<0){
+						trigger.result.bool=false;
+						trigger.player.popup('杯具');
+					}
+					game.log(trigger.player,'的判定结果为',card);
 				}
 				game.delay(2);
 			}
