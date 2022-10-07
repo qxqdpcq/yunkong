@@ -13305,7 +13305,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		forced:true,
 		content:()=>{
 			"step 0"
-			player.ykConsume('Mp',25);
 			window.yk_findCard=()=>{
 				event.value=input.value;
 				alert('输入关键词【'+event.value+'】成功！');
@@ -13395,6 +13394,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			"step 2"
 			if(result.bool){
+				player.ykConsume('Mp',25);
 				trigger.player.ykshenming_card=result.links[0][2];
 			}
 		},
@@ -13593,7 +13593,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		forced:true,
 		content:()=>{
 			"step 0"
-			player.ykConsume('Mp',40);
 			if(trigger.name=='gain') event.goto(4);
 			"step 1"
 			if(!trigger.num) return ;
@@ -13677,6 +13676,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				var list=[];
 				for(var res of result.links) list.push(res[2]);
 				trigger.player.ykshenming_phaseDraw=list;
+				player.ykConsume('Mp',40);
 			}
 			event.finish();
 			return ;
@@ -13760,6 +13760,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			"step 7"
 			if(result&&result.bool){
+				player.ykConsume('Mp',40);
 				player.lose(result.links[0])._triggered=null;
 				for(var card of event.list) event.rest.push(game.createCard(card[2],card[0],card[1],(card[3]?card[3]:null)));
 				event.rest.push(result.links[0]);
