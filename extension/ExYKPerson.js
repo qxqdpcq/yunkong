@@ -1927,26 +1927,13 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		window.background=ui.create.div('hidden');
 		window.background.classList.add('popped');
 		window.background.classList.add('static');
-		window.background.style.height='calc(100%)';
-		window.background.style.width='calc(100%)';
-		window.background.style.left='0px';
-		window.background.style.top='0px';
-		window.background.style.backgroundColor='black';
-		window.background.style.opacity=0.8;
+		window.background.style.cssText='height:100%;width:100%;left:0px;top:0px;background-color:black;opacity:0.8;z-index:99999999;';
 		window.background.setBackgroundImage('extension/云空/background.gif');
 		window.background.style.backgroundSize="100% 100%";
-		window.background.style['z-index']=99999999;
 		ui.window.appendChild(window.background);
 		dialog1.background=window.background;
 		var characterBag=ui.create.div();
-		characterBag.style.height='calc(100%)';
-		characterBag.style.width='calc(100%)';
-		characterBag.style.left='0px';
-		characterBag.style.top='0px';
-		characterBag.style.borderRadius='5px';
-		characterBag.style['text-align']='left';
-		characterBag.style['overflow-x']='hidden';
-		characterBag.style['overflow-y']='scroll';
+		characterBag.style.cssText='height:100%;width:100%;left:0px;top:0px;border-radius:5px;text-align:left;overflow-x:hidden;overflow-y:scroll;';
 		lib.setScroll(characterBag);
 		window.background.appendChild(characterBag);
 		
@@ -2040,13 +2027,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			});
 			div.setBackground(nameList[i],'character');
 			div.name=nameList[i];
-			div.style['text-align']='center';
-			div.style.height=height+'px';
-			div.style.width=width+'px';
-			div.style.top='20px';
-			div.style.left='15px';
-			div.style.borderRadius='8px';
-			div.style.position='relative';
+			div.style.cssText='text-align:center;height:'+height+'px;width:'+width+'px;top:20px;left:15px;border-radius:8px;position:relative;background-position:center center;';
 			characterBag.appendChild(div);
 			window.yk_clickFK(div);
 		}
