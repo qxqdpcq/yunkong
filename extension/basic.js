@@ -1194,10 +1194,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		lib.config.YKcharacterNameList.push(character);
 		game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);
 		if(characterx.length<=0&&confirm('新武将重启后才会显示于武将列表，且新武将的角色图片需要前往【自动检测版本和更新】处下载！是否立即重启？')){
-			if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('恭喜获得角色：【'+get.translation(name)+'】！即将重启以保存。');
+			if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('恭喜获得角色：【'+window.yunkong_Character.translate[name]+'】！即将重启以保存。');
 			setTimeout(function(){game.reload();},3000);
 		}
-		else if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('恭喜获得角色：【'+get.translation(name)+'】！');
+		else if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('恭喜获得角色：【'+window.yunkong_Character.translate[name]+'】！');
 	}
 	window.ykDraw=function(character){
 		if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('按住并拖动鼠标或划动屏幕画出你喜欢的符号，召唤武将');
