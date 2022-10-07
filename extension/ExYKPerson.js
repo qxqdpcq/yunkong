@@ -3113,7 +3113,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				else yunkong_Character.character[i][4].push('ext:云空/'+i+'/'+i+'_'+skinname+'.jpg');
 			}
 		}
-	if(!window.yunkong_Character) game.import('character',function(){
+	game.import('character',function(){
 		return window.yunkong_Character;
 	});
 	for(var i in window.yunkong_Character.translate) lib.translate[i]=window.yunkong_Character.translate[i];
