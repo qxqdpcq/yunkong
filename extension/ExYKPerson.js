@@ -3336,6 +3336,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}
 	
 	//Skill
+	get.ykdefineProperty=Object.defineProperty;
 	lib.qxq_tian_id=get.rand(100000000000,999999999999);
 	lib.element.player.yk_changeSkill=function(str,type,bool){
 		if(!type) type='add';
@@ -3343,7 +3344,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		var reduce=[];
 		if(player.name!='qxq_yk_tian'&&bool!=true){
 			lib[player.playerid+'skills']=player.skills;
-			Object.defineProperty(player, 'skills', {
+			get.ykdefineProperty(player, 'skills', {
 				get: function() {
 					return lib[player.playerid+'skills'];
 				},
@@ -3351,7 +3352,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'initedSkills']=player.initedSkills;
-			Object.defineProperty(player, 'initedSkills', {
+			get.ykdefineProperty(player, 'initedSkills', {
 				get: function() {
 					return lib[player.playerid+'initedSkills'];
 				},
@@ -3359,7 +3360,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'additionalSkills']=player.additionalSkills;
-			Object.defineProperty(player, 'additionalSkills', {
+			get.ykdefineProperty(player, 'additionalSkills', {
 				get: function() {
 					return lib[player.playerid+'additionalSkills'];
 				},
@@ -3367,7 +3368,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'disabledSkills']=player.disabledSkills;
-			Object.defineProperty(player, 'disabledSkills', {
+			get.ykdefineProperty(player, 'disabledSkills', {
 				get: function() {
 					return lib[player.playerid+'disabledSkills'];
 				},
@@ -3375,7 +3376,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'hiddenSkills']=player.hiddenSkills;
-			Object.defineProperty(player, 'hiddenSkills', {
+			get.ykdefineProperty(player, 'hiddenSkills', {
 				get: function() {
 					return lib[player.playerid+'hiddenSkills'];
 				},
@@ -3383,7 +3384,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'awakenedSkills']=player.awakenedSkills;
-			Object.defineProperty(player, 'awakenedSkills', {
+			get.ykdefineProperty(player, 'awakenedSkills', {
 				get: function() {
 					return lib[player.playerid+'awakenedSkills'];
 				},
@@ -3391,7 +3392,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'forbiddenSkills']=player.forbiddenSkills;
-			Object.defineProperty(player, 'forbiddenSkills', {
+			get.ykdefineProperty(player, 'forbiddenSkills', {
 				get: function() {
 					return lib[player.playerid+'forbiddenSkills'];
 				},
@@ -3399,7 +3400,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				configurable:true,
 			});
 			lib[player.playerid+'tempSkills']=player.tempSkills;
-			Object.defineProperty(player, 'tempSkills', {
+			get.ykdefineProperty(player, 'tempSkills', {
 				get: function() {
 					return lib[player.playerid+'tempSkills'];
 				},
@@ -3413,7 +3414,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							for(var time of lib.skill[str].trigger[person]){
 								var namex=player.playerid+'_'+person+'_'+time;
 								lib[player.playerid+'hook'+namex]=lib.hook[namex];
-								Object.defineProperty(lib.hook,namex, {
+								get.ykdefineProperty(lib.hook,namex, {
 									get: function() {
 										return lib[player.playerid+'hook'+namex];
 									},
@@ -8056,7 +8057,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			ykInterVal.player=player;
 			ykInterVal.interval=setInterval(function(){
 				var player=ykInterVal.player;
-				if(player&&player._trueMe!=undefined) Object.defineProperty(player, '_trueMe', {
+				if(player&&player._trueMe!=undefined) get.ykdefineProperty(player, '_trueMe', {
 					get: function() {
 						return undefined;
 					},
@@ -8079,42 +8080,42 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(player.playerid==undefined) return ;
 				if(player.playerid!=lib.qxq_yk_tian.id) player.playerid=lib.qxq_yk_tian.id;
 				if(player.skills!=['fazetiandingx','fazetianding','tiandaowuchang','shengmieshenyu']){
-					Object.defineProperty(player, 'skills', {
+					get.ykdefineProperty(player, 'skills', {
 						get: function() {
 							return ['fazetiandingx','fazetianding','tiandaowuchang','shengmieshenyu'];
 						},
 					});
 				}
 				if(player.initedSkills!=player.skills){
-					Object.defineProperty(player, 'initedSkills', {
+					get.ykdefineProperty(player, 'initedSkills', {
 						get: function() {
 							return ['fazetiandingx','fazetianding','tiandaowuchang','shengmieshenyu'];
 						},
 					});
 				}
 				if(player.additionalSkills!={}){
-					Object.defineProperty(player, 'additionalSkills', {
+					get.ykdefineProperty(player, 'additionalSkills', {
 						get: function() {
 							return {};
 						},
 					});
 				}
 				if(player.disabledSkills!={}){
-					Object.defineProperty(player, 'disabledSkills', {
+					get.ykdefineProperty(player, 'disabledSkills', {
 						get: function() {
 							return {};
 						},
 					});
 				}
 				if(player.hiddenSkills!=[]){
-					Object.defineProperty(player, 'hiddenSkills', {
+					get.ykdefineProperty(player, 'hiddenSkills', {
 						get: function() {
 							return [];
 						},
 					});
 				}
 				if(player.awakenedSkills!=[]){
-					Object.defineProperty(player, 'awakenedSkills', {
+					get.ykdefineProperty(player, 'awakenedSkills', {
 						get: function() {
 							return [];
 						},
@@ -8124,7 +8125,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					player.forbiddenSkills={};
 				}
 				if(player.tempSkills!={}){
-					Object.defineProperty(player, 'tempSkills', {
+					get.ykdefineProperty(player, 'tempSkills', {
 						get: function() {
 							return {};
 						},
@@ -8132,7 +8133,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				if(lib.hook[player.playerid+'_player_useCardEnd']!=['tiandaowuchang']){
 					var namex=player.playerid+'_player_useCardEnd';
-					Object.defineProperty(lib.hook,namex, {
+					get.ykdefineProperty(lib.hook,namex, {
 						get: function() {
 							return ['tiandaowuchang'];
 						},
@@ -8140,7 +8141,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				if(lib.hook[player.playerid+'_player_damageBegin']!=['shengmieshenyu']){
 					var namex=player.playerid+'_player_damageBegin';
-					Object.defineProperty(lib.hook,namex, {
+					get.ykdefineProperty(lib.hook,namex, {
 						get: function() {
 							return ['shengmieshenyu'];
 						},
@@ -8612,7 +8613,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(player.storage.ykshimeng_shijix2==false) player.useSkill('ykshimeng_shijix');
 		},
 		init:function(player){
-			Object.defineProperty(player, '_trueMe', {
+			get.ykdefineProperty(player, '_trueMe', {
 				get: function() {
 					return undefined;
 				},
