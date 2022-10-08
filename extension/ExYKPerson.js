@@ -11793,13 +11793,66 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					name:'情侣',
 					onEquip:function(player){
 						if(!player) return ;
-								lib.skill.yk_qinglv={
-									enable:"phaseUse",
-									filter:function(event,player){
+						lib.skill.yk_qinglv={
+							enable:"phaseUse",
+							filter:function(event,player){
+								if(!player.yk_qinglv_selected) return false;
+								player.storage.yk_qinglv=player.yk_qinglv_selected.getCards('hs');
+								player.storage.yk_qinglv_evt=event;
+								for(var card of player.storage.yk_qinglv) if(event.filterCard(card,player,event)){
+									return true;
+								}
+								return false;
+							},
+							content:()=>{
+								'step 0'
+								var list=[];
+								for(var cardx of player.yk_qinglv_selected.getCards('hs')){
+									if(player.storage.yk_qinglv_evt.filterCard({name:cardx.name},player,player.storage.yk_qinglv_evt)) list.push(cardx);
+								}
+								var dialog=ui.create.dialog('【情侣】：使用结姻目标的卡牌',[list,'vcard']);
+								if(list.length) player.chooseButton(dialog).set('ai',button=>{
+									if(get.attitude(player,player.yk_qinglv_selected)>0) return -get.value(button.link,player.yk_qinglv_selected);
+									else return get.value(button.link,player.yk_qinglv_selected);
+								});
+								'step 1'
+								if(result.bool){
+									result.bool=null;
+									event.card=result.links[0];
+									if(lib.card[event.card.name].selectTarget!=-1) player.chooseTarget((lib.card[event.card.name].selectTarget||1),'请选择使用【'+get.translation(get.name(event.card,player))+'】的目标',function(card,player,target){
+										if(typeof lib.card[event.card.name].filterTarget=='function') return lib.card[event.card.name].filterTarget(event.card,player,target);
+										else if(lib.card[event.card.name].filterTarget==true||lib.card[event.card.name].filterTarget==undefined) return true;
+										return false;
+									});
+									else{
+										event.target=[];
+										if(typeof lib.card[event.card.name].filterTarget=='function'){for(var target of game.players) if(lib.card[event.card.name].filterTarget(event.card,player,target)) event.target.push(target);}
+										else event.target=game.players;
+										result.bool=true;
+									}
+								}
+								'step 2'
+								if(result.bool){
+									if(!event.target) event.target=result.targets;
+									var owner=get.owner(event.card);
+									if(owner){
+										owner.lose(event.card,ui.special);
+									}
+									player.useCard(event.card,event.target).animate=true;
+								}
+							},
+							group:["yk_qinglv_respond"],
+							subSkill:{
+								respond:{
+									trigger:{
+										player:"chooseToRespondBefore",
+									},
+									filter:(event,player)=>{
+										if(event.responded) return false;
 										if(!player.yk_qinglv_selected) return false;
 										player.storage.yk_qinglv=player.yk_qinglv_selected.getCards('hs');
 										player.storage.yk_qinglv_evt=event;
-										for(var card of player.storage.yk_qinglv) if(event.filterCard(card,player,event)){
+										for(var card of player.storage.yk_qinglv) if(event.filterCard({name:card.name},player,event)){
 											return true;
 										}
 										return false;
@@ -11808,7 +11861,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 										'step 0'
 										var list=[];
 										for(var cardx of player.yk_qinglv_selected.getCards('hs')){
-											if(player.storage.yk_qinglv_evt.filterCard({name:cardx.name},player,player.storage.yk_qinglv_evt)) list.push(cardx);
+											if(trigger.filterCard({name:cardx.name},player,trigger)) list.push(cardx);
 										}
 										var dialog=ui.create.dialog('【情侣】：使用结姻目标的卡牌',[list,'vcard']);
 										if(list.length) player.chooseButton(dialog).set('ai',button=>{
@@ -11817,89 +11870,36 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 										});
 										'step 1'
 										if(result.bool){
-											result.bool=null;
-											event.card=result.links[0];
-											if(lib.card[event.card.name].selectTarget!=-1) player.chooseTarget((lib.card[event.card.name].selectTarget||1),'请选择使用【'+get.translation(get.name(event.card,player))+'】的目标',function(card,player,target){
-												if(typeof lib.card[event.card.name].filterTarget=='function') return lib.card[event.card.name].filterTarget(event.card,player,target);
-												else if(lib.card[event.card.name].filterTarget==true||lib.card[event.card.name].filterTarget==undefined) return true;
-												return false;
-											});
-											else{
-												event.target=[];
-												if(typeof lib.card[event.card.name].filterTarget=='function'){for(var target of game.players) if(lib.card[event.card.name].filterTarget(event.card,player,target)) event.target.push(target);}
-												else event.target=game.players;
-												result.bool=true;
-											}
-										}
-										'step 2'
-										if(result.bool){
-											if(!event.target) event.target=result.targets;
-											var owner=get.owner(event.card);
+											var owner=get.owner(result.links[0]);
 											if(owner){
-												owner.lose(event.card,ui.special);
+												owner.lose(result.links[0],ui.special);
 											}
-											player.useCard(event.card,event.target).animate=true;
+											event.card=result.links[0];
+											player.$throw(result.links[0]);
+											event.finish();
+											trigger.result={bool:true,card:event.card};
+											trigger.responded=true;
+											trigger.animate=false;
+											trigger.untrigger();
 										}
 									},
-									group:["yk_qinglv_respond"],
-									subSkill:{
-										respond:{
-											trigger:{
-												player:"chooseToRespondBefore",
-											},
-											filter:(event,player)=>{
-												if(event.responded) return false;
-												if(!player.yk_qinglv_selected) return false;
-												player.storage.yk_qinglv=player.yk_qinglv_selected.getCards('hs');
-												player.storage.yk_qinglv_evt=event;
-												for(var card of player.storage.yk_qinglv) if(event.filterCard({name:card.name},player,event)){
-													return true;
-												}
-												return false;
-											},
-											content:()=>{
-												'step 0'
-												var list=[];
-												for(var cardx of player.yk_qinglv_selected.getCards('hs')){
-													if(trigger.filterCard({name:cardx.name},player,trigger)) list.push(cardx);
-												}
-												var dialog=ui.create.dialog('【情侣】：使用结姻目标的卡牌',[list,'vcard']);
-												if(list.length) player.chooseButton(dialog).set('ai',button=>{
-													if(get.attitude(player,player.yk_qinglv_selected)>0) return -get.value(button.link,player.yk_qinglv_selected);
-													else return get.value(button.link,player.yk_qinglv_selected);
-												});
-												'step 1'
-												if(result.bool){
-													var owner=get.owner(result.links[0]);
-													if(owner){
-														owner.lose(result.links[0],ui.special);
-													}
-													event.card=result.links[0];
-													player.$throw(result.links[0]);
-													event.finish();
-													trigger.result={bool:true,card:event.card};
-													trigger.responded=true;
-													trigger.animate=false;
-													trigger.untrigger();
-												}
-											},
-										},
+								},
+							},
+							ai:{
+								order:8,
+								result:{
+									target:function(player,target){
+										var list=[];
+										for(var card of player.storage.yk_qinglv) list.push(get.effect(target,card,player,target));
+										if(get.attitude(player,target)>0) return Math.min(list);
+										else return Math.max(list);
 									},
-									ai:{
-										order:8,
-										result:{
-											target:function(player,target){
-												var list=[];
-												for(var card of player.storage.yk_qinglv) list.push(get.effect(target,card,player,target));
-												if(get.attitude(player,target)>0) return Math.min(list);
-												else return Math.max(list);
-											},
-											player:1,
-										},
-									},
-								}
-								lib.translate.yk_qinglv='情侣';
-								lib.translate.yk_qinglv_info='你与结姻的目标共享手牌';
+									player:1,
+								},
+							},
+						}
+						lib.translate.yk_qinglv='情侣';
+						lib.translate.yk_qinglv_info='你与结姻的目标共享手牌';
 						var next = game.createEvent('yk_qinglv');
 						next.setContent(function(){
 							'step 0'
@@ -11934,6 +11934,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						target.yk_qinglv_selected=null;
 						delete player.yk_qinglv_selected;
 						player.yk_qinglv_selected=null;
+						delete lib.skill.yk_qinglv_respond;
+						lib.skill.yk_qinglv_respond=null;
+						delete lib.skill.yk_qinglv;
+						lib.skill.yk_qinglv=null;
 					},
 					info:'获得此塔罗牌时，如果场上存在异性角色，则随机选择一个异性角色，视为对其发动不弃牌的【结姻】（优先对友方角色使用）：你与其各回复一点体力；结姻期间，你与目标共享手牌。失去此塔罗牌时失去此效果，同时你与其各自受到一点来自对方的伤害。<br><font color=grey><i>————“夜月一帘幽梦，春风十里柔情。”</i></font>',
 				},
