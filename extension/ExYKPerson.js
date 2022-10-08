@@ -11793,186 +11793,149 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					name:'情侣',
 					onEquip:function(player){
 						if(!player) return ;
-						if(lib.yk_cuple&&lib.yk_cuple[0]!=player) return ;
-						var target='none';
-						for(var f of player.getFriends()) if(f.sex!=player.sex) target=f;
-						if(target=='none') for(var pl of game.players) if(pl.sex!=player.sex) target=pl;
-						
-						if(target!='none'){
-							player.popup('情侣');
-							target.popup('情侣');
-							player.line(target,'green');
-							player.recover();
-							target.recover();
-							player.yk_qinglv_cardSave=[];
-							lib.yk_cuple=[player,target];
-							lib.skill.yk_qinglv={
-								init:function(player){
-									if(player!=lib.yk_cuple[0]) return ;
-									if(!lib.yk_cuple[0].storage.yk_qinglv) lib.yk_cuple[0].storage.yk_qinglv=[];
-									var target=lib.yk_cuple[1];
-									var num1=Math.min(2,player.getCards('he').length);
-									var num2=Math.min(2,target.getCards('he').length);
-									player.chooseToDiscard('he',num1,true);
-									target.chooseToDiscard('he',num2,true);
-									var cards=get.cards(num1+num2);
-									player.storage.yk_qinglv=player.storage.yk_qinglv.concat(cards);
-								},
-								onremove:function(player){
-									if(player!=lib.yk_cuple[0]) return ;
-									var cards=lib.yk_cuple[0].storage.yk_qinglv;
-									player.gain(cards,'gain2')._triggered=null;
-									lib.yk_cuple[0].storage.yk_qinglv=undefined;
-									lib.yk_cuple[1].removeSkill('yk_qinglv');
-									player.discard(cards)._triggered=null;
-									lib.yk_cuple[0].removeSkill('yk_qinglv_gainCard');
-									lib.yk_cuple[1].removeSkill('yk_qinglv_gainCard');
-									lib.yk_cuple=undefined;
-								},
-								equipSkill:true,
-								enable:"phaseUse",
-								usable:5,
-								check:function(card,player){
-									if(card.name=='du') return 20;
-									var player=_status.event.player;
-									var nh=lib.yk_cuple[0].storage.yk_qinglv;
-									if(player.needsToDiscard()){
-										if(nh<3) return 0;
-										if(nh==3) return 3-get.value(card,player);
-										return 5-get.value(card,player);
-									}
-									return 10-get.useful(card,player);
-								},
-								filterCard:true,
-								selectCard:[0,Infinity],
-								filter:function(event,player){
-									return lib.yk_cuple&&lib.yk_cuple[0]&&lib.yk_cuple[0].storage.yk_qinglv&&lib.yk_cuple[0].storage.yk_qinglv.length>0;
-								},
-								prompt:'选择要存入【共享金库】的牌，未选择时默认为取出牌',
-								content:function(){
-									'step 0'
-									if(lib.yk_cuple&&lib.yk_cuple[0]){
-										if(cards.length>0){
-											lib.yk_cuple[0].storage.yk_qinglv=lib.yk_cuple[0].storage.yk_qinglv.concat(cards);
-											lib.yk_cuple[0].syncStorage('yk_qinglv');
-											event.finish();
-										}
-										else{
-											event.goto(1);
-										}
-									}
-									'step 1'
-									player.chooseButton(['选择要取出的牌',lib.yk_cuple[0].storage.yk_qinglv]).set('ai',function(button){
-										var val=player.getUseValue(card);
-										var card=button.link;
-										if(val>0&&lib.yk_cuple[0].storage.yk_qinglv) return lib.yk_cuple[0].storage.yk_qinglv.length*3-val;
-										return 3-get.value(card,player);
-									});
-									'step 2'
-									if(result.bool){
-										lib.yk_cuple[0].storage.yk_qinglv.remove(result.links[0]);
-										player.gain(result.links[0],'gain2');
-									}
-								},
-								ai:{
-									order:1,
-									expose:0.1,
-									result:{
-										player:1,
-									},
-								},
-								mod:{
-									"cardEnabled2":function(card,player){
-										if(!ui.selected.cards.length) return;
-										for(var i of ui.selected.cards){
+						var next = game.createEvent('yk_ssym');
+						next.setContent(function(){
+							'step 0'
+							player.chooseTarget('请选择【结姻】的目标',function(card,player,target){
+								return player.sex!=target.sex;
+							});
+							'step 1'
+							if(result.bool){
+								var target=result.targets[0];
+								player.popup('情侣');
+								target.popup('情侣');
+								player.line(target,'green');
+								player.recover();
+								target.recover();
+								target.yk_qinglv_selected=player;
+								player.yk_qinglv_selected=target;
+								lib.skill.yk_qinglv={
+									enable:"phaseUse",
+									filter:function(event,player){
+										if(!player.yk_qinglv_selected) return false;
+										player.storage.yk_qinglv=player.yk_qinglv_selected.getCards('hs');
+										player.storage.yk_qinglv_evt=event;
+										for(var card of player.storage.yk_qinglv) if(event.filterCard(card,player,event)){
 											return true;
 										}
+										return false;
 									},
-								},
-								mark:true,
-								intro:{
-									content:function(storage,player){
-										if(!lib.yk_cuple[0].storage.yk_qinglv||!lib.yk_cuple[0].storage.yk_qinglv.length) return '共有〇张牌';
-										if(lib.yk_cuple[0].isUnderControl(true)){
-											return get.translation(lib.yk_cuple[0].storage.yk_qinglv);
+									content:()=>{
+										'step 0'
+										var list=[];
+										for(var cardx of player.yk_qinglv_selected.getCards('hs')){
+											if(player.storage.yk_qinglv_evt.filterCard({name:cardx.name},player,player.storage.yk_qinglv_evt)) list.push(cardx);
 										}
-										else{
-											return '共有'+get.cnNumber(lib.yk_cuple[0].storage.yk_qinglv.length)+'张牌';
+										var dialog=ui.create.dialog('【情侣】：使用结姻目标的卡牌',[list,'vcard']);
+										if(list.length) player.chooseButton(dialog).set('ai',button=>{
+											if(get.attitude(player,player.yk_qinglv_selected)>0) return -get.value(button.link,player.yk_qinglv_selected);
+											else return get.value(button.link,player.yk_qinglv_selected);
+										});
+										'step 1'
+										if(result.bool){
+											result.bool=null;
+											event.card=result.links[0];
+											if(lib.card[event.card.name].selectTarget!=-1) player.chooseTarget((lib.card[event.card.name].selectTarget||1),'请选择使用【'+get.translation(get.name(event.card,player))+'】的目标',function(card,player,target){
+												if(typeof lib.card[event.card.name].filterTarget=='function') return lib.card[event.card.name].filterTarget(event.card,player,target);
+												else if(lib.card[event.card.name].filterTarget==true||lib.card[event.card.name].filterTarget==undefined) return true;
+												return false;
+											});
+											else{
+												event.target=[];
+												if(typeof lib.card[event.card.name].filterTarget=='function'){for(var target of game.players) if(lib.card[event.card.name].filterTarget(event.card,player,target)) event.target.push(target);}
+												else event.target=game.players;
+												result.bool=true;
+											}
+										}
+										'step 2'
+										if(result.bool){
+											if(!event.target) event.target=result.targets;
+											var owner=get.owner(event.card);
+											if(owner){
+												owner.lose(event.card,ui.special);
+											}
+											player.useCard(event.card,event.target).animate=true;
 										}
 									},
-									mark:function(dialog,storage,player){
-										if(lib.yk_cuple){
-											dialog.addSmall('<small>结姻的目标</small>');
-											if(lib.yk_cuple[0]==player) dialog.addSmall([[lib.yk_cuple[1].name],'character']);
-											else dialog.addSmall([[lib.yk_cuple[0].name],'character']);
-										}
-										dialog.addSmall('<small>共享金库</small>');
-										if(!lib.yk_cuple[0].storage.yk_qinglv||!lib.yk_cuple[0].storage.yk_qinglv.length) return '共有〇张牌';
-										if(lib.yk_cuple[0].isUnderControl(true)){
-											dialog.addAuto(lib.yk_cuple[0].storage.yk_qinglv);
-										}
-										else{
-											return '共有'+get.cnNumber(lib.yk_cuple[0].storage.yk_qinglv.length)+'张牌';
-										}
+									group:["yk_qinglv_respond"],
+									subSkill:{
+										respond:{
+											trigger:{
+												player:"chooseToRespondBefore",
+											},
+											filter:(event,player)=>{
+												if(event.responded) return false;
+												if(!player.yk_qinglv_selected) return false;
+												player.storage.yk_qinglv=player.yk_qinglv_selected.getCards('hs');
+												player.storage.yk_qinglv_evt=event;
+												for(var card of player.storage.yk_qinglv) if(event.filterCard({name:card.name},player,event)){
+													return true;
+												}
+												return false;
+											},
+											content:()=>{
+												'step 0'
+												var list=[];
+												for(var cardx of player.yk_qinglv_selected.getCards('hs')){
+													if(trigger.filterCard({name:cardx.name},player,trigger)) list.push(cardx);
+												}
+												var dialog=ui.create.dialog('【情侣】：使用结姻目标的卡牌',[list,'vcard']);
+												if(list.length) player.chooseButton(dialog).set('ai',button=>{
+													if(get.attitude(player,player.yk_qinglv_selected)>0) return -get.value(button.link,player.yk_qinglv_selected);
+													else return get.value(button.link,player.yk_qinglv_selected);
+												});
+												'step 1'
+												if(result.bool){
+													var owner=get.owner(result.links[0]);
+													if(owner){
+														owner.lose(result.links[0],ui.special);
+													}
+													event.card=result.links[0];
+													player.$throw(result.links[0]);
+													event.finish();
+													trigger.result={bool:true,card:event.card};
+													trigger.responded=true;
+													trigger.animate=false;
+													trigger.untrigger();
+												}
+											},
+										},
 									},
-									markcount:function(storage,player){
-										if(lib.yk_cuple[0].storage.yk_qinglv) return lib.yk_cuple[0].storage.yk_qinglv.length;
-										return 0;
+									ai:{
+										order:8,
+										result:{
+											target:function(player,target){
+												var list=[];
+												for(var card of player.storage.yk_qinglv) list.push(get.effect(target,card,player,target));
+												if(get.attitude(player,target)>0) return Math.min(list);
+												else return Math.max(list);
+											},
+											player:1,
+										},
 									},
-								},
+								}
+								lib.translate.yk_qinglv='情侣';
+								lib.translate.yk_qinglv_info='你与结姻的目标共享手牌';
+								target.addSkill('yk_qinglv');
+								player.addSkill('yk_qinglv');
 							}
-							lib.translate['yk_qinglv']='情比金坚';
-							lib.translate['yk_qinglv_info']='每个出牌阶段限用5次，你/其可以从【共享金库】存入/取出任意张牌；你与其获得牌时，有20%概率使【共享金库】从牌堆中增加一张牌；你与其回合开始时，【共享金库】50%概率从牌堆中增加一张牌。';
-							player.addSkill('yk_qinglv');
-							target.addSkill('yk_qinglv');
-							lib.skill.yk_qinglv_gainCard={
-								trigger:{
-									player:["phaseBegin","gainAfter"],
-								},
-								filter:function(event,player){
-									if(event.name=='phase') return Math.random()<0.5;
-									else  return Math.random()<0.2;
-								},
-								forced:true,
-								content:function(){
-									var card=get.cards(1);
-									var list=[card];
-									lib.yk_cuple[0].storage.yk_qinglv=lib.yk_cuple[0].storage.yk_qinglv.concat(list);
-								},
-							}
-							player.addSkill('yk_qinglv_gainCard');
-							target.addSkill('yk_qinglv_gainCard');
-						}
+						});
+						next.set('player',player);
+						return next;
 					},
 					onLose:function(player){
 						if(!player) return ;
-						game.yk_cupleIsAlive=false;
-						var target=lib.yk_cuple[1];
-						if(game.players.contains(target)) game.yk_cupleIsAlive=true;
-						player.popup('情侣');
-						if(game.yk_cupleIsAlive) target.popup('情侣');
+						var target=player.yk_qinglv_selected;
+						target.damage(1,player);
+						player.damage(1,target);
+						target.removeSkill('yk_qinglv');
 						player.removeSkill('yk_qinglv');
-						var num=get.rand(0,1);
-						if(num==1){
-							if(game.yk_cupleIsAlive){
-								target.chooseToDiscard('he',Math.min(2,target.getCards('he').length),true);
-								target.recover();
-							}
-							player.draw(2);
-							player.damage(target);
-						}
-						else{
-							if(game.yk_cupleIsAlive){
-								player.chooseToDiscard('he',Math.min(2,player.getCards('he').length),true);
-								player.recover();
-							}
-							target.draw(2);
-							target.damage(target);
-						}
-						player.yk_qinglvTarget=undefined;
-						target.yk_qinglvTarget=undefined;
+						delete target.yk_qinglv_selected;
+						target.yk_qinglv_selected=null;
+						delete player.yk_qinglv_selected;
+						player.yk_qinglv_selected=null;
 					},
-					info:'获得此塔罗牌时，如果场上存在异性角色，则随机选择一个异性角色，视为对其发动不弃牌的【结姻】（优先对友方角色使用），若如此做，你与其共享部分手牌：结姻时，分别弃置两张牌，使【共享金库】获得等量牌，你与其获得牌时，有20%概率使【共享金库】从牌堆中增加一张牌，你与其回合开始时，【共享金库】50%概率从牌堆中增加一张牌，每个出牌阶段限用5次，你/其可以从【共享金库】存入/取出任意张牌；失去此塔罗牌时，弃置所有【共享金库】中的牌，且你与其各随机执行一项：摸两张牌并受到一点来自对方的伤害，弃置两张牌并回复一点体力（同时只存在一个结姻目标）。<br><font color=grey><i>————“夜月一帘幽梦，春风十里柔情。”</i></font>',
+					info:'获得此塔罗牌时，如果场上存在异性角色，则随机选择一个异性角色，视为对其发动不弃牌的【结姻】（优先对友方角色使用）：你与其各回复一点体力；结姻期间，你与目标共享手牌。失去此塔罗牌时失去此效果，同时你与其各自受到一点来自对方的伤害。<br><font color=grey><i>————“夜月一帘幽梦，春风十里柔情。”</i></font>',
 				},
 				'7':{
 					name:'骑士',
