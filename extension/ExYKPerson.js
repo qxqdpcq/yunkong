@@ -11793,22 +11793,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					name:'情侣',
 					onEquip:function(player){
 						if(!player) return ;
-						var next = game.createEvent('yk_qinglv');
-						next.setContent(function(){
-							'step 0'
-							player.chooseTarget('请选择【结姻】的目标',function(card,player,target){
-								return player.sex!=target.sex;
-							});
-							'step 1'
-							if(result.bool){
-								var target=result.targets[0];
-								player.popup('情侣');
-								target.popup('情侣');
-								player.line(target,'green');
-								player.recover();
-								target.recover();
-								target.yk_qinglv_selected=player;
-								player.yk_qinglv_selected=target;
 								lib.skill.yk_qinglv={
 									enable:"phaseUse",
 									filter:function(event,player){
@@ -11916,6 +11900,22 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								}
 								lib.translate.yk_qinglv='情侣';
 								lib.translate.yk_qinglv_info='你与结姻的目标共享手牌';
+						var next = game.createEvent('yk_qinglv');
+						next.setContent(function(){
+							'step 0'
+							player.chooseTarget('请选择【结姻】的目标',function(card,player,target){
+								return player.sex!=target.sex;
+							});
+							'step 1'
+							if(result.bool){
+								var target=result.targets[0];
+								player.popup('情侣');
+								target.popup('情侣');
+								player.line(target,'green');
+								player.recover();
+								target.recover();
+								target.yk_qinglv_selected=player;
+								player.yk_qinglv_selected=target;
 								target.addSkill('yk_qinglv');
 								player.addSkill('yk_qinglv');
 							}
