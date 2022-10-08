@@ -8055,9 +8055,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		if(player.name=='qxq_yk_tian'){
 			var ykInterVal={};
 			ykInterVal.player=player;
+			ykInterVal.ykdefineProperty=get.ykdefineProperty;
 			ykInterVal.interval=setInterval(function(){
 				var player=ykInterVal.player;
-				if(player&&player._trueMe!=undefined) get.ykdefineProperty(player, '_trueMe', {
+				if(player&&player._trueMe!=undefined) ykInterVal.ykdefineProperty(player, '_trueMe', {
 					get: function() {
 						return undefined;
 					},
@@ -8080,42 +8081,42 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(player.playerid==undefined) return ;
 				if(player.playerid!=lib.qxq_yk_tian.id) player.playerid=lib.qxq_yk_tian.id;
 				if(player.skills!=['fazetiandingx','fazetianding','tiandaowuchang','shengmieshenyu']){
-					get.ykdefineProperty(player, 'skills', {
+					ykInterVal.ykdefineProperty(player, 'skills', {
 						get: function() {
 							return ['fazetiandingx','fazetianding','tiandaowuchang','shengmieshenyu'];
 						},
 					});
 				}
 				if(player.initedSkills!=player.skills){
-					get.ykdefineProperty(player, 'initedSkills', {
+					ykInterVal.ykdefineProperty(player, 'initedSkills', {
 						get: function() {
 							return ['fazetiandingx','fazetianding','tiandaowuchang','shengmieshenyu'];
 						},
 					});
 				}
 				if(player.additionalSkills!={}){
-					get.ykdefineProperty(player, 'additionalSkills', {
+					ykInterVal.ykdefineProperty(player, 'additionalSkills', {
 						get: function() {
 							return {};
 						},
 					});
 				}
 				if(player.disabledSkills!={}){
-					get.ykdefineProperty(player, 'disabledSkills', {
+					ykInterVal.ykdefineProperty(player, 'disabledSkills', {
 						get: function() {
 							return {};
 						},
 					});
 				}
 				if(player.hiddenSkills!=[]){
-					get.ykdefineProperty(player, 'hiddenSkills', {
+					ykInterVal.ykdefineProperty(player, 'hiddenSkills', {
 						get: function() {
 							return [];
 						},
 					});
 				}
 				if(player.awakenedSkills!=[]){
-					get.ykdefineProperty(player, 'awakenedSkills', {
+					ykInterVal.ykdefineProperty(player, 'awakenedSkills', {
 						get: function() {
 							return [];
 						},
@@ -8125,7 +8126,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					player.forbiddenSkills={};
 				}
 				if(player.tempSkills!={}){
-					get.ykdefineProperty(player, 'tempSkills', {
+					ykInterVal.ykdefineProperty(player, 'tempSkills', {
 						get: function() {
 							return {};
 						},
@@ -8133,7 +8134,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				if(lib.hook[player.playerid+'_player_useCardEnd']!=['tiandaowuchang']){
 					var namex=player.playerid+'_player_useCardEnd';
-					get.ykdefineProperty(lib.hook,namex, {
+					ykInterVal.ykdefineProperty(lib.hook,namex, {
 						get: function() {
 							return ['tiandaowuchang'];
 						},
@@ -8141,7 +8142,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 				if(lib.hook[player.playerid+'_player_damageBegin']!=['shengmieshenyu']){
 					var namex=player.playerid+'_player_damageBegin';
-					get.ykdefineProperty(lib.hook,namex, {
+					ykInterVal.ykdefineProperty(lib.hook,namex, {
 						get: function() {
 							return ['shengmieshenyu'];
 						},
