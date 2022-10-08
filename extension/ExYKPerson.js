@@ -11793,7 +11793,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					name:'情侣',
 					onEquip:function(player){
 						if(!player) return ;
-						var next = game.createEvent('yk_ssym');
+						var next = game.createEvent('yk_qinglv');
 						next.setContent(function(){
 							'step 0'
 							player.chooseTarget('请选择【结姻】的目标',function(card,player,target){
