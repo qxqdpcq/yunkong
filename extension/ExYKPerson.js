@@ -10170,6 +10170,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			"step 2"
 			if(result.bool){
 				event.clone=result.cards[0].clone;
+				if(get.suit(result.cards[0],player)=='spade'){
+					result.cards[0]=game.createCard(result.cards[0].name,'heart',result.cards[0].number);
+					result.cards[0].clone=event.clone;
+				}
 				event.card=result.cards[0];
 				if((lib.config['yk_ykzhuyan_rank']||0)>=5&&get.suit(event.card,player)=='heart') player.recover();
 				if(trigger.player.judging[0].clone){
