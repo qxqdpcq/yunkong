@@ -10139,7 +10139,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(trigger.player.judging) var suit=get.suit(trigger.player.judging[0],trigger.player)
 			if(trigger.player.judging) var color=get.color(trigger.player.judging[0],trigger.player)
 			if(!trigger.fixedResult) trigger.fixedResult={};
-			lib.ykzhuyan_cardsuit=trigger.fixedResult.suit||suit||'';
+			event.ykzhuyan_cardsuit=trigger.fixedResult.suit||suit||'';
 			lib.ykzhuyan_cardcolor=trigger.fixedResult.color||color||'';
 			var str='朱颜：'+get.translation(trigger.player)+'的'+(trigger.judgestr||'')+'判定为'+get.translation(trigger.player.judging[0])+'，打出一张牌代替此判定牌';
 			player.chooseCard({
@@ -10147,9 +10147,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					return get.color(card,player)=='red';
 				},
 				ai:function(card,player){
-					if(get.attitude(player,event.target)>0&&(lib.ykzhuyan_cardsuit=='club'||lib.ykzhuyan_cardsuit=='spade')&&(get.suit(card,player)=='heart')) return 7.5-get.value(card,player);
-					if(get.attitude(player,event.target)<0&&(lib.ykzhuyan_cardsuit=='diamond'||lib.ykzhuyan_cardsuit=='heart')&&get.suit(card,player)=='club') return 6-get.value(card,player);
-					if(get.attitude(player,event.target)>0&&(lib.ykzhuyan_cardsuit=='club'||lib.ykzhuyan_cardsuit=='spade')&&get.suit(card,player)=='diamond') return 6-get.value(card,player);
+					if(get.attitude(player,event.target)>0&&(event.ykzhuyan_cardsuit=='club'||event.ykzhuyan_cardsuit=='spade')&&(get.suit(card,player)=='heart')) return 7.5-get.value(card,player);
+					if(get.attitude(player,event.target)<0&&(event.ykzhuyan_cardsuit=='diamond'||event.ykzhuyan_cardsuit=='heart')&&get.suit(card,player)=='club') return 6-get.value(card,player);
+					if(get.attitude(player,event.target)>0&&(event.ykzhuyan_cardsuit=='club'||event.ykzhuyan_cardsuit=='spade')&&get.suit(card,player)=='diamond') return 6-get.value(card,player);
 					return 5.5-get.value(card,player);
 				},
 				prompt:get.prompt('yktianxiang'),
