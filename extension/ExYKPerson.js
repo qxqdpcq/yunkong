@@ -9369,7 +9369,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				filter:function(event,player){
 					var card=event.card;
 					if(!card&&event.cards) card=event.cards[0];
-					if(player==event.target&&card&&(get.name(card)=='tao'||get.name(card)=='jiu')) return false;
+					if(player==event.target&&card&&(get.name(card,player)=='tao'||get.name(card,player)=='jiu')) return false;
 					for(var i=0;i<game.players.length;i++){
 						if(game.players[i].init_mengyanyouwu!=undefined&&game.players[i].init_mengyanyouwu>0) return true;
 					}
@@ -9494,7 +9494,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			if(!lib.config.only_ykCardPile){
 				for(var i in lib.card){
-					if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
+					if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
 						return true;
 					}
 					if(i=='sha'){
@@ -9505,20 +9505,20 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							}
 						}
 					}
-					if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
+					if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
 						return true;
 					}
-					if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
+					if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
 						return true;
 					}
-					if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
+					if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
 						return true;
 					}
 				}
 			}
 			else{
 				for(var i of lib.inpile){
-					if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
+					if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
 						return true;
 					}
 					if(i=='sha'){
@@ -9529,13 +9529,13 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							}
 						}
 					}
-					if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
+					if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
 						return true;
 					}
-					if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
+					if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
 						return true;
 					}
-					if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
+					if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
 						return true;
 					}
 				}
@@ -9546,15 +9546,15 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			dialog:function(event,player){
 				var vcards=[],hs=player.getCards('h');
 				for(var i of lib.inpile){
-					if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:35))) vcards.push(['基本(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?0:35)+'</span>)','',i]);
+					if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:35))) vcards.push(['基本(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?0:35)+'</span>)','',i]);
 					if(i=='sha'&&lib.inpile_nature){
 						for(var j of lib.inpile_nature){
 							if(event.filterCard({name:i,nature:j,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:35))) vcards.push(['基本(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?0:35)+'</span>)','',i,j]);
 						}
 					}
-					if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?10:60))) vcards.push(['锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?10:60)+'</span>)','',i]);
-					if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:45))) vcards.push(['延时锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?0:45)+'</span>)','',i]);
-					if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?50:100))) vcards.push(['装备(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?50:100)+'</span>)','',i]);
+					if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?10:60))) vcards.push(['锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?10:60)+'</span>)','',i]);
+					if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:45))) vcards.push(['延时锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?0:45)+'</span>)','',i]);
+					if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?50:100))) vcards.push(['装备(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykyueyan_rank']||0)<4?50:100)+'</span>)','',i]);
 				}
 				try{//这个是为了兼容【国战】里的某些卡牌的ai
 					for(var pl of game.players){
@@ -9575,10 +9575,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(!lib.config.only_ykCardPile){
 					for(var i in lib.card){
 						if(!lib.inpile.contains(i)){
-							if(get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:35))) cardList.push(['基本(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?0:35)+'</span>)','',i]);
-							if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?10:60))) cardList.push(['锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?10:60)+'</span>)','',i]);
-							if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:45))) cardList.push(['延时锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?0:45)+'</span>)','',i]);
-							if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?50:100))) cardList.push(['装备(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:100)+'</span>)','',i]);
+							if(get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:35))) cardList.push(['基本(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?0:35)+'</span>)','',i]);
+							if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?10:60))) cardList.push(['锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?10:60)+'</span>)','',i]);
+							if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?0:45))) cardList.push(['延时锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?0:45)+'</span>)','',i]);
+							if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykyueyan_rank']||0)<4?50:100))) cardList.push(['装备(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:100)+'</span>)','',i]);
 						}
 					}
 				}
@@ -9592,7 +9592,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			},
 			backup:function(links,player){
 				if(!player.hasSkill('ykyueyanUse_equip')) player.addSkill('ykyueyanUse_equip');
-				if(get.type(links[0][2])=='basic'&&links[0][2]!='shan'){
+				if(get.type(links[0][2],player)=='basic'&&links[0][2]!='shan'){
 					lib.card['yk_梦魇·'+links[0][2]]={};
 					for(var item in lib.card[links[0][2]]) if(lib.card[links[0][2]][item]) lib.card['yk_梦魇·'+links[0][2]][item]=lib.card[links[0][2]][item];
 					lib.translate['yk_梦魇·'+links[0][2]]='梦魇·'+lib.translate[links[0][2]];
@@ -9604,7 +9604,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						position:'h',
 					}
 				}
-				else if(get.type(links[0][2])=='basic'&&links[0][2]=='shan'){
+				else if(get.type(links[0][2],player)=='basic'&&links[0][2]=='shan'){
 					return {
 						popname:true,
 						viewAs:{name:'shan',nature:links[0][3]},
@@ -9613,7 +9613,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						position:'h',
 					}
 				}
-				else if(get.type(links[0][2])=='trick'){
+				else if(get.type(links[0][2],player)=='trick'){
 					lib.card['yk_梦魇·'+links[0][2]]={};
 					for(var item in lib.card[links[0][2]]) if(lib.card[links[0][2]][item]) lib.card['yk_梦魇·'+links[0][2]][item]=lib.card[links[0][2]][item];
 					lib.translate['yk_梦魇·'+links[0][2]]='梦魇·'+lib.translate[links[0][2]];
@@ -9625,7 +9625,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						position:'h',
 					}
 				}
-				else if(get.type(links[0][2])=='delay'){
+				else if(get.type(links[0][2],player)=='delay'){
 					lib.card['yk_梦魇·'+links[0][2]]={};
 					for(var item in lib.card[links[0][2]]) if(lib.card[links[0][2]][item]) lib.card['yk_梦魇·'+links[0][2]][item]=lib.card[links[0][2]][item];
 					lib.translate['yk_梦魇·'+links[0][2]]='梦魇·'+lib.translate[links[0][2]];
@@ -9665,14 +9665,14 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				forced:true,
 				content:function(){
 					game.broadcastAll(function(player,trigger,card,name,cards,rank){
-						if(get.type(card)=='basic') if(rank<4) player.ykConsume('Soul',35,true);
-						if(get.type(card)=='trick') player.ykConsume('Soul',(rank<4?60:10),true);
-						if(get.type(card)=='delay') if(rank<4) player.ykConsume('Soul',45,true);
-						if(get.type(card)=='equip'){
+						if(get.type(card,player)=='basic') if(rank<4) player.ykConsume('Soul',35,true);
+						if(get.type(card,player)=='trick') player.ykConsume('Soul',(rank<4?60:10),true);
+						if(get.type(card,player)=='delay') if(rank<4) player.ykConsume('Soul',45,true);
+						if(get.type(card,player)=='equip'){
 							player.ykConsume('Soul',(rank<4?100:50),true);
-							var name=get.name(card);
-							var number=get.number(cards[0]);
-							var suit=get.suit(cards[0]);
+							var name=get.name(card,player);
+							var number=get.number(cards[0],player);
+							var suit=get.suit(cards[0],player);
 							lib.card['yk_梦魇·'+name].cardimage=name;
 							trigger.cards=[];
 							trigger.cards.push(game.createCard('yk_梦魇·'+name,suit,number));
@@ -9683,7 +9683,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			},
 		},
 		hiddenCard:function(player,name){
-			return name!='du'&&get.type(name)=='basic'&&player.countCards('h')>0;
+			return name!='du'&&get.type(name,player)=='basic'&&player.countCards('h')>0;
 		},
 		ai:{
 			respondSha:true,
@@ -9716,8 +9716,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		},
 		enable:"phaseUse",
 		filterCard:function(card,player){
-			if(player.hasSkill('ykzhuyan')||player.hasSkill('hongyan')) return get.suit(card)!='spade'&&player.yktianxiang_record.indexOf(get.suit(card))!=-1;
-			else return player.yktianxiang_record.indexOf(get.suit(card))!=-1;
+			if(player.hasSkill('ykzhuyan')||player.hasSkill('hongyan')) return get.suit(card,player)!='spade'&&player.yktianxiang_record.indexOf(get.suit(card,player))!=-1;
+			else return player.yktianxiang_record.indexOf(get.suit(card,player))!=-1;
 		},
 		charlotte:true,
 		superCharlotte:true,
@@ -9735,10 +9735,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			"step 0"
 			player.logSkill('yktianxiang',target)
 			event.card=cards[0];
-			event.discardResult=get.suit(event.card);
+			event.discardResult=get.suit(event.card,player);
 			if((lib.config['yk_yktianxiang_rank']||0)>=5&&player.countCards('h')==0) player.draw(2);
 			event.target=target;
-			event.suit=get.suit(event.card);
+			event.suit=get.suit(event.card,player);
 			player.ykConsume('Mp',75+25*(4-player.yktianxiang_record.length),true);
 			player.ykRecover('Defend',50,true);
 			switch(event.suit){
@@ -9763,9 +9763,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				else event.goto(4);
 			}
 			else{
-				event.target.judge(function(card){
-					event.judgeCard=game.createCard(get.name(card),get.suit(card),get.number(card));
-					event.judgeResult=get.suit(card);
+				event.target.judge(function(card,player){
+					event.judgeCard=game.createCard(get.name(card,player),get.suit(card,player),get.number(card,player));
+					event.judgeResult=get.suit(card,player);
 					return 1;
 				});
 			}
@@ -9776,7 +9776,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				var cardsx=[event.card,event.judgeCard];
 				player.showCards(cardsx,'弃牌和判定牌');
 				event.target.showCards(cards,get.translation(event.target.name)+'的手牌');
-				for(var card of cards) if(get.suit(card)==event.discardResult||get.suit(card)==event.judgeResult) event.drawBool=true;
+				for(var card of cards) if(get.suit(card,player)==event.discardResult||get.suit(card,player)==event.judgeResult) event.drawBool=true;
 				if(event.drawBool==true) player.draw(2);
 			}
 			if(event.getSkillBool!=true) event.finish();
@@ -9821,16 +9821,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					return player.countCards('h')-player.countCards('h',{suit:"heart"})>0;
 				},
 				check:function(card){
-					return Infinity-get.value(card);
+					return Infinity-get.value(card,player);
 				},
 				content:function(){
 					'step 0'
 					player.chooseCard({
 						filterCard:function(card,player){
-							return get.suit(card)!='heart';
+							return get.suit(card,player)!='heart';
 						},
 						ai:function(card){
-							return 10-get.value(card);
+							return 10-get.value(card,player);
 						},
 						prompt:get.prompt('yktianxiang'),
 						prompt2:'将一张手牌变为红桃花色',
@@ -9840,9 +9840,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						event.card=result.cards[0];
 						game.log(player,'把',event.card,'的花色变为红桃');
 						player.lose(event.card)._triggered=null;
-						var name=get.name(event.card);
-						var nature=get.nature(event.card);
-						var number=get.number(event.card);
+						var name=get.name(event.card,player);
+						var nature=get.nature(event.card,player);
+						var number=get.number(event.card,player);
 						player.gain(game.createCard(name,'heart',number,nature))._triggered=null;
 					}
 					'step 2'
@@ -9854,8 +9854,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					if(result.control=='方块') event.guessResult='diamond';
 					if(result.control=='梅花') event.guessResult='club';
 					if(result.control=='黑桃') event.guessResult='spade';
-					player.judge(function(card){
-						if(get.suit(card)==event.guessResult) return 1;
+					player.judge(function(card,player){
+						if(get.suit(card,player)==event.guessResult) return 1;
 					});
 					'step 4'
 					if(result.bool){
@@ -9890,7 +9890,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					}
 					if(!lib.config.only_ykCardPile){
 						for(var i in lib.card){
-							if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
+							if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
 								return true;
 							}
 							if(i=='sha'){
@@ -9901,20 +9901,20 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 									}
 								}
 							}
-							if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
+							if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
 								return true;
 							}
-							if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
+							if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
 								return true;
 							}
-							if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
+							if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
 								return true;
 							}
 						}
 					}
 					else{
 						for(var i of lib.inpile){
-							if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
+							if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))){
 								return true;
 							}
 							if(i=='sha'){
@@ -9925,13 +9925,13 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 									}
 								}
 							}
-							if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
+							if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))){
 								return true;
 							}
-							if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
+							if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))){
 								return true;
 							}
-							if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
+							if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))){
 								return true;
 							}
 						}
@@ -9942,15 +9942,15 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					dialog:function(event,player){
 						var vcards=[],hs=player.getCards('h');
 						for(var i of lib.inpile){
-							if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))) vcards.push(['基本(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80)+'</span>)','',i]);
+							if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))) vcards.push(['基本(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80)+'</span>)','',i]);
 							if(i=='sha'&&lib.inpile_nature){
 								for(var j of lib.inpile_nature){
 									if(event.filterCard({name:i,nature:j,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))) vcards.push(['基本(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80)+'</span>)','',i,j]);
 								}
 							}
-							if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))) vcards.push(['锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140)+'</span>)','',i]);
-							if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))) vcards.push(['延时锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100)+'</span>)','',i]);
-							if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))) vcards.push(['装备(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200)+'</span>)','',i]);
+							if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))) vcards.push(['锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140)+'</span>)','',i]);
+							if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))) vcards.push(['延时锦囊(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100)+'</span>)','',i]);
+							if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))) vcards.push(['装备(<span style=\"color: #e01ade;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200)+'</span>)','',i]);
 						}
 						try{//这个是为了兼容【国战】里的某些卡牌的ai
 							for(var pl of game.players){
@@ -9971,10 +9971,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						if(!lib.config.only_ykCardPile){
 							for(var i in lib.card){
 								if(!lib.inpile.contains(i)){
-									if(get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))) cardList.push(['基本(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80)+'</span>)','',i]);
-									if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))) cardList.push(['锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140)+'</span>)','',i]);
-									if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))) cardList.push(['延时锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100)+'</span>)','',i]);
-									if(get.type(i)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))) cardList.push(['装备(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200)+'</span>)','',i]);
+									if(get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80))) cardList.push(['基本(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80)+'</span>)','',i]);
+									if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140))) cardList.push(['锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140)+'</span>)','',i]);
+									if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100))) cardList.push(['延时锦囊(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100)+'</span>)','',i]);
+									if(get.type(i,player)=='equip'&&event.filterCard({name:i,cards:hs},player,event)&&player.ykCheckConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200))) cardList.push(['装备(<span style=\"color: red;\">'+((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200)+'</span>)','',i]);
 								}
 							}
 						}
@@ -9988,7 +9988,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					},
 					backup:function(links,player){
 						if(!player.hasSkill('ykzhuyan_use_equip')) player.addSkill('ykzhuyan_use_equip');
-						if(get.type(links[0][2])=='basic'&&links[0][2]!='shan'){
+						if(get.type(links[0][2],player)=='basic'&&links[0][2]!='shan'){
 							lib.card['yk_朱颜·'+links[0][2]]={};
 							for(var item in lib.card[links[0][2]]) if(lib.card[links[0][2]][item]) lib.card['yk_朱颜·'+links[0][2]][item]=lib.card[links[0][2]][item];
 							lib.translate['yk_朱颜·'+links[0][2]]='朱颜·'+lib.translate[links[0][2]];
@@ -10000,7 +10000,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								position:'h',
 							}
 						}
-						else if(get.type(links[0][2])=='basic'&&links[0][2]=='shan'){
+						else if(get.type(links[0][2],player)=='basic'&&links[0][2]=='shan'){
 							return {
 								popname:true,
 								viewAs:{name:'shan',nature:links[0][3]},
@@ -10009,7 +10009,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								position:'h',
 							}
 						}
-						else if(get.type(links[0][2])=='trick'){
+						else if(get.type(links[0][2],player)=='trick'){
 							lib.card['yk_朱颜·'+links[0][2]]={};
 							for(var item in lib.card[links[0][2]]) if(lib.card[links[0][2]][item]) lib.card['yk_朱颜·'+links[0][2]][item]=lib.card[links[0][2]][item];
 							lib.translate['yk_朱颜·'+links[0][2]]='朱颜·'+lib.translate[links[0][2]];
@@ -10021,7 +10021,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								position:'h',
 							}
 						}
-						else if(get.type(links[0][2])=='delay'){
+						else if(get.type(links[0][2],player)=='delay'){
 							lib.card['yk_朱颜·'+links[0][2]]={};
 							for(var item in lib.card[links[0][2]]) if(lib.card[links[0][2]][item]) lib.card['yk_朱颜·'+links[0][2]][item]=lib.card[links[0][2]][item];
 							lib.translate['yk_朱颜·'+links[0][2]]='朱颜·'+lib.translate[links[0][2]];
@@ -10081,14 +10081,14 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				forced:true,
 				content:function(){
 					if(trigger.name=='useCard'){
-						if(get.type(trigger.card)=='basic') player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80),true);
-						if(get.type(trigger.card)=='trick') player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140),true);
-						if(get.type(trigger.card)=='delay') player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100),true);
-						if(get.type(trigger.card)=='equip'){
+						if(get.type(trigger.card,player)=='basic') player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?50:80),true);
+						if(get.type(trigger.card,player)=='trick') player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?110:140),true);
+						if(get.type(trigger.card,player)=='delay') player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?70:100),true);
+						if(get.type(trigger.card,player)=='equip'){
 							player.ykConsume('Soul',((lib.config['yk_ykzhuyan_rank']||0)>=2?170:200),true);
-							var name=get.name(trigger.card);
-							var number=get.number(trigger.cards[0]);
-							var suit=get.suit(trigger.cards[0]);
+							var name=get.name(trigger.card,player);
+							var number=get.number(trigger.cards[0],player);
+							var suit=get.suit(trigger.cards[0],player);
 							lib.card['yk_朱颜·'+name].cardimage=name;
 							trigger.cards[0]=game.createCard('yk_朱颜·'+name,suit,number);
 							player.equip(trigger.cards[0],'equip2');
@@ -10131,26 +10131,26 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		content:function(){
 			"step 0"
 			player.ykConsume('Mp',20,true);
-			event.namex=get.name(trigger.player.judging[0])||'';
-			event.suitx=get.suit(trigger.player.judging[0])||'';
-			event.numberx=get.number(trigger.player.judging[0])||'';
-			event.naturex=get.nature(trigger.player.judging[0])||'';
-			lib.ykzhuyan_target=trigger.player;
-			if(trigger.player.judging) var suit=get.suit(trigger.player.judging[0])
-			if(trigger.player.judging) var color=get.color(trigger.player.judging[0])
+			event.namex=get.name(trigger.player.judging[0],trigger.player)||'';
+			event.suitx=get.suit(trigger.player.judging[0],trigger.player)||'';
+			event.numberx=get.number(trigger.player.judging[0],trigger.player)||'';
+			event.naturex=get.nature(trigger.player.judging[0],trigger.player)||'';
+			event.target=trigger.player;
+			if(trigger.player.judging) var suit=get.suit(trigger.player.judging[0],trigger.player)
+			if(trigger.player.judging) var color=get.color(trigger.player.judging[0],trigger.player)
 			if(!trigger.fixedResult) trigger.fixedResult={};
 			lib.ykzhuyan_cardsuit=trigger.fixedResult.suit||suit||'';
 			lib.ykzhuyan_cardcolor=trigger.fixedResult.color||color||'';
 			var str='朱颜：'+get.translation(trigger.player)+'的'+(trigger.judgestr||'')+'判定为'+get.translation(trigger.player.judging[0])+'，打出一张牌代替此判定牌';
 			player.chooseCard({
 				filterCard:function(card,player){
-					return get.color(card)=='red';
+					return get.color(card,player)=='red';
 				},
-				ai:function(card){
-					if(get.attitude(player,lib.ykzhuyan_target)>0&&(lib.ykzhuyan_cardsuit=='club'||lib.ykzhuyan_cardsuit=='spade')&&(get.suit(card)=='heart'||get.suit(card)=='spade')) return 7.5-get.value(card);
-					if(get.attitude(player,lib.ykzhuyan_target)<0&&(lib.ykzhuyan_cardsuit=='diamond'||lib.ykzhuyan_cardsuit=='heart')&&get.suit(card)=='club') return 6-get.value(card);
-					if(get.attitude(player,lib.ykzhuyan_target)>0&&(lib.ykzhuyan_cardsuit=='club'||lib.ykzhuyan_cardsuit=='spade')&&get.suit(card)=='diamond') return 6-get.value(card);
-					return 5.5-get.value(card);
+				ai:function(card,player){
+					if(get.attitude(player,event.target)>0&&(lib.ykzhuyan_cardsuit=='club'||lib.ykzhuyan_cardsuit=='spade')&&(get.suit(card,player)=='heart')) return 7.5-get.value(card,player);
+					if(get.attitude(player,event.target)<0&&(lib.ykzhuyan_cardsuit=='diamond'||lib.ykzhuyan_cardsuit=='heart')&&get.suit(card,player)=='club') return 6-get.value(card,player);
+					if(get.attitude(player,event.target)>0&&(lib.ykzhuyan_cardsuit=='club'||lib.ykzhuyan_cardsuit=='spade')&&get.suit(card,player)=='diamond') return 6-get.value(card,player);
+					return 5.5-get.value(card,player);
 				},
 				prompt:get.prompt('yktianxiang'),
 				prompt2:'弃置一张手牌',
@@ -10170,12 +10170,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			"step 2"
 			if(result.bool){
 				event.clone=result.cards[0].clone;
-				if(get.suit(result.cards[0])=='spade'){
-					result.cards[0]=game.createCard(result.cards[0].name,'heart',result.cards[0].number);
-					result.cards[0].clone=event.clone;
-				}
 				event.card=result.cards[0];
-				if((lib.config['yk_ykzhuyan_rank']||0)>=5&&get.suit(event.card)=='heart') player.recover();
+				if((lib.config['yk_ykzhuyan_rank']||0)>=5&&get.suit(event.card,player)=='heart') player.recover();
 				if(trigger.player.judging[0].clone){
 					trigger.player.judging[0].clone.classList.remove('thrownhighlight');
 					game.broadcast(function(card){
@@ -10186,16 +10182,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					game.addVideo('deletenode',player,get.cardsInfo([trigger.player.judging[0].clone]));
 				}
 				game.cardsDiscard(trigger.player.judging[0]);
-				player.popup(get.translation(get.suit(event.card)));
+				player.popup(get.translation(get.suit(event.card,player)));
 				trigger.player.judging[0]=result.cards[0];
 				trigger.orderingCards.addArray(result.cards);
 				game.log(trigger.player,'的判定牌改为',result.cards[0]);
 				trigger.player.judging[0]=event.card;
 				if(!trigger.fixedResult) trigger.fixedResult={};
-				trigger.fixedResult.suit=get.suit(event.card);
-				trigger.fixedResult.color=get.color(event.card);
+				trigger.fixedResult.suit=get.suit(event.card,player);
+				trigger.fixedResult.color=get.color(event.card,player);
 				if((lib.config['yk_ykzhuyan_rank']||0)>=1) player.ykRecover('Defend',50,true);
-				if(get.suit(event.card)=='heart'){
+				if(get.suit(event.card,player)=='heart'){
 					event.getSkillBool=true;
 				}
 				if((lib.config['yk_ykzhuyan_rank']||0)>=3){
@@ -10213,9 +10209,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						card:event.card,
 						judge:trigger.judge(event.card),
 						node:node,
-						number:get.number(event.card),
-						suit:get.suit(event.card),
-						color:get.color(event.card),
+						number:get.number(event.card,player),
+						suit:get.suit(event.card,player),
+						color:get.color(event.card,player),
 					};
 					if(trigger.result.judge>0){
 						trigger.result.bool=true;
@@ -10338,8 +10334,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			var player=_status.currentPhase;
 			if(!player.hasSkill('ykpiaoling_jili')){
 				if(player.hp==player.maxHp&&player.countCards('h')<=player.hp) return false;
-				if(ui.selected.cards.length>=player.hp+1) return -get.value(card);
-				else return get.value(card);
+				if(ui.selected.cards.length>=player.hp+1) return -get.value(card,player);
+				else return get.value(card,player);
 			}
 			else return false;
 		},
@@ -10390,9 +10386,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					else{
 						var valuex=0;
 						var effect=0;
-						for(var card of ui.selected.cards) valuex+=get.value(card);
+						for(var card of ui.selected.cards) valuex+=get.value(card,player);
 						if(ui.selected.cards.length>=player.hp+1){
-							var baseValue=get.value(game.createCard('shan'))*game.players.length/3;
+							var baseValue=get.value(game.createCard('shan'),player)*game.players.length/3;
 							if(target.hp<target.maxHp/2){
 								effect-=4;
 							}
@@ -10431,7 +10427,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(game.checkMod(i,player,'unchanged','cardEnabled2',player)===false) return false;
 			}
 			for(var i of lib.inpile){
-				if((i=='tao'||i=='jiu')&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)){
+				if((i=='tao'||i=='jiu')&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)){
 					return true
 				}
 			}
@@ -10441,8 +10437,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			dialog:function(event,player){
 				var vcards=[],hs=player.getCards('h');
 				for(var i of lib.inpile){
-					if(player.countCards('h',{suit:"heart"})>0&&i=='tao'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)) vcards.push(['基本','',i]);
-					if(player.countCards('h',{suit:"spade"})>0&&i=='jiu'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)) vcards.push(['基本','',i]);
+					if(player.countCards('h',{suit:"heart"})>0&&i=='tao'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)) vcards.push(['基本','',i]);
+					if(player.countCards('h',{suit:"spade"})>0&&i=='jiu'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)) vcards.push(['基本','',i]);
 				}
 				return ui.create.dialog('天医',[vcards,'vcard']);
 			},
@@ -10487,7 +10483,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			},
 		},
 		hiddenCard:function(player,name){
-			return name!='du'&&get.type(name)=='basic'&&player.countCards('h')>0;
+			return name!='du'&&get.type(name,player)=='basic'&&player.countCards('h')>0;
 		},
 		ai:{
 			respondSha:true,
@@ -10559,7 +10555,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			var cards=target.getCards('h');
 			player.showCards(cards,'卡牌结果');
 			event.bool=true;
-			for(var card of cards) if(get.suit(card)==event.suit) event.bool=false;
+			for(var card of cards) if(get.suit(card,player)==event.suit) event.bool=false;
 			if(event.bool){
 				player.draw();
 				var word=['哼哼，我就说我可以治好你的吧！[#得意][#得意]','你们都不相信本小姐的医术？真是不识好歹！！！[#生气][#不屑]','谢谢惠顾，欢迎下次光临哦！！[#开心][#开心]'].randomGet();
@@ -10761,8 +10757,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						respondShan:true,
 						effect:{
 							target:function(card,player,target){
-								if(player==target&&get.subtype(card)=='equip2'){
-									if(get.equipValue(card)<=7.5) return 0;
+								if(player==target&&get.subtype(card,player)=='equip2'){
+									if(get.equipValue(card,player)<=7.5) return 0;
 								}
 								if(!target.isEmpty(2)) return;
 								return lib.skill.bagua_skill.ai.effect.target.apply(this,arguments);
@@ -10786,7 +10782,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					content:function(){
 						"step 0"
 						trigger.bagua_skill=true;
-						player.judge('bagua',function(card){return (get.color(card)=='red')?1.5:-0.5}).judge2=function(result){
+						player.judge('bagua',function(card){return (get.color(card,player)=='red')?1.5:-0.5}).judge2=function(result){
 							return result.bool;
 						};
 						"step 1"
@@ -10824,9 +10820,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						if(_status.currentPhase!=player) return false;
 						if(event.parent.parent.name!='phaseUse') return false;
 						if(!event.targets||!event.card) return false;
-						if(get.info(event.card).complexTarget) return false;
+						if(get.info(event.card,player).complexTarget) return false;
 						if(!lib.filter.cardEnabled(event.card,player,event.parent)) return false;
-						var type=get.type(event.card);
+						var type=get.type(event.card,player);
 						if(type!='basic'&&type!='trick') return false;
 						var card=game.createCard(event.card.name,event.card.suit,event.card.number,event.card.nature);
 						var targets=event._targets||event.targets;
@@ -10860,15 +10856,15 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							if(game.checkMod(i,player,'unchanged','cardEnabled2',player)===false) return false;
 						}
 						for(var i of lib.inpile){
-							if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'basic'})>=2) return true;
+							if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'basic'})>=2) return true;
 							if(i=='sha'){
 								var list=['fire','thunder','ice'];
 								for(var j of list){
 									if(event.filterCard({name:i,nature:j,cards:hs},player,event)&&player.countCards('h',{type:'basic'})>=2) return true;
 								}
 							}
-							if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'trick'})>=2) return true;
-							if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'delay'})>=2) return true;
+							if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'trick'})>=2) return true;
+							if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'delay'})>=2) return true;
 						}
 						return false;
 					},
@@ -10876,14 +10872,14 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						dialog:function(event,player){
 							var vcards=[],hs=player.getCards('h');
 							for(var i of lib.inpile){
-								if(i!='du'&&get.type(i)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'basic'})>=2) vcards.push(['基本','',i]);
+								if(i!='du'&&get.type(i,player)=='basic'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'basic'})>=2) vcards.push(['基本','',i]);
 								if(i=='sha'){
 									for(var j of lib.inpile_nature){
 										if(event.filterCard({name:i,nature:j,cards:hs},player,event)&&player.countCards('h',{type:'basic'})>=2) vcards.push(['基本','',i,j]);
 									}
 								}
-								if(get.type(i)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'trick'})>=2) vcards.push(['锦囊','',i]);
-								if(get.type(i)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'delay'})>=2) vcards.push(['延时锦囊','',i]);
+								if(get.type(i,player)=='trick'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'trick'})>=2) vcards.push(['锦囊','',i]);
+								if(get.type(i,player)=='delay'&&event.filterCard({name:i,cards:hs},player,event)&&player.countCards('h',{type:'delay'})>=2) vcards.push(['延时锦囊','',i]);
 							}
 							return ui.create.dialog('红尘之意',[vcards,'vcard']);
 						},
@@ -10897,7 +10893,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							return {
 								popname:true,
 								viewAs:{name:links[0][2],nature:links[0][3]},
-								filterCard:{type:get.type(links[0][2])},
+								filterCard:{type:get.type(links[0][2],player)},
 								selectCard:2,
 								position:'h',
 							}
@@ -10907,7 +10903,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						},
 					},
 					hiddenCard:function(player,name){
-						return name!='du'&&get.type(name)=='basic'&&player.countCards('h')>0;
+						return name!='du'&&get.type(name,player)=='basic'&&player.countCards('h')>0;
 					},
 					ai:{
 						respondSha:true,
@@ -11084,7 +11080,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				lib.skill.yk_sssp={
 					mod:{
 						ignoredHandcard:function (card,player){
-							if(get.name(card)=='sha'||get.type(card)=='equip'){
+							if(get.name(card,player)=='sha'||get.type(card,player)=='equip'){
 								return true;
 							}
 						},
@@ -11206,11 +11202,11 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							filterTarget:function(card,player,target){
 								return target!=player&&player.inRange(target)&&target.sex!=player.sex;
 							},
-							ai1:function(card){
+							ai1:function(card,player){
 								var player=_status.currentPhase;
 								var value=0;
 								for(var card of player.getCards('h')) 
-								return Infinity-get.value(card);
+								return Infinity-get.value(card,player);
 							},
 							ai2:function(target){
 								var att=get.attitude(_status.event.player,target);
@@ -11226,7 +11222,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							trigger.target=result.targets[0];
 							event.card=result.cards[0];
 							if(player.sex=='female'&&Math.random()<0.75) player.draw();
-							if(get.suit(event.card)=='heart'&&Math.random()<0.25) player.draw();
+							if(get.suit(event.card,player)=='heart'&&Math.random()<0.25) player.draw();
 						}
 					},
 				}
@@ -11282,8 +11278,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					filter:function(event,player){
 						if(event.card) var card=event.card;
 						else if(event.cards) var card=event.cards[0];
-						if(card&&get.type(card)=='equip'&&get.subtype(card)=='equip1') return true;
-						if(card&&get.name(card)=='sha'&&Math.random()<0.15) return true;
+						if(card&&get.type(card,player)=='equip'&&get.subtype(card,player)=='equip1') return true;
+						if(card&&get.name(card,player)=='sha'&&Math.random()<0.15) return true;
 						return false;
 					},
 					forced:true,
@@ -11291,11 +11287,11 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						if(trigger.card) var card=trigger.card;
 						else if(trigger.cards) var card=trigger.cards[0];
 						if(card){
-							if(get.type(card)=='equip'&&get.subtype(card)=='equip1'){
+							if(get.type(card,player)=='equip'&&get.subtype(card,player)=='equip1'){
 								player.gain(game.createCard('sha'),'gain2');
 								player.gain(game.createCard('sha'),'gain2');
 							}
-							else if(get.name(card)=='sha') player.changeHujia();
+							else if(get.name(card,player)=='sha') player.changeHujia();
 						}
 					},
 				}
@@ -11321,7 +11317,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					filter:function(event,player){
 						if(event.card) var card=event.card;
 						else if(event.cards) var card=event.cards[0];
-						if(card&&(get.name(card)=='tao'||get.name(card)=='jiu')&&Math.random()<0.3) return true;
+						if(card&&(get.name(card,player)=='tao'||get.name(card,player)=='jiu')&&Math.random()<0.3) return true;
 						return false;
 					},
 					forced:true,
@@ -11372,16 +11368,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					enable:"phaseUse",
 					usable:1,
 					filterCard:true,
-					check:function(card){
+					check:function(card,player){
 						if(card.name=='du') return 20;
 						var player=_status.event.player;
 						var nh=player.countCards('h');
 						if(!player.needsToDiscard()){
 							if(nh<3) return 0;
-							if(nh==3) return 5-get.value(card);
-							return 7-get.value(card);
+							if(nh==3) return 5-get.value(card,player);
+							return 7-get.value(card,player);
 						}
-						return 10-get.useful(card);
+						return 10-get.useful(card,player);
 					},
 					discard:false,
 					lose:false,
@@ -11462,7 +11458,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						player:"equipBegin",
 					},
 					filter:function(event,player){
-						return (event.card&&get.name(event.card)=='muniu')||(event.cards&&get.name(event.cards[0])=='muniu');
+						return (event.card&&get.name(event.card,player)=='muniu')||(event.cards&&get.name(event.cards[0],player)=='muniu');
 					},
 					forced:true,
 					silent:true,
@@ -11630,7 +11626,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						player.popup('愚者');
 						var cards=player.getCards('h');
 						var cardsx=[];
-						for(var card of cards) if(get.type(card)!='trick'&&get.type(card)!='delay') cardsx.push(card);
+						for(var card of cards) if(get.type(card,player)!='trick'&&get.type(card,player)!='delay') cardsx.push(card);
 						var num=cardsx.length;
 						if(num){
 							player.discard(cardsx);
@@ -11756,11 +11752,11 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							var cards=player.getCards('h');
 							var suitList=[];
 							for(var card of cards){
-								if(suitList.indexOf(get.suit(card))==-1) suitList.push(get.suit(card));
+								if(suitList.indexOf(get.suit(card,player))==-1) suitList.push(get.suit(card,player));
 							}
 							var suit=suitList.randomGet();
 							var list=[];
-							for(var card of cards) if(get.suit(card)==suit) list.push(card);
+							for(var card of cards) if(get.suit(card,player)==suit) list.push(card);
 							player.discard(list);
 							player.old_zhu=undefined;
 						}
@@ -11832,16 +11828,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								equipSkill:true,
 								enable:"phaseUse",
 								usable:5,
-								check:function(card){
+								check:function(card,player){
 									if(card.name=='du') return 20;
 									var player=_status.event.player;
 									var nh=lib.yk_cuple[0].storage.yk_qinglv;
 									if(player.needsToDiscard()){
 										if(nh<3) return 0;
-										if(nh==3) return 3-get.value(card);
-										return 5-get.value(card);
+										if(nh==3) return 3-get.value(card,player);
+										return 5-get.value(card,player);
 									}
-									return 10-get.useful(card);
+									return 10-get.useful(card,player);
 								},
 								filterCard:true,
 								selectCard:[0,Infinity],
@@ -11866,7 +11862,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 										var val=player.getUseValue(card);
 										var card=button.link;
 										if(val>0&&lib.yk_cuple[0].storage.yk_qinglv) return lib.yk_cuple[0].storage.yk_qinglv.length*3-val;
-										return 3-get.value(card);
+										return 3-get.value(card,player);
 									});
 									'step 2'
 									if(result.bool){
@@ -12171,7 +12167,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						lib.skill.yk_nobanned2={
 							mod:{
 								ignoredHandcard:function (card,player){
-									if(get.name(card)=='sha'){
+									if(get.name(card,player)=='sha'){
 										return true;
 									}
 								},
@@ -12265,12 +12261,12 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								if(event.name=='useCard'){
 									var card=event.card;
 									if(!card&&event.cards) card=event.cards[0];
-									if(card&&get.name(card)=='sha'){
+									if(card&&get.name(card,player)=='sha'){
 										if(!player.yk_tarot_useShaRecord) player.yk_tarot_useShaRecord=0;
 										player.yk_tarot_useShaRecord++;
 										return false;
 									}
-									else if(get.type(card)=='trick'){
+									else if(get.type(card,player)=='trick'){
 										if(!player.yk_tarot_useTrickRecord) player.yk_tarot_useTrickRecord=0;
 										player.yk_tarot_useTrickRecord++;
 										return false;
@@ -12945,7 +12941,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			var card;
 			if(event.cards) card=event.cards[0];
 			else card=event.card;
-			return card&&get.name(card)=='sha'&&player.ykCheckConsume('Mp',35)&&player.getEquip(1);
+			return card&&get.name(card,player)=='sha'&&player.ykCheckConsume('Mp',35)&&player.getEquip(1);
 		},
 		content:function(){
 			player.ykConsume('Mp',35,true);
@@ -12956,7 +12952,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if((lib.config['yk_ykjuejian_rank']||0)>=5){
 				var card=trigger.card;
 				if(!card&&trigger.cards) card=trigger.cards[0];
-				if(card&&get.color(card)=='black'&&Math.random()<0.2) player.changeHujia();
+				if(card&&get.color(card,player)=='black'&&Math.random()<0.2) player.changeHujia();
 			}
 			player.addTempSkill('unequip',{player:'useCardAfter'});
 		},
@@ -12988,7 +12984,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					var card;
 					if(event.cards) card=event.cards[0];
 					else card=event.card;
-					return card&&get.name(card)=='sha';
+					return card&&get.name(card,player)=='sha';
 				},
 				forced:true,
 				content:function(){
@@ -13914,7 +13910,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(list1.indexOf(card.type)==-1||list2.indexOf(card.suit)==-1) list.push(card);
 			}
 			if(list.length) player.chooseButton(['请选择弃置一张牌',list]).set('ai',button=>{
-				return -get.value(button);
+				return -get.value(button,player);
 			});
 			'step 1'
 			if(result.bool){
