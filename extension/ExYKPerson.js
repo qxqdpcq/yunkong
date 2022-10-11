@@ -1425,9 +1425,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			ui.arena.classList.remove('menupaused');
 			//移除背景模糊
 			for (let i = 0; i < hideList.length; i++) {
-				hideList[i][ui.window.contains(hideList[i]) ? 'remove' : 'hide']();
+				if(hideList[i]) hideList[i][ui.window.contains(hideList[i]) ? 'remove' : 'hide']();
 				if (i == hideList.length - 1) {
-					hideList[i].hide();
+					if(hideList[i]) hideList[i].hide();
 				}
 			}
 			_status.paused2 = true;
@@ -1455,9 +1455,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		//初始化函数，隐藏无名杀的背景等
 		var End = function(dialog, avatar, time) {
 			for (let i = 0; i < hideList.length; i++) {
-				ui.window.appendChild(hideList[i]);
+				if(hideList[i]) ui.window.appendChild(hideList[i]);
 				if (i < hideList.length - 1) {
-					hideList[i].show();
+					if(hideList[i]) hideList[i].show();
 				}
 			}
 			if (Object.prototype.toString.call(system) == "[object HTMLDivElement]") {
