@@ -1500,7 +1500,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		var avatar;
 		var juqing_while = function() {
 			for (var i in List[Listnum]) {
-				if(juqing_while.end_fuc){
+				if(juqing_while.end_fuc_obj){
 					delete juqing_while.end_fuc_obj;
 					juqing_while.end_fuc_obj=null;
 				}
@@ -1520,7 +1520,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						List[Listnum][i](avatar,List.person);
 						break;
 					case 'end_fuc':
-						juqing_while.end_fuc_obj={obj:List[Listnum][i],person:List.person};
+						juqing_while.end_fuc_obj={obj:List[Listnum],person:List.person};
 						break;
 					case 'backgroundAudio':
 						if (ui.window.contains(juqing_audio)) {
