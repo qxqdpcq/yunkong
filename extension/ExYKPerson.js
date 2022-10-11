@@ -13149,57 +13149,43 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		group:['ykshenming_useCard'],
 		enable:"phaseUse",
 		init:player=>{
+			if(!player.yk_mingyun) player.yk_mingyun=0;
 			if(player==game.me){
 				window.updateDiv=num=>{
-					if(!num) num=0;
-					if(window.ykshow_destinyDiv){
-						window.ykshow_destinyDiv.delete();
-						window.ykshow_destinyDiv=null;
+					if(window.updateDiv.destinyDiv){
+						window.updateDiv.destinyDiv.delete();
+						delete window.updateDiv.destinyDiv;
+						window.updateDiv.destinyDiv=null;
 					}
+					if(!num) num=game.me.yk_mingyun;
 					var listx=[];
-					for(var i=0;i<num;i++) listx.push(ui.cardPile.childNodes[num]);
-					window.ykshow_destinyDiv=ui.create.dialog('<br>【神命】<br><small>当前可见牌堆顶的'+num+'张牌</small>',[listx,'vcard']);
-					window.ykshow_destinyDiv.style.backgroundColor='black';
-					window.ykshow_destinyDiv.style.opacity=0.35;
-					window.ykshow_destinyDiv.style.overflowY='scroll';
-					lib.setScroll(window.ykshow_destinyDiv);
-					window.ykshow_destinyDiv.hide=()=>{};
-					document.body.appendChild(window.ykshow_destinyDiv);
-					window.ykshow_destinyDiv_button=ui.create.div('.menubutton.round','×');
-					window.ykshow_destinyDiv_button.onclick=function(){
-						if(window.ykshow_destinyDiv){
-							window.ykshow_destinyDiv.delete();
-							window.ykshow_destinyDiv=null;
-						}
-					}
-					window.ykshow_destinyDiv_button.style.cssText='top:5px;left:calc(100% - 55px);z-index:999;';
-					window.ykshow_destinyDiv.appendChild(window.ykshow_destinyDiv_button);
-					window.yk_clickFK(window.ykshow_destinyDiv_button);
-					window.ykshow_destinyDiv.hide=()=>{};
+					for(var i=0;i<num;i++) listx.push(ui.cardPile.childNodes[i]);
+					window.updateDiv.destinyDiv=ui.create.div('','',function(){window.updateDiv(game.me.yk_mingyun);});
+					window.updateDiv.destinyDiv.style.cssText='top:-45px;left:0px;width:100%;height:45px;z-index:999;background-color:black;overflow-y:scroll;';
+					lib.setScroll(window.updateDiv.destinyDiv);
+					player.appendChild(window.updateDiv.destinyDiv);
+					window.updateDiv.destinyDiv.innerHTML='牌堆顶的牌：'+get.translation(listx);
 				}
-				window.ykreshow_destinyDiv=ui.create.div('.menubutton.round','命',function(){window.updateDiv(game.me.yk_mingyun);});
-				window.ykreshow_destinyDiv.style.cssText='top:5px;left:calc(100% - 55px);z-index:999;';
-				player.appendChild(window.ykreshow_destinyDiv);
 				game.ykold_updateRoundNumber=game.updateRoundNumber;
 				game.updateRoundNumber= ()=>{
-					if(window.ykshow_destinyDiv) window.updateDiv(game.me.yk_mingyun);
+					window.updateDiv(game.me.yk_mingyun);
 					game.ykold_updateRoundNumber();
 				}
 				ui.create.ykold_cards=ui.create.cards;
 				ui.create.cards= ordered =>{
-					if(window.ykshow_destinyDiv) window.updateDiv(game.me.yk_mingyun);
+					window.updateDiv(game.me.yk_mingyun);
 					ui.create.ykold_cards(ordered);
 				}
 				player.ykgainMark_ming=num=>{
 					if(!num) num=1;
 					player.yk_mingyun+=num;
-					if(window.ykshow_destinyDiv) window.updateDiv();
+					window.updateDiv(game.me.yk_mingyun);
 				}
 			}
 			else{
-				window.ykreshow_destinyDiv=ui.create.div('.menubutton.round','命');
-				window.ykreshow_destinyDiv.style.cssText='top:5px;left:calc(100% - 55px);z-index:999;';
-				player.appendChild(window.ykreshow_destinyDiv);
+				window.updateDiv.destinyDiv=ui.create.div('','牌堆顶的牌：未知',function(){});
+				window.updateDiv.destinyDiv.style.cssText='top:-25px;left:0px;width:100%;height:25px;z-index:999;background-color:black;overflow-y:scroll;';
+				player.appendChild(window.updateDiv.destinyDiv);
 			}
 			if((lib.config['yk_ykshenming_rank']||0)>=1) player.ykChange('MaxMp',100);
 			if((lib.config['yk_ykshenming_rank']||0)>=2) player.ykChange('MaxDefend',100);
