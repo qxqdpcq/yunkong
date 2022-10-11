@@ -1582,10 +1582,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				Listnum++;
 				if (Listnum == List.length) {
 					End(chat, avatar_div, interval);
+					if(juqing_while.end_fuc_obj) juqing_while.end_fuc_obj.obj.end_fuc(juqing_while.end_fuc_obj.obj.avatar,juqing_while.end_fuc_obj.obj.person);
 					return;
 				}
 				juqing_while();
-					if(juqing_while.end_fuc_obj) juqing_while.end_fuc_obj.obj.end_fuc(juqing_while.end_fuc_obj.obj.avatar,juqing_while.end_fuc_obj.obj.person);
 				num = 0;
 				avatarshow();
 			}
