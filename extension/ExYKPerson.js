@@ -1484,6 +1484,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			game.isShowingDrama = false;
 			_status.paused2 = false;
+					if(juqing_while.end_fuc_obj) juqing_while.end_fuc_obj.obj.end_fuc(juqing_while.end_fuc_obj.obj.avatar,juqing_while.end_fuc_obj.obj.person);
 		};
 		//结束函数，还原无名杀的背景
 		var div_break = document.createElement("div");
@@ -1582,7 +1583,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				Listnum++;
 				if (Listnum == List.length) {
 					End(chat, avatar_div, interval);
-					if(juqing_while.end_fuc_obj) juqing_while.end_fuc_obj.obj.end_fuc(juqing_while.end_fuc_obj.obj.avatar,juqing_while.end_fuc_obj.obj.person);
 					return;
 				}
 				juqing_while();
