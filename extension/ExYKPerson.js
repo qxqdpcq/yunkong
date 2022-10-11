@@ -1393,6 +1393,10 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}];
 	content.translation={//剧情附加翻译
 		
+	};
+	content.end={
+		func:content.end.func_obj=>{},
+		func_obj:{},
 	};*/
 	game.personChat = function(content,person){//有person时优先为该person来say，否则按content来
 		if (!content || game.isShowingDrama){alert('获取剧情失败！');return;}
@@ -1484,7 +1488,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			game.isShowingDrama = false;
 			_status.paused2 = false;
-					if(juqing_while.end_fuc_obj) juqing_while.end_fuc_obj.obj.end_fuc(juqing_while.end_fuc_obj.obj.avatar,juqing_while.end_fuc_obj.obj.person);
+			if(content.end&&typeof content.end.func=='function'){
+				content.end.func(content.end.func_obj);
+			}
 		};
 		//结束函数，还原无名杀的背景
 		var div_break = document.createElement("div");
@@ -1501,10 +1507,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		var avatar;
 		var juqing_while = function() {
 			for (var i in List[Listnum]) {
-				if(juqing_while.end_fuc_obj){
-					delete juqing_while.end_fuc_obj;
-					juqing_while.end_fuc_obj=null;
-				}
 				switch (i) {
 					case 'say':
 						str = List[Listnum][i];
@@ -1519,9 +1521,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						break;
 					case 'fuc':
 						List[Listnum][i](avatar,List.person);
-						break;
-					case 'end_fuc':
-						juqing_while.end_fuc_obj={obj:List[Listnum],person:List.person};
 						break;
 					case 'backgroundAudio':
 						if (ui.window.contains(juqing_audio)) {
