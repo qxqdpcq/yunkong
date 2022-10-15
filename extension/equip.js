@@ -1534,6 +1534,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								if(!_status.event) return ;
 								var target=_status.event.player;
 								if(window['yk_equip_button_'+this.owner].target){
+									if(!player.ykCheckConsume('Soul',200)){
+										game.log('元力值不足，发动失败！');
+										return ;
+									}
+									player.ykConsume('Soul',200);
 									var cards=get.cards(1);
 									this.owner_pl.showCards(cards);
 									if(cards[0].suit=='heart') this.owner_pl.recover();
