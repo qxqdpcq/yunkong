@@ -321,7 +321,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			ui.ykmode_help=ui.create.system('天空塔说明',null,true);
 			lib.setPopped(ui.ykmode_help,function(){
 				var uiintro=ui.create.dialog('hidden');
-				uiintro.add('玩家从初始层数开始挑战，每通关1层获得相应金币数，每5层触发商店，可购买卡牌/物品/限定道具等，限定道具和挑战奖励次数每周刷新，每周仅有效结算一次奖励。');
+				uiintro.add('玩家从初始层数开始挑战，每通关1层获得相应金币数，每5层触发商店，可购买卡牌/物品/限定道具等，限定道具和挑战奖励次数每周刷新，每周仅有效结算一次奖励。<br>（此模式当前仅为测试版本）');
 				uiintro.add('名词-长效buff：该效果在当前十层内均有效');
 				uiintro.add('名词-短效buff：该效果在当前五层内均有效');
 				return uiintro;
