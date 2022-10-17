@@ -108,6 +108,166 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				player.ykTS_addTempSkill('ykbuyi_cardLimit',5);
 			},
 		},
+		'ykkongzhen0':{
+			name:'空真',
+			info:'卡牌【空真】x1<br>卡牌效果：立即清空目标真气值（最大不超过1500）<br>类型：基本牌',
+			price:250,
+			mode:'yk',
+			content:(boss,player)=>{
+				lib.card['ykkongzhen']={
+					type:"basic",
+					image:'',
+					enable:function(card,player){
+						return true;
+					},
+					usable:Infinity,
+					updateUsable:"phaseUse",
+					vanish:true,
+					suitList:['spade', 'heart', 'club', 'diamond'].randomGet(),
+					numberList:get.rand(1,13),
+					distance:{},
+					filterTarget:true,
+					selectTarget:1,
+					epic:true,
+					reverseOrder:true,
+					content:function(){
+						target.ykConsume('Defend',1500,true);
+					},
+					toself:true,
+					onEquip:[],
+					onLose:[],
+					ai:lib.card['sha'].ai,
+				};
+				if(lib.device||lib.node) lib.card['ykkongzhen'].image='ext:斗破苍穹X阴阳师/yunkong/kongzhen.jpg';
+				else lib.card['ykkongzhen'].image='db:extension-斗破苍穹X阴阳师-yunkong:kongzhen.jpg';
+				lib.translate['ykkongzhen']='“空真”';
+				lib.translate['ykkongzhen_info']='立即清空目标真气值（最大不超过1500）。';
+				var cardList=[];
+				cardList.push(game.createCard('ykkongzhen'));
+				game.me.gain(cardList);
+				game.log(game.me,'获得了',cardList);
+			},
+		},
+		'ykzhanshu0':{
+			name:'湛术',
+			info:'卡牌【湛术】x1<br>卡牌效果：立即回复目标术法值至上限（最大不超过1000）<br>类型：基本牌',
+			price:200,
+			mode:'yk',
+			content:(boss,player)=>{
+				lib.card['ykzhanshu']={
+					type:"basic",
+					image:'',
+					enable:function(card,player){
+						return true;
+					},
+					usable:Infinity,
+					updateUsable:"phaseUse",
+					vanish:true,
+					suitList:['spade', 'heart', 'club', 'diamond'].randomGet(),
+					numberList:get.rand(1,13),
+					distance:{},
+					filterTarget:true,
+					selectTarget:1,
+					epic:true,
+					reverseOrder:true,
+					content:function(){
+						target.ykRecover('Mp',1000,true);
+					},
+					toself:true,
+					onEquip:[],
+					onLose:[],
+					ai:lib.card['tao'].ai,
+				};
+				if(lib.device||lib.node) lib.card['ykzhanshu'].image='ext:斗破苍穹X阴阳师/yunkong/zhanshu.jpg';
+				else lib.card['ykzhanshu'].image='db:extension-斗破苍穹X阴阳师-yunkong:zhanshu.jpg';
+				lib.translate['ykzhanshu']='“湛术”';
+				lib.translate['ykzhanshu_info']='立即回复目标术法值至上限（最大不超过1000）。';
+				var cardList=[];
+				cardList.push(game.createCard('ykzhanshu'));
+				game.me.gain(cardList);
+				game.log(game.me,'获得了',cardList);
+			},
+		},
+		'ykshenli0':{
+			name:'神力',
+			info:'卡牌【神力】x1<br>卡牌效果：立即回复目标气力值至上限（最大不超过500）<br>类型：基本牌',
+			price:200,
+			mode:'yk',
+			content:(boss,player)=>{
+				lib.card['ykshenli']={
+					type:"basic",
+					image:'',
+					enable:function(card,player){
+						return true;
+					},
+					usable:Infinity,
+					updateUsable:"phaseUse",
+					vanish:true,
+					suitList:['spade', 'heart', 'club', 'diamond'].randomGet(),
+					numberList:get.rand(1,13),
+					distance:{},
+					filterTarget:true,
+					selectTarget:1,
+					epic:true,
+					reverseOrder:true,
+					content:function(){
+						target.ykRecover('Strength',500,true);
+					},
+					toself:true,
+					onEquip:[],
+					onLose:[],
+					ai:lib.card['tao'].ai,
+				};
+				if(lib.device||lib.node) lib.card['ykshenli'].image='ext:斗破苍穹X阴阳师/yunkong/shenli.jpg';
+				else lib.card['ykshenli'].image='db:extension-斗破苍穹X阴阳师-yunkong:shenli.jpg';
+				lib.translate['ykshenli']='“神力”';
+				lib.translate['ykshenli_info']='立即回复目标气力值至上限（最大不超过500）。';
+				var cardList=[];
+				cardList.push(game.createCard('ykshenli'));
+				game.me.gain(cardList);
+				game.log(game.me,'获得了',cardList);
+			},
+		},
+		'ykguqi0':{
+			name:'固气',
+			info:'卡牌【固气】x1<br>卡牌效果：立即回复目标真气值至上限（最大不超过1500）<br>类型：基本牌',
+			price:250,
+			mode:'yk',
+			content:(boss,player)=>{
+				lib.card['ykguqi']={
+					type:"basic",
+					image:'',
+					enable:function(card,player){
+						return true;
+					},
+					usable:Infinity,
+					updateUsable:"phaseUse",
+					vanish:true,
+					suitList:['spade', 'heart', 'club', 'diamond'].randomGet(),
+					numberList:get.rand(1,13),
+					distance:{},
+					filterTarget:true,
+					selectTarget:1,
+					epic:true,
+					reverseOrder:true,
+					content:function(){
+						target.ykRecover('Defend',1500,true);
+					},
+					toself:true,
+					onEquip:[],
+					onLose:[],
+					ai:lib.card['tao'].ai,
+				};
+				if(lib.device||lib.node) lib.card['ykguqi'].image='ext:斗破苍穹X阴阳师/yunkong/guqi.jpg';
+				else lib.card['ykguqi'].image='db:extension-斗破苍穹X阴阳师-yunkong:guqi.jpg';
+				lib.translate['ykguqi']='“固气”';
+				lib.translate['ykguqi_info']='立即回复目标真气值至上限（最大不超过1500）。';
+				var cardList=[];
+				cardList.push(game.createCard('ykshenli'));
+				game.me.gain(cardList);
+				game.log(game.me,'获得了',cardList);
+			},
+		},
 	};
 	game.check_rewards=()=>{
 		var date=window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days;
@@ -321,7 +481,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			ui.ykmode_help=ui.create.system('天空塔说明',null,true);
 			lib.setPopped(ui.ykmode_help,function(){
 				var uiintro=ui.create.dialog('hidden');
-				uiintro.add('玩家从初始层数开始挑战，每通关1层获得相应金币数，每5层触发商店，可购买卡牌/物品/限定道具等，限定道具和挑战奖励次数每周刷新，每周仅有效结算一次奖励。<br>（此模式当前仅为测试版本）');
+				uiintro.add('玩家从初始层数开始挑战，每通关1层获得相应金币数，每5层触发商店，可购买卡牌/物品/限定道具等，限定道具和挑战奖励次数每周刷新，每周仅有效结算一次奖励。');
 				uiintro.add('名词-长效buff：该效果在当前十层内均有效');
 				uiintro.add('名词-短效buff：该效果在当前五层内均有效');
 				return uiintro;
