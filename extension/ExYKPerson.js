@@ -9837,7 +9837,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						filterCard:function(card,player){
 							return get.suit(card,player)!='heart';
 						},
-						ai:function(card){
+						ai:function(card,player){
 							return 10-get.value(card,player);
 						},
 						prompt:get.prompt('yktianxiang'),
