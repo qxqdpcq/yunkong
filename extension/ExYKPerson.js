@@ -9828,7 +9828,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				filter:function(event,player){
 					return player.countCards('h')-player.countCards('h',{suit:"heart"})>0;
 				},
-				check:function(card){
+				check:function(card,player){
 					return Infinity-get.value(card,player);
 				},
 				content:function(){
