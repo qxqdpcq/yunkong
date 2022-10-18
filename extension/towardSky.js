@@ -280,7 +280,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		lib.config.ykStarShell=game.me.ykgetStarShellNum();
 		game.saveConfig('ykStarShell',lib.config.ykStarShell);
 		game.saveConfig('ykTS_record',date);
-		lib.config.ykTS_maxNumber=Math.max(lib.config.ykTS_maxNumber,_status.ykTS_number);
+		lib.config.ykTS_maxNumber=Math.max((lib.config.ykTS_maxNumber||0),_status.ykTS_number);
 		game.saveConfig('ykTS_maxNumber',lib.config.ykTS_maxNumber);
 		for(var i in _status.ykTS_gainList){
 			if(window.ykTS_itemx[item].only_once) game.saveConfig(item+'_buy',window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days);
@@ -937,6 +937,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						return ;
 					}
 					if(game.players.length){
+						_status.ykTS_number++;
 						var e_num=0,m_num=0;
 						for(var player of game.players){
 							if(player.side=='enemy') e_num++;
