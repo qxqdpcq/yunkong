@@ -317,7 +317,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			if(lib.yk_otherItemLibrary[i]) game.yk_gainItem(i,_status.ykTS_gainList[i]);
 			else if(lib.ykEquip[i]) game.yk_gainEquip(i,0,_status.ykTS_gainList[i]);
 			else if(lib.ykBook[i]) game.yk_gainBook(i,0,_status.ykTS_gainList[i]);
+			game.sayyk('已获得【'+get.translation(i)+'】x'+_status.ykTS_gainList[i]+'！');
 		}
+		game.sayyk('相关物品道具已存入背包！');
 	}
 	_status.ykTS_number=parseInt(''+lib.config.ykTS_startnum);
 	_status.ykTS_starShell=(lib.config.ykStarShell||0);
