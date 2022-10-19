@@ -1013,6 +1013,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								var characterList=[];
 								for(var character in lib.character) if(lib.character[character]) characterList.push(character);
 								characterList.randomSort();
+								if(_status.ykTS_number%5==0){
+									var func=window.ykSetTowardSky.shop;
+									var next=game.createEvent('shop');
+									next.set('boss',game.boss);
+									next.set('player',game.me);
+									next.setContent(func);
+								}
 								player.chooseButton(true).set('ai',button=>{
 									if(lib.rank.rarity.legend.indexOf(button.link)!=-1) return 1;
 									else if(lib.rank.rarity.eqic.indexOf(button.link)!=-1) return 2;
