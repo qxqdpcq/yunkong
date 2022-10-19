@@ -441,25 +441,25 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				if((''+type)=='10'){
 					if(!player.ykTS_tempSkill1) player.ykTS_tempSkill1=[];
 					player.ykTS_tempSkill1.push(skill);
-					this.addSkill(skill);
+					player.addSkill(skill);
 				}
 				else{
 					if(!player.ykTS_tempSkill2) player.ykTS_tempSkill2=[];
 					player.ykTS_tempSkill2.push(skill);
-					this.addSkill(skill);
+					player.addSkill(skill);
 				}
 			};
 			lib.element.player.ykTS_clearTempSkill=function(type){
 				if((''+type)=='10'){
 					if(!player.ykTS_tempSkill1) player.ykTS_tempSkill1=[];
-					this.removeSkill=lib.element.player.removeSkill;
-					for(var skill of player.ykTS_tempSkill1) this.removeSkill(skill);
+					player.removeSkill=lib.element.player.removeSkill;
+					for(var skill of player.ykTS_tempSkill1) player.removeSkill(skill);
 					player.ykTS_tempSkill1=[];
 				}
 				else{
 					if(!player.ykTS_tempSkill2) player.ykTS_tempSkill2=[];
-					this.removeSkill=lib.element.player.removeSkill;
-					for(var skill of player.ykTS_tempSkill1) this.removeSkill(skill);
+					player.removeSkill=lib.element.player.removeSkill;
+					for(var skill of player.ykTS_tempSkill1) player.removeSkill(skill);
 					player.ykTS_tempSkill2=[];
 				}
 			};
@@ -471,7 +471,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			};
 			lib.element.player.ykcheckStarShell=num=>{
 				if(!num) num=1;
-				return this.ykgetStarShellNum()>=num;
+				return player.ykgetStarShellNum()>=num;
 			};
 			lib.element.player.ykgetStarShellNum=num=>{
 				if(!lib.config.ykStarShell) lib.config.ykStarShell=0;
