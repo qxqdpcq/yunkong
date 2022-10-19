@@ -439,28 +439,28 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/ykStoryPictures/main/towardSky/towardSky_bgx.jpg',ui.window,true,"cover");
 			lib.element.player.ykTS_addTempSkill=function(skill,type){
 				if((''+type)=='10'){
-					if(!this.ykTS_tempSkill1) this.ykTS_tempSkill1=[];
-					this.ykTS_tempSkill1.push(skill);
+					if(!player.ykTS_tempSkill1) player.ykTS_tempSkill1=[];
+					player.ykTS_tempSkill1.push(skill);
 					this.addSkill(skill);
 				}
 				else{
-					if(!this.ykTS_tempSkill2) this.ykTS_tempSkill2=[];
-					this.ykTS_tempSkill2.push(skill);
+					if(!player.ykTS_tempSkill2) player.ykTS_tempSkill2=[];
+					player.ykTS_tempSkill2.push(skill);
 					this.addSkill(skill);
 				}
 			};
 			lib.element.player.ykTS_clearTempSkill=function(type){
 				if((''+type)=='10'){
-					if(!this.ykTS_tempSkill1) this.ykTS_tempSkill1=[];
+					if(!player.ykTS_tempSkill1) player.ykTS_tempSkill1=[];
 					this.removeSkill=lib.element.player.removeSkill;
-					for(var skill of this.ykTS_tempSkill1) this.removeSkill(skill);
-					this.ykTS_tempSkill1=[];
+					for(var skill of player.ykTS_tempSkill1) this.removeSkill(skill);
+					player.ykTS_tempSkill1=[];
 				}
 				else{
-					if(!this.ykTS_tempSkill2) this.ykTS_tempSkill2=[];
+					if(!player.ykTS_tempSkill2) player.ykTS_tempSkill2=[];
 					this.removeSkill=lib.element.player.removeSkill;
-					for(var skill of this.ykTS_tempSkill1) this.removeSkill(skill);
-					this.ykTS_tempSkill2=[];
+					for(var skill of player.ykTS_tempSkill1) this.removeSkill(skill);
+					player.ykTS_tempSkill2=[];
 				}
 			};
 			lib.element.player.ykchangeStarShell=num=>{
@@ -1185,11 +1185,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			ykTS_startnum:{
 				name:'点击选择开始层数',
 				item:window.ykTS_item,
-				restart:true,
-				frequent:true,
 				onclick:function(item){
 					game.saveConfig('ykTS_startnum',item);
-				}
+				},
+				restart:true,
+				frequent:true,
 			},
 			free_choose:{
 				name:'自由选将',
