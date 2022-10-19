@@ -1028,6 +1028,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								game.boss.revive();
 								game.boss.init=lib.element.player.init;
 								game.boss.init(game.boss_name);
+								game.boss.discard(game.boss.getCards('x'))._triggered=null;
 								game.boss.draw(4)._triggered=null;
 								window.ykTS_adjustmentBoss();
 								var info=window.ykSetTowardSky[''+_status.ykTS_number];
