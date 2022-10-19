@@ -438,6 +438,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			}
 			window.ykCacheSetImage('https://raw.fastgit.org/qxqdpcq/ykStoryPictures/main/towardSky/towardSky_bgx.jpg',ui.window,true,"cover");
 			lib.element.player.ykTS_addTempSkill=function(skill,type){
+				var player=this;
 				if((''+type)=='10'){
 					if(!player.ykTS_tempSkill1) player.ykTS_tempSkill1=[];
 					player.ykTS_tempSkill1.push(skill);
@@ -450,6 +451,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				}
 			};
 			lib.element.player.ykTS_clearTempSkill=function(type){
+				var player=this;
 				if((''+type)=='10'){
 					if(!player.ykTS_tempSkill1) player.ykTS_tempSkill1=[];
 					player.removeSkill=lib.element.player.removeSkill;
@@ -459,21 +461,24 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				else{
 					if(!player.ykTS_tempSkill2) player.ykTS_tempSkill2=[];
 					player.removeSkill=lib.element.player.removeSkill;
-					for(var skill of player.ykTS_tempSkill1) player.removeSkill(skill);
+					for(var skill of player.ykTS_tempSkill2) player.removeSkill(skill);
 					player.ykTS_tempSkill2=[];
 				}
 			};
 			lib.element.player.ykchangeStarShell=num=>{
+				var player=this;
 				if(!lib.config.ykStarShell) lib.config.ykStarShell=0;
 				lib.config.ykStarShell+=num;
 				lib.config.ykStarShell=Math.max(lib.config.ykStarShell,0);
 				game.saveConfig('ykStarShell',lib.config.ykStarShell);
 			};
 			lib.element.player.ykcheckStarShell=num=>{
+				var player=this;
 				if(!num) num=1;
 				return player.ykgetStarShellNum()>=num;
 			};
 			lib.element.player.ykgetStarShellNum=num=>{
+				var player=this;
 				if(!lib.config.ykStarShell) lib.config.ykStarShell=0;
 				return _status.ykTS_starShell-_status.ykTS_consumeStarShell;
 			};
