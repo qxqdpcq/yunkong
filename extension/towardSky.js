@@ -919,7 +919,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(!info) window.ykSetTowardSky[''+_status.ykTS_number]=[];
 					window.ykSetTowardSky[''+_status.ykTS_number]=window.ykSetTowardSky[''+_status.ykTS_number].concat(window.funcList[''+_status.ykTS_number]);
 					window.ykSetTowardSky[''+_status.ykTS_number]=window.ykSetTowardSky[''+_status.ykTS_number].concat(window.eventList[''+_status.ykTS_number]);
-					window.ykSetTowardSky[''+_status.ykTS_number].push(_status.ykTS_number*10);
 					if(Array.isArray(info)){
 						for(var func of info) if(typeof func=='function'){
 							var next=game.createEvent('function');
@@ -974,8 +973,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						return ;
 					}
 					if(game.players.length){
-						var arrayx=window.ykSetTowardSky[''+_status.ykTS_number],num=0;
+						var arrayx=window.ykSetTowardSky[''+_status.ykTS_number],num;
 						for(var itemx of arrayx) if(typeof itemx=='number') num=itemx;
+						if(num==undefined) num=_status.ykTS_number*10;
 						_status.ykTS_starShell+=num;
 						game.log('恭喜通关，获得金币 x'+num+'！');
 						_status.ykTS_number++;
