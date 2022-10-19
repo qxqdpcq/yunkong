@@ -2567,7 +2567,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	window.ykMode=function(){
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		if(lib.config.only_yk==false||lib.config.only_yk==undefined){
-			if(confirm('将开启云空模式，云空模式下仅能选用云空特定武将，是否继续？提示：进入模式后再次点击此处可退出本模式；另：由于网络原因，启动游戏时可能出现云空武将加载失败的状况，因此开启此模式后，若加载成功，切勿频繁刷新游戏。')){
+			if(confirm('将开启云空模式，是否继续？提示：进入模式后再次点击此处可退出本模式；另：由于网络原因，启动游戏时可能出现云空武将加载失败的状况，因此开启此模式后，若加载成功，切勿频繁刷新游戏。')){
 				lib.config.only_yk=true;
 				game.saveConfig('only_yk',lib.config.only_yk);
 				if(confirm('是否移除原有牌堆以继续开启云空牌堆模式？')){
