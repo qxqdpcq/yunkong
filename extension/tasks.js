@@ -51,8 +51,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								lib.config.yk_signIn_date.years=window.playTime.years;
 								game.saveConfig('yk_signIn_date',lib.config.yk_signIn_date);
 								this.source.delete();
-								game.yk_gainItem('sky_crying',30);
-								alert('签到成功，获得【虚空之泪】x30！');
+								game.yk_gainItem('sky_crying',120);
+								alert('签到成功，获得【虚空之泪】x120！');
 								window['choose_每日任务'].onclick();
 							}
 							divx.style.border='1px solid red';
@@ -125,8 +125,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					if(!lib.config.ykDaily_success) lib.config.ykDaily_success={};
 					if(!lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]){
-						game.yk_gainItem('sky_crying',30);
-						alert('领取成功，获得【虚空之泪】x30！');
+						game.yk_gainItem('sky_crying',50);
+						alert('领取成功，获得【虚空之泪】x50！');
 						window['choose_每日任务'].onclick();
 						lib.config.ykDaily_success[window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days]=true;
 						game.saveConfig('ykDaily_success',lib.config.ykDaily_success);
@@ -172,8 +172,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(!lib.config.weeklyChallenge_gainReward[order]&&lib.config.weeklyChallenge_Bool[order]){
 						lib.config.weeklyChallenge_gainReward[order]=true;
 						game.saveConfig('weeklyChallenge_gainReward',lib.config.weeklyChallenge_gainReward);
-						game.yk_gainItem('sky_crying',150);
-						alert('领取成功，获得【虚空之泪】x150！');
+						game.yk_gainItem('sky_crying',450);
+						alert('领取成功，获得【虚空之泪】x450！');
 						window['choose_每日任务'].onclick();
 					}
 					else if(typeof game.sayyk=='function') game.sayyk('您未完成任务！');
