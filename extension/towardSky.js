@@ -1008,8 +1008,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 									}
 								}
 								'step 1'
-								if(_status.ykTS_number%5==0) for(var player of game.players) player.ykTS_clearTempSkill(5);
-								if(_status.ykTS_number%10==0) for(var player of game.players) player.ykTS_clearTempSkill(10);
+								if(_status.ykTS_number%5==0) for(var player of game.players) if(player.side=='me') player.ykTS_clearTempSkill(5);
+								if(_status.ykTS_number%10==0) for(var player of game.players) if(player.side=='me') player.ykTS_clearTempSkill(10);
 								var characterList=[];
 								for(var character in lib.character) if(lib.character[character]) characterList.push(character);
 								characterList.randomSort();
