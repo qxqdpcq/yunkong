@@ -22,14 +22,44 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 		return result;
 	}
 	window.ykTS_itemx={
-		'sky_crying':{
+		'sky_crying0':{
 			name:'虚空之泪',
 			info:'【虚空之泪】x200<br>类型：抽卡道具',
+			only_once:true,
+			price:4000,
+			mode:'yk',
+			content:(boss,player)=>{
+				_status.ykTS_gainList.sky_crying=200;
+			},
+		},
+		'sky_crying1':{
+			name:'虚空之泪',
+			info:'【虚空之泪】x500<br>类型：抽卡道具',
 			only_once:true,
 			price:10000,
 			mode:'yk',
 			content:(boss,player)=>{
-				_status.ykTS_gainList.sky_crying=200;
+				_status.ykTS_gainList.sky_crying=500;
+			},
+		},
+		'sky_crying2':{
+			name:'虚空之泪',
+			info:'【虚空之泪】x750<br>类型：抽卡道具',
+			only_once:true,
+			price:15000,
+			mode:'yk',
+			content:(boss,player)=>{
+				_status.ykTS_gainList.sky_crying=750;
+			},
+		},
+		'sky_crying3':{
+			name:'虚空之泪',
+			info:'【虚空之泪】x1000<br>类型：抽卡道具',
+			only_once:true,
+			price:20000,
+			mode:'yk',
+			content:(boss,player)=>{
+				_status.ykTS_gainList.sky_crying=1000;
 			},
 		},
 		'yksha0':{
@@ -271,7 +301,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	};
 	game.check_rewards=()=>{
 		var date=window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days;
-		if(window.ykisSameWeek(lib.config.ykTS_record,date)){
+		if(lib.config.ykTS_record!=undefined&&window.ykisSameWeek(lib.config.ykTS_record,date)){
 			if(typeof game.sayyk=='function') game.sayyk('本周奖励次数已耗尽！');
 			return ;
 		}
