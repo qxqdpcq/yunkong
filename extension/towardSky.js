@@ -944,7 +944,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							else if(player.side=='me') m_num++;
 						}
 						if(!e_num&&m_num){
-							game.log('恭喜通关本层！');
 							if(source) source.draw(2);
 							var info=window.ykSetTowardSky[''+_status.ykTS_number];
 							if(Array.isArray(info)&&lib.config.only_yk) for(var func of info) if(typeof func=='string'&&func.indexOf('reward')==-1){
@@ -994,7 +993,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								game.boss.init(game.boss_name);
 								game.boss.draw(4)._triggered=null;
 								window.ykTS_adjustmentBoss();
-								for(var func of info) if(typeof func=='function'){
+								var info=window.ykSetTowardSky[''+_status.ykTS_number];
+								if(Array.isArray(info)) for(var func of info) if(typeof func=='function'){
 									var next=game.createEvent('function');
 									next.set('boss',game.boss);
 									next.set('player',game.me);
