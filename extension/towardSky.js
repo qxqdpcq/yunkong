@@ -503,7 +503,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			ui.check_rewards=ui.create.system('结算奖励',null,true);
 			lib.setPopped(ui.check_rewards,function(){
 				var uiintro=ui.create.dialog('hidden');
-				uiintro.add('点击按钮结算当前挑战奖励，每周仅结算一次。');
+				uiintro.add('点击按钮结算当前挑战奖励，每周仅结算一次，仅云空模式下可结算。');
 				uiintro.add('当前奖励累计：<br>剩余金币：'+game.me.ykgetStarShellNum());
 				for(var i in _status.ykTS_gainList) uiintro.add(get.translation(i)+'&nbspx'+_status.ykTS_gainList[i]);
 				return uiintro;
