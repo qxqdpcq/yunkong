@@ -1183,11 +1183,11 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			ykTS_startnum:{
 				name:'点击选择开始层数',
 				item:window.ykTS_item,
-				onclick:function(item){
-					game.saveConfig('ykTS_startnum',item);
-				},
 				restart:true,
 				frequent:true,
+				onclick:function(item){
+					game.saveConfig('ykTS_startnum',item);
+				}
 			},
 			free_choose:{
 				name:'自由选将',
