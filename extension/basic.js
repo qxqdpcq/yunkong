@@ -270,7 +270,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 	}
 	//云空剧情&挑战模式
 	if(lib.config.only_yk){
-		window.characterList=[];
+		/*window.characterList=[];
 		for(var x=0;x<lib.config.YKcharacterNameList.length;x++){
 			var character=lib.config.YKcharacterNameList[x];
 			var name=character.slice(0,character.indexOf('-'));
@@ -320,7 +320,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			lib.filter.characterDisabled = function(i,libCharacter){
 				return savedFilter(i,libCharacter);
 			}
-		}
+		}*/
 	}
 	//云空牌堆
 	if(lib.config.only_ykCardPile){
