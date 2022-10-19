@@ -973,7 +973,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						return ;
 					}
 					if(game.players.length){
-						var arrayx=window.ykSetTowardSky[''+_status.ykTS_number],num;
+						var arrayx=(window.ykSetTowardSky[''+_status.ykTS_number]||[]),num;
 						for(var itemx of arrayx) if(typeof itemx=='number') num=itemx;
 						if(num==undefined) num=_status.ykTS_number*10;
 						_status.ykTS_starShell+=num;
