@@ -1185,7 +1185,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				item:window.ykTS_item,
 				onclick:function(item){
 					game.saveConfig('ykTS_startnum',item);
-				}，
+				},
 				restart:true,
 				frequent:true,
 			},
