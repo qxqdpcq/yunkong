@@ -944,6 +944,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							else if(player.side=='me') m_num++;
 						}
 						if(!e_num&&m_num){
+							game.log('恭喜通关本层！');
 							if(source) source.draw(2);
 							var info=window.ykSetTowardSky[''+_status.ykTS_number];
 							if(Array.isArray(info)&&lib.config.only_yk) for(var func of info) if(typeof func=='string'&&func.indexOf('reward')==-1){
@@ -952,58 +953,55 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 								next.set('player',game.me);
 								next.setContent(window.ykSetTowardSky[func]);
 							};
-							if(_status.ykTS_number%5==0){
-								var next=game.createEvent('chooseCharacter',false);
-								next.set('player',game.me);
-								next.set('info',info);
-								next.setContent(function(){
-									'step 0'
-									if(lib.config.only_yk){
-										if(Array.isArray(info)){
-											for(var func of info){
-												if(typeof func=='string'&&func.indexOf('reward')!=-1){
-													var next=game.createEvent('reward');
-													next.set('boss',game.boss);
-													next.set('player',game.me);
-													next.setContent(window.ykSetTowardSky[func]);
-												};
-												if(typeof func=='number') game.ykchangeStarShell(func);
-											}
+							var next=game.createEvent('chooseCharacter',false);
+							next.set('player',game.me);
+							next.set('info',info);
+							next.setContent(function(){
+								'step 0'
+								if(lib.config.only_yk){
+									if(Array.isArray(info)){
+										for(var func of info){
+											if(typeof func=='string'&&func.indexOf('reward')!=-1){
+												var next=game.createEvent('reward');
+												next.set('boss',game.boss);
+												next.set('player',game.me);
+												next.setContent(window.ykSetTowardSky[func]);
+											};
+											if(typeof func=='number') game.ykchangeStarShell(func);
 										}
-										
 									}
-									'step 1'
-									if(_status.ykTS_number%5==0) for(var player of game.players) player.ykTS_clearTempSkill(5);
-									if(_status.ykTS_number%10==0) for(var player of game.players) player.ykTS_clearTempSkill(10);
-									var characterList=[];
-									for(var character in lib.character) if(lib.character[character]) characterList.push(character);
-									characterList.randomSort();
-									player.chooseButton(true).set('ai',button=>{
-										if(lib.rank.rarity.legend.indexOf(button.link)!=-1) return 1;
-										else if(lib.rank.rarity.eqic.indexOf(button.link)!=-1) return 2;
-										else if(lib.rank.rarity.rare.indexOf(button.link)!=-1) return 3;
-										else if(lib.rank.rarity.junk.indexOf(button.link)!=-1) return 4;
-										return 2+Math.random();
-									}).set('createDialog', ['请选择一扇门', [characterList.randomGets(3), 'character']]);
-									'step 2'
-									game.boss_name=result.links[0];
-									game.boss.clearSkills();
-									game.boss.skills=[];
-									game.boss.revive=lib.element.player.revive;
-									game.boss.revive();
-									game.boss.init=lib.element.player.init;
-									game.boss.init(game.boss_name);
-									game.boss.draw(4)._triggered=null;
-									window.ykTS_adjustmentBoss();
-									for(var func of info) if(typeof func=='function'){
-										var next=game.createEvent('function');
-										next.set('boss',game.boss);
-										next.set('player',game.me);
-										next.setContent(func);
-									};
-								});
-								return next;
-							}
+								}
+								'step 1'
+								if(_status.ykTS_number%5==0) for(var player of game.players) player.ykTS_clearTempSkill(5);
+								if(_status.ykTS_number%10==0) for(var player of game.players) player.ykTS_clearTempSkill(10);
+								var characterList=[];
+								for(var character in lib.character) if(lib.character[character]) characterList.push(character);
+								characterList.randomSort();
+								player.chooseButton(true).set('ai',button=>{
+									if(lib.rank.rarity.legend.indexOf(button.link)!=-1) return 1;
+									else if(lib.rank.rarity.eqic.indexOf(button.link)!=-1) return 2;
+									else if(lib.rank.rarity.rare.indexOf(button.link)!=-1) return 3;
+									else if(lib.rank.rarity.junk.indexOf(button.link)!=-1) return 4;
+									return 2+Math.random();
+								}).set('createDialog', ['请选择一扇门', [characterList.randomGets(3), 'character']]);
+								'step 2'
+								game.boss_name=result.links[0];
+								game.boss.clearSkills();
+								game.boss.skills=[];
+								game.boss.revive=lib.element.player.revive;
+								game.boss.revive();
+								game.boss.init=lib.element.player.init;
+								game.boss.init(game.boss_name);
+								game.boss.draw(4)._triggered=null;
+								window.ykTS_adjustmentBoss();
+								for(var func of info) if(typeof func=='function'){
+									var next=game.createEvent('function');
+									next.set('boss',game.boss);
+									next.set('player',game.me);
+									next.setContent(func);
+								};
+							});
+							return next;
 						}
 						else if(e_num&&!m_num) game.ykreover();
 					}
