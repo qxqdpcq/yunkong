@@ -974,6 +974,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						return ;
 					}
 					if(game.players.length){
+						var arrayx=window.ykSetTowardSky[''+_status.ykTS_number],num=0;
+						for(var itemx of arrayx) if(typeof itemx=='number') num=itemx;
+						_status.ykTS_starShell+=num;
+						game.log('恭喜通关，获得金币 x'+num+'！');
 						_status.ykTS_number++;
 						var e_num=0,m_num=0;
 						for(var player of game.players){
