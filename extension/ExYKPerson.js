@@ -5770,17 +5770,16 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					}
 				}
 				try{
-					var next = game.createEvent(lib.skill[_status.event.name].content2,false),target=(trigger.target||target),targets=trigger.targets,card=(trigger.card||card),cards,source=trigger.source;
-					if(trigger.cards) cards=trigger.cards;
+					var next = game.createEvent(lib.skill[_status.event.name].content2,false),trigger=(trigger||{}),target=(target||trigger.target),targets=(targets||trigger.targets),card=(card||trigger.card),cards=(cards||trigger.cards),source=trigger.source;
 					var args={
 						player:player,
 						'_trigger':trigger,
+						'_event':_status.event,
 						target:target,
 						targets:targets,
 						card:card,
 						cards:cards,
 						source:source,
-						triggername:event.triggername,
 						skill:_status.event.name,
 					};
 					for(var e in args) next.set(e,args[e]);
