@@ -13152,19 +13152,19 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(!player.yk_mingyun) player.yk_mingyun=0;
 			if(player==game.me){
 				window.updateDiv=num=>{
-					if(window.updateDiv.destinyDiv){
-						window.updateDiv.destinyDiv.delete();
-						delete window.updateDiv.destinyDiv;
-						window.updateDiv.destinyDiv=null;
+					if(window.updateDiv_destinyDiv){
+						window.updateDiv_destinyDiv.delete();
+						delete window.updateDiv_destinyDiv;
+						window.updateDiv_destinyDiv=null;
 					}
 					if(!num) num=game.me.yk_mingyun;
 					var listx=[];
 					for(var i=0;i<num;i++) listx.push(ui.cardPile.childNodes[i]);
-					window.updateDiv.destinyDiv=ui.create.div('','',function(){window.updateDiv(game.me.yk_mingyun);});
-					window.updateDiv.destinyDiv.style.cssText='top:-45px;left:0px;width:100%;height:45px;z-index:999;background-color:black;overflow-y:scroll;';
-					lib.setScroll(window.updateDiv.destinyDiv);
-					player.appendChild(window.updateDiv.destinyDiv);
-					window.updateDiv.destinyDiv.innerHTML='牌堆顶的牌：'+get.translation(listx);
+					window.updateDiv_destinyDiv=ui.create.div('','',function(){window.updateDiv(game.me.yk_mingyun);});
+					window.updateDiv_destinyDiv.style.cssText='top:-45px;left:0px;width:100%;height:45px;z-index:999;background-color:black;overflow-y:scroll;';
+					lib.setScroll(window.updateDiv_destinyDiv);
+					player.appendChild(window.updateDiv_destinyDiv);
+					window.updateDiv_destinyDiv.innerHTML='牌堆顶的牌：'+get.translation(listx);
 				}
 				game.ykold_updateRoundNumber=game.updateRoundNumber;
 				game.updateRoundNumber= ()=>{
@@ -13183,9 +13183,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 			}
 			else{
-				window.updateDiv.destinyDiv=ui.create.div('','牌堆顶的牌：未知',function(){});
-				window.updateDiv.destinyDiv.style.cssText='top:-25px;left:0px;width:100%;height:25px;z-index:999;background-color:black;overflow-y:scroll;';
-				player.appendChild(window.updateDiv.destinyDiv);
+				window.updateDiv_destinyDiv=ui.create.div('','牌堆顶的牌：未知',function(){});
+				window.updateDiv_destinyDiv.style.cssText='top:-25px;left:0px;width:100%;height:25px;z-index:999;background-color:black;overflow-y:scroll;';
+				player.appendChild(window.updateDiv_destinyDiv);
 			}
 			if((lib.config['yk_ykshenming_rank']||0)>=1) player.ykChange('MaxMp',100);
 			if((lib.config['yk_ykshenming_rank']||0)>=2) player.ykChange('MaxDefend',100);
