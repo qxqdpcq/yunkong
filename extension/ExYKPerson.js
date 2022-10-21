@@ -5749,7 +5749,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(!skill2){game.log('修改后的技能已不存在！');return ;}
 				var check=''+skill2.content;
 				var check2=''+skill2.content;
-				var checkItem=['player','source','card','cards','num','cards[0]','target'];
+				var checkItem=['player','source','card','cards','num','cards[0]','target','targets','targets[0]'];
 				while(check.indexOf('trigger.')!=-1&&check.length){
 					var checkB;
 					check=check.slice(check.indexOf('trigger.')+8,check.length);
@@ -5770,25 +5770,25 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					}
 				}
 				try{
-					var next = game.createEvent(lib.skill[_status.event.name].content2,false);
-					next.player=player;
-					next._trigger=trigger;
-					var target=(trigger.target||target);
-					next.target=target;
-					var card=(trigger.card||card);
-					next.card=card;
-					var cards;
+					var next = game.createEvent(lib.skill[_status.event.name].content2,false),target=(trigger.target||target),targets=trigger.targets,card=(trigger.card||card),cards,source=trigger.source;
 					if(trigger.cards) cards=trigger.cards;
-					next.cards=cards;
-					var source=trigger.source;
-					next.source=source;
-					next.triggername=event.triggername;
+					var args={
+						player:player,
+						'_trigger':trigger,
+						target:target,
+						targets:targets,
+						card:card,
+						cards:cards,
+						source:source,
+						triggername:event.triggername,
+						skill:_status.event.name,
+					};
+					for(var e in args) next.set(e,args[e]);
 					for(var item of checkItem) if(check2.indexOf('trigger.'+item)!=-1&&!next[item]){
 						if(trigger[item]!=undefined) next[item]=trigger[item];
 					}
-					next.skill=_status.event.name;
-					for(var item of checkItem) if(check2.indexOf('trigger.'+item)!=-1&&!next[item]&&item!='player'){game.log('存在未定义参数，缝合技能失效！');var bool=false;}
-					if(bool) next.setContent(skill2.content);
+					for(var item of checkItem) if(check2.indexOf('trigger.'+item)!=-1&&!next[item]&&item!='player'){game.log('存在未定义参数trigger.'+item+'，缝合技能失效！');var bool=false;}
+					if(bool) next.setContent(new Function('try{'+skill2.content.slice(skill2.content.indexOf('{')+1,skill2.content.length-1)+'}catch(e){console.log(e);}'));
 					else next.setContent(function(){});
 				}
 				catch(e){
