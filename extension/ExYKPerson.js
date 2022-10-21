@@ -5724,7 +5724,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			//发动条件
 			lib.skill[event.targetSkill].filter=lib.skill[event.panelSkill].filter;
 			lib.skill[event.targetSkill].ykre_filter='<br><font color=orange>此技能发动条件已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的发动条件</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动条件已被修改为【'+get.translation(event.panelSkill)+'】的发动条件');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动条件已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的发动条件');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 17'
@@ -5796,28 +5796,28 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				}
 			}
 			lib.skill[event.targetSkill].ykre_content='<br><font color=orange>此技能发动效果已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的发动效果</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动效果已被修改为【'+get.translation(event.panelSkill)+'】的发动效果');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动效果已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的发动效果');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 18'
 			//发动对象限制
 			lib.skill[event.targetSkill].filterTarget=lib.skill[event.panelSkill].filterTarget;
 			lib.skill[event.targetSkill].ykre_filterTarget='<br><font color=orange>此技能发动对象限制已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的发动对象限制</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动对象限制已被修改为【'+get.translation(event.panelSkill)+'】的发动对象限制');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动对象限制已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的发动对象限制');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 19'
 			//对象数量限制
 			lib.skill[event.targetSkill].selectTarget=lib.skill[event.panelSkill].selectTarget;
 			lib.skill[event.targetSkill].ykre_selectTarget='<br><font color=orange>此技能对象数量限制已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的对象数量限制</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】对象数量限制已被修改为【'+get.translation(event.panelSkill)+'】的对象数量限制');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】对象数量限制已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的对象数量限制');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 20'
 			//mod效果
 			lib.skill[event.targetSkill].mod=lib.skill[event.panelSkill].mod;
 			lib.skill[event.targetSkill].ykre_mod='<br><font color=orange>此技能mod效果已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的mod效果</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】mod效果已被修改为【'+get.translation(event.panelSkill)+'】的mod效果');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】mod效果已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的mod效果');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 21'
@@ -5827,7 +5827,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(lib.skill[event.panelSkill].viewAsFilter) lib.skill[event.targetSkill].viewAsFilter=lib.skill[event.panelSkill].viewAsFilter;
 			lib.skill[event.targetSkill].viewAs=lib.skill[event.panelSkill].viewAs;
 			lib.skill[event.targetSkill].ykre_viewAs='<br><font color=orange>此技能视为效果已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的视为效果</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】视为效果已被修改为【'+get.translation(event.panelSkill)+'】的视为效果');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】视为效果已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的视为效果');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 22'
@@ -5835,20 +5835,20 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			lib.skill[event.targetSkill].subSkill=lib.skill[event.panelSkill].subSkill;
 			lib.skill[event.targetSkill].group=lib.skill[event.panelSkill].group;
 			lib.skill[event.targetSkill].ykre_subSkillgroup='<br><font color=orange>此技能子技能和技能组已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的子技能和技能组</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】子技能和技能组已被修改为【'+get.translation(event.panelSkill)+'】的子技能和技能组');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】子技能和技能组已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的子技能和技能组');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 23'
 			//init
 			lib.skill[event.targetSkill].init=lib.skill[event.panelSkill].init;
 			lib.skill[event.targetSkill].ykre_init='<br><font color=orange>此技能init获得此技能效果已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的init获得此技能效果</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】init获得此技能效果已被修改为【'+get.translation(event.panelSkill)+'】的init获得此技能效果');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】init获得此技能效果已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的init获得此技能效果');
 			event.yk_updateSkillInfo(event.targetSkill);
 			'step 24'
 			//onremove
 			lib.skill[event.targetSkill].onremove=lib.skill[event.panelSkill].onremove;
 			lib.skill[event.targetSkill].ykre_onremove='<br><font color=orange>此技能onremove失去此技能效果已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的onremove失去此技能效果</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】onremove失去此技能效果已被修改为【'+get.translation(event.panelSkill)+'】的onremove失去此技能效果');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】onremove失去此技能效果已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的onremove失去此技能效果');
 			event.yk_updateSkillInfo(event.targetSkill);
 			'step 25'
 			if(event.choose_jntm=='删除该技能的发动时机'&&(lib.skill[event.targetSkill].trigger||lib.skill[event.targetSkill].enable)){
@@ -7828,7 +7828,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(lib.skill[event.targetSkill].ykre_filterCard) delete lib.skill[event.targetSkill].ykre_filterCard;
 			if(lib.skill[event.targetSkill].ykre_selectCard) delete lib.skill[event.targetSkill].ykre_selectCard;
 			lib.skill[event.targetSkill].ykre_filterselectCard='<br><font color=orange>此技能发动卡牌限制已被修改为技能<a style="color:cyan" href=\'javascript:window.ykIntroduceSkillInfo("'+event.panelSkill+'");\'>【'+get.translation(event.panelSkill)+'】</a>的发动卡牌限制</font>';
-			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动卡牌限制已被修改为【'+get.translation(event.panelSkill)+'】的发动卡牌限制');
+			game.log(event.target,'的技能【'+get.translation(event.targetSkill)+'】发动卡牌限制已被修改为<span class="greentext">【'+get.translation(event.panelSkill)+'】</span>的发动卡牌限制');
 			event.yk_updateSkillInfo(event.targetSkill);
 			event.finish();
 			'step 50'
