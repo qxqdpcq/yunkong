@@ -641,7 +641,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				next.showConfig=true;
 				next.setContent(function(){
 					"step 0"
-					var num=12;
+					var num=8;
 					if(lib.config.only_yk){
 						var packx=lib.characterPack.ykchangeToArray(["yunkong_Character"]);
 						event.list=[];
@@ -661,25 +661,23 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					game.me.chooseButton(dialog,true).set('onfree',true).selectButton=function(){
 						return 1;
 					};
-					if(lib.config.mode_config.towardSky.change_choice==true){
-						ui.create.cheat=function(){
-							_status.createControl=ui.cheat2;
-							ui.cheat=ui.create.control('更换',function(){
-								if(ui.cheat2&&ui.cheat2.dialog==_status.event.dialog) return;
-								var buttons=ui.create.div('.buttons');
-								var node=_status.event.dialog.buttons[0].parentNode;
-								list=event.list.randomGets(num);
-								_status.event.dialog.buttons=ui.create.buttons(list,'character',buttons);
-								_status.event.dialog.content.insertBefore(buttons,node);
-								buttons.animate('start');
-								node.remove();
-								game.uncheck();
-								game.check();
-							});
-							delete _status.createControl;
-						};
-						ui.create.cheat();
+					ui.create.cheat=function(){
+						_status.createControl=ui.cheat2;
+						ui.cheat=ui.create.control('更换',function(){
+							if(ui.cheat2&&ui.cheat2.dialog==_status.event.dialog) return;
+							var buttons=ui.create.div('.buttons');
+							var node=_status.event.dialog.buttons[0].parentNode;
+							list=event.list.randomGets(num);
+							_status.event.dialog.buttons=ui.create.buttons(list,'character',buttons);
+							_status.event.dialog.content.insertBefore(buttons,node);
+							buttons.animate('start');
+							node.remove();
+							game.uncheck();
+							game.check();
+						});
+						delete _status.createControl;
 					};
+					ui.create.cheat();
 					/*if(lib.config.mode_config.towardSky.free_choose==true&&lib.config.only_yk!=true){
 						event.dialogxx=ui.create.characterDialog('heightset');
 						ui.create.cheat2=function(){
@@ -1222,13 +1220,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				},
 				restart:true,
 				frequent:true,
-			},
-			free_choose:{
-				name:'自由选将',
-				init:true,
-				onclick:function(bool){
-					game.saveConfig('free_choose',bool,'towardSky');
-				}
 			},
 			change_card:{
 				name:'开启手气卡',
