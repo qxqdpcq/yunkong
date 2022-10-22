@@ -1,5 +1,14 @@
 'use strict';
 window.YKimport(function(lib,game,ui,get,ai,_status){
+	lib.characterPack.ykchangeToArray=function(list){
+		var ykcharacterArrayList={};
+		for(var pack in this) if(pack!='ykcharacterArrayList'&&(!list||(list&&list.indexOf(pack)!=-1))){
+			ykcharacterArrayList[pack]=[];
+			for(var character in this[pack]) ykcharacterArrayList[pack].push(character);
+			ykcharacterArrayList[pack].sort();
+		}
+		return ykcharacterArrayList;
+	};
 	window.changeNumToHan=function(num){
 		var arr1 = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
 		var arr2 = ['', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿']
@@ -616,7 +625,8 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			};
 			game.personChat(content);
 			var ykBosslist=[];
-			for(var character in lib.character) ykBosslist.push(character);
+			var packx=lib.characterPack.ykchangeToArray(["yunkong_Character","diy","extra","gujian","gwent","hearth","jiange","mobile","mtg","offline","old","ow","refresh","sb","shenhua","sp","sp2","standard","swd","tw","xiake","xianjian","xinghuoliaoyuan","yijiang","yingbian","yxs","zhuogui"]);
+			for(var pack in packx) ykBosslist=ykBosslist.concat(packx[pack]);
 			game.boss_name=ykBosslist.randomGet();
 		},
 		game:{
@@ -632,14 +642,13 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				next.setContent(function(){
 					"step 0"
 					var num=12;
-					event.list=[];
-					for(var i in lib.character){
-						if(lib.filter.characterDisabled(i)) continue;
-						if(lib.config.only_yk==true){
-							if(i&&((i.indexOf('qxq_yk_')!= -1&&window.characterList.indexOf(i)!=-1)&&lib.qxq_yk_bossList.indexOf(i)==-1)) event.list.push(i);
-						}
-						else event.list.push(i);
-					};
+					if(lib.config.only_yk){
+						event.list=lib.characterPack.ykchangeToArray(["yunkong_Character"]);
+						var listresult=[];
+						for(var n of event.list) if(lib.qxq_yk_bossList.indexOf(n)==-1) listresult.push(n);
+						event.list=listresult;
+					}
+					else event.list=lib.characterPack.ykchangeToArray(["yunkong_Character","diy","extra","gujian","gwent","hearth","jiange","mobile","mtg","offline","old","ow","refresh","sb","shenhua","sp","sp2","standard","swd","tw","xiake","xianjian","xinghuoliaoyuan","yijiang","yingbian","yxs","zhuogui"]);
 					var list=event.list.randomGets(num);
 					var dialog=ui.create.dialog('选择角色','hidden',[list,'character']);
 					dialog.setCaption('选择角色');
