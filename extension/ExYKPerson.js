@@ -13337,7 +13337,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							delete trigger.player.ykshenming_card;
 							trigger.player.ykshenming_card=null;
 							player.yk_mingyun=(player.yk_mingyun||0);
-							player.ykgainMark_ming(-1);
+							player.loseHp();
+							player.draw(2);
 							player.yk_mingyun=Math.max(player.yk_mingyun,0);
 						}
 						return ;
