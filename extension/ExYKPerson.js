@@ -13839,6 +13839,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			}
 			else{
 				player.recover(1-player.hp);
+				if(player.countCards('h')<player.maxHp) player.draw(player.maxHp-player.countCards('h'));
+				player.ykgainMark_ming(7);
+				player.yk_mingyun=Math.max(player.yk_mingyun,7);
 			}
 			if((lib.config['yk_ykmingyunInterweave_rank']||0)>=3) player.ykRecover('Mp',200);
 			if((lib.config['yk_ykmingyunInterweave_rank']||0)>=2) player.ykRecover('Defend',400);
