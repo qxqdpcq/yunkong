@@ -680,7 +680,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 						};
 						ui.create.cheat();
 					};
-					if(lib.config.mode_config.towardSky.free_choose==true&&lib.config.only_yk!=true){
+					/*if(lib.config.mode_config.towardSky.free_choose==true&&lib.config.only_yk!=true){
 						event.dialogxx=ui.create.characterDialog('heightset');
 						ui.create.cheat2=function(){
 							ui.cheat2=ui.create.control('自由选将',function(){
@@ -704,7 +704,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 							});
 						};
 						ui.create.cheat2();
-					};
+					};*/
 					"step 1"
 					for(var i=0;i<game.players.length;i++){
 						var pl=game.players[i];
