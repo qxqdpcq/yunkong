@@ -5749,7 +5749,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				if(!skill2){game.log('修改后的技能已不存在！');return ;}
 				var check=''+skill2.content;
 				var check2=''+skill2.content;
-				var checkItem=['player','source','card','cards','num','cards[0]','target','targets','targets[0]'];
+				var checkItem=['player','source','card','cards','num','target','targets'];
 				while(check.indexOf('trigger.')!=-1&&check.length){
 					var checkB;
 					check=check.slice(check.indexOf('trigger.')+8,check.length);
@@ -5772,6 +5772,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				try{
 					var next = game.createEvent(lib.skill[_status.event.name].content2,false),trigger=(trigger||{}),target=(target||trigger.target),targets=(targets||trigger.targets),card=(card||trigger.card),cards=(cards||trigger.cards),source=trigger.source;
 					var args={
+						triggerplayer:trigger.player,
 						player:player,
 						'_trigger':trigger,
 						'_event':_status.event,
@@ -5787,7 +5788,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 						if(trigger[item]!=undefined) next[item]=trigger[item];
 					}
 					for(var item of checkItem) if(check2.indexOf('trigger.'+item)!=-1&&!next[item]&&item!='player'){game.log('存在未定义参数trigger.'+item+'，缝合技能失效！');var bool=false;}
-					if(bool) next.setContent(new Function('try{'+skill2.content.slice(skill2.content.indexOf('{')+1,skill2.content.length-1)+'}catch(e){console.log(e);}'));
+					if(bool) next.setContent(new Function('try{var trigger=(trigger||{}),event=(event||{});for(var item of ["source","card","cards","num","target","targets"]) if(event[item]!=undefined) trigger[item]=event[item];if(event.triggerplayer) trigger.player=event.triggerplayer;'+skill2.content.slice(skill2.content.indexOf('{')+1,skill2.content.length-1)+'}catch(e){console.log(e);}'));
 					else next.setContent(function(){});
 				}
 				catch(e){
