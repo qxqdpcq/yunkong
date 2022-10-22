@@ -642,9 +642,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				next.setContent(function(){
 					"step 0"
 					var num=8;
+					event.list=[];
 					if(lib.config.only_yk){
 						var packx=lib.characterPack.ykchangeToArray(["yunkong_Character"]);
-						event.list=[];
 						for(var pack in packx) event.list=event.list.concat(packx[pack]);
 						var listresult=[];
 						for(var n of event.list) if(lib.qxq_yk_bossList.indexOf(n)==-1) listresult.push(n);
@@ -652,8 +652,14 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					}
 					else{
 						var packx=lib.characterPack.ykchangeToArray(["yunkong_Character","diy","extra","gujian","gwent","hearth","jiange","mobile","mtg","offline","old","ow","refresh","sb","shenhua","sp","sp2","standard","swd","tw","xiake","xianjian","xinghuoliaoyuan","yijiang","yingbian","yxs","zhuogui"]);
-						event.list=[];
 						for(var pack in packx) event.list=event.list.concat(packx[pack]);
+					}
+					if(!event.list.length){
+						alert('你暂时没有可用的云空武将哦！将自动为你退出云空模式！如有问题请联系扩展作者！');
+						game.saveConfig('only_yk',false);
+						game.saveConfig('only_ykCardPile',false);
+						setTimeout(function(){game.reload();},2000);
+						return ;
 					}
 					var list=event.list.randomGets(num);
 					var dialog=ui.create.dialog('选择角色','hidden',[list,'character']);
