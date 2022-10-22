@@ -14270,6 +14270,9 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		delete lib.skill.ykmingyunInterweave;
 	}
 	if(!game.ykHasCharacter('qxq_yk_akalai')){
-		
+		lib.skill.ykchashi={};
+		delete lib.skill.ykchashi;
+		lib.skill.ykzhiyi={};
+		delete lib.skill.ykzhiyi;
 	}
 });
