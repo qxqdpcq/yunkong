@@ -118,33 +118,221 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			},
 		},
 		'ykdraw0':{
-			name:'神手',
-			info:'效果：每个摸牌阶段的摸牌数+1<br>类型：技能（短效buff）',
-			price:250,
+			name:'神手Lv.0',
+			info:'效果：每个摸牌阶段的摸牌数+1<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:200,
 			content:(boss,player)=>{
-				lib.skill.ykshenshou_draw=lib.skill.yingzi;
-				delete lib.skill.ykshenshou_draw.audio;
-				delete lib.skill.ykshenshou_draw.audioname;
-				lib.translate.ykshenshou_draw=lib.translate.yingzi;
-				lib.translate.ykshenshou_draw_info=lib.translate.yingzi_info;
-				player.ykTS_addTempSkill('ykshenshou_draw',5);
+				if(player.hasSkill('ykshenshou_draw1')||player.hasSkill('ykshenshou_draw2')) return ;
+				else player.removeSkill('ykshenshou_drawx');
+				lib.skill['ykshenshou_draw0']={};
+				for(var i in lib.skill.yingzi) lib.skill['ykshenshou_draw0'][i]=lib.skill.yingzi[i];
+				delete lib.skill['ykshenshou_draw0'].audio;
+				delete lib.skill['ykshenshou_draw0'].audioname;
+				lib.translate['ykshenshou_draw0']=lib.translate.yingzi;
+				lib.translate['ykshenshou_draw0_info']=lib.translate.yingzi_info;
+				player.ykTS_addTempSkill('ykshenshou_draw0',5);
+			},
+		},
+		'ykdraw1':{
+			name:'神手Lv.1',
+			info:'效果：每个摸牌阶段的摸牌数+2<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:400,
+			content:(boss,player)=>{
+				if(player.hasSkill('ykshenshou_draw2')) return ;
+				else{
+					player.removeSkill('ykshenshou_draw0');
+					player.removeSkill('ykshenshou_drawx');
+				}
+				lib.skill['ykshenshou_draw1']={};
+				for(var i in lib.skill.yingzi) lib.skill['ykshenshou_draw1'][i]=lib.skill.yingzi[i];
+				delete lib.skill['ykshenshou_draw1'].audio;
+				delete lib.skill['ykshenshou_draw1'].audioname;
+				lib.skill['ykshenshou_draw1'].content=()=>{
+					trigger.num+=2;
+				};
+				lib.translate['ykshenshou_draw1']='神手';
+				lib.translate['ykshenshou_draw1_info']='摸牌阶段的摸牌数+2';
+				player.ykTS_addTempSkill('ykshenshou_draw1',5);
+			},
+		},
+		'ykdraw2':{
+			name:'神手Lv.2',
+			info:'效果：每个摸牌阶段的摸牌数+3<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:800,
+			content:(boss,player)=>{
+				player.removeSkill('ykshenshou_draw0');
+				player.removeSkill('ykshenshou_draw1');
+				player.removeSkill('ykshenshou_drawx');
+				lib.skill['ykshenshou_draw2']={};
+				for(var i in lib.skill.yingzi) lib.skill['ykshenshou_draw2'][i]=lib.skill.yingzi[i];
+				delete lib.skill['ykshenshou_draw2'].audio;
+				delete lib.skill['ykshenshou_draw2'].audioname;
+				lib.skill['ykshenshou_draw2'].content=()=>{
+					trigger.num+=3;
+				};
+				lib.translate['ykshenshou_draw2']='神手';
+				lib.translate['ykshenshou_draw2_info']='摸牌阶段的摸牌数+3';
+				player.ykTS_addTempSkill('ykshenshou_draw2',5);
+			},
+		},
+		'ykdrawx':{
+			name:'神手Lv.x',
+			info:'效果：每个摸牌阶段的摸牌数+x（x为已损失体力值，不超过3）<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:550,
+			content:(boss,player)=>{
+				player.removeSkill('ykshenshou_draw0');
+				player.removeSkill('ykshenshou_draw1');
+				player.removeSkill('ykshenshou_draw2');
+				lib.skill['ykshenshou_drawx']={};
+				for(var i in lib.skill.yingzi) lib.skill['ykshenshou_drawx'][i]=lib.skill.yingzi[i];
+				delete lib.skill['ykshenshou_drawx'].audio;
+				delete lib.skill['ykshenshou_drawx'].audioname;
+				lib.skill['ykshenshou_draw2'].content=()=>{
+					trigger.num+=Math.min(player.maxHp-player.hp,3);
+				};
+				lib.translate['ykshenshou_drawx']='神手';
+				lib.translate['ykshenshou_drawx_info']='摸牌阶段的摸牌数+x（x为已损失体力值，不超过3）';
+				player.ykTS_addTempSkill('ykshenshou_drawx',5);
 			},
 		},
 		'ykcardLimit0':{
-			name:'布衣',
-			info:'效果：手牌上限+1<br>类型：技能（短效buff）',
+			name:'布衣Lv.0',
+			info:'效果：手牌上限+1<br>类型：技能（短效buff，同类技能不可叠加）',
 			price:100,
 			content:(boss,player)=>{
-				lib.skill.ykbuyi_cardLimit={
+				if(player.hasSkill('ykbuyi_cardLimit1')||player.hasSkill('ykbuyi_cardLimit2')) return ;
+				else player.removeSkill('ykbuyi_cardLimitx');
+				lib.skill['ykbuyi_cardLimit0']={
 					mod:{
 						maxHandcard:function(player,num){
 							return num+1;
 						},
 					},
 				};
-				lib.translate.ykbuyi_cardLimit='布衣';
-				lib.translate.ykbuyi_cardLimit_info='锁定技，你的手牌上限+1';
-				player.ykTS_addTempSkill('ykbuyi_cardLimit',5);
+				lib.translate['ykbuyi_cardLimit0']='布衣';
+				lib.translate['ykbuyi_cardLimit0_info']='锁定技，你的手牌上限+1';
+				player.ykTS_addTempSkill('ykbuyi_cardLimit0',5);
+			},
+		},
+		'ykcardLimit1':{
+			name:'布衣Lv.1',
+			info:'效果：手牌上限+2<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:300,
+			content:(boss,player)=>{
+				if(player.hasSkill('ykbuyi_cardLimit2')) return ;
+				else{
+					player.removeSkill('ykbuyi_cardLimit0');
+					player.removeSkill('ykbuyi_cardLimitx');
+				}
+				lib.skill['ykbuyi_cardLimit1']={
+					mod:{
+						maxHandcard:function(player,num){
+							return num+2;
+						},
+					},
+				};
+				lib.translate['ykbuyi_cardLimit1']='布衣';
+				lib.translate['ykbuyi_cardLimit1_info']='锁定技，你的手牌上限+2';
+				player.ykTS_addTempSkill('ykbuyi_cardLimit1',5);
+			},
+		},
+		'ykcardLimit2':{
+			name:'布衣Lv.2',
+			info:'效果：手牌上限+2<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:600,
+			content:(boss,player)=>{
+				player.removeSkill('ykbuyi_cardLimit0');
+				player.removeSkill('ykbuyi_cardLimit1');
+				player.removeSkill('ykbuyi_cardLimitx');
+				lib.skill['ykbuyi_cardLimit2']={
+					mod:{
+						maxHandcard:function(player,num){
+							return num+3;
+						},
+					},
+				};
+				lib.translate['ykbuyi_cardLimit2']='布衣';
+				lib.translate['ykbuyi_cardLimit2_info']='锁定技，你的手牌上限+3';
+				player.ykTS_addTempSkill('ykbuyi_cardLimit2',5);
+			},
+		},
+		'ykcardLimitx':{
+			name:'布衣Lv.x',
+			info:'效果：手牌上限+x（x为已损体力值）<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:500,
+			content:(boss,player)=>{
+				player.removeSkill('ykbuyi_cardLimit0');
+				player.removeSkill('ykbuyi_cardLimit1');
+				player.removeSkill('ykbuyi_cardLimit2');
+				lib.skill['ykbuyi_cardLimit2']={
+					mod:{
+						maxHandcard:function(player,num){
+							return num+player.maxHp-player.hp;
+						},
+					},
+				};
+				lib.translate['ykbuyi_cardLimitx']='布衣';
+				lib.translate['ykbuyi_cardLimitx_info']='锁定技，你的手牌上限+x（x为已损体力值）';
+				player.ykTS_addTempSkill('ykbuyi_cardLimitx',5);
+			},
+		},
+		'ykshixue0':{
+			name:'嗜血Lv.0',
+			info:'效果：你视为拥有技能【狂骨】<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:200,
+			content:(boss,player)=>{
+				if(player.hasSkill('ykshixuex')||player.hasSkill('ykshixue1')) return ;
+				lib.skill['ykshixue0']={};
+				for(var i in lib.skill.kuanggu) lib.skill['ykshixue0'][i]=lib.skill.kuanggu[i];
+				delete lib.skill['ykshixue0'].audio;
+				delete lib.skill['ykshixue0'].audioname;
+				lib.translate['ykshixue0']=lib.translate.kuanggu;
+				lib.translate['ykshixue0_info']=lib.translate.kuanggu_info;
+				player.ykTS_addTempSkill('ykshixue0',5);
+			},
+		},
+		'ykshixue1':{
+			name:'嗜血Lv.1',
+			info:'效果：【狂骨】：锁定技，当你造成一点伤害后，若受伤角色与你的距离不大于2，你回复一点体力<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:400,
+			content:(boss,player)=>{
+				if(player.hasSkill('ykshixuex')) return ;
+				else{
+					player.removeSkill('ykshixue0');
+					player.removeSkill('ykshixuex');
+				}
+				lib.skill['ykshixue1']={};
+				for(var i in lib.skill.kuanggu) lib.skill['ykshixue1'][i]=lib.skill.kuanggu[i];
+				lib.skill['ykshixue1'].filter=(event,player)=>{
+					return get.distance(player,event.player)<=2&&player.isDamaged();
+				};
+				delete lib.skill['ykshixue1'].audio;
+				delete lib.skill['ykshixue1'].audioname;
+				lib.translate['ykshixue1']=lib.translate.kuanggu;
+				lib.translate['ykshixue1_info']='锁定技，当你造成一点伤害后，若受伤角色与你的距离不大于2，你回复一点体力';
+				player.ykTS_addTempSkill('ykshixue1',5);
+			},
+		},
+		'ykshixuex':{
+			name:'嗜血Lv.x',
+			info:'效果：【狂骨】：锁定技，当你造成一点伤害后，若受伤角色与你的距离不大于已损体力值，你回复一点体力<br>类型：技能（短效buff，同类技能不可叠加）',
+			price:500,
+			content:(boss,player)=>{
+				if(player.hasSkill('ykshixue1')) return ;
+				else{
+					player.removeSkill('ykshixue0');
+					player.removeSkill('ykshixue1');
+				}
+				lib.skill['ykshixuex']={};
+				for(var i in lib.skill.kuanggu) lib.skill['ykshixuex'][i]=lib.skill.kuanggu[i];
+				lib.skill['ykshixuex'].filter=(event,player)=>{
+					return get.distance(player,event.player)<=(player.maxHp-player.hp)&&player.isDamaged();
+				};
+				delete lib.skill['ykshixuex'].audio;
+				delete lib.skill['ykshixuex'].audioname;
+				lib.translate['ykshixuex']=lib.translate.kuanggu;
+				lib.translate['ykshixuex_info']='锁定技，当你造成一点伤害后，若受伤角色与你的距离不大于已损体力值，你回复一点体力';
+				player.ykTS_addTempSkill('ykshixuex',5);
 			},
 		},
 		'ykkongzhen0':{
@@ -329,6 +517,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			game.sayyk('已获得【'+get.translation(i)+'】x'+_status.ykTS_gainList[i]+'！');
 		}
 		game.sayyk('相关物品道具已存入背包！');
+		setTimeout(game.reload,2000);
 	}
 	_status.ykTS_number=parseInt(''+lib.config.ykTS_startnum);
 	_status.ykTS_starShell=(lib.config.ykStarShell||0);
