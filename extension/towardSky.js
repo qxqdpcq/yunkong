@@ -643,12 +643,18 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					"step 0"
 					var num=12;
 					if(lib.config.only_yk){
-						event.list=lib.characterPack.ykchangeToArray(["yunkong_Character"]);
+						var packx=lib.characterPack.ykchangeToArray(["yunkong_Character"]);
+						event.list=[];
+						for(var pack in packx) event.list=event.list.concat(packx[pack]);
 						var listresult=[];
 						for(var n of event.list) if(lib.qxq_yk_bossList.indexOf(n)==-1) listresult.push(n);
 						event.list=listresult;
 					}
-					else event.list=lib.characterPack.ykchangeToArray(["yunkong_Character","diy","extra","gujian","gwent","hearth","jiange","mobile","mtg","offline","old","ow","refresh","sb","shenhua","sp","sp2","standard","swd","tw","xiake","xianjian","xinghuoliaoyuan","yijiang","yingbian","yxs","zhuogui"]);
+					else{
+						var packx=lib.characterPack.ykchangeToArray(["yunkong_Character","diy","extra","gujian","gwent","hearth","jiange","mobile","mtg","offline","old","ow","refresh","sb","shenhua","sp","sp2","standard","swd","tw","xiake","xianjian","xinghuoliaoyuan","yijiang","yingbian","yxs","zhuogui"]);
+						event.list=[];
+						for(var pack in packx) event.list=event.list.concat(packx[pack]);
+					}
 					var list=event.list.randomGets(num);
 					var dialog=ui.create.dialog('选择角色','hidden',[list,'character']);
 					dialog.setCaption('选择角色');
