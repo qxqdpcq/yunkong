@@ -573,10 +573,10 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				});
 				event.itemList=cancel.concat(event.itemList);
 				for(var item of event.itemList){
-					if(window.ykTS_itemx[item].mode=='yk'&&!lib.config.only_yk) continue;
-					if(window.ykTS_itemx[item].only_once&&_status[item+'_putbool']) continue;
-					if(lib.config[item+'_buy']&&window.ykTS_itemx[item].only_once&&window.ykisSameWeek(lib.config[item+'_buy'],window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days)) continue;
-					var shop_item=dialog.add('<div class="popup pointerdiv" style="width:100%;display:inline-block"><div class="skill">'+get.translation(item)+'：'+get.translation(item+'_info')+'<br>价格：'+window.ykTS_itemx[item].price+'金币<br><b>'+(window.ykTS_itemx[item].only_once?'每周限一次':'不限次数')+'</b>'+'</div></div>');
+					if(item!='cancel'&&window.ykTS_itemx[item].mode=='yk'&&!lib.config.only_yk) continue;
+					if(item!='cancel'&&window.ykTS_itemx[item].only_once&&_status[item+'_putbool']) continue;
+					if(item!='cancel'&&lib.config[item+'_buy']&&window.ykTS_itemx[item].only_once&&window.ykisSameWeek(lib.config[item+'_buy'],window.playTime.years+'/'+window.playTime.months+'/'+window.playTime.days)) continue;
+					var shop_item=dialog.add('<div class="popup pointerdiv" style="width:100%;display:inline-block"><div class="skill">'+get.translation(item)+'：'+get.translation(item+'_info')+'<br>价格：'+(window.ykTS_itemx[item]?window.ykTS_itemx[item].price:0)+'金币<br><b>'+(window.ykTS_itemx[item]?(window.ykTS_itemx[item].only_once?'每周限一次':'不限次数'):'')+'</b>'+'</div></div>');
 					shop_item.firstChild.addEventListener('click',clickItem);
 					shop_item.firstChild.link=item;
 				}
