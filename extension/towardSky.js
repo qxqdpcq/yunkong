@@ -566,7 +566,9 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					name:'取消',
 					info:'关闭商店',
 					price:0,
-					content:(boss,player)=>{},
+					content:(boss,player)=>{
+						delete window.ykTS_itemx.cancel;
+					},
 				};
 				var cancel=[];
 				cancel.push('cancel');
@@ -603,7 +605,6 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					if(window.ykTS_itemx[result].only_once) _status[result+'_putbool']=true;
 				}
 			}
-			delete window.ykTS_itemx.cancel;
 			'step 2'
 			for(var item in window.ykTS_itemx){
 				lib.card[item]=null;
