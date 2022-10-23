@@ -562,6 +562,16 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 					dialog.close();
 					game.resume();
 				};
+				var cancel=[];
+				cancel.push({
+					'cancel':{
+						name:'取消',
+						info:'关闭商店',
+						price:0,
+						content:(boss,player)=>{},
+					},
+				});
+				event.itemList=cancel.concat(event.itemList);
 				for(var item of event.itemList){
 					if(window.ykTS_itemx[item].mode=='yk'&&!lib.config.only_yk) continue;
 					if(window.ykTS_itemx[item].only_once&&_status[item+'_putbool']) continue;
