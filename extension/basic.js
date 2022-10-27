@@ -1,8 +1,8 @@
 'use strict';
 window.YKimport(function(lib,game,ui,get,ai,_status){
-	//防止反复加载
-	/*if(window.ykloadJSON_basic) return ;
-	window.ykloadJSON_basic=true;*/
+	game.ykaddCSSText=cssText=>{
+		lib.init.sheet().sheet.insertRule(cssText,0);
+	};
 	window.ykFileExist= url => {
 		if(window.XMLHttpRequest){
 			var http = new XMLHttpRequest();
