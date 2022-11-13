@@ -79,7 +79,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				var cardList=[];
 				cardList.push(game.createCard('sha'));
 				cardList.push(game.createCard('sha'));
-				game.me.gain(cardList);
+				player.gain(cardList);
 				game.log(game.me,'获得了',cardList);
 			},
 		},
@@ -90,7 +90,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			content:(boss,player)=>{
 				var cardList=[];
 				cardList.push(game.createCard('tao'));
-				game.me.gain(cardList);
+				player.gain(cardList);
 				game.log(game.me,'获得了',cardList);
 			},
 		},
@@ -102,7 +102,7 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 				var cardList=[];
 				cardList.push(game.createCard('shan'));
 				cardList.push(game.createCard('shan'));
-				game.me.gain(cardList);
+				player.gain(cardList);
 				game.log(game.me,'获得了',cardList);
 			},
 		},
@@ -113,8 +113,55 @@ window.YKimport(function(lib,game,ui,get,ai,_status){
 			content:(boss,player)=>{
 				var cardList=[];
 				cardList.push(game.createCard('jiu'));
-				game.me.gain(cardList);
+				player.gain(cardList);
 				game.log(game.me,'获得了',cardList);
+			},
+		},
+		'ykwuzhong0':{
+			name:'无中生有',
+			info:'卡牌【无中生有】x1<br>类型：锦囊牌',
+			price:60,
+			content:(boss,player)=>{
+				var cardList=[];
+				cardList.push(game.createCard('wuzhong'));
+				player.gain(cardList);
+				game.log(game.me,'获得了',cardList);
+			},
+		},
+		'ykrecover0':{
+			name:'丹青Lv.0',
+			info:'效果：立即回复一点体力<br>类型：词缀',
+			price:15,
+			content:(boss,player)=>{
+				player.recover();
+			},
+		},
+		'ykrecover1':{
+			name:'丹青Lv.1',
+			info:'效果：立即回复两点体力<br>类型：词缀',
+			price:35,
+			content:(boss,player)=>{
+				player.recover(2);
+			},
+		},
+		'ykredraw0':{
+			name:'素手',
+			info:'效果：立即受到一点伤害，然后将手牌摸至体力上限（最多不超过5张）<br>类型：词缀',
+			price:45,
+			content:(boss,player)=>{
+				player.damage();
+				let n=Math.min(5,player.maxHp-player.countCards('h'));
+				if(n>0) player.draw(n);
+			},
+		},
+		'ykredraw1':{
+			name:'血殇',
+			info:'效果：立即受到一点伤害，然后摸X张牌（X为已损失体力值，最大为5）<br>类型：词缀',
+			price:35,
+			content:(boss,player)=>{
+				player.damage();
+				let n=Math.min(5,player.maxHp-player.hp);
+				if(n>0) player.draw(n);
 			},
 		},
 		'ykdraw0':{
