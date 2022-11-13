@@ -8418,6 +8418,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	}
 	Object.freeze(lib.skill['tiandaowuchang']);
 	game.ykTianShengmieshenyu=function(player){
+		if((''+player.damage).indexOf("if(player.name=='qxq_yk_tian'){player.useSkill('shengmieshenyu')._triggered=null;player.hasUseSkill=true;}")!=-1) return ;
 		player.ykdamage=player.damage;
 		player.damage=function(num,nature,source){
 			var player=this;
