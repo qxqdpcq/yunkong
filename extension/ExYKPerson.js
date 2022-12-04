@@ -2819,11 +2819,11 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 								window.num=0;
 								window.numx=game['YK_'+window.yk_name].length;
 								var download=function(){
-									var httpRequest = new XMLHttpRequest();
+									/*var httpRequest = new XMLHttpRequest();
 									httpRequest.open("GET",'https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],true);
 									httpRequest.send(null);
 									httpRequest.onreadystatechange=function(){
-										if(httpRequest.readyState==4&&httpRequest.status==200){
+										if(httpRequest.readyState==4&&httpRequest.status==200){*/
 											game.download('https://raw.githubusercontent.com/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.yk_name+'/'+window.picturelist[0],function(){
 												window.num++
 												window.picturelist.remove(window.picturelist[0]);
@@ -2849,8 +2849,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 													download();
 												};
 											})
-										}
-									}
+										/*}
+									}*/
 								}
 								download();
 							};
