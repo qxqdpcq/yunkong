@@ -14042,7 +14042,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				filter:(event,player)=>{
 					if(event.name=='useCard'){
 						if(!game.players.contains(player.storage.ykxuyan_mark_source)) return false;
-						if(!player.storage.ykxuyan_mark_source.ykCheckConsume('Mp',((lib.config['yk_ykxuyan_rank']||0)>=1?65:75)) return false;
+						if(!player.storage.ykxuyan_mark_source.ykCheckConsume('Mp',((lib.config['yk_ykxuyan_rank']||0)>=1?65:75))) return false;
 						var card=event.card;
 						if(!card&&event.cards) card=event.cards[0];
 						if(event.parent.name=='ykxuyan_mark') return false;
