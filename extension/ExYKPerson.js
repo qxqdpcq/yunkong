@@ -2801,7 +2801,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					YK_Text.style[k]=YK_Text_style[k];
 				};
 				document.body.appendChild(YK_Text);
-				var httpRequest = new XMLHttpRequest(),name=this.name2;
+				window.name=this.name2;
+				var httpRequest = new XMLHttpRequest();
 				httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/download.js",true);
 				httpRequest.send(null);
 				httpRequest.onreadystatechange=function(){
@@ -2811,23 +2812,23 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							try{game['ykdownload_'+this.name2]();}catch(e){alert('文件加载失败！');}
 						}
 						else{
-							alert(name)
-							game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+name+'.jpg','extension/云空/'+name+'.jpg',function(){},function(){});
+							game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.name+'.jpg','extension/云空/'+window.name+'.jpg',function(){},function(){});
 							var download=()=>{
-								window.picturelist=game['YK_'+name];
+								document.body.appendChild(YK_Text);
+								window.picturelist=game['YK_'+window.name];
 								window.num=0;
-								window.numx=game['YK_'+name].length;
+								window.numx=game['YK_'+window.name].length;
 								var download=function(){
 									var httpRequest = new XMLHttpRequest();
-									httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+name+'/'+window.picturelist[0],true);
+									httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.name+'/'+window.picturelist[0],true);
 									httpRequest.send(null);
 									httpRequest.onreadystatechange=function(){
 										if(httpRequest.readyState==4&&httpRequest.status==200){
-											game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+name+'/'+window.picturelist[0],function(){
+											game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.name+'/'+window.picturelist[0],function(){
 												window.num++
 												window.picturelist.remove(window.picturelist[0]);
 												if(window.picturelist.length>0){
-													YK_Text.innerHTML='正在下载云空世界人物皮肤语音——【'+get.translation(name)+'】（'+window.num+'/'+window.numx+'）';
+													YK_Text.innerHTML='正在下载云空世界人物皮肤语音——【'+get.translation(window.name)+'】（'+window.num+'/'+window.numx+'）';
 													download(window.picturelist);
 												}else{
 													YK_Text.innerHTML='下载完毕';
