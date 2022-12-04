@@ -2801,7 +2801,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					YK_Text.style[k]=YK_Text_style[k];
 				};
 				document.body.appendChild(YK_Text);
-				window.yk_name=this.name2;
+				window.yk_name=this.name;
 				var httpRequest = new XMLHttpRequest();
 				httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/download.js",true);
 				httpRequest.send(null);
