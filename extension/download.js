@@ -121,8 +121,7 @@ game.YK_qxq_yk_mingyun=[
 	for(var k in YK_Text_style){
 		YK_Text.style[k]=YK_Text_style[k];
 	};
-	game.ykdownload=function(){
-		"step 0"
+	game.ykdownload_all=()=>{
 		window.yk_personlistList=[];
 		if(!lib.config.YKcharacterNameList){lib.config.YKcharacterNameList=[];game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);}
 		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
@@ -139,33 +138,29 @@ game.YK_qxq_yk_mingyun=[
 				window.yk_personlistList.push(name);
 			}
 		}
-		game.ykdownload_Button=false;
-		game.ykdownloadsucai_Button=false;
-		game.ykdownloadelse_Button=false;
 		window.picturelist=game.YK_else;
-		if(!lib.config.YKcharacterNameList){lib.config.YKcharacterNameList=[];game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);}
 		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
 			var character=lib.config.YKcharacterNameList[i];
 			var name=character.slice(0,character.indexOf('-'));
 			window.picturelist.push(name+'.jpg');
 		}
 		var num=0;
-		var num5=window.picturelist.length;
+		var numx=window.picturelist.length;
 		document.body.appendChild(YK_Text);
 		var download=function(){
 			var httpRequest = new XMLHttpRequest();
 			httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],true);
 			httpRequest.send(null);
 			httpRequest.onreadystatechange=function(){
-				if (httpRequest.readyState==4&&httpRequest.status==200){
+				if(httpRequest.readyState==4&&httpRequest.status==200){
 					game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.picturelist[0],function(){
 						num++
 						window.picturelist.remove(window.picturelist[0]);
 						if(window.picturelist.length>0){
-							YK_Text.innerHTML='正在下载云空世界素材（补充部分）（'+num+'/'+num5+'）';
+							YK_Text.innerHTML='正在下载云空世界素材（补充部分）（'+num+'/'+numx+'）';
 							download();
 						}else{
-							if(window.yk_personlistList.length>0) game.ykdownload_add();
+							if(window.yk_personlistList.length>0) game.ykdownload_add_all();
 							else{
 								YK_Text.innerHTML='下载完毕';
 								if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('云空世界素材下载完毕！');
@@ -191,12 +186,7 @@ game.YK_qxq_yk_mingyun=[
 		}
 		download();
 	};
-	game.ykdownload();
-	game.ykdownload_add=function(){
-		"step 0"
-		game.ykdownload_Button=false;
-		game.ykdownloadsucai_Button=false;
-		game.ykdownloadelse_Button=false;
+	game.ykdownload_add_all=()=>{
 		document.body.appendChild(YK_Text);
 		window.picturelist=game['YK_'+window.yk_personlistList[0]];
 		window.num=0;
@@ -206,7 +196,7 @@ game.YK_qxq_yk_mingyun=[
 			httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.yk_personlistList[0]+'/'+window.picturelist[0],true);
 			httpRequest.send(null);
 			httpRequest.onreadystatechange=function(){
-				if (httpRequest.readyState==4&&httpRequest.status==200){
+				if(httpRequest.readyState==4&&httpRequest.status==200){
 					game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.yk_personlistList[0]+'/'+window.picturelist[0],function(){
 						window.num++
 						window.picturelist.remove(window.picturelist[0]);
@@ -243,6 +233,169 @@ game.YK_qxq_yk_mingyun=[
 					})
 				}
 			};
+		}
+		download();
+	};
+	game.ykdownload_fast=()=>{
+		window.yk_personlistList=[];
+		if(!lib.config.YKcharacterNameList){lib.config.YKcharacterNameList=[];game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);}
+		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
+			var character=lib.config.YKcharacterNameList[i];
+			var name=character.slice(0,character.indexOf('-'));
+			if(game['YK_'+name]!=undefined&&game['YK_'+name].length>0){
+				window.yk_personlistList.push(name);
+			}
+		}
+		if(!lib.qxq_yk_bossList) lib.qxq_yk_bossList=[];
+		for(var i=0;i<lib.qxq_yk_bossList.length;i++){
+			var name=lib.qxq_yk_bossList[i];
+			if(game['YK_'+name]!=undefined&&game['YK_'+name].length>0){
+				window.yk_personlistList.push(name);
+			}
+		}
+		window.picturelist=[].concat(game.YK_else);
+		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
+			var character=lib.config.YKcharacterNameList[i];
+			var name=character.slice(0,character.indexOf('-'));
+			window.picturelist.push(name+'.jpg');
+		}
+		var num=0;
+		var numx=window.picturelist.length;
+		document.body.appendChild(YK_Text);
+		var download=function(){
+			if(!window.ykFileExist(lib.assetURL+'extension/云空/'+window.picturelist[0])){
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],true);
+				httpRequest.send(null);
+				httpRequest.onreadystatechange=function(){
+					if(httpRequest.readyState==4&&httpRequest.status==200){
+						game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.picturelist[0],function(){
+							num++;
+							window.picturelist.remove(window.picturelist[0]);
+							if(window.picturelist.length>0){
+								YK_Text.innerHTML='正在下载云空世界素材（补充部分）（'+num+'/'+numx+'）';
+								download();
+							}else{
+								if(window.yk_personlistList.length>0) game.ykdownload_add();
+								else{
+									YK_Text.innerHTML='下载完毕';
+									if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('云空世界素材下载完毕！');
+									document.body.removeChild(YK_Text);
+									if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('请稍候，即将自动为您重启游戏！');
+									setTimeout(function(){
+										game.reload();
+									},3000);
+								}
+							};
+						},function(){
+							if(confirm('下载'+window.picturelist[0]+'失败，是否继续下载？（取消则跳过此文件）')){
+								download();
+							}else{
+								if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('部分文件下载失败。');
+								num++;
+								window.picturelist.remove(window.picturelist[0]);
+								download();
+							};
+						})
+					}
+				}
+			}
+			else{
+				num++;
+				window.picturelist.remove(window.picturelist[0]);
+				if(window.picturelist.length>0){
+					YK_Text.innerHTML='正在下载云空世界素材（补充部分）（'+num+'/'+numx+'）';
+					download();
+				}else{
+					if(window.yk_personlistList.length>0) game.ykdownload_add_fast();
+					else{
+						YK_Text.innerHTML='下载完毕';
+						if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('云空世界素材下载完毕！');
+						document.body.removeChild(YK_Text);
+						if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('请稍候，即将自动为您重启游戏！');
+						setTimeout(function(){
+							game.reload();
+						},3000);
+					}
+				};
+			};
+		}
+		download();
+	}
+	game.ykdownload_add_fast=()=>{
+		document.body.appendChild(YK_Text);
+		window.picturelist=game['YK_'+window.yk_personlistList[0]];
+		window.num=0;
+		window.numx=game['YK_'+window.yk_personlistList[0]].length;
+		var download=function(){
+			if(!window.ykFileExist(lib.assetURL+'extension/云空/'+window.yk_personlistList[0]+'/'+window.picturelist[0])){
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.yk_personlistList[0]+'/'+window.picturelist[0],true);
+				httpRequest.send(null);
+				httpRequest.onreadystatechange=function(){
+					if(httpRequest.readyState==4&&httpRequest.status==200){
+						game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+window.yk_personlistList[0]+'/'+window.picturelist[0],function(){
+							window.num++
+							window.picturelist.remove(window.picturelist[0]);
+							if(window.picturelist.length>0){
+								YK_Text.innerHTML='正在下载云空世界人物皮肤语音——【'+get.translation(window.yk_personlistList[0])+'】（'+window.num+'/'+window.numx+'）';
+								download(window.picturelist);
+							}else{
+								window.yk_personlistList.remove(window.yk_personlistList[0]);
+								if(window.yk_personlistList.length>0){
+									window.num=0;
+									window.numx=game['YK_'+window.yk_personlistList[0]].length;
+									window.picturelist=game['YK_'+window.yk_personlistList[0]];
+									download();
+								}
+								else{
+									YK_Text.innerHTML='下载完毕';
+									if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('云空世界人物皮肤语音下载完毕！');
+									document.body.removeChild(YK_Text);
+									if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('请稍候，即将自动为您重启游戏！');
+									setTimeout(function(){
+										game.reload();
+									},3000);
+								}
+							};
+						},function(){
+							if(confirm('下载'+window.picturelist[0]+'失败，是否继续下载？（取消则关闭扩展包并刷新游戏）')){
+								download();
+							}else{
+								if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('部分文件下载失败。');
+								window.num++;
+								window.picturelist.remove(window.picturelist[0]);
+								download();
+							};
+						})
+					}
+				}
+			}
+			else{
+				window.num++
+				window.picturelist.remove(window.picturelist[0]);
+				if(window.picturelist.length>0){
+					YK_Text.innerHTML='正在下载云空世界人物皮肤语音——【'+get.translation(window.yk_personlistList[0])+'】（'+window.num+'/'+window.numx+'）';
+					download(window.picturelist);
+				}else{
+					window.yk_personlistList.remove(window.yk_personlistList[0]);
+					if(window.yk_personlistList.length>0){
+						window.num=0;
+						window.numx=game['YK_'+window.yk_personlistList[0]].length;
+						window.picturelist=game['YK_'+window.yk_personlistList[0]];
+						download();
+					}
+					else{
+						YK_Text.innerHTML='下载完毕';
+						if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('云空世界人物皮肤语音下载完毕！');
+						document.body.removeChild(YK_Text);
+						if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('请稍候，即将自动为您重启游戏！');
+						setTimeout(function(){
+							game.reload();
+						},3000);
+					}
+				};
+			}
 		}
 		download();
 	};
