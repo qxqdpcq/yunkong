@@ -2783,6 +2783,24 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			window['list_'+i].name=list[i].name2;
 			window['list_'+i].onclick=function(){
 				funcD();
+				var YK_Text=document.createElement("div");
+				var YK_Text_style={
+					width:"calc(25%)",
+					height:"calc(5%)",
+					display:"table",
+					background:'rgba(0,0,0,0.5)',
+					position:"absolute",
+					top:"0px",
+					left:"calc(38%)",
+					zIndex:"10",
+					textAlign:"center",
+					'font-size':'30px',
+					'font-family':"'STXinwei','xinwei'",
+				};
+				for(var k in YK_Text_style){
+					YK_Text.style[k]=YK_Text_style[k];
+				};
+				document.body.appendChild(YK_Text);
 				var httpRequest = new XMLHttpRequest(),name=this.name2;
 				httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/download.js",true);
 				httpRequest.send(null);
@@ -2796,7 +2814,6 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							alert(name)
 							game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+name+'.jpg','extension/云空/'+name+'.jpg',function(){},function(){});
 							var download=()=>{
-								document.body.appendChild(YK_Text);
 								window.picturelist=game['YK_'+name];
 								window.num=0;
 								window.numx=game['YK_'+name].length;
