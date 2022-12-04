@@ -2760,7 +2760,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		};
 	}
 	//素材下载（云空）
-	window.ykDownloadx=function(){
+	window.ykDownload=function(){
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
 		var div=ui.create.div();
 		div.style.cssText='height:40%;top:30%;left:30%;width:40%;text-align:center;opacity:0.8;z-index:999;border-radius:8px;background-color:black;';
