@@ -14916,5 +14916,59 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 	lib.translate['qxq_yk_zhixu_ykIntroduce']+='<br>'+((lib.config['yk_yktianzhi_rank']||0)>=4?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天秩Lv4.发动此技能时，摸牌至手牌上限</font>';
 	lib.translate['qxq_yk_zhixu_ykIntroduce']+='<br>'+((lib.config['yk_yktianzhi_rank']||0)>=5?'<font color=orange>（已激活）':'<font color=grey>（未激活）')+'天秩Lv5.发动此技能时，令所有友方回复一点体力并摸一张牌</font>';
 	
-
+	//没有获得武将时，清空武将对应技能
+	if(!game.ykHasCharacter('qxq_yk_yanmengyuejian')){
+		lib.skill.ykshimeng={};
+		lib.skill.ykyueyan={};
+		delete lib.skill.ykshimeng;
+		delete lib.skill.ykyueyan;
+	}
+	if(!game.ykHasCharacter('qxq_yk_xiaoqiao')){
+		lib.skill.yktianxiang={};
+		lib.skill.ykzhuyan={};
+		lib.skill.ykpiaoling={};
+		delete lib.skill.yktianxiang;
+		delete lib.skill.ykzhuyan;
+		delete lib.skill.ykpiaoling;
+	}
+	if(!game.ykHasCharacter('qxq_yk_fuling')){
+		lib.skill.yktianyi={};
+		lib.skill.ykwuji={};
+		delete lib.skill.yktianyi;
+		delete lib.skill.ykwuji;
+	}
+	if(!game.ykHasCharacter('qxq_yk_kongshanlingxue')){
+		lib.skill.ykfuji={};
+		delete lib.skill.ykfuji;
+	}
+	if(!game.ykHasCharacter('qxq_yk_wuwangxuanyue')){
+		lib.skill.ykwujian={};
+		delete lib.skill.ykwujian;
+		lib.skill.ykjuejian={};
+		delete lib.skill.ykjuejian;
+		lib.skill.ykshilie={};
+		delete lib.skill.ykshilie;
+	}
+	if(!game.ykHasCharacter('qxq_yk_mingyun')){
+		lib.skill.ykshenming={};
+		delete lib.skill.ykshenming;
+		lib.skill.yktiansuan={};
+		delete lib.skill.yktiansuan;
+		lib.skill.ykmingyunInterweave={};
+		delete lib.skill.ykmingyunInterweave;
+	}
+	if(!game.ykHasCharacter('qxq_yk_akalai')){
+		lib.skill.ykchashi={};
+		delete lib.skill.ykchashi;
+		lib.skill.ykzhiyi={};
+		delete lib.skill.ykzhiyi;
+	}
+	if(!game.ykHasCharacter('qxq_yk_zhixu')){
+		lib.skill.ykxuyan={};
+		delete lib.skill.ykxuyan;
+		lib.skill.ykdingze={};
+		delete lib.skill.ykdingze;
+		lib.skill.yktianzhi={};
+		delete lib.skill.yktianzhi;
+	}
 });
