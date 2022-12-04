@@ -2760,29 +2760,107 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		};
 	}
 	//素材下载（云空）
-	game.ykdownload_Button=true;
-	game.ykdownloadsucai_Button=true;
-	game.ykdownloadelse_Button=true;
-	window.ykDownload=function(){
-		ui.click.configMenu();
+	window.ykDownloadx=function(){
 		if(typeof window.ykcloseBgM=='function') window.ykcloseBgM();
-		if(typeof game.ykHasExtension=='function'&&game.ykHasExtension('斗破苍穹X阴阳师')) alert('请先关闭【斗破苍穹X阴阳师】，否则将可能导致无法正常下载！');
-		if(game.ykdownload_Button==false){
-			alert('请不要频繁点击，若需要重新下载，请重启游戏后再尝试。');
+		var div=ui.create.div();
+		div.style.cssText='height:40%;top:30%;left:30%;width:40%;text-align:center;opacity:0.8;z-index:999;border-radius:8px;background-color:black;';
+		ui.window.appendChild(div);
+		var title=ui.create.div();
+		title.style.cssText='height:20px;width:100%;left:0px;top:0px;position:relative;text-align:center;';
+		title.innerHTML='<span style="font-size:20px;font-weight:400;font-family:shousha">下载方式</span>';
+		div.appendChild(title);
+		var list=[{name1:'快速下载',name2:'fast'},{name1:'全盘下载',name2:'all'}];
+		for(var character in window.yunkong_Character.character){
+			list.push({
+				name1:'下载-'+get.translation(character),
+				name2:character,
+			});
 		}
-		else if(confirm('是否下载【云空】素材？（下载完毕后将自动重启游戏）')){
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/download.js",true);
-			httpRequest.send(null);
-			httpRequest.onreadystatechange=function(){
-				if(httpRequest.readyState==4&&httpRequest.status==200){
-					game.ykdownload_Button=false;
-					game.ykdownloadsucai_Button=false;
-					game.ykdownloadelse_Button=false;
-					eval(httpRequest.responseText);
-				}
-			};
+		for(var i=0;i<list.length;i++){
+			window['list_'+i]=ui.create.div('.menubutton.round');
+			window['list_'+i].style.cssText='height:40px;width:50%;left:0%top:20px;position:relative;border-radius:8px;';
+			window['list_'+i].innerHTML=list[i].name1;
+			window['list_'+i].name=list[i].name2;
+			window['list_'+i].onclick=function(){
+				funcD();
+				var httpRequest = new XMLHttpRequest(),name=this.name2;
+				httpRequest.open("GET","https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/download.js",true);
+				httpRequest.send(null);
+				httpRequest.onreadystatechange=function(){
+					if(httpRequest.readyState==4&&httpRequest.status==200){
+						eval(httpRequest.responseText);
+						if(['fast','all'].indexOf(this.name2)!=-1){
+							try{game['ykdownload_'+this.name2]();}catch(e){alert('文件加载失败！');}
+						}
+						else{
+							game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+name+'.jpg','extension/云空/'+name+'.jpg',function(){},function(){});
+							var download=()=>{
+								document.body.appendChild(YK_Text);
+								window.picturelist=game['YK_'+name];
+								window.num=0;
+								window.numx=game['YK_'+name].length;
+								var download=function(){
+									var httpRequest = new XMLHttpRequest();
+									httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+name+'/'+window.picturelist[0],true);
+									httpRequest.send(null);
+									httpRequest.onreadystatechange=function(){
+										if(httpRequest.readyState==4&&httpRequest.status==200){
+											game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],'extension/云空/'+name+'/'+window.picturelist[0],function(){
+												window.num++
+												window.picturelist.remove(window.picturelist[0]);
+												if(window.picturelist.length>0){
+													YK_Text.innerHTML='正在下载云空世界人物皮肤语音——【'+get.translation(name)+'】（'+window.num+'/'+window.numx+'）';
+													download(window.picturelist);
+												}else{
+													YK_Text.innerHTML='下载完毕';
+													if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('云空世界人物皮肤语音下载完毕！');
+													document.body.removeChild(YK_Text);
+													if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('请稍候，即将自动为您重启游戏！');
+													setTimeout(function(){
+														game.reload();
+													},3000);
+												};
+											},function(){
+												if(confirm('下载'+window.picturelist[0]+'失败，是否继续下载？（取消则关闭扩展包并刷新游戏）')){
+													download();
+												}else{
+													if(game.sayyk&&typeof game.sayyk=='function') game.sayyk('部分文件下载失败。');
+													window.num++;
+													window.picturelist.remove(window.picturelist[0]);
+													download();
+												};
+											})
+										}
+									}
+								}
+								download();
+							};
+						}
+					}
+				};
+			}
+			div.appendChild(window['list_'+i]);
+			window.yk_clickFK(window['list_'+i]);
 		}
+		var funcD=function(){
+			div.delete();
+		}
+		var divD=ui.create.div('.menubutton.round','×',function(){
+			funcD();
+		});
+		divD.style.top='5px';
+		divD.style.left='calc(100% - 55px)';
+		divD.style['zIndex']=1000;
+		div.appendChild(divD);
+		window.yk_clickFK(divD);
+		var helpD=ui.create.div('.menubutton.round','?',function(){
+			alert('快速下载：下载本地缺失的所有素材；全盘下载：下载并更新所有素材；各武将素材下载：仅下载对应武将的素材；请根据自身需要进行选择。');
+		});
+		helpD.style.top='5px';
+		helpD.style.left='calc(100% - 110px)';
+		helpD.style['zIndex']=1000;
+		div.appendChild(helpD);
+		window.yk_clickFK(helpD);
 	}
 	window.ykOpenTaskList=function(){
 		ui.click.configMenu();
