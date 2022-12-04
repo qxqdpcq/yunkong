@@ -14204,7 +14204,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		filter:(event,player)=>{
 			if(event.name=='phase') return true;
 			if(player!=_status.currentPhase) return false;
-			if(!player.ykCheckConsume('Mp',((lib.config['yk_ykdingze_rank']||0)>=1?30:50)) return false;
+			if(!player.ykCheckConsume('Mp',((lib.config['yk_ykdingze_rank']||0)>=1?30:50))) return false;
 			var card=event.card,suit;
 			if(!card&&event.cards) card=event.cards[0];
 			switch(get.suit(card,player)){
