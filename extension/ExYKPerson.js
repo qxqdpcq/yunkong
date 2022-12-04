@@ -2793,6 +2793,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							try{game['ykdownload_'+this.name2]();}catch(e){alert('文件加载失败！');}
 						}
 						else{
+							alert(name)
 							game.download('https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+name+'.jpg','extension/云空/'+name+'.jpg',function(){},function(){});
 							var download=()=>{
 								document.body.appendChild(YK_Text);
