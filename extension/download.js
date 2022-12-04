@@ -104,23 +104,6 @@ game.YK_qxq_yk_tian=[
 game.YK_qxq_yk_mingyun=[
 	'qxq_yk_mingyun_moouyuezhang.jpg'
 ];
-	var YK_Text=document.createElement("div");
-	var YK_Text_style={
-		width:"calc(25%)",
-		height:"calc(5%)",
-		display:"table",
-		background:'rgba(0,0,0,0.5)',
-		position:"absolute",
-		top:"0px",
-		left:"calc(38%)",
-		zIndex:"10",
-		textAlign:"center",
-		'font-size':'30px',
-		'font-family':"'STXinwei','xinwei'",
-	};
-	for(var k in YK_Text_style){
-		YK_Text.style[k]=YK_Text_style[k];
-	};
 	game.ykdownload_all=()=>{
 		window.yk_personlistList=[];
 		if(!lib.config.YKcharacterNameList){lib.config.YKcharacterNameList=[];game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);}
