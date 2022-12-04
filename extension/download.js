@@ -129,7 +129,6 @@ game.YK_qxq_yk_mingyun=[
 		}
 		var num=0;
 		var numx=window.picturelist.length;
-		document.body.appendChild(YK_Text);
 		var download=function(){
 			var httpRequest = new XMLHttpRequest();
 			httpRequest.open("GET",'https://raw.fastgit.org/qxqdpcq/yunkong/main/extension/'+window.picturelist[0],true);
@@ -244,7 +243,6 @@ game.YK_qxq_yk_mingyun=[
 		}
 		var num=0;
 		var numx=window.picturelist.length;
-		document.body.appendChild(YK_Text);
 		var download=function(){
 			if(!window.ykFileExist(lib.assetURL+'extension/云空/'+window.picturelist[0])){
 				var httpRequest = new XMLHttpRequest();
