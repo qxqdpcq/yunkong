@@ -14258,7 +14258,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				},
 			},
 		},
-	},
+	};
 	lib.skill.yktianzhi={
 		ruleList:[{
 			trigger:{
@@ -14580,7 +14580,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			if(typeof result.init=='function') for(var plx of game.players) if(pl!=player) result.init(plx);
 			if(event.pl_list.length) event.goto(1);
 		},
-	},
+	};
 	//SkillTranslate
 	if(!window.YK_getNodeIntro) window.YK_getNodeIntro=get.nodeintro;
 	get.nodeintro=function(node,simple,evt){
