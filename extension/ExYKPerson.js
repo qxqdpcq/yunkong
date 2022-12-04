@@ -3183,7 +3183,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				try{window[this.functionName]();}catch(e){alert('模块加载失败！');}
 				ui.click.configMenu=window.clickMenu;
 			});
-			window['Menu_'+i].style.cssText='height:8%;width:50%;left:0%top:20px;position:relative;border-radius:8px;';
+			window['Menu_'+i].style.cssText='height:40px;width:50%;left:0%top:20px;position:relative;border-radius:8px;';
 			window['Menu_'+i].functionName=MenuFunctionList[i];
 			window['Menu_'+i].innerHTML=MenuList[i];
 			background.appendChild(window['Menu_'+i]);
