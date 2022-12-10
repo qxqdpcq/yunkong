@@ -802,6 +802,258 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			return player.newdamage(num,nature,source);
 		},player,num,nature,source);
 	}
+	lib.ykcolor_list={
+		formation:{
+			'none':'formation_none',
+			'wind':'formation_wind',
+			'stone':'formation_stone',
+			'water':'formation_water',
+			'ice':'formation_ice',
+			'fire':'formation_fire',
+			'thunder':'formation_thunder',
+			'soul':'formation_soul',
+			'dark':'formation_dark',
+			'light':'formation_light',
+		},
+		loop:{
+			'none':'loop_none',
+			'wind':'loop_wind',
+			'stone':'loop_stone',
+			'water':'loop_water',
+			'ice':'loop_water',
+			'fire':'loop_fire',
+			'thunder':'loop_thunder',
+			'soul':'loop_soul',
+			'dark':'loop_dark',
+			'light':'loop_light',
+		},
+		nature:{
+			'none':'white',
+			'wind':'green',
+			'stone':'yellow',
+			'water':'blue',
+			'ice':'cyan',
+			'fire':'red',
+			'thunder':'purple',
+			'soul':'purple',
+			'dark':'purple',
+			'light':'yellow',
+		},
+		point:{
+			'none':'point_none',
+			'wind':'point_wind',
+			'stone':'point_stone',
+			'water':'point_water',
+			'ice':'point_ice',
+			'fire':'point_fire',
+			'thunder':'point_thunder',
+			'soul':'point_soul',
+			'dark':'point_dark',
+			'light':'point_light',
+		},
+	};
+	lib.element.content.ykchangeWitchcraftPoint=()=>{
+		'step 0'
+		if(!event.num){
+			event.finish();
+			return ;
+		}
+		'step 1'
+		var num=event.num,player=event.player,nature=event.nature;
+		game.broadcastAll(function(player,num,nature){
+			player.witchcraft_point+=num;
+			setTimeout(function(){
+				var color=lib.ykcolor_list.nature[nature];
+				for(var w=0;w<player.witchcraftDiv.divBg.maxNum;w++){
+					if(w<player.witchcraft_point) player.witchcraftDiv.divBg[''+w].style.backgroundColor=color;
+					else player.witchcraftDiv.divBg[''+w].style.backgroundColor='none';
+				}
+			},1000);
+		},player,num,nature);
+		'step 2'
+		game.broadcastAll(function(player,num,nature){
+			if(player.witchcraft_point>=player.witchcraftDiv.divBg.maxNum){
+				setTimeout(function(){
+					var div_formation=ui.create.div();
+					div_formation.style.cssText='height:200px;width:200px;left:calc(50% - 100px);top:calc(50% - 100px);z-index:888;background-size:100% 100%;';
+					div_formation.setBackgroundImage('extension/无名扩展/formation/'+lib.ykcolor_list.formation[event.nature]+'.png');
+					ui.window.appendChild(div_formation);
+					var time={};
+					time.num=0;
+					time.timer=setInterval(function(){
+						time.num+=5;
+						div_formation.style.transform='rotate('+time.num+'deg)';
+						if(time.num>=360){
+							clearInterval(time.timer);
+							div_formation.delete();
+						}
+					},50)
+					var light_animation=ui.create.div(),light_animationBg=ui.create.div();
+					light_animationBg.style.cssText='height:100%;width:100%;left:0px;top:0px;z-index:800;transition:all 3s;opacity:0;background-color:black;';
+					ui.window.appendChild(light_animationBg);
+					setTimeout(()=>{
+						light_animationBg.style.opacity=0.4;
+						setTimeout(()=>{
+							light_animationBg.delete();
+						},3600);
+					},50);
+					light_animation.style.cssText='border-image-source:url("extension/无名扩展/light_animation.png");border-image-slice:0 0 0 100 fill;border-top:0px solid;border-right:0px solid;border-bottom:0px solid;border-left:100px solid;height:400px;width:2500px;z-index:850;top:calc(50% - 200px);left:100%;transition:all 1s;';
+					ui.window.appendChild(light_animation);
+					setTimeout(()=>{
+						light_animation.style.left='-400px';
+						setTimeout(()=>{
+							light_animation.delete();
+						},3600);
+					},50);
+					game.delay(4);
+					player.node.avatar.hide();
+					player.witchcraftDiv.divBg.delete();
+					player.witchcraftDiv.divBg=null;
+					player.witchcraftDiv=null;
+					var node=ui.create.div(),pict=player.node.avatar.style['background-image'],l=pict.length-1,path=pict.slice(5,l-1);
+					node.style.cssText='height:'+player.node.avatar.offsetHeight+'px;width:'+player.node.avatar.offsetWidth+'px;left:'+(player.offsetLeft+53)+'px;top:'+(player.offsetTop+57)+'px;background-size:cover;background-position:center;transition:all 1s;z-index:999;';
+					node.setBackgroundImage(path);
+					ui.window.appendChild(node);
+					setTimeout(function(){
+						node.style.left='calc(50% - '+player.node.avatar.offsetWidth/2+'px)';
+						node.style.top='calc(50% - '+player.node.avatar.offsetHeight/2+'px)';
+						setTimeout(()=>{
+							node.delete();
+							player.node.avatar.show();
+							var loop=ui.create.div();
+							loop.style.cssText='height:'+player.node.avatar.offsetWidth+'px;width:'+player.node.avatar.offsetWidth+'px;top:calc(50% - '+player.node.avatar.offsetWidth/2+'px);left:calc(50% - '+player.node.avatar.offsetWidth/2+'px);background-size:100% 100%;';
+							loop.setBackgroundImage('extension/无名扩展/loop/'+lib.ykcolor_list.loop[event.nature]+'.png');
+							player.appendChild(loop);
+							var time_loop={};
+							time_loop.num=0;
+							time_loop.timer=setInterval(function(){
+								time_loop.num+=5;
+								loop.style.transform='rotate('+time_loop.num+'deg)';
+								if(time_loop.num>=360){
+									clearInterval(time_loop.timer);
+									loop.delete();
+								}
+							},50);
+							if(!player.witchcraft_func) player.witchcraft_func=()=>{player.witchcraft_func=null;};
+							if(typeof player.witchcraft_func=='function'){
+								var next_evt=game.createEvent('ykcallMyGod');
+								next_evt.set('player',player);
+								next_evt.setContent(player.witchcraft_func);
+								return next_evt;
+							}
+						},2600);
+					},1000);
+				},2000);
+			}
+		},player,num,nature);
+		'step 3'
+		event.result = {
+			num:event.num,
+			bool:event.num!=0,
+		};
+	}
+	lib.element.player.ykchangeWitchcraftPoint=function(num,nature){
+		var player=this;
+		if(!player.witchcraftDiv) return ;
+		if(!num) num=1;
+		if(!nature) nature='none';
+		if(num>0){//获得WitchcraftPointAnimation
+			var point=ui.create.div();
+			point.style.cssText='height:60px;width:60px;left:calc(50% - 10px);top:calc(50% - 10px);background-size:100% 100%;transition:all 1s;z-index:99999;';
+			point.setBackgroundImage('extension/无名扩展/point/'+lib.ykcolor_list.point[nature]+'.png');
+			point.left=player.offsetLeft+15;
+			if(!game.dead.contains(player)) point.top=player.offsetTop+player.offsetHeight-15;
+			else point.top=player.offsetTop+15;
+			ui.window.appendChild(point);
+			setTimeout(function(){
+				point.style.left=point.left+'px';
+				point.style.top=point.top+'px';
+				setTimeout(function(){
+					point.delete();
+					game.delay(1);
+					var next=game.createEvent('ykchangeWitchcraftPoint');
+					next.set('num',num);
+					next.set('nature',nature);
+					next.set('player',player);
+					next.setContent('ykchangeWitchcraftPoint');
+					return next;
+				},1300);
+			},100);
+		}
+	}
+	lib.element.player.showWitchcraftDiv=function(num,func,text,nature){
+		if(this.witchcraftDiv) return ;
+		this.witchcraftDiv={};
+		if(!func) func=()=>{};
+		if(typeof func=='function'){
+			func=func.toString();
+			this.witchcraft_func=new Function('player',func.slice(func.indexOf('{')+1,func.length-1)+'player.witchcraft_func=null;');
+		}
+		if(!num) num=5;
+		if(!text) text='';
+		if(!nature) nature='none';
+		var color=lib.ykcolor_list.nature[nature];
+		this.witchcraft_point=0;
+		this.witchcraftDiv.divBg=ui.create.div();
+		this.witchcraftDiv.divBg.style.cssText='bottom:0px;left:0px;height:100%;width:30px;';
+		this.appendChild(this.witchcraftDiv.divBg);
+		this.witchcraftDiv.divBg.maxNum=num;
+		var info=ui.create.div();
+		info.style.cssText='transition:left 0s,top 0s,opacity .3s;width:'+this.offsetWidth*0.85+'px;pointer-events:none;text-align:left;animation:fadeShow .3s;-webkit-animation:fadeShow .3s;z-index:999999;background-color:black;opacity:0.75;border-radius:8px;';
+		this.witchcraftDiv.divBg.info=info;
+		if(lib.device==undefined){
+			this.witchcraftDiv.divBg.onmouseover=function(){
+				var info=this.info;
+				info.innerHTML='<font color=white>'+text+'</font>';
+				ui.window.appendChild(info);
+				info.hide();
+				info.style.top=(event.clientY/game.documentZoom+document.body.scrollTop)+'px';
+				info.style.left=(event.clientX/game.documentZoom+10+document.body.scrollLeft)+'px';
+				if(info.offsetLeft+info.offsetWidth>ui.window.offsetLeft+ui.window.offsetWidth){
+					info.style.left='calc( 100% - 312px )';
+					info.style.top=(event.clientY/game.documentZoom+10+document.body.scrollTop)+'px';
+				};
+				if(info.offsetTop+info.offsetHeight>ui.window.offsetTop+ui.window.offsetHeight){
+					info.style.top=(event.clientY/game.documentZoom+document.body.scrollTop-info.offsetHeight)+'px';
+				};
+				if(info.offsetTop<0){
+					info.style.top='0px';
+				};
+				info.show();
+			};
+			this.witchcraftDiv.divBg.onmousemove=function(){
+				var info=this.info;
+				info.style.top=(event.clientY/game.documentZoom+document.body.scrollTop)+'px';
+				info.style.left=(event.clientX/game.documentZoom+10+document.body.scrollLeft)+'px';
+				if(info.offsetLeft+info.offsetWidth>ui.window.offsetLeft+ui.window.offsetWidth){
+					info.style.left='calc( 100% - 312px )';
+					info.style.top=(event.clientY/game.documentZoom+10+document.body.scrollTop)+'px';
+				};
+				if(info.offsetTop+info.offsetHeight>ui.window.offsetTop+ui.window.offsetHeight){
+					info.style.top=(event.clientY/game.documentZoom+document.body.scrollTop-info.offsetHeight)+'px';
+				};
+				if(info.offsetTop<0){
+					info.style.top='0px';
+				};
+			};
+			this.witchcraftDiv.divBg.onmouseout=function(){
+				var info=this.info;
+				info.hide();
+			};
+		}
+		this.witchcraftDiv.divA=ui.create.div();
+		this.witchcraftDiv.divA.style.cssText='bottom:0px;left:0px;height:30px;width:30px;background-size:100% 100%;';
+		this.witchcraftDiv.divBg.appendChild(this.witchcraftDiv.divA);
+		this.witchcraftDiv.divA.setBackgroundImage('extension/无名扩展/nature/'+color+'.png');
+		this.witchcraftDiv.divB=ui.create.div();
+		this.witchcraftDiv.divB.style.cssText='bottom:20px;left:8px;height:calc(100% - 30px);width:10px;';
+		this.witchcraftDiv.divBg.appendChild(this.witchcraftDiv.divB);
+		for(var a=0;a<num;a++){
+			this.witchcraftDiv.divBg[''+a]=ui.create.div();
+			this.witchcraftDiv.divBg[''+a].style.cssText='bottom:'+(100/num)*a+'%;left:0px;height:'+(100/num)+'%;width:100%;border:2px solid '+color+';';
+			this.witchcraftDiv.divB.appendChild(this.witchcraftDiv.divBg[''+a]);
+		}
+	};
 	lib.skill._qxq_ykMarkInfo={
 		trigger:{
 			global:"gameStart",
