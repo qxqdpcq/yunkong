@@ -897,7 +897,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							light_animationBg.delete();
 						},3600);
 					},50);
-					light_animation.style.cssText='border-image-source:url("extension/云空/light_animation.png");border-image-slice:0 0 0 100 fill;border-top:0px solid;border-right:0px solid;border-bottom:0px solid;border-left:100px solid;height:400px;width:2500px;z-index:850;top:calc(50% - 200px);left:100%;transition:all 1s;';
+					light_animation.style.cssText='border-image-source:url("extension/云空/light_animation.png");border-image-slice:0 0 0 100 fill;border-top:0px solid;border-right:0px solid;border-bottom:0px solid;border-left:100px solid;height:100%;width:500%;z-index:850;top:calc(50% - 200px);left:100%;transition:all 1s;';
 					ui.window.appendChild(light_animation);
 					setTimeout(()=>{
 						light_animation.style.left='-400px';
