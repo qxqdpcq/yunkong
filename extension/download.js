@@ -185,7 +185,7 @@ game.YK_qxq_yk_mingyun=[
 		game.ykdownloadsucai_Button=false;
 		game.ykdownloadelse_Button=false;
 		window.picturelist=game.YK_else;
-		for(var photo of window.picturelist) if(!window.ykFileExist(lib.assetURL+'extension/云空/'+photo)) window.picturelist=window.picturelist.slice(0,window.picturelist.indexOf(photo)).concat(window.picturelist.slice(window.picturelist.indexOf(photo)+1,window.picturelist.length));
+		for(var photo of window.picturelist) if(window.ykFileExist(lib.assetURL+'extension/云空/'+photo)) window.picturelist=window.picturelist.slice(0,window.picturelist.indexOf(photo)).concat(window.picturelist.slice(window.picturelist.indexOf(photo)+1,window.picturelist.length));
 		if(!lib.config.YKcharacterNameList){lib.config.YKcharacterNameList=[];game.saveConfig('YKcharacterNameList',lib.config.YKcharacterNameList);}
 		for(var i=0;i<lib.config.YKcharacterNameList.length;i++){
 			var character=lib.config.YKcharacterNameList[i];
@@ -243,7 +243,7 @@ game.YK_qxq_yk_mingyun=[
 		document.body.appendChild(YK_Text);
 		window.picturelist=game['YK_'+window.yk_personlistList[0]];
 		window.num=0;
-		for(var photo of window.picturelist) if(!window.ykFileExist(lib.assetURL+'extension/云空/'+photo)) window.picturelist=window.picturelist.slice(0,window.picturelist.indexOf(photo)).concat(window.picturelist.slice(window.picturelist.indexOf(photo)+1,window.picturelist.length));
+		for(var photo of window.picturelist) if(window.ykFileExist(lib.assetURL+'extension/云空/'+photo)) window.picturelist=window.picturelist.slice(0,window.picturelist.indexOf(photo)).concat(window.picturelist.slice(window.picturelist.indexOf(photo)+1,window.picturelist.length));
 		window.numx=game['YK_'+window.yk_personlistList[0]].length;
 		var download=function(){
 			var httpRequest = new XMLHttpRequest();
