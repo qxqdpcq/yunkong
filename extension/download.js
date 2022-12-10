@@ -33,6 +33,48 @@ game.YK_else=[
 	
 	'boss_yk_tikui.jpg',
 	'boss_yk_pohuaishen.jpg',
+	
+	'formation/formation_dark.png',
+	'formation/formation_fire.png',
+	'formation/formation_ice.png',
+	'formation/formation_light.png',
+	'formation/formation_none.png',
+	'formation/formation_soul.png',
+	'formation/formation_stone.png',
+	'formation/formation_thunder.png',
+	'formation/formation_water.png',
+	'formation/formation_wind.png',
+	'formation/formation_wood.png',
+	
+	'loop/loop_dark.png',
+	'loop/loop_fire.png',
+	'loop/loop_light.png',
+	'loop/loop_none.png',
+	'loop/loop_soul.png',
+	'loop/loop_stone.png',
+	'loop/loop_thunder.png',
+	'loop/loop_water.png',
+	'loop/loop_wind.png',
+	'loop/loop_wood.png',
+	
+	'nature/blue.png',
+	'nature/cyan.png',
+	'nature/green.png',
+	'nature/purple.png',
+	'nature/red.png',
+	'nature/white.png',
+	'nature/yellow.png',
+	
+	'point/point_dark.png',
+	'point/point_fire.png',
+	'point/point_ice.png',
+	'point/point_light.png',
+	'point/point_none.png',
+	'point/point_stone.png',
+	'point/point_thunder.png',
+	'point/point_water.png',
+	'point/point_wind.png',
+	'point/point_wood.png',
 ];
 if(typeof game.ykHasCharacter=='function'&&game.ykHasCharacter('qxq_yk_yanmengyuejian')){
 	game.YK_else.push('qxq_yk_mengyanyouwu_female.jpg');
