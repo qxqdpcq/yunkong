@@ -1052,7 +1052,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 			div.style.left='calc(100% - 55px)';
 			div.style['zIndex']=1000;
 			div.info=info;
-			window.background.appendChild(div);
+			info.appendChild(div);
 			window.yk_clickFK(div);
 			info.hide();
 			this.witchcraftDiv.divBg.onclick=function(){
