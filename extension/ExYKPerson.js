@@ -910,8 +910,8 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 					player.witchcraftDiv.divBg.delete();
 					player.witchcraftDiv.divBg=null;
 					player.witchcraftDiv=null;
-					var node=ui.create.div(),pict=player.node.avatar.style['background-image'],l=pict.length-1,path=pict.slice(5,l-1);
-					node.style.cssText='height:'+player.node.avatar.offsetHeight+'px;width:'+player.node.avatar.offsetWidth+'px;left:calc(35.33% + '+player.offsetLeft+'px);top:calc(31.67% + '+player.offsetTop+'px);background-size:cover;background-position:center;transition:all 1s;z-index:999;';
+					var node=ui.create.div(),pict=player.node.avatar.style['background-image'],path=pict.slice(5,pict.length-2);
+					node.style.cssText='height:'+player.node.avatar.offsetHeight+'px;width:'+player.node.avatar.offsetWidth+'px;left:calc(35.33% + '+player.offsetLeft+'px);top:calc(31.67% + '+player.offsetTop+'px);background-size:100% 100%;transition:all 1s;z-index:999;';
 					node.setBackgroundImage(path);
 					ui.window.appendChild(node);
 					setTimeout(function(){
