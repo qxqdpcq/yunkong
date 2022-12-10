@@ -876,7 +876,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 				setTimeout(function(){
 					var div_formation=ui.create.div();
 					div_formation.style.cssText='height:200px;width:200px;left:calc(50% - 100px);top:calc(50% - 100px);z-index:888;background-size:100% 100%;';
-					div_formation.setBackgroundImage('extension/无名扩展/formation/'+lib.ykcolor_list.formation[event.nature]+'.png');
+					div_formation.setBackgroundImage('extension/云空/formation/'+lib.ykcolor_list.formation[event.nature]+'.png');
 					ui.window.appendChild(div_formation);
 					var time={};
 					time.num=0;
@@ -897,7 +897,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							light_animationBg.delete();
 						},3600);
 					},50);
-					light_animation.style.cssText='border-image-source:url("extension/无名扩展/light_animation.png");border-image-slice:0 0 0 100 fill;border-top:0px solid;border-right:0px solid;border-bottom:0px solid;border-left:100px solid;height:400px;width:2500px;z-index:850;top:calc(50% - 200px);left:100%;transition:all 1s;';
+					light_animation.style.cssText='border-image-source:url("extension/云空/light_animation.png");border-image-slice:0 0 0 100 fill;border-top:0px solid;border-right:0px solid;border-bottom:0px solid;border-left:100px solid;height:400px;width:2500px;z-index:850;top:calc(50% - 200px);left:100%;transition:all 1s;';
 					ui.window.appendChild(light_animation);
 					setTimeout(()=>{
 						light_animation.style.left='-400px';
@@ -922,7 +922,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 							player.node.avatar.show();
 							var loop=ui.create.div();
 							loop.style.cssText='height:'+player.node.avatar.offsetWidth+'px;width:'+player.node.avatar.offsetWidth+'px;top:calc(50% - '+player.node.avatar.offsetWidth/2+'px);left:calc(50% - '+player.node.avatar.offsetWidth/2+'px);background-size:100% 100%;';
-							loop.setBackgroundImage('extension/无名扩展/loop/'+lib.ykcolor_list.loop[event.nature]+'.png');
+							loop.setBackgroundImage('extension/云空/loop/'+lib.ykcolor_list.loop[event.nature]+'.png');
 							player.appendChild(loop);
 							var time_loop={};
 							time_loop.num=0;
@@ -960,7 +960,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		if(num>0){//获得WitchcraftPointAnimation
 			var point=ui.create.div();
 			point.style.cssText='height:60px;width:60px;left:calc(50% - 10px);top:calc(50% - 10px);background-size:100% 100%;transition:all 1s;z-index:99999;';
-			point.setBackgroundImage('extension/无名扩展/point/'+lib.ykcolor_list.point[nature]+'.png');
+			point.setBackgroundImage('extension/云空/point/'+lib.ykcolor_list.point[nature]+'.png');
 			point.left=player.offsetLeft+15;
 			if(!game.dead.contains(player)) point.top=player.offsetTop+player.offsetHeight-15;
 			else point.top=player.offsetTop+15;
@@ -1070,7 +1070,7 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		this.witchcraftDiv.divA=ui.create.div();
 		this.witchcraftDiv.divA.style.cssText='bottom:0px;left:0px;height:30px;width:30px;background-size:100% 100%;';
 		this.witchcraftDiv.divBg.appendChild(this.witchcraftDiv.divA);
-		this.witchcraftDiv.divA.setBackgroundImage('extension/无名扩展/nature/'+color+'.png');
+		this.witchcraftDiv.divA.setBackgroundImage('extension/云空/nature/'+color+'.png');
 		this.witchcraftDiv.divB=ui.create.div();
 		this.witchcraftDiv.divB.style.cssText='bottom:20px;left:8px;height:calc(100% - 30px);width:10px;';
 		this.witchcraftDiv.divBg.appendChild(this.witchcraftDiv.divB);
