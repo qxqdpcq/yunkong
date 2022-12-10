@@ -1001,11 +1001,11 @@ var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68
 		var info=ui.create.div();
 		info.style.cssText='transition:left 0s,top 0s,opacity .3s;width:'+this.offsetWidth*0.85+'px;pointer-events:none;text-align:left;animation:fadeShow .3s;-webkit-animation:fadeShow .3s;z-index:999999;background-color:black;opacity:0.75;border-radius:8px;border:1px solid '+color+';';
 		if(lib.device!=undefined) info.style.cssText='left:30%;width:40%;top:30%;height:40%;border-radius:8px;border:1px solid '+color+';background-color:black;z-index:999;';
+		info.innerHTML='<font color=white>'+text+'</font>';
 		this.witchcraftDiv.divBg.info=info;
 		if(lib.device==undefined){
 			this.witchcraftDiv.divBg.onmouseover=function(){
 				var info=this.info;
-				info.innerHTML='<font color=white>'+text+'</font>';
 				ui.window.appendChild(info);
 				info.hide();
 				info.style.top=(event.clientY/game.documentZoom+document.body.scrollTop)+'px';
